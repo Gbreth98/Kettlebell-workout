@@ -2,1501 +2,1203 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kettlebell Workout</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-margin:0;
-background:#000;
-color:#fff;
-font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif
+* {
+  box-sizing: border-box;
 }
 
-.page{
-max-width:650px;
-margin:auto;
-padding:25px 16px 40px
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
-.center{text-align:center}
-
-h1{
-font-size:30px;
-margin:10px 0
+.page {
+  max-width: 650px;
+  margin: auto;
+  padding: 25px 16px 60px;
 }
 
-h2{font-size:22px}
-
-.sub{
-color:#aaa;
-margin-bottom:25px
+.center {
+  text-align: center;
 }
 
-.card{
-background:#151515;
-border:1px solid #292929;
-border-radius:20px;
-padding:18px;
-margin:14px 0
+.hero {
+  padding-top: 25px;
+  padding-bottom: 20px;
 }
 
-button{
-width:100%;
-padding:15px;
-margin-top:10px;
-border-radius:15px;
-border:2px solid #d4af37;
-background:#111;
-color:#fff;
-font-size:16px;
-font-weight:bold;
-box-shadow:0 0 8px #d4af3744
+.hero-icon {
+  font-size: 65px;
+  margin-bottom: 5px;
 }
 
-button:active{
-transform:scale(.98)
+h1 {
+  font-size: 38px;
+  margin: 5px 0;
+  font-weight: 800;
 }
 
-.gold{color:#d4af37}
-
-.hidden{display:none}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px
+.subtitle {
+  color: #aaa;
+  font-size: 18px;
+  margin-top: 12px;
 }
 
-.stat{
-background:#222;
-border-radius:14px;
-padding:12px;
-text-align:center
+.card {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 24px;
+  padding: 22px;
+  margin-top: 20px;
 }
 
-.num{
-font-size:22px;
-font-weight:bold
+.gold {
+  color: #e5b82c;
 }
 
-.small{
-font-size:11px;
-color:#999
+.start-button,
+.exercise-button,
+.calendar-nav {
+  background: #111;
+  color: white;
+  border: 2px solid #e5b82c;
+  border-radius: 18px;
+  padding: 17px;
+  font-size: 18px;
+  font-weight: 800;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(229,184,44,.35);
 }
 
-.exercise{
-border-top:1px solid #333;
-padding:17px 0
+.start-button:active,
+.exercise-button:active,
+.calendar-nav:active {
+  transform: scale(.98);
 }
 
-.exercise:first-child{
-border-top:0
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.name{
-font-size:17px;
-font-weight:bold
+.stat {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 18px;
+  padding: 18px 8px;
+  text-align: center;
 }
 
-.info{
-color:#aaa;
-font-size:13px;
-margin:5px 0 12px
+.stat-number {
+  font-size: 30px;
+  font-weight: 800;
 }
 
-.videoBox{
-background:#090909;
-border:1px solid #333;
-border-radius:14px;
-padding:22px;
-text-align:center;
-color:#aaa;
-margin:10px 0
+.stat-label {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
-.videoIcon{
-font-size:38px
+.section-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 10px 0 15px;
 }
 
-.done{
-background:#292929
+.level {
+  text-align: center;
+  color: #e5b82c;
+  font-size: 19px;
+  margin-top: 18px;
 }
 
-.progress{
-height:10px;
-background:#292929;
-border-radius:20px;
-overflow:hidden;
-margin:12px 0
+/* CALENDAR */
+
+.calendar-card {
+  margin-top: 25px;
 }
 
-.fill{
-height:100%;
-background:#d4af37;
-width:0
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
-.history{
-border-top:1px solid #333;
-padding:10px 0;
-font-size:13px;
-color:#ccc
+.month-title {
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  flex: 1;
 }
 
-.levelBox{
-border:1px solid #d4af37;
-border-radius:14px;
-padding:12px;
-margin-top:12px;
-text-align:center
-}
-
-.badge{
-display:inline-block;
-border:1px solid #d4af37;
-border-radius:20px;
-padding:5px 10px;
-color:#d4af37;
-font-size:12px;
-font-weight:bold
-}
-
-.calendarHead{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin:8px 0 12px
-}
-
-.calBtn{
-width:45px;
-padding:8px;
-margin:0;
-font-size:22px
+.calendar-nav {
+  width: 50px;
+  height: 45px;
+  padding: 0;
+  font-size: 22px;
 }
 
 .weekdays,
-.calendar{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:5px
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
 }
 
-.weekdays div{
-text-align:center;
-color:#888;
-font-size:9px;
-font-weight:bold;
-padding:4px 0
+.weekday {
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+  padding-bottom: 5px;
 }
 
-.day{
-min-height:43px;
-border:1px solid #292929;
-border-radius:9px;
-background:#0d0d0d;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-position:relative
+.day {
+  min-height: 48px;
+  border-radius: 12px;
+  background: #0d0d0d;
+  border: 1px solid #292929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: 600;
 }
 
-.day.empty{
-border-color:transparent;
-background:transparent
+.day.empty {
+  background: transparent;
+  border: none;
 }
 
-.day.today{
-border-color:#d4af37
+.day.today {
+  border: 2px solid #e5b82c;
 }
 
-.day.completed{
-background:#25200e;
-border-color:#d4af37;
-color:#d4af37;
-font-weight:800
+.day.completed {
+  background: #1d1a0b;
+  border: 2px solid #e5b82c;
+  color: #e5b82c;
 }
 
-.day.completed:after{
-content:"✓";
-position:absolute;
-right:4px;
-bottom:2px;
-font-size:9px
+.day.completed::after {
+  content: "✓";
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+  font-size: 12px;
+  color: #e5b82c;
 }
 
-.calendarLegend{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-margin-top:12px;
-color:#999;
-font-size:11px
+.calendar-info {
+  text-align: center;
+  color: #aaa;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
-.calendarLegend i{
-display:inline-block;
-width:8px;
-height:8px;
-border-radius:50%;
-margin-right:4px
+/* WORKOUT */
+
+.exercise {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 18px;
+  margin-top: 15px;
 }
 
-.doneDot{
-background:#d4af37
+.exercise.completed {
+  border: 2px solid #e5b82c;
 }
 
-.todayDot{
-border:1px solid #d4af37
+.exercise-name {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.weight {
+  color: #e5b82c;
+  font-weight: 800;
+  margin-top: 5px;
+}
+
+.details {
+  color: #aaa;
+  line-height: 1.5;
+  margin: 10px 0 15px;
+}
+
+.exercise-button {
+  font-size: 15px;
+  padding: 13px;
+}
+
+.exercise-button.done {
+  background: #e5b82c;
+  color: #000;
+}
+
+/* HISTORY */
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #292929;
+  padding: 12px 0;
+  color: #ddd;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.no-history {
+  color: #777;
+  text-align: center;
+  padding: 15px;
+}
+
+.small {
+  color: #888;
+  font-size: 13px;
+}
+
+.progress-box {
+  text-align: center;
+  padding: 10px;
+}
+
+.progress-number {
+  font-size: 35px;
+  font-weight: 800;
+  color: #e5b82c;
+}
+
+.warning {
+  color: #aaa;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.hidden {
+  display: none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
+<div class="page">
 
-<div id="home" class="page center">
+  <!-- HOME HEADER -->
 
-<div style="font-size:60px">🏋️</div>
+  <div class="hero center">
+    <div class="hero-icon">🏋️</div>
 
-<h1>KETTLEBELL WORKOUT</h1>
+    <h1>KETTLEBELL<br>WORKOUT</h1>
 
-<div class="sub">
-Single 20 lb kettlebell<br>
-Upper Body + Abs
-</div>
+    <div class="subtitle">
+      Single 20 lb kettlebell • Upper body + abs
+    </div>
+  </div>
 
-<div class="card">
+  <!-- START -->
 
-<h2 class="gold">READY TO TRAIN?</h2>
+  <div class="card center">
+    <div class="gold" style="font-size:24px;font-weight:800;">
+      READY TO TRAIN?
+    </div>
 
-<p style="color:#aaa">
-7 exercises • 20 lb • 3D demo videos • Progressive programme • Points & history
-</p>
+    <p class="subtitle">
+      7 exercises • Beginner • Progressive
+    </p>
 
-<button onclick="startWorkout()">
-▶ START WORKOUT
-</button>
+    <button class="start-button" onclick="startWorkout()">
+      ▶ START WORKOUT
+    </button>
+  </div>
 
-</div>
+  <!-- STATS -->
 
-<div class="card">
+  <div class="stats">
 
-<div class="stats">
+    <div class="stat">
+      <div class="stat-number" id="points">0</div>
+      <div class="stat-label">POINTS</div>
+    </div>
 
-<div class="stat">
-<div class="num" id="totalPts">0</div>
-<div class="small">POINTS</div>
-</div>
+    <div class="stat">
+      <div class="stat-number" id="workouts">0</div>
+      <div class="stat-label">WORKOUTS</div>
+    </div>
 
-<div class="stat">
-<div class="num" id="totalWorkouts">0</div>
-<div class="small">WORKOUTS</div>
-</div>
+    <div class="stat">
+      <div class="stat-number" id="streak">0</div>
+      <div class="stat-label">STREAK</div>
+    </div>
 
-<div class="stat">
-<div class="num" id="streak">0</div>
-<div class="small">STREAK 🔥</div>
-</div>
+  </div>
 
-</div>
+  <div class="level">
+    🥉 <span id="levelText">Beginner</span>
+  </div>
 
-<div class="levelBox">
 
-<h3 class="gold" id="level">
-🥉 BEGINNER
-</h3>
+  <!-- CALENDAR -->
 
-<div id="programWeek" style="color:#aaa;font-size:13px"></div>
+  <div class="card calendar-card">
 
-</div>
+    <div class="section-title">
+      📅 Workout Calendar
+    </div>
 
-</div>
+    <div class="calendar-header">
 
-</div>
+      <button class="calendar-nav" onclick="changeMonth(-1)">
+        ‹
+      </button>
 
+      <div class="month-title" id="monthTitle"></div>
 
-<!-- WORKOUT -->
+      <button class="calendar-nav" onclick="changeMonth(1)">
+        ›
+      </button>
 
-<div id="workout" class="page hidden">
+    </div>
 
-<button onclick="goHome()">
-← HOME
-</button>
+    <div class="weekdays">
+      <div class="weekday">SUN</div>
+      <div class="weekday">MON</div>
+      <div class="weekday">TUE</div>
+      <div class="weekday">WED</div>
+      <div class="weekday">THU</div>
+      <div class="weekday">FRI</div>
+      <div class="weekday">SAT</div>
+    </div>
 
-<div class="center">
+    <div class="calendar-grid" id="calendar"></div>
 
-<h1>🏋️ TODAY'S WORKOUT</h1>
+    <div class="calendar-info">
+      Gold ✓ = workout completed
+    </div>
 
-<div style="color:#aaa">
-20 lb single kettlebell
-</div>
+  </div>
 
-<div class="badge" id="weekBadge">
-PROGRAMME WEEK 1
-</div>
 
-</div>
+  <!-- PROGRESSION -->
 
+  <div class="card">
 
-<div class="card">
+    <div class="section-title">
+      📈 Your Progression
+    </div>
 
-<div class="stats">
+    <div class="progress-box">
 
-<div class="stat">
-<div class="num" id="todayPts">0</div>
-<div class="small">TODAY'S PTS</div>
-</div>
+      <div class="small">
+        CURRENT PROGRAMME
+      </div>
 
-<div class="stat">
-<div class="num" id="complete">0/7</div>
-<div class="small">COMPLETE</div>
-</div>
+      <div class="progress-number" id="weekNumber">
+        Week 1
+      </div>
 
-<div class="stat">
-<div class="num" id="workoutStreak">0</div>
-<div class="small">STREAK</div>
-</div>
+      <div class="small" id="repMessage">
+        Beginner starting level
+      </div>
 
-</div>
+    </div>
 
-<div class="progress">
-<div id="fill" class="fill"></div>
-</div>
+  </div>
 
-<p id="progressText" style="color:#aaa;font-size:13px"></p>
 
-</div>
+  <!-- WORKOUT -->
 
+  <div id="workoutSection" class="card">
 
-<div class="card" id="exerciseList"></div>
+    <div class="section-title">
+      💪 Today's Workout
+    </div>
 
+    <div class="small">
+      Complete each exercise and press the button when finished.
+    </div>
 
-<div class="card">
+    <div id="exercises"></div>
 
-<button onclick="finishWorkout()">
-✓ FINISH & SAVE WORKOUT
-</button>
+  </div>
 
-</div>
 
+  <!-- HISTORY -->
 
-<!-- PROGRESSION -->
+  <div class="card">
 
-<div class="card">
+    <div class="section-title">
+      📊 Workout History
+    </div>
 
-<h2 class="gold">
-📈 PROGRESSIVE PROGRAMME
-</h2>
+    <div id="history"></div>
 
-<p id="progressionInfo"
-style="color:#aaa;line-height:1.5">
-</p>
+  </div>
 
-</div>
 
-
-<!-- REWARDS -->
-
-<div class="card">
-
-<h2 class="gold">
-🏆 REWARDS
-</h2>
-
-<p id="rewards"
-style="color:#aaa">
-</p>
-
-</div>
-
-
-<!-- SAFETY -->
-
-<div class="card">
-
-<h2 class="gold">
-🛡️ PROGRESS SAFETY
-</h2>
-
-<p style="color:#aaa;font-size:13px;line-height:1.5">
-
-Your saved points, completed workouts, streak and calendar
-are kept separately from your current workout.
-
-Nothing is cleared unless you explicitly confirm it.
-
-</p>
-
-<button onclick="confirmClearCurrent()">
-CLEAR CURRENT WORKOUT
-</button>
-
-<button
-onclick="confirmClearAll()"
-style="margin-top:8px">
-
-CLEAR ALL SAVED PROGRESS
-
-</button>
-
-<button
-onclick="backupProgress()"
-style="margin-top:8px">
-
-💾 BACK UP PROGRESS
-
-</button>
-
-</div>
-
-
-<!-- CALENDAR -->
-
-<div class="card">
-
-<h2 class="gold">
-📅 WORKOUT CALENDAR
-</h2>
-
-<div class="calendarHead">
-
-<button class="calBtn"
-onclick="changeMonth(-1)">
-‹
-</button>
-
-<div id="calTitle"
-class="gold"
-style="font-weight:800">
-</div>
-
-<button class="calBtn"
-onclick="changeMonth(1)">
-›
-</button>
-
-</div>
-
-
-<div class="weekdays">
-
-<div>MON</div>
-<div>TUE</div>
-<div>WED</div>
-<div>THU</div>
-<div>FRI</div>
-<div>SAT</div>
-<div>SUN</div>
-
-</div>
-
-
-<div id="calendar"
-class="calendar">
-</div>
-
-
-<div class="calendarLegend">
-
-<span>
-<i class="doneDot"></i>
-Workout completed
-</span>
-
-<span>
-<i class="todayDot"></i>
-Today
-</span>
-
-</div>
-
-</div>
-
-
-<!-- HISTORY -->
-
-<div class="card">
-
-<h2 class="gold">
-📅 WORKOUT HISTORY
-</h2>
-
-<div id="history">
-</div>
-
-</div>
+  <div class="warning">
+    Your workout data is stored on this device/browser.
+    Do not clear website data if you want to keep your history.
+  </div>
 
 </div>
 
 
 <script>
 
+/* =====================================================
+   WORKOUT DATA
+===================================================== */
 
-/* =========================
-EXERCISES
-========================= */
+const exercises = [
 
-const exercises=[
+  {
+    name: "Kettlebell Bicep Curl",
+    sets: 3,
+    baseReps: 8,
+    instructions:
+      "Hold the kettlebell with one hand. Keep your elbow close to your body. Curl the kettlebell towards your shoulder slowly, then lower under control."
+  },
 
-{
-name:"Warm-up",
-setsByWeek:[
-"4 minutes",
-"5 minutes",
-"5 minutes",
-"6 minutes"
-],
-points:1,
-rest:"Rest: 30 seconds",
-video:"3D AI demonstration coming soon",
-how:"Arm circles, shoulder rolls, bodyweight punches, a short push-up position hold and light kettlebell halos."
-},
+  {
+    name: "Kettlebell Overhead Tricep Extension",
+    sets: 3,
+    baseReps: 8,
+    instructions:
+      "Hold the kettlebell overhead with both hands. Bend your elbows to lower the kettlebell behind your head, then extend your arms back up."
+  },
 
-{
-name:"Single-arm kettlebell floor press",
-setsByWeek:[
-"3 × 10 each arm",
-"3 × 12 each arm",
-"4 × 10 each arm",
-"4 × 12 each arm"
-],
-points:2,
-rest:"Rest: 60–75 seconds between sets",
-video:"3D AI demonstration coming soon",
-how:"Lie on your back with knees bent. Hold the 20 lb kettlebell at chest level. Keep your elbow slightly tucked. Press straight up and lower slowly until your upper arm touches the floor."
-},
+  {
+    name: "Kettlebell Floor Press",
+    sets: 3,
+    baseReps: 8,
+    instructions:
+      "Lie on your back with your knees bent. Hold the kettlebell above your chest and lower your elbow towards the floor. Press the kettlebell back up."
+  },
 
-{
-name:"Single-arm shoulder press",
-setsByWeek:[
-"3 × 8 each arm",
-"3 × 10 each arm",
-"4 × 10 each arm",
-"4 × 12 each arm"
-],
-points:2,
-rest:"Rest: 60–90 seconds between sets",
-video:"3D AI demonstration coming soon",
-how:"Start with the 20 lb kettlebell at your shoulder. Brace your stomach and squeeze your glutes. Press overhead without leaning backwards. Lower slowly."
-},
+  {
+    name: "Kettlebell Shoulder Press",
+    sets: 3,
+    baseReps: 8,
+    instructions:
+      "Hold the kettlebell at shoulder height. Brace your stomach and press the kettlebell overhead. Lower slowly back to your shoulder."
+  },
 
-{
-name:"Single-arm bicep curl",
-setsByWeek:[
-"3 × 10 each arm",
-"3 × 12 each arm",
-"4 × 10 each arm",
-"4 × 12 each arm"
-],
-points:2,
-rest:"Rest: 45–60 seconds between sets",
-video:"3D AI demonstration coming soon",
-how:"Stand tall with the 20 lb kettlebell in one hand. Keep your elbow beside your body. Curl without swinging and lower slowly."
-},
+  {
+    name: "Kettlebell Goblet Squat",
+    sets: 3,
+    baseReps: 10,
+    instructions:
+      "Hold the kettlebell against your chest. Keep your chest upright and squat down. Drive through your feet to stand."
+  },
 
-{
-name:"Two-handed overhead tricep extension",
-setsByWeek:[
-"3 × 10",
-"3 × 12",
-"4 × 10",
-"4 × 12"
-],
-points:2,
-rest:"Rest: 60 seconds between sets",
-video:"3D AI demonstration coming soon",
-how:"Hold the 20 lb kettlebell with both hands above your head. Keep your elbows pointing forward. Lower behind your head, then straighten your arms."
-},
+  {
+    name: "Kettlebell Russian Twist",
+    sets: 3,
+    baseReps: 10,
+    instructions:
+      "Sit with your knees bent. Hold the kettlebell close to your chest and rotate your torso from side to side under control."
+  },
 
-{
-name:"Kettlebell Russian twists",
-setsByWeek:[
-"3 × 12 each side",
-"3 × 15 each side",
-"4 × 12 each side",
-"4 × 15 each side"
-],
-points:2,
-rest:"Rest: 45–60 seconds between sets",
-video:"3D AI demonstration coming soon",
-how:"Sit with knees bent and lean back slightly. Hold the 20 lb kettlebell close to your chest. Rotate right and left under control while keeping your abs tight."
-},
-
-{
-name:"Push-up finisher",
-setsByWeek:[
-"2 sets to comfortable failure",
-"2 × 10–15",
-"3 × 10–15",
-"3 × 15–20"
-],
-points:1,
-rest:"Rest: 60 seconds between sets",
-video:"3D AI demonstration coming soon",
-how:"Keep your body straight and brace your abs. Lower your chest under control and push back up. Use your knees if needed. Stop if your form breaks."
-}
+  {
+    name: "Kettlebell Dead Bug",
+    sets: 3,
+    baseReps: 8,
+    instructions:
+      "Lie on your back and brace your stomach. Hold the kettlebell above your chest and slowly move your legs while keeping your lower back controlled."
+  }
 
 ];
 
 
-/* =========================
-SAVE DATA
-========================= */
+/* =====================================================
+   STORAGE
+===================================================== */
 
-let today=
-JSON.parse(
-localStorage.getItem("kbToday")||"[]"
-);
+const STORAGE_KEY = "kettlebellWorkoutData_v2";
 
-let history=
-JSON.parse(
-localStorage.getItem("kbHistory")||"[]"
-);
+let data = loadData();
+
+function loadData() {
+
+  try {
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+      return JSON.parse(saved);
+    }
+
+  } catch (error) {
+    console.log("Could not load saved data.");
+  }
+
+  return {
+    points: 0,
+    workouts: 0,
+    completedDays: [],
+    history: [],
+    exerciseCompletions: {}
+  };
+}
 
 
-/* =========================
-PROGRAMME WEEK
-========================= */
+function saveData() {
 
-/*
-FIRST 4 WEEKS = BEGINNER
-
-Weeks 1–4:
-Beginner technique and consistency
-
-Weeks 5–8:
-More repetitions
-
-Weeks 9–12:
-More sets and volume
-
-Week 13+:
-Advanced volume
-
-The kettlebell stays at 20 lb.
-Difficulty increases through reps,
-sets and total training volume.
-*/
-
-function programWeek(){
-
-return Math.max(
-1,
-Math.floor(history.length/3)+1
-);
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
 
 }
 
 
-function progressionIndex(){
+/* =====================================================
+   DATE HELPERS
+===================================================== */
 
-let w=programWeek();
+function dateKey(date) {
 
-if(w<=4)
-return 0;
+  const y = date.getFullYear();
 
-if(w<=8)
-return 1;
+  const m = String(
+    date.getMonth() + 1
+  ).padStart(2, "0");
 
-if(w<=12)
-return 2;
+  const d = String(
+    date.getDate()
+  ).padStart(2, "0");
 
-return 3;
+  return `${y}-${m}-${d}`;
+}
+
+
+function todayKey() {
+
+  return dateKey(new Date());
 
 }
 
 
-/* =========================
-POINTS
-========================= */
+/* =====================================================
+   PROGRESSION
+===================================================== */
 
-function points(){
+function getWeek() {
 
-let p=0;
+  /*
+    Every 2 weeks the workout becomes harder.
 
-today.forEach(
-(done,i)=>{
+    Week 1-2  = starting reps
+    Week 3-4  = +2 reps
+    Week 5-6  = +4 reps
+    Week 7-8  = +6 reps
+    etc.
+  */
 
-if(done)
-p+=exercises[i].points;
+  const workoutsCompleted = data.workouts;
 
-});
-
-if(
-today.filter(Boolean).length===7
-)
-p+=5;
-
-return p;
+  return Math.floor(workoutsCompleted / 2) + 1;
 
 }
 
 
-function lifetime(){
+function getReps(baseReps) {
 
-return history.reduce(
-(sum,w)=>sum+w.points,
-0
-)+points();
+  const week = getWeek();
 
-}
+  const progression =
+    Math.floor((week - 1) / 2) * 2;
 
-
-/* =========================
-LEVEL
-========================= */
-
-function getLevel(p){
-
-if(p>=250)
-return "🔥 KETTLEBELL BEAST";
-
-if(p>=150)
-return "💪 LEVEL 2";
-
-if(p>=100)
-return "🥇 STRONG";
-
-if(p>=50)
-return "🥈 GETTING STRONGER";
-
-return "🥉 BEGINNER";
+  return baseReps + progression;
 
 }
 
 
-/* =========================
-STREAK
-========================= */
+function updateProgression() {
 
-function getStreak(){
+  const week = getWeek();
 
-if(history.length===0)
-return 0;
+  document.getElementById(
+    "weekNumber"
+  ).textContent = "Week " + week;
 
-let days=[
-...new Set(
-history.map(
-x=>new Date(x.date).toDateString()
-)
-)
-];
+  if (week <= 2) {
 
-days=days.map(
-x=>new Date(x)
-.setHours(0,0,0,0)
-)
-.sort(
-(a,b)=>b-a
-);
+    document.getElementById(
+      "repMessage"
+    ).textContent =
+      "Beginner level • Build your technique";
 
-let s=1;
+    document.getElementById(
+      "levelText"
+    ).textContent = "Beginner";
 
-for(
-let i=1;
-i<days.length;
-i++
-){
+  } else if (week <= 4) {
 
-if(
-days[i-1]-days[i]
-===
-86400000
-)
-s++;
+    document.getElementById(
+      "repMessage"
+    ).textContent =
+      "Progression level • Reps increased";
 
-else
-break;
+    document.getElementById(
+      "levelText"
+    ).textContent = "Beginner +";
 
-}
+  } else if (week <= 6) {
 
-return s;
+    document.getElementById(
+      "repMessage"
+    ).textContent =
+      "Progression level • Keep building";
 
-}
+    document.getElementById(
+      "levelText"
+    ).textContent = "Intermediate";
 
+  } else {
 
-/* =========================
-NAVIGATION
-========================= */
+    document.getElementById(
+      "repMessage"
+    ).textContent =
+      "Advanced progression • Keep pushing";
 
-function startWorkout(){
+    document.getElementById(
+      "levelText"
+    ).textContent = "Advanced";
 
-document
-.getElementById("home")
-.classList
-.add("hidden");
-
-document
-.getElementById("workout")
-.classList
-.remove("hidden");
-
-window.scrollTo(0,0);
-
-render();
+  }
 
 }
 
 
-function goHome(){
+/* =====================================================
+   RENDER WORKOUT
+===================================================== */
 
-document
-.getElementById("workout")
-.classList
-.add("hidden");
+function renderExercises() {
 
-document
-.getElementById("home")
-.classList
-.remove("hidden");
+  const container =
+    document.getElementById("exercises");
 
-window.scrollTo(0,0);
+  container.innerHTML = "";
 
-render();
+  exercises.forEach((exercise, index) => {
 
-}
+    const id =
+      "exercise_" + index;
 
+    const completed =
+      data.exerciseCompletions[
+        todayKey()
+      ]?.includes(index);
 
-/* =========================
-COMPLETE EXERCISE
-========================= */
+    const reps =
+      getReps(exercise.baseReps);
 
-function toggle(i){
+    const div =
+      document.createElement("div");
 
-today[i]=!today[i];
+    div.className =
+      "exercise" +
+      (completed ? " completed" : "");
 
-localStorage.setItem(
-"kbToday",
-JSON.stringify(today)
-);
+    div.innerHTML = `
 
-render();
+      <div class="exercise-name">
+        ${index + 1}. ${exercise.name}
+      </div>
 
-}
+      <div class="weight">
+        20 LB KETTLEBELL
+      </div>
 
+      <div class="details">
 
-/* =========================
-FINISH WORKOUT
-========================= */
+        <strong>
+          ${exercise.sets} sets × ${reps} reps
+        </strong>
 
-function finishWorkout(){
+        <br><br>
 
-if(!today.some(Boolean)){
+        ${exercise.instructions}
 
-alert(
-"Complete at least one exercise first."
-);
+        <br><br>
 
-return;
+        <span class="small">
+          Rest: 60–90 seconds between sets
+        </span>
 
-}
+      </div>
 
-let p=points();
+      <button
+        class="exercise-button ${completed ? "done" : ""}"
+        onclick="completeExercise(${index})"
+      >
 
-history.push({
+        ${completed
+          ? "✓ COMPLETED"
+          : "MARK AS COMPLETED"}
 
-date:new Date().toLocaleString(),
+      </button>
 
-exercises:
-today.filter(Boolean).length,
+    `;
 
-points:p,
+    container.appendChild(div);
 
-week:programWeek()
-
-});
-
-localStorage.setItem(
-"kbHistory",
-JSON.stringify(history)
-);
-
-today=[];
-
-localStorage.removeItem(
-"kbToday"
-);
-
-alert(
-"Workout saved! You earned "+
-p+
-" points."
-);
-
-render();
+  });
 
 }
 
 
-/* =========================
-CALENDAR
-========================= */
+/* =====================================================
+   COMPLETE EXERCISE
+===================================================== */
 
-let calendarDate=new Date();
+function completeExercise(index) {
 
+  const today =
+    todayKey();
 
-function dateKey(d){
+  if (!data.exerciseCompletions[today]) {
 
-const y=d.getFullYear();
+    data.exerciseCompletions[today] = [];
 
-const m=
-String(d.getMonth()+1)
-.padStart(2,"0");
+  }
 
-const day=
-String(d.getDate())
-.padStart(2,"0");
+  const list =
+    data.exerciseCompletions[today];
 
-return y+"-"+m+"-"+day;
+  if (list.includes(index)) {
 
-}
+    return;
 
+  }
 
-function completedDays(){
+  list.push(index);
 
-const days={};
+  data.points += 10;
 
-history.forEach(w=>{
+  saveData();
 
-const d=new Date(w.date);
+  renderExercises();
 
-if(!isNaN(d))
-days[dateKey(d)]=true;
-
-});
-
-return days;
+  updateStats();
 
 }
 
 
-function changeMonth(n){
+/* =====================================================
+   COMPLETE WORKOUT
+===================================================== */
 
-calendarDate.setMonth(
-calendarDate.getMonth()+n
-);
+function startWorkout() {
+
+  document
+    .getElementById("workoutSection")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+function finishWorkout() {
+
+  const today =
+    todayKey();
+
+  if (
+    !data.completedDays.includes(today)
+  ) {
+
+    data.completedDays.push(today);
+
+    data.workouts++;
+
+    data.points += 50;
+
+    data.history.push({
+      date: today,
+      points: 50
+    });
+
+    saveData();
+
+    updateStats();
+    renderCalendar();
+    updateProgression();
+    renderExercises();
+    renderHistory();
+
+  }
+
+}
+
+
+/* =====================================================
+   AUTOMATIC WORKOUT COMPLETION
+===================================================== */
+
+function checkWorkoutComplete() {
+
+  const today =
+    todayKey();
+
+  const completed =
+    data.exerciseCompletions[today] || [];
+
+  if (
+    completed.length === exercises.length &&
+    !data.completedDays.includes(today)
+  ) {
+
+    finishWorkout();
+
+  }
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+function calculateStreak() {
+
+  let streak = 0;
+
+  const check =
+    new Date();
+
+  while (true) {
+
+    const key =
+      dateKey(check);
+
+    if (
+      data.completedDays.includes(key)
+    ) {
+
+      streak++;
+
+      check.setDate(
+        check.getDate() - 1
+      );
+
+    } else {
+
+      break;
+
+    }
+
+  }
+
+  return streak;
+
+}
+
+
+function updateStats() {
+
+  document.getElementById(
+    "points"
+  ).textContent = data.points;
+
+  document.getElementById(
+    "workouts"
+  ).textContent = data.workouts;
+
+  document.getElementById(
+    "streak"
+  ).textContent = calculateStreak();
+
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+let calendarDate = new Date();
+
+
+function changeMonth(amount) {
+
+  calendarDate.setMonth(
+    calendarDate.getMonth() + amount
+  );
+
+  renderCalendar();
+
+}
+
+
+function renderCalendar() {
+
+  const calendar =
+    document.getElementById("calendar");
+
+  const monthTitle =
+    document.getElementById("monthTitle");
+
+  calendar.innerHTML = "";
+
+  const year =
+    calendarDate.getFullYear();
+
+  const month =
+    calendarDate.getMonth();
+
+  monthTitle.textContent =
+    calendarDate.toLocaleString(
+      "en-GB",
+      {
+        month: "long",
+        year: "numeric"
+      }
+    );
+
+  const firstDay =
+    new Date(
+      year,
+      month,
+      1
+    ).getDay();
+
+  const daysInMonth =
+    new Date(
+      year,
+      month + 1,
+      0
+    ).getDate();
+
+  /* Empty spaces */
+
+  for (
+    let i = 0;
+    i < firstDay;
+    i++
+  ) {
+
+    const empty =
+      document.createElement("div");
+
+    empty.className =
+      "day empty";
+
+    calendar.appendChild(empty);
+
+  }
+
+
+  /* Days */
+
+  for (
+    let day = 1;
+    day <= daysInMonth;
+    day++
+  ) {
+
+    const date =
+      new Date(
+        year,
+        month,
+        day
+      );
+
+    const key =
+      dateKey(date);
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "day";
+
+    div.textContent =
+      day;
+
+
+    if (
+      key === todayKey()
+    ) {
+
+      div.classList.add(
+        "today"
+      );
+
+    }
+
+
+    if (
+      data.completedDays.includes(key)
+    ) {
+
+      div.classList.add(
+        "completed"
+      );
+
+    }
+
+
+    calendar.appendChild(div);
+
+  }
+
+}
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+function renderHistory() {
+
+  const container =
+    document.getElementById("history");
+
+  if (
+    data.history.length === 0
+  ) {
+
+    container.innerHTML =
+      `<div class="no-history">
+        No workouts completed yet.
+      </div>`;
+
+    return;
+
+  }
+
+  container.innerHTML = "";
+
+  const history =
+    [...data.history]
+      .reverse();
+
+  history.forEach(item => {
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "history-item";
+
+    div.innerHTML = `
+
+      <span>
+        🏋️ ${formatDate(item.date)}
+      </span>
+
+      <span class="gold">
+        +${item.points} pts
+      </span>
+
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+function formatDate(key) {
+
+  const parts =
+    key.split("-");
+
+  const date =
+    new Date(
+      Number(parts[0]),
+      Number(parts[1]) - 1,
+      Number(parts[2])
+    );
+
+  return date.toLocaleDateString(
+    "en-GB",
+    {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }
+  );
+
+}
+
+
+/* =====================================================
+   ADD FINISH BUTTON
+===================================================== */
+
+function addFinishButton() {
+
+  const section =
+    document.getElementById(
+      "workoutSection"
+    );
+
+  const button =
+    document.createElement("button");
+
+  button.className =
+    "start-button";
+
+  button.style.marginTop =
+    "20px";
+
+  button.textContent =
+    "✓ FINISH WORKOUT";
+
+  button.onclick =
+    finishWorkout;
+
+  section.appendChild(button);
+
+}
+
+
+/* =====================================================
+   INITIALISE
+===================================================== */
+
+updateStats();
+
+updateProgression();
+
+renderExercises();
 
 renderCalendar();
 
-}
+renderHistory();
+
+addFinishButton();
 
 
-function renderCalendar(){
+/* Check automatically */
 
-const title=
-document.getElementById(
-"calTitle"
+setInterval(
+  checkWorkoutComplete,
+  1000
 );
-
-const cal=
-document.getElementById(
-"calendar"
-);
-
-if(!title||!cal)
-return;
-
-const y=
-calendarDate.getFullYear();
-
-const m=
-calendarDate.getMonth();
-
-title.textContent=
-new Date(y,m,1)
-.toLocaleString(
-"en-GB",
-{
-month:"long",
-year:"numeric"
-}
-);
-
-const first=
-new Date(y,m,1);
-
-let start=
-(first.getDay()+6)%7;
-
-const last=
-new Date(y,m+1,0)
-.getDate();
-
-const days=
-completedDays();
-
-const now=
-dateKey(new Date());
-
-cal.innerHTML="";
-
-
-for(
-let i=0;
-i<start;
-i++
-){
-
-const e=
-document.createElement("div");
-
-e.className=
-"day empty";
-
-cal.appendChild(e);
-
-}
-
-
-for(
-let d=1;
-d<=last;
-d++
-){
-
-const dt=
-new Date(y,m,d);
-
-const key=
-dateKey(dt);
-
-const e=
-document.createElement("div");
-
-e.className="day";
-
-if(key===now)
-e.classList.add("today");
-
-if(days[key])
-e.classList.add("completed");
-
-e.textContent=d;
-
-e.title=
-days[key]
-?
-"Workout completed"
-:
-"No workout recorded";
-
-cal.appendChild(e);
-
-}
-
-}
-
-
-/* =========================
-CLEAR CURRENT
-========================= */
-
-function confirmClearCurrent(){
-
-if(!today.some(Boolean)){
-
-alert(
-"There is no current workout progress to clear."
-);
-
-return;
-
-}
-
-const ok=confirm(
-
-"Are you sure?\n\n"+
-"This will clear ONLY your current unfinished workout.\n\n"+
-"Your saved points, history, streak and calendar will NOT be deleted."
-
-);
-
-if(ok){
-
-today=[];
-
-localStorage.removeItem(
-"kbToday"
-);
-
-render();
-
-}
-
-}
-
-
-/* =========================
-CLEAR EVERYTHING
-========================= */
-
-function confirmClearAll(){
-
-const ok=confirm(
-
-"⚠️ WARNING\n\n"+
-"This will permanently delete ALL saved workout progress, including:\n\n"+
-"• Points\n"+
-"• Workout history\n"+
-"• Streak\n"+
-"• Calendar records\n\n"+
-"Are you absolutely sure?"
-
-);
-
-if(!ok)
-return;
-
-
-const second=confirm(
-
-"FINAL CHECK\n\n"+
-"Press OK ONLY if you really want to permanently delete ALL progress."
-
-);
-
-if(!second)
-return;
-
-
-localStorage.removeItem(
-"kbToday"
-);
-
-localStorage.removeItem(
-"kbHistory"
-);
-
-today=[];
-
-history=[];
-
-render();
-
-alert(
-"All saved progress has been cleared."
-);
-
-}
-
-
-/* =========================
-BACKUP
-========================= */
-
-function backupProgress(){
-
-const data={
-
-today,
-
-history,
-
-exportedAt:
-new Date().toISOString()
-
-};
-
-const blob=
-new Blob(
-[
-JSON.stringify(
-data,
-null,
-2
-)
-],
-{
-type:"application/json"
-}
-);
-
-const url=
-URL.createObjectURL(blob);
-
-const a=
-document.createElement("a");
-
-a.href=url;
-
-a.download=
-"kettlebell-progress-backup.json";
-
-a.click();
-
-URL.revokeObjectURL(url);
-
-}
-
-
-/* =========================
-RENDER
-========================= */
-
-function render(){
-
-let list=
-document.getElementById(
-"exerciseList"
-);
-
-list.innerHTML="";
-
-
-let w=
-programWeek();
-
-let pi=
-progressionIndex();
-
-
-exercises.forEach(
-(e,i)=>{
-
-let div=
-document.createElement("div");
-
-div.className=
-"exercise";
-
-
-div.innerHTML=
-
-"<div class='name'>"+
-(i+1)+
-". "+
-e.name+
-" <span class='badge'>20 LB</span>"+
-"</div>"+
-
-"<div class='info'>"+
-e.setsByWeek[pi]+
-" • "+
-e.points+
-" points • "+
-e.rest+
-"</div>"+
-
-"<div class='videoBox'>"+
-"<div class='videoIcon'>▶️</div>"+
-"<div>"+
-e.video+
-"</div>"+
-"</div>"+
-
-"<button onclick='alert(\"The 3D AI video for this exercise will go here.\")'>"+
-"▶ WATCH 3D AI DEMO"+
-"</button>"+
-
-"<button class='"+
-(today[i]?"done":"")+
-"' onclick='toggle("+
-i+
-")'>"+
-
-(today[i]
-?
-"✓ COMPLETED"
-:
-"COMPLETE EXERCISE"
-)+
-
-"</button>";
-
-
-list.appendChild(div);
-
-});
-
-
-let count=
-today.filter(Boolean).length;
-
-let p=points();
-
-let lp=lifetime();
-
-
-document.getElementById(
-"todayPts"
-).textContent=p;
-
-
-document.getElementById(
-"complete"
-).textContent=
-count+"/7";
-
-
-document.getElementById(
-"workoutStreak"
-).textContent=
-getStreak();
-
-
-document.getElementById(
-"fill"
-).style.width=
-(count/7*100)+"%";
-
-
-document.getElementById(
-"progressText"
-).textContent=
-
-count===7
-
-?
-
-"🎉 Workout complete! Save it for your 5-point bonus."
-
-:
-
-count+
-" of 7 exercises complete";
-
-
-document.getElementById(
-"totalPts"
-).textContent=
-lp;
-
-
-document.getElementById(
-"totalWorkouts"
-).textContent=
-history.length;
-
-
-document.getElementById(
-"streak"
-).textContent=
-getStreak();
-
-
-document.getElementById(
-"level"
-).textContent=
-getLevel(lp);
-
-
-document.getElementById(
-"programWeek"
-).textContent=
-
-"Programme week "+
-w+
-" • "+
-(
-w<=4
-?
-"Beginner"
-:
-w<=8
-?
-"More reps"
-:
-w<=12
-?
-"More sets & volume"
-:
-"Advanced volume"
-);
-
-
-document.getElementById(
-"weekBadge"
-).textContent=
-"PROGRAMME WEEK "+
-w;
-
-
-document.getElementById(
-"progressionInfo"
-).textContent=
-
-"Weeks 1–4: beginner technique and consistency. "+
-"Weeks 5–8: increase reps. "+
-"Weeks 9–12: add sets and volume. "+
-"Week 13+: advanced volume. "+
-"Your weight stays at 20 lb; the workout gets harder through reps, sets and total volume.";
-
-
-document.getElementById(
-"rewards"
-).textContent=
-
-history.length+
-" workouts completed • "+
-lp+
-" lifetime points • "+
-getLevel(lp);
-
-
-renderCalendar();
-
-
-let h=
-document.getElementById(
-"history"
-);
-
-
-if(history.length===0){
-
-h.innerHTML=
-"<span style='color:#999'>"+
-"No saved workouts yet."+
-"</span>";
-
-}
-
-else{
-
-h.innerHTML=
-history
-.slice()
-.reverse()
-.map(
-(x,i)=>
-
-"<div class='history'>"+
-"<b>Workout "+
-(history.length-i)+
-"</b><br>"+
-x.date+
-"<br>"+
-"Programme week "+
-x.week+
-" • "+
-x.exercises+
-"/7 exercises • <b>"+
-x.points+
-" points</b>"+
-"</div>"
-
-)
-.join("");
-
-}
-
-}
-
-
-/* =========================
-START
-========================= */
-
-render();
-
-
-renderCalendar();
 
 </script>
 
