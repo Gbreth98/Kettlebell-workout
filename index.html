@@ -2,95 +2,132 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#071011">
 <title>Kettlebell Workout</title>
 
 <style>
 :root{
-    --bg:#080909;
-    --card:#151718;
-    --card2:#1b1d1e;
-    --button:#25292a;
-    --button2:#303536;
-    --border:#383d3e;
-    --text:#f2f3f3;
-    --muted:#858b8c;
-    --green:#4fa77b;
-    --yellow:#c4a94b;
-    --red:#a75b5b;
+    --black:#070909;
+    --charcoal:#101415;
+    --card:#151a1b;
+    --card2:#1b2122;
+    --cyan:#0b5961;
+    --cyan2:#08747c;
+    --teal:#13a3a3;
+    --teal-dark:#07585d;
+    --text:#eef4f4;
+    --text2:#b7c0c0;
+    --muted:#737e7f;
+    --line:#293536;
+    --green:#2d9b72;
+    --amber:#a58a38;
+    --red:#a34d56;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
 
 body{
     margin:0;
-    background:var(--bg);
+    background:
+        radial-gradient(circle at top,#102326 0%,var(--black) 42%);
     color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
-.page{
-    max-width:650px;
-    margin:auto;
-    padding:18px 15px 80px;
+button,input,select,textarea{
+    font:inherit;
 }
-
-.hidden{display:none!important}
-.center{text-align:center}
 
 button{
-    font-family:inherit;
     cursor:pointer;
 }
 
+.page{
+    max-width:680px;
+    margin:auto;
+    padding:16px 15px 90px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.center{
+    text-align:center;
+}
+
 .title{
-    font-family:"Brush Script MT","Segoe Script",cursive;
-    font-size:43px;
-    margin:12px 0 3px;
-    color:#eeeeee;
-    text-shadow:0 3px 10px #000;
+    font-family:"Brush Script MT","Segoe Script","Snell Roundhand",cursive;
+    font-size:46px;
+    line-height:1;
+    margin:14px 0 6px;
+    color:#dceeee;
+    text-shadow:0 0 22px rgba(19,163,163,.25);
 }
 
 .subtitle{
     color:var(--muted);
-    font-size:13px;
+    font-size:12px;
+}
+
+h1{
+    font-size:26px;
+}
+
+h2{
+    font-size:19px;
+}
+
+h3{
+    font-size:16px;
 }
 
 .card{
-    background:var(--card);
-    border:1px solid #262a2b;
+    background:linear-gradient(145deg,var(--card),#111718);
+    border:1px solid var(--line);
     border-radius:20px;
-    padding:19px;
-    margin:15px 0;
+    padding:18px;
+    margin:14px 0;
+    box-shadow:var(--shadow);
 }
-
-h1,h2,h3{margin-top:0}
-h2{font-size:20px}
 
 .button{
     width:100%;
-    padding:15px;
-    margin-top:9px;
+    border:1px solid #176d73;
+    background:linear-gradient(145deg,var(--cyan),#073f45);
+    color:#eefefe;
     border-radius:13px;
-    border:1px solid var(--border);
-    background:var(--button);
-    color:white;
-    font-weight:bold;
-    font-size:15px;
+    padding:14px;
+    margin-top:9px;
+    font-weight:700;
+    font-size:14px;
+    box-shadow:0 4px 14px rgba(0,0,0,.3);
 }
 
 .button:active{
-    background:var(--button2);
     transform:scale(.98);
+    background:var(--cyan2);
 }
 
-.small-button{
-    padding:11px 14px;
-    border-radius:10px;
-    border:1px solid var(--border);
-    background:var(--button);
-    color:white;
-    font-weight:bold;
+.button.secondary{
+    background:#202728;
+    border-color:#344344;
+    color:#cbd5d5;
+}
+
+.button.teal{
+    background:linear-gradient(145deg,var(--teal),#087979);
+    border-color:#20baba;
+}
+
+.button.danger{
+    background:#402126;
+    border-color:#71343c;
 }
 
 .stats{
@@ -100,39 +137,93 @@ h2{font-size:20px}
 }
 
 .stat{
-    background:var(--card2);
+    background:#101617;
+    border:1px solid #273334;
+    border-radius:14px;
     padding:13px 5px;
-    border-radius:13px;
     text-align:center;
 }
 
 .stat-number{
     font-size:21px;
-    font-weight:bold;
+    font-weight:800;
+    color:#dff7f7;
 }
 
 .stat-label{
-    color:var(--muted);
     font-size:9px;
+    color:var(--muted);
     margin-top:4px;
+    letter-spacing:.6px;
+}
+
+.today{
+    background:
+        linear-gradient(145deg,#10282b,#101516);
+    border:1px solid #17656a;
+    border-radius:18px;
+    padding:18px;
+}
+
+.today-label{
+    font-size:10px;
+    color:#74babc;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+.today-title{
+    font-size:25px;
+    font-weight:800;
+    margin:5px 0;
+}
+
+.today-info{
+    color:var(--text2);
+    font-size:13px;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#252d2e;
+    border-radius:20px;
+    overflow:hidden;
+    margin:12px 0;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,var(--cyan2),var(--teal));
+    border-radius:20px;
+    transition:.3s;
 }
 
 .muted{
     color:var(--muted);
 }
 
-.weight-row{
+.small{
+    font-size:11px;
+}
+
+.input-row{
     display:flex;
-    gap:9px;
+    gap:8px;
 }
 
 input,select,textarea{
-    background:#0d0f10;
+    background:#0b1011;
     color:white;
-    border:1px solid var(--border);
+    border:1px solid #304041;
     border-radius:11px;
     padding:12px;
-    font-size:16px;
+    outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:var(--teal);
 }
 
 .weight-input{
@@ -150,63 +241,52 @@ textarea{
     resize:vertical;
 }
 
-.today-box{
-    border:1px solid #353a3b;
-    background:#111314;
-    border-radius:18px;
-    padding:18px;
+/* NAVIGATION */
+
+.nav-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
 }
 
-.today-title{
-    font-size:11px;
-    letter-spacing:2px;
-    color:var(--muted);
+.nav-button{
+    padding:12px 4px;
+    border:1px solid #2c3b3c;
+    background:#151b1c;
+    color:#9da8a8;
+    border-radius:11px;
+    font-size:10px;
+    font-weight:700;
 }
 
-.today-workout{
-    font-size:24px;
-    font-weight:bold;
-    margin:6px 0;
+.nav-button.active,
+.nav-button:active{
+    background:var(--teal-dark);
+    color:#dffafa;
+    border-color:#148b90;
 }
 
-.today-info{
-    color:#999;
-    font-size:13px;
-}
-
-.progress{
-    height:8px;
-    background:#292d2e;
-    border-radius:20px;
-    overflow:hidden;
-    margin:13px 0;
-}
-
-.progress-fill{
-    height:100%;
-    width:0%;
-    background:#707778;
-    transition:.3s;
-}
+/* CALENDAR */
 
 .calendar-head{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     margin-bottom:12px;
 }
 
 .month-button{
     width:40px;
     height:38px;
-    background:var(--button);
-    color:white;
-    border:1px solid var(--border);
-    border-radius:9px;
+    border:1px solid #304041;
+    border-radius:10px;
+    background:#172021;
+    color:#bfe5e5;
     font-size:22px;
 }
 
-.weekdays,.calendar{
+.weekdays,
+.calendar{
     display:grid;
     grid-template-columns:repeat(7,1fr);
     gap:5px;
@@ -214,32 +294,31 @@ textarea{
 
 .weekday{
     text-align:center;
-    color:#666;
+    color:#657172;
     font-size:9px;
-    padding-bottom:4px;
 }
 
 .day{
-    min-height:41px;
-    background:#0d0f10;
-    border:1px solid #25292a;
-    border-radius:8px;
+    min-height:42px;
     display:flex;
     justify-content:center;
     align-items:center;
-    position:relative;
+    background:#0d1213;
+    border:1px solid #202a2b;
+    border-radius:8px;
     font-size:12px;
+    position:relative;
 }
 
 .day.today{
-    border:2px solid #aaa;
+    border:2px solid #168a90;
 }
 
 .day.completed{
-    background:#183528;
-    border-color:var(--green);
-    color:#8ed2b0;
-    font-weight:bold;
+    background:#103c3d;
+    border-color:#168b8d;
+    color:#8ce0dc;
+    font-weight:800;
 }
 
 .day.completed:after{
@@ -250,99 +329,126 @@ textarea{
     font-size:8px;
 }
 
+/* EXERCISES */
+
 .exercise{
-    background:#111314;
-    border:1px solid #292d2e;
+    background:linear-gradient(145deg,#141a1b,#0e1314);
+    border:1px solid #293738;
     border-radius:19px;
-    padding:18px;
-    margin:14px 0;
+    padding:17px;
+    margin:13px 0;
 }
 
 .exercise.done{
-    border-color:#456655;
+    border-color:#176b60;
+    box-shadow:0 0 18px rgba(19,163,163,.08);
 }
 
 .exercise-name{
     font-size:19px;
-    font-weight:bold;
+    font-weight:800;
 }
 
 .exercise-muscle{
-    color:#777;
+    color:#6f7b7c;
     font-size:11px;
     margin-top:4px;
 }
 
 .exercise-weight{
-    color:#aaa;
-    font-size:13px;
-    font-weight:bold;
-    margin-top:5px;
+    color:#7ec6c7;
+    font-size:12px;
+    font-weight:700;
+    margin-top:6px;
 }
 
 .description{
-    color:#85898a;
-    font-size:13px;
+    color:#899394;
+    font-size:12px;
     line-height:1.5;
-    margin-top:8px;
+    margin-top:9px;
 }
+
+.previous{
+    margin-top:11px;
+    padding:10px;
+    border-radius:10px;
+    background:#0c1213;
+    border-left:3px solid var(--cyan2);
+    color:#aab8b8;
+    font-size:12px;
+}
+
+.previous strong{
+    color:#d4eeee;
+}
+
+/* REP CONTROLS */
 
 .rep-area{
     text-align:center;
-    margin:17px 0;
+    margin:15px 0;
 }
 
 .rep-label{
-    color:#666;
     font-size:9px;
-    letter-spacing:1px;
+    color:#657071;
+    letter-spacing:1.5px;
 }
 
 .rep-number{
-    font-size:41px;
-    font-weight:bold;
-    margin:0;
+    font-size:42px;
+    line-height:1;
+    font-weight:900;
+    color:#e7f8f8;
+    margin:5px 0;
 }
 
 .rep-arrow{
     display:block;
-    margin:5px auto;
-    width:58px;
-    height:38px;
+    width:60px;
+    height:34px;
+    margin:4px auto;
     border-radius:9px;
-    border:1px solid var(--border);
-    background:var(--button);
-    color:white;
-    font-size:20px;
+    border:1px solid #315052;
+    background:#172122;
+    color:#82cccc;
+    font-size:18px;
 }
+
+.rep-arrow:active{
+    background:#0c686e;
+}
+
+/* SETS */
 
 .set-row{
     display:flex;
-    gap:7px;
     justify-content:center;
+    gap:7px;
     flex-wrap:wrap;
     margin:13px 0;
 }
 
 .set-button{
-    padding:11px 13px;
+    padding:11px 14px;
     border-radius:10px;
-    border:1px solid #333;
-    background:#191b1c;
-    color:#555;
-    font-weight:bold;
+    border:1px solid #303d3e;
+    background:#171d1e;
+    color:#4f5a5b;
+    font-weight:800;
 }
 
 .set-button.available{
-    background:#292d2e;
-    color:white;
-    border-color:#555;
+    color:#d7eeee;
+    background:#12494e;
+    border-color:#177c83;
 }
 
 .set-button.done{
-    background:#183528;
-    color:#8ed2b0;
-    border-color:var(--green);
+    color:#b8f0df;
+    background:#124f43;
+    border-color:#23977d;
 }
 
 .set-button:disabled{
@@ -351,27 +457,28 @@ textarea{
 
 .undo{
     width:100%;
-    padding:10px;
-    margin-top:8px;
-    background:#101112;
-    color:#999;
-    border:1px solid #333;
+    border:1px solid #303c3d;
+    background:#111718;
+    color:#9eaaaa;
     border-radius:10px;
+    padding:10px;
 }
 
+/* DIFFICULTY */
+
 .difficulty{
-    margin-top:17px;
-    padding-top:15px;
-    border-top:1px solid #282c2d;
+    border-top:1px solid #293536;
+    margin-top:15px;
+    padding-top:14px;
 }
 
 .difficulty-title{
-    color:#777;
-    font-size:12px;
+    color:#778182;
+    font-size:11px;
     margin-bottom:8px;
 }
 
-.difficulty-row{
+.difficulty-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:5px;
@@ -380,96 +487,92 @@ textarea{
 .diff{
     padding:10px 3px;
     border-radius:9px;
-    border:1px solid #333;
-    background:#1b1d1e;
-    color:#bbb;
-    font-size:11px;
+    border:1px solid #303b3c;
+    background:#171d1e;
+    color:#9ba5a5;
+    font-size:10px;
 }
 
 .diff.selected{
-    border-color:#aaa;
+    background:#125a60;
+    border-color:#19a0a4;
     color:white;
-    background:#303435;
 }
 
 .replace{
+    width:100%;
     margin-top:10px;
-    width:100%;
     padding:10px;
+    border:1px solid #2d3a3b;
     border-radius:10px;
-    border:1px solid #333;
-    background:#181a1b;
-    color:#aaa;
+    background:#151b1c;
+    color:#9eaaaa;
 }
 
-.pause-button{
-    background:#303536;
+/* PR */
+
+.pr{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:calc(100% - 30px);
+    max-width:420px;
+    z-index:5000;
+    background:linear-gradient(145deg,#12494e,#0b292c);
+    border:1px solid #20aeb0;
+    border-radius:18px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 15px 40px #000;
+    animation:slideDown .3s ease;
 }
 
-.timer-overlay{
+@keyframes slideDown{
+    from{
+        transform:translate(-50%,-120%);
+    }
+    to{
+        transform:translate(-50%,0);
+    }
+}
+
+.pr-title{
+    font-size:22px;
+    font-weight:900;
+    color:#dfffff;
+}
+
+.pr-text{
+    color:#b8dddd;
+    margin-top:5px;
+}
+
+/* DURATION / TIMER */
+
+.overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.97);
-    z-index:1000;
+    background:rgba(2,5,6,.96);
+    z-index:4000;
     display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
 }
 
-.timer-box{
-    max-width:420px;
+.overlay-box{
     width:100%;
-    background:#151718;
-    border:1px solid #444;
+    max-width:430px;
+    background:#151b1c;
+    border:1px solid #355051;
     border-radius:24px;
-    padding:30px 20px;
+    padding:26px 20px;
     text-align:center;
+    box-shadow:0 20px 60px #000;
 }
 
-.timer-number{
-    font-size:80px;
-    font-weight:bold;
-    margin:15px 0;
-}
-
-.timer-buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-.overlay-button{
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #444;
-    background:#292d2e;
-    color:white;
-    font-weight:bold;
-}
-
-.pause-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.97);
-    z-index:1100;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.pause-box{
-    background:#151718;
-    border:1px solid #444;
-    border-radius:24px;
-    padding:30px 20px;
-    width:100%;
-    max-width:420px;
-    text-align:center;
-}
-
-.duration-row{
+.duration-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:8px;
@@ -477,33 +580,57 @@ textarea{
 
 .duration{
     padding:15px 5px;
-    background:#191b1c;
-    border:1px solid #333;
-    color:#aaa;
-    border-radius:12px;
-    font-weight:bold;
+    border-radius:11px;
+    border:1px solid #314344;
+    background:#182021;
+    color:#9eaaaa;
+    font-weight:800;
 }
 
 .duration.selected{
-    background:#303536;
+    background:#0e5d63;
+    border-color:#19a5a7;
     color:white;
-    border-color:#777;
 }
 
-.preview-exercise{
-    padding:15px 0;
-    border-bottom:1px solid #292d2e;
+.timer-number{
+    font-size:82px;
+    font-weight:900;
+    color:#d9ffff;
+    margin:10px 0;
 }
 
-.preview-exercise:last-child{
-    border-bottom:0;
+.timer-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+/* PROGRESS */
+
+.metric-card{
+    background:#101617;
+    border:1px solid #293536;
+    border-radius:15px;
+    padding:15px;
+}
+
+.metric-big{
+    font-size:29px;
+    font-weight:900;
+    color:#dff9f9;
+}
+
+.metric-label{
+    color:#687475;
+    font-size:10px;
+    margin-top:4px;
 }
 
 .graph{
-    width:100%;
-    height:190px;
-    background:#0d0f10;
-    border:1px solid #25292a;
+    height:210px;
+    background:#0b1011;
+    border:1px solid #263536;
     border-radius:15px;
     padding:8px;
 }
@@ -513,6 +640,17 @@ canvas{
     height:100%;
 }
 
+.exercise-history{
+    border-bottom:1px solid #283334;
+    padding:13px 0;
+}
+
+.exercise-history:last-child{
+    border-bottom:0;
+}
+
+/* RECOVERY */
+
 .recovery-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -520,63 +658,98 @@ canvas{
 }
 
 .recovery{
-    padding:15px;
-    border-radius:13px;
-    background:#17191a;
-    border:1px solid #2d3132;
+    padding:16px;
+    border-radius:14px;
+    background:#13191a;
+    border:1px solid #2a3637;
 }
 
-.ready{border-left:5px solid var(--green)}
-.recovering{border-left:5px solid var(--yellow)}
-.recent{border-left:5px solid var(--red)}
-
-.history{
-    border-bottom:1px solid #292d2e;
-    padding:12px 0;
-    font-size:13px;
-    color:#bbb;
+.recovery.ready{
+    border-left:5px solid var(--green);
 }
 
-.history:last-child{
+.recovery.recovering{
+    border-left:5px solid var(--amber);
+}
+
+.recovery.recent{
+    border-left:5px solid var(--red);
+}
+
+/* HISTORY */
+
+.history-row{
+    padding:14px 0;
+    border-bottom:1px solid #283334;
+}
+
+.history-row:last-child{
     border-bottom:0;
 }
 
-.nav-row{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:7px;
-    margin-bottom:12px;
+.history-date{
+    color:#dceeee;
+    font-weight:800;
 }
 
-.nav{
-    padding:11px 4px;
-    border-radius:10px;
-    border:1px solid #333;
-    background:#191b1c;
-    color:#aaa;
-    font-size:11px;
-    font-weight:bold;
-}
-
-.nav.active{
-    background:#303536;
-    color:white;
-    border-color:#666;
-}
-
-.note{
-    color:#999;
+.history-details{
+    color:#7e898a;
     font-size:12px;
-    line-height:1.5;
+    margin-top:4px;
 }
 
-@media(max-width:420px){
-    .difficulty-row{
-        grid-template-columns:repeat(2,1fr);
+/* BADGES */
+
+.badges{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.badge{
+    background:#111718;
+    border:1px solid #293637;
+    border-radius:13px;
+    padding:13px;
+    color:#5e696a;
+    font-size:11px;
+    font-weight:800;
+}
+
+.badge.earned{
+    background:#104445;
+    border-color:#19888a;
+    color:#b5eeee;
+}
+
+/* SETTINGS */
+
+.setting{
+    padding:13px 0;
+    border-bottom:1px solid #283334;
+}
+
+.setting:last-child{
+    border-bottom:0;
+}
+
+.setting-title{
+    font-weight:700;
+}
+
+.setting-description{
+    color:#707b7c;
+    font-size:11px;
+    margin-top:4px;
+}
+
+@media(max-width:430px){
+    .title{
+        font-size:39px;
     }
 
-    .title{
-        font-size:38px;
+    .difficulty-grid{
+        grid-template-columns:1fr 1fr;
     }
 }
 </style>
@@ -584,7 +757,10 @@ canvas{
 
 <body>
 
-<!-- HOME -->
+<!-- =====================================================
+HOME
+===================================================== -->
+
 <div id="home" class="page">
 
     <div class="center">
@@ -592,35 +768,33 @@ canvas{
         <div class="subtitle">Your personal adaptive training programme</div>
     </div>
 
-    <!-- TODAY -->
     <div class="card">
-        <div class="today-box">
-            <div class="today-title">TODAY</div>
 
-            <div class="today-workout" id="todayWorkoutTitle">
+        <div class="today">
+
+            <div class="today-label">TODAY'S WORKOUT</div>
+
+            <div class="today-title" id="todayTitle">
                 Week 1 • Workout 1
             </div>
 
-            <div class="today-info" id="todayWorkoutInfo">
+            <div class="today-info" id="todayInfo">
                 7 exercises • 21 sets • ~30 minutes
             </div>
 
-            <button class="button" onclick="openDuration()">
+            <button class="button teal" onclick="openDuration()">
                 ▶ START WORKOUT
             </button>
 
-            <button class="button" onclick="showPreview()">
+            <button class="button secondary" onclick="showPreview()">
                 SEE WORKOUT
             </button>
+
         </div>
+
     </div>
 
-    <!-- STATS -->
     <div class="stats">
-        <div class="stat">
-            <div class="stat-number" id="homePoints">0</div>
-            <div class="stat-label">POINTS</div>
-        </div>
 
         <div class="stat">
             <div class="stat-number" id="homeWorkouts">0</div>
@@ -628,36 +802,55 @@ canvas{
         </div>
 
         <div class="stat">
+            <div class="stat-number" id="homePoints">0</div>
+            <div class="stat-label">POINTS</div>
+        </div>
+
+        <div class="stat">
             <div class="stat-number" id="homeStreak">0</div>
             <div class="stat-label">STREAK</div>
         </div>
+
     </div>
 
     <!-- WEEKLY TARGET -->
+
     <div class="card">
+
         <h2>🎯 THIS WEEK</h2>
 
-        <div id="weeklyTargetText">
+        <div id="weeklyText">
             0 / 4 workouts
         </div>
 
         <div class="progress">
-            <div class="progress-fill" id="weeklyProgress"></div>
+            <div class="progress-fill" id="weeklyFill"></div>
         </div>
 
-        <div class="muted" id="weeklyRemaining">
+        <div class="muted small" id="weeklyRemaining">
             4 workouts remaining
         </div>
+
     </div>
 
     <!-- CALENDAR -->
+
     <div class="card">
+
         <h2>WORKOUT CALENDAR</h2>
 
         <div class="calendar-head">
-            <button class="month-button" onclick="changeMonth(-1)">‹</button>
-            <b id="monthName"></b>
-            <button class="month-button" onclick="changeMonth(1)">›</button>
+
+            <button class="month-button" onclick="changeMonth(-1)">
+                ‹
+            </button>
+
+            <strong id="monthName"></strong>
+
+            <button class="month-button" onclick="changeMonth(1)">
+                ›
+            </button>
+
         </div>
 
         <div class="weekdays">
@@ -672,64 +865,121 @@ canvas{
 
         <div class="calendar" id="calendar"></div>
 
-        <p class="muted center" style="font-size:11px">
-            ✓ = workout completed
-        </p>
     </div>
 
     <!-- WEIGHT -->
-    <div class="card">
-        <h2>KETTLEBELL WEIGHT</h2>
 
-        <p class="muted">
-            Change your kettlebell weight here and it will update throughout the app.
+    <div class="card">
+
+        <h2>🏋️ KETTLEBELL</h2>
+
+        <p class="muted small">
+            Set your kettlebell weight once. It will update throughout the app.
         </p>
 
-        <div class="weight-row">
-            <input id="weightInput"
-                   class="weight-input"
-                   type="number"
-                   min="0.5"
-                   step="0.5"
-                   onchange="saveWeight()">
+        <div class="input-row">
 
-            <select id="unitSelect"
-                    class="unit"
-                    onchange="saveWeight()">
+            <input
+                id="weightInput"
+                class="weight-input"
+                type="number"
+                min="0.5"
+                step="0.5"
+                onchange="saveWeight()"
+            >
+
+            <select
+                id="unitInput"
+                class="unit"
+                onchange="saveWeight()"
+            >
                 <option value="LB">LB</option>
                 <option value="KG">KG</option>
             </select>
+
         </div>
+
     </div>
 
-    <!-- NAV -->
-    <div class="card">
-        <button class="button" onclick="showProgress()">
-            📈 PROGRESS
-        </button>
+    <!-- MAIN NAV -->
 
-        <button class="button" onclick="showRecovery()">
-            💪 MUSCLE RECOVERY
-        </button>
+    <div class="card">
+
+        <div class="nav-grid">
+
+            <button class="nav-button" onclick="showProgress()">
+                📈<br>PROGRESS
+            </button>
+
+            <button class="nav-button" onclick="showHistory()">
+                📋<br>HISTORY
+            </button>
+
+            <button class="nav-button" onclick="showRecovery()">
+                💪<br>RECOVERY
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- REWARDS -->
+    <!-- BADGES -->
+
     <div class="card">
-        <h2>REWARDS</h2>
-        <div class="recovery-grid" id="badges"></div>
+
+        <h2>🏆 ACHIEVEMENTS</h2>
+
+        <div class="badges" id="badges"></div>
+
+    </div>
+
+    <!-- BACKUP -->
+
+    <div class="card">
+
+        <h2>💾 YOUR DATA</h2>
+
+        <p class="muted small">
+            Your progress is stored on this device. Back it up so you can restore it later.
+        </p>
+
+        <button class="button secondary" onclick="exportData()">
+            EXPORT BACKUP
+        </button>
+
+        <button class="button secondary" onclick="document.getElementById('importFile').click()">
+            IMPORT BACKUP
+        </button>
+
+        <input
+            id="importFile"
+            type="file"
+            accept=".json"
+            style="display:none"
+            onchange="importData(event)"
+        >
+
     </div>
 
 </div>
 
 
-<!-- WORKOUT -->
+<!-- =====================================================
+WORKOUT
+===================================================== -->
+
 <div id="workoutPage" class="page hidden">
 
-    <button class="button" onclick="goHome()">← HOME</button>
+    <button class="button secondary" onclick="leaveWorkout()">
+        ← SAVE & EXIT
+    </button>
 
-    <div class="center" style="margin-top:20px">
+    <div class="center" style="margin-top:18px">
+
         <h1>TODAY'S WORKOUT</h1>
+
         <div class="exercise-weight" id="workoutWeight"></div>
+
     </div>
 
     <div class="card">
@@ -737,28 +987,28 @@ canvas{
         <div class="stats">
 
             <div class="stat">
-                <div class="stat-number" id="todayPoints">0</div>
-                <div class="stat-label">POINTS</div>
+                <div class="stat-number" id="sessionReps">0</div>
+                <div class="stat-label">REPS</div>
             </div>
 
             <div class="stat">
-                <div class="stat-number" id="todayExercises">0/7</div>
-                <div class="stat-label">EXERCISES</div>
+                <div class="stat-number" id="sessionSets">0</div>
+                <div class="stat-label">SETS</div>
             </div>
 
             <div class="stat">
-                <div class="stat-number" id="todayDuration">30</div>
+                <div class="stat-number" id="sessionMinutes">30</div>
                 <div class="stat-label">MINUTES</div>
             </div>
 
         </div>
 
-        <button class="button pause-button" onclick="pauseWorkout()">
+        <button class="button secondary" onclick="pauseWorkout()">
             ⏸ PAUSE WORKOUT
         </button>
 
         <div class="progress">
-            <div class="progress-fill" id="workoutProgress"></div>
+            <div class="progress-fill" id="workoutFill"></div>
         </div>
 
     </div>
@@ -766,146 +1016,232 @@ canvas{
     <div id="exerciseList"></div>
 
     <div class="card">
-        <h2>📝 HOW DID TODAY'S WORKOUT FEEL?</h2>
+
+        <h2>📝 WORKOUT NOTES</h2>
 
         <textarea
             id="workoutNotes"
-            placeholder="Write anything you want to remember..."></textarea>
+            placeholder="How did today's workout feel?"
+        ></textarea>
 
-        <button class="button" onclick="finishWorkout()">
+        <button class="button teal" onclick="finishWorkout()">
             ✓ FINISH WORKOUT
         </button>
+
     </div>
 
 </div>
 
 
-<!-- PREVIEW -->
+<!-- =====================================================
+PREVIEW
+===================================================== -->
+
 <div id="previewPage" class="page hidden">
 
-    <button class="button" onclick="goHomeFromPreview()">
+    <button class="button secondary" onclick="goHome()">
         ← HOME
     </button>
 
-    <div class="center" style="margin-top:20px">
+    <div class="center" style="margin-top:18px">
+
         <h1>SEE WORKOUT</h1>
 
         <div class="exercise-weight" id="previewWeight"></div>
 
-        <p class="muted">
-            Preview only — nothing is recorded.
-        </p>
     </div>
 
     <div class="card" id="previewList"></div>
 
+    <button class="button teal" onclick="openDuration()">
+        ▶ START WORKOUT
+    </button>
+
 </div>
 
 
-<!-- PROGRESS -->
+<!-- =====================================================
+PROGRESS
+===================================================== -->
+
 <div id="progressPage" class="page hidden">
 
-    <button class="button" onclick="goHomeFromPage('progressPage')">
+    <button class="button secondary" onclick="goHome()">
         ← HOME
     </button>
 
-    <h1 style="margin-top:20px">📈 PROGRESS</h1>
+    <h1>📈 PROGRESS</h1>
 
     <div class="stats">
 
         <div class="stat">
-            <div class="stat-number" id="progressWorkouts">0</div>
+            <div class="stat-number" id="pWorkouts">0</div>
             <div class="stat-label">WORKOUTS</div>
         </div>
 
         <div class="stat">
-            <div class="stat-number" id="progressReps">0</div>
-            <div class="stat-label">TOTAL REPS</div>
+            <div class="stat-number" id="pReps">0</div>
+            <div class="stat-label">REPS</div>
         </div>
 
         <div class="stat">
-            <div class="stat-number" id="progressPoints">0</div>
+            <div class="stat-number" id="pPoints">0</div>
             <div class="stat-label">POINTS</div>
         </div>
 
     </div>
 
     <div class="card">
-        <h2>TOTAL WEIGHT LIFTED</h2>
-        <div style="font-size:30px;font-weight:bold" id="totalWeight">
+
+        <h2>💪 STRENGTH SCORE</h2>
+
+        <div class="metric-big" id="strengthScore">
             0
         </div>
-        <div class="muted">
-            Calculated from completed reps × kettlebell weight.
+
+        <div class="muted small">
+            Based on workouts, reps, volume and progression.
         </div>
+
     </div>
 
     <div class="card">
-        <h2>WEEKLY WORKOUTS</h2>
+
+        <h2>🏋️ TOTAL WEIGHT LIFTED</h2>
+
+        <div class="metric-big" id="totalVolume">
+            0
+        </div>
+
+        <div class="muted small">
+            Total training volume recorded.
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📊 WEEKLY PROGRESS</h2>
+
         <div class="graph">
             <canvas id="weeklyChart"></canvas>
         </div>
+
     </div>
 
     <div class="card">
-        <h2>MONTHLY PROGRESS</h2>
+
+        <h2>📅 MONTHLY PROGRESS</h2>
+
         <div class="graph">
             <canvas id="monthlyChart"></canvas>
         </div>
+
     </div>
 
     <div class="card">
-        <h2>🏆 BEST REPS</h2>
-        <div id="bestReps"></div>
+
+        <h2>🏆 PERSONAL BESTS</h2>
+
+        <div id="personalBests"></div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>⚠️ PLATEAUS</h2>
+
+        <div id="plateaus"></div>
+
     </div>
 
 </div>
 
 
-<!-- RECOVERY -->
-<div id="recoveryPage" class="page hidden">
+<!-- =====================================================
+HISTORY
+===================================================== -->
 
-    <button class="button" onclick="goHomeFromPage('recoveryPage')">
+<div id="historyPage" class="page hidden">
+
+    <button class="button secondary" onclick="goHome()">
         ← HOME
     </button>
 
-    <h1 style="margin-top:20px">💪 MUSCLE RECOVERY</h1>
+    <h1>📋 WORKOUT HISTORY</h1>
 
-    <p class="muted">
-        A simple guide based on your recent workouts.
+    <div class="card" id="historyList"></div>
+
+</div>
+
+
+<!-- =====================================================
+EXERCISE HISTORY
+===================================================== -->
+
+<div id="exerciseHistoryPage" class="page hidden">
+
+    <button class="button secondary" onclick="showProgress()">
+        ← PROGRESS
+    </button>
+
+    <h1 id="exerciseHistoryTitle">EXERCISE HISTORY</h1>
+
+    <div class="card">
+
+        <div class="graph">
+            <canvas id="exerciseChart"></canvas>
+        </div>
+
+    </div>
+
+    <div class="card" id="exerciseHistoryList"></div>
+
+</div>
+
+
+<!-- =====================================================
+RECOVERY
+===================================================== -->
+
+<div id="recoveryPage" class="page hidden">
+
+    <button class="button secondary" onclick="goHome()">
+        ← HOME
+    </button>
+
+    <h1>💪 MUSCLE RECOVERY</h1>
+
+    <p class="muted small">
+        Recovery is estimated from your recent training.
     </p>
 
     <div class="recovery-grid" id="recoveryGrid"></div>
 
-    <div class="card">
-        <div class="note">
-            🟢 Ready — no recent training recorded.<br><br>
-            🟡 Recovering — trained recently.<br><br>
-            🔴 Recently trained — give the muscle more recovery time.
-        </div>
-    </div>
-
 </div>
 
 
-<!-- DURATION -->
-<div id="durationOverlay" class="timer-overlay">
+<!-- =====================================================
+DURATION OVERLAY
+===================================================== -->
 
-    <div class="timer-box">
+<div id="durationOverlay" class="overlay">
+
+    <div class="overlay-box">
 
         <h2>HOW LONG HAVE YOU GOT?</h2>
 
         <p class="muted">
-            The workout will adjust to fit your available time.
+            Choose your available workout time.
         </p>
 
-        <div class="duration-row">
+        <div class="duration-grid">
 
             <button class="duration" onclick="selectDuration(20,this)">
                 20 MIN
             </button>
 
-            <button class="duration" onclick="selectDuration(30,this)">
+            <button class="duration selected" onclick="selectDuration(30,this)">
                 30 MIN
             </button>
 
@@ -915,22 +1251,26 @@ canvas{
 
         </div>
 
-        <button class="button" onclick="beginSelectedWorkout()">
+        <button class="button teal" onclick="startSelectedWorkout()">
             START
         </button>
 
-        <button class="button" onclick="closeDuration()">
+        <button class="button secondary" onclick="closeDuration()">
             CANCEL
         </button>
 
     </div>
+
 </div>
 
 
-<!-- REST -->
-<div id="timerOverlay" class="timer-overlay">
+<!-- =====================================================
+REST TIMER
+===================================================== -->
 
-    <div class="timer-box">
+<div id="timerOverlay" class="overlay">
+
+    <div class="overlay-box">
 
         <h2>REST</h2>
 
@@ -940,42 +1280,46 @@ canvas{
 
         <div class="muted">SECONDS</div>
 
-        <div class="timer-buttons" style="margin-top:20px">
+        <div class="timer-grid" style="margin-top:18px">
 
-            <button class="overlay-button" onclick="adjustRest(-15)">
+            <button class="button secondary" onclick="adjustRest(-15)">
                 −15 SEC
             </button>
 
-            <button class="overlay-button" onclick="adjustRest(15)">
+            <button class="button secondary" onclick="adjustRest(15)">
                 +15 SEC
             </button>
 
         </div>
 
-        <button class="button" onclick="skipRest()">
+        <button class="button teal" onclick="skipRest()">
             SKIP REST →
         </button>
 
     </div>
+
 </div>
 
 
-<!-- PAUSE -->
-<div id="pauseOverlay" class="pause-overlay">
+<!-- =====================================================
+PAUSE
+===================================================== -->
 
-    <div class="pause-box">
+<div id="pauseOverlay" class="overlay">
+
+    <div class="overlay-box">
 
         <h1>⏸ PAUSED</h1>
 
         <p class="muted">
-            Your workout is safely paused.
+            Nothing has been lost.
         </p>
 
-        <button class="button" onclick="resumeWorkout()">
+        <button class="button teal" onclick="resumeWorkout()">
             ▶ RESUME
         </button>
 
-        <button class="button" onclick="goHomeFromPause()">
+        <button class="button secondary" onclick="leaveWorkout()">
             SAVE & EXIT
         </button>
 
@@ -984,115 +1328,119 @@ canvas{
 </div>
 
 
+<!-- =====================================================
+PR NOTIFICATION
+===================================================== -->
+
+<div id="prNotification" class="pr hidden">
+
+    <div class="pr-title">
+        🏆 NEW PERSONAL BEST
+    </div>
+
+    <div class="pr-text" id="prText"></div>
+
+    <button class="button teal" onclick="hidePR()">
+        NICE!
+    </button>
+
+</div>
+
+
 <script>
 
 /* =========================================================
-   DATA
+DATA
 ========================================================= */
 
-let data = JSON.parse(
-    localStorage.getItem("kbAdaptiveAppData") || "null"
-);
+let data;
+
+try{
+    data=JSON.parse(
+        localStorage.getItem("kbAdaptiveAppData")
+    );
+}catch(e){
+    data=null;
+}
 
 /*
- IMPORTANT:
- If you previously used the older version,
- try to import its saved data.
+ Preserve older version data where possible.
 */
 
 if(!data){
 
-    const oldData = JSON.parse(
-        localStorage.getItem("kbAppData") || "null"
-    );
+    try{
+        const old=JSON.parse(
+            localStorage.getItem("kbAppData")
+        );
 
-    if(oldData){
-
-        data = {
-            ...oldData,
-            repsHistory:{},
-            difficulty:{},
-            exerciseReplacements:{},
-            notes:[],
-            durations:[],
-            sessionHistory:[],
-            lastWorkoutDate:null
-        };
-
-    }else{
-
-        data = {
-            points:0,
-            workouts:0,
-            completedDays:[],
-            history:[],
-            completedSets:{},
-            customReps:{},
-            weight:20,
-            unit:"LB",
-            repsHistory:{},
-            difficulty:{},
-            exerciseReplacements:{},
-            notes:[],
-            durations:[],
-            sessionHistory:[],
-            lastWorkoutDate:null
-        };
-
-    }
+        if(old){
+            data=old;
+        }
+    }catch(e){}
 
 }
 
-if(!data.points)data.points=0;
-if(!data.workouts)data.workouts=0;
-if(!Array.isArray(data.completedDays))data.completedDays=[];
-if(!Array.isArray(data.history))data.history=[];
-if(!data.completedSets)data.completedSets={};
-if(!data.customReps)data.customReps={};
-if(!data.repsHistory)data.repsHistory={};
-if(!data.difficulty)data.difficulty={};
-if(!data.exerciseReplacements)data.exerciseReplacements={};
-if(!Array.isArray(data.notes))data.notes=[];
-if(!Array.isArray(data.durations))data.durations=[];
-if(!Array.isArray(data.sessionHistory))data.sessionHistory=[];
-if(!data.weight)data.weight=20;
-if(!data.unit)data.unit="LB";
+if(!data){
 
+    data={
+        points:0,
+        workouts:0,
+        completedDays:[],
+        sessions:[],
+        weight:20,
+        unit:"LB",
+        difficulty:{},
+        replacements:{},
+        notes:[],
+        exerciseHistory:{},
+        personalBests:{},
+        lastWorkout:null
+    };
+
+}
+
+data.points=data.points||0;
+data.workouts=data.workouts||0;
+data.completedDays=data.completedDays||[];
+data.sessions=data.sessions||data.sessionHistory||[];
+data.weight=data.weight||20;
+data.unit=data.unit||"LB";
+data.difficulty=data.difficulty||{};
+data.replacements=data.replacements||data.exerciseReplacements||{};
+data.notes=data.notes||[];
+data.exerciseHistory=data.exerciseHistory||{};
+data.personalBests=data.personalBests||{};
 
 function save(){
-
     localStorage.setItem(
         "kbAdaptiveAppData",
         JSON.stringify(data)
     );
-
 }
 
 
 /* =========================================================
-   EXERCISES
+EXERCISES
 ========================================================= */
 
 const exercises=[
-
     {
         name:"Kettlebell Bicep Curl",
         muscle:"Arms",
         sets:3,
         reps:8,
         rest:60,
-        description:"Keep your elbows close to your body. Curl slowly without swinging."
+        description:"Keep elbows close to your body. Curl slowly without swinging."
     },
-
     {
         name:"Overhead Tricep Extension",
         muscle:"Arms",
         sets:3,
         reps:8,
         rest:60,
-        description:"Hold the kettlebell overhead. Lower behind your head and extend back up."
+        description:"Hold the kettlebell overhead and lower it behind your head under control."
     },
-
     {
         name:"Kettlebell Floor Press",
         muscle:"Chest",
@@ -1101,7 +1449,6 @@ const exercises=[
         rest:75,
         description:"Lie on your back and press the kettlebell from your chest towards the ceiling."
     },
-
     {
         name:"Kettlebell Shoulder Press",
         muscle:"Shoulders",
@@ -1110,7 +1457,6 @@ const exercises=[
         rest:75,
         description:"Start at shoulder height and press overhead while keeping your core tight."
     },
-
     {
         name:"Kettlebell Goblet Squat",
         muscle:"Legs",
@@ -1119,133 +1465,109 @@ const exercises=[
         rest:60,
         description:"Hold the kettlebell against your chest and squat under control."
     },
-
     {
         name:"Kettlebell Russian Twist",
         muscle:"Abs",
         sets:3,
         reps:10,
         rest:45,
-        description:"Lean back slightly and rotate your torso from side to side."
+        description:"Lean back slightly and rotate your torso under control."
     },
-
     {
         name:"Kettlebell Dead Bug",
         muscle:"Abs",
         sets:3,
         reps:8,
         rest:45,
-        description:"Keep your lower back controlled while moving slowly through the exercise."
+        description:"Keep your lower back controlled while moving slowly."
     }
-
 ];
 
-
-const replacements={
-
+const replacementOptions={
     "Kettlebell Bicep Curl":[
         "Hammer Curl",
-        "Kettlebell Concentration Curl"
+        "Concentration Curl"
     ],
-
     "Overhead Tricep Extension":[
-        "Kettlebell Close-Grip Press",
+        "Close Grip Kettlebell Press",
         "Kettlebell Tricep Kickback"
     ],
-
     "Kettlebell Floor Press":[
-        "Kettlebell Push-Up",
-        "Single-Arm Kettlebell Press"
+        "Single Arm Kettlebell Press",
+        "Kettlebell Push Up"
     ],
-
     "Kettlebell Shoulder Press":[
         "Kettlebell Front Raise",
         "Kettlebell Lateral Raise"
     ],
-
     "Kettlebell Goblet Squat":[
         "Kettlebell Reverse Lunge",
         "Kettlebell Split Squat"
     ],
-
     "Kettlebell Russian Twist":[
-        "Kettlebell Sit-Up",
+        "Weighted Sit Up",
         "Weighted Crunch"
     ],
-
     "Kettlebell Dead Bug":[
         "Kettlebell Leg Raise",
         "Kettlebell Plank"
     ]
-
 };
 
 
 /* =========================================================
-   CURRENT SESSION
+SESSION
 ========================================================= */
 
-let calendarDate=new Date();
-let selectedDuration=30;
-let timerInterval=null;
-let restRemaining=60;
-let workoutStarted=false;
-let currentSession={};
 let activeExercises=[];
+let session=null;
+let selectedDuration=30;
+let timer=null;
+let restSeconds=60;
+let calendarDate=new Date();
 
 
 /* =========================================================
-   DATE HELPERS
+HELPERS
 ========================================================= */
-
-function dateKey(date){
-
-    return date.getFullYear()+"-"+
-        String(date.getMonth()+1).padStart(2,"0")+"-"+
-        String(date.getDate()).padStart(2,"0");
-
-}
 
 function todayKey(){
+    const d=new Date();
 
-    return dateKey(new Date());
-
+    return d.getFullYear()+"-"+
+        String(d.getMonth()+1).padStart(2,"0")+"-"+
+        String(d.getDate()).padStart(2,"0");
 }
 
-function daysBetween(a,b){
-
-    return Math.floor(
-        Math.abs(
-            new Date(b)-new Date(a)
-        )/(1000*60*60*24)
-    );
-
+function keyForDate(d){
+    return d.getFullYear()+"-"+
+        String(d.getMonth()+1).padStart(2,"0")+"-"+
+        String(d.getDate()).padStart(2,"0");
 }
-
-
-/* =========================================================
-   WEEK
-========================================================= */
-
-function getWeek(){
-
-    return Math.max(
-        1,
-        Math.floor(data.workouts/2)+1
-    );
-
-}
-
-
-/* =========================================================
-   WEIGHT
-========================================================= */
 
 function weightText(){
-
     return data.weight+" "+data.unit;
-
 }
+
+function getWeek(){
+    return Math.floor(data.workouts/2)+1;
+}
+
+function showOnly(id){
+
+    document.querySelectorAll(".page")
+        .forEach(p=>p.classList.add("hidden"));
+
+    document.getElementById(id)
+        .classList.remove("hidden");
+
+    window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+WEIGHT
+========================================================= */
 
 function saveWeight(){
 
@@ -1253,208 +1575,132 @@ function saveWeight(){
         document.getElementById("weightInput").value
     );
 
-    if(!isNaN(value)&&value>0){
+    if(value>0){
 
         data.weight=value;
+
         data.unit=
-            document.getElementById("unitSelect").value;
+            document.getElementById("unitInput").value;
 
         save();
 
     }
 
     renderHome();
-
 }
 
 
 /* =========================================================
-   ADAPTIVE REPS
+ADAPTIVE SYSTEM
 ========================================================= */
 
-function targetReps(exercise,index){
+function getExerciseHistory(name){
 
-    const key=exercise.name;
+    return data.exerciseHistory[name]||[];
 
-    const history=
-        data.repsHistory[key]||[];
+}
 
-    if(history.length===0)
+function getLastExercise(name){
+
+    const h=getExerciseHistory(name);
+
+    return h.length?h[h.length-1]:null;
+
+}
+
+function getTarget(exercise){
+
+    const last=getLastExercise(exercise.name);
+
+    if(!last)
         return exercise.reps;
 
-    const last=history[history.length-1];
+    if(last.difficulty==="Easy" && last.completedAll)
+        return Math.min(last.target+1,30);
 
-    if(
-        last.difficulty==="Easy" &&
-        last.completedAll
-    ){
+    if(last.difficulty==="Very Hard")
+        return Math.max(last.target-1,5);
 
-        return Math.min(
-            last.target+1,
-            30
-        );
-
-    }
-
-    if(
-        last.difficulty==="Very Hard"
-    ){
-
-        return Math.max(
-            last.target-1,
-            5
-        );
-
-    }
+    if(!last.completedAll)
+        return last.target;
 
     return last.target;
-
 }
 
 
 /* =========================================================
-   DURATION
+DURATION
 ========================================================= */
 
 function openDuration(){
-
     document.getElementById(
         "durationOverlay"
     ).style.display="flex";
-
 }
 
 function closeDuration(){
-
     document.getElementById(
         "durationOverlay"
     ).style.display="none";
-
 }
 
 function selectDuration(minutes,button){
 
     selectedDuration=minutes;
 
-    document
-        .querySelectorAll(".duration")
-        .forEach(b=>b.classList.remove("selected"));
+    document.querySelectorAll(".duration")
+        .forEach(x=>x.classList.remove("selected"));
 
     button.classList.add("selected");
-
 }
 
-function beginSelectedWorkout(){
+function startSelectedWorkout(){
 
     closeDuration();
-
     startWorkout();
 
 }
 
 
 /* =========================================================
-   CREATE SESSION
+START WORKOUT
 ========================================================= */
 
 function startWorkout(){
 
-    activeExercises=exercises.map(
-        (exercise,index)=>{
+    activeExercises=
+        exercises.map((e,index)=>({
 
-            const replacement=
-                data.exerciseReplacements[
-                    exercise.name
-                ];
+            ...e,
 
-            return {
-                ...exercise,
-                displayName:
-                    replacement||
-                    exercise.name,
-                target:
-                    targetReps(exercise,index)
-            };
+            displayName:
+                data.replacements[e.name]||e.name,
 
-        }
-    );
+            target:getTarget(e),
 
+            done:[]
 
-    /*
-       Short workouts remove the final exercises.
-       Longer workouts keep everything.
-    */
+        }));
 
-    if(selectedDuration===20){
-
+    if(selectedDuration===20)
         activeExercises=
             activeExercises.slice(0,5);
 
-    }
-
-    else if(selectedDuration===30){
-
-        activeExercises=
-            activeExercises.slice(0,7);
-
-    }
-
-    else{
-
-        activeExercises=
-            activeExercises.concat([
-                {
-                    ...exercises[0],
-                    displayName:
-                    "Extra Bicep Set",
-                    sets:2,
-                    target:
-                    targetReps(exercises[0],0)
-                },
-                {
-                    ...exercises[3],
-                    displayName:
-                    "Extra Shoulder Set",
-                    sets:2,
-                    target:
-                    targetReps(exercises[3],3)
-                }
-            ]);
-
-    }
-
-
-    currentSession={
+    session={
         start:Date.now(),
         duration:selectedDuration,
-        completedReps:0,
-        completedWeight:0,
+        reps:0,
+        volume:0,
+        points:0,
         difficulties:{},
-        completedSets:{},
-        notes:""
+        completed:{}
     };
 
+    activeExercises.forEach((e,i)=>{
+        session.completed[i]=[];
+    });
 
-    workoutStarted=true;
-
-
-    document.getElementById("home")
-        .classList.add("hidden");
-
-    document.getElementById("previewPage")
-        .classList.add("hidden");
-
-    document.getElementById("progressPage")
-        .classList.add("hidden");
-
-    document.getElementById("recoveryPage")
-        .classList.add("hidden");
-
-    document.getElementById("workoutPage")
-        .classList.remove("hidden");
-
-
-    window.scrollTo(0,0);
+    showOnly("workoutPage");
 
     renderWorkout();
 
@@ -1462,61 +1708,298 @@ function startWorkout(){
 
 
 /* =========================================================
-   SESSION SET KEY
+RENDER WORKOUT
 ========================================================= */
 
-function sessionKey(index){
+function renderWorkout(){
 
-    return "session_"+index;
+    document.getElementById(
+        "workoutWeight"
+    ).textContent=weightText();
 
-}
+    document.getElementById(
+        "sessionReps"
+    ).textContent=session.reps;
 
-function sessionDone(index){
+    let completedSets=0;
+    let totalSets=0;
 
-    return currentSession.completedSets[
-        sessionKey(index)
-    ]||[];
+    activeExercises.forEach((e,i)=>{
+        completedSets+=session.completed[i].length;
+        totalSets+=e.sets;
+    });
+
+    document.getElementById(
+        "sessionSets"
+    ).textContent=
+        completedSets+"/"+totalSets;
+
+    document.getElementById(
+        "sessionMinutes"
+    ).textContent=session.duration;
+
+    document.getElementById(
+        "workoutFill"
+    ).style.width=
+        totalSets
+        ?(completedSets/totalSets*100)+"%"
+        :"0%";
+
+
+    const list=
+        document.getElementById("exerciseList");
+
+    list.innerHTML="";
+
+
+    activeExercises.forEach((exercise,index)=>{
+
+        const done=session.completed[index];
+
+        const history=
+            getLastExercise(exercise.name);
+
+        const difficulty=
+            session.difficulties[index]||"";
+
+        let setsHTML="";
+
+        for(let s=1;s<=exercise.sets;s++){
+
+            const isDone=done.includes(s);
+            const available=s===done.length+1;
+
+            let cls="set-button ";
+
+            if(isDone)
+                cls+="done";
+            else if(available)
+                cls+="available";
+
+            setsHTML+=`
+                <button
+                    class="${cls}"
+                    ${(!available||isDone)?"disabled":""}
+                    onclick="completeSet(${index},${s})">
+                    ${isDone?"✓ ":""}SET ${s}
+                </button>
+            `;
+        }
+
+
+        let previousHTML="";
+
+        if(history){
+
+            previousHTML=`
+                <div class="previous">
+                    <strong>LAST TIME:</strong>
+                    ${history.reps.join(" / ")} reps
+                    <br>
+                    <span>
+                    ${history.difficulty}
+                    • ${history.target} target
+                    </span>
+                </div>
+            `;
+
+        }else{
+
+            previousHTML=`
+                <div class="previous">
+                    <strong>FIRST TIME</strong>
+                    — this will become your baseline.
+                </div>
+            `;
+
+        }
+
+
+        let undo="";
+
+        if(done.length){
+
+            undo=`
+                <button
+                    class="undo"
+                    onclick="undoSet(${index})">
+                    ↩ UNDO SET ${done[done.length-1]}
+                </button>
+            `;
+
+        }
+
+
+        const diffs=[
+            ["Easy","😃 EASY"],
+            ["Good","🙂 GOOD"],
+            ["Hard","😐 HARD"],
+            ["Very Hard","😓 VERY HARD"]
+        ];
+
+        let diffHTML="";
+
+        diffs.forEach(d=>{
+
+            diffHTML+=`
+                <button
+                    class="diff ${difficulty===d[0]?"selected":""}"
+                    onclick="setDifficulty(${index},'${d[0]}')">
+                    ${d[1]}
+                </button>
+            `;
+
+        });
+
+
+        const div=document.createElement("div");
+
+        div.className=
+            "exercise"+
+            (
+                done.length>=exercise.sets
+                ?" done"
+                :""
+            );
+
+
+        div.innerHTML=`
+
+            <div class="exercise-name">
+                ${index+1}. ${exercise.displayName}
+            </div>
+
+            <div class="exercise-muscle">
+                ${exercise.muscle}
+            </div>
+
+            <div class="exercise-weight">
+                ${weightText()}
+            </div>
+
+            <div class="description">
+                ${exercise.description}
+            </div>
+
+            ${previousHTML}
+
+            <div class="rep-area">
+
+                <div class="rep-label">
+                    TARGET REPS
+                </div>
+
+                <button
+                    class="rep-arrow"
+                    onclick="changeReps(${index},1)">
+                    ▲
+                </button>
+
+                <div class="rep-number">
+                    ${exercise.target}
+                </div>
+
+                <button
+                    class="rep-arrow"
+                    onclick="changeReps(${index},-1)">
+                    ▼
+                </button>
+
+            </div>
+
+            <div class="center muted small">
+                ${exercise.sets} SETS
+            </div>
+
+            <div class="set-row">
+                ${setsHTML}
+            </div>
+
+            <div class="center muted small">
+                ${done.length}/${exercise.sets} COMPLETE
+            </div>
+
+            ${undo}
+
+            <div class="difficulty">
+
+                <div class="difficulty-title">
+                    HOW DIFFICULT WAS THAT?
+                </div>
+
+                <div class="difficulty-grid">
+                    ${diffHTML}
+                </div>
+
+            </div>
+
+            <button
+                class="replace"
+                onclick="replaceExercise(${index})">
+                🔄 REPLACE EXERCISE
+            </button>
+        `;
+
+        list.appendChild(div);
+
+    });
 
 }
 
 
 /* =========================================================
-   COMPLETE SET
+REPS
+========================================================= */
+
+function changeReps(index,amount){
+
+    activeExercises[index].target=
+        Math.max(
+            1,
+            Math.min(
+                30,
+                activeExercises[index].target+amount
+            )
+        );
+
+    renderWorkout();
+
+}
+
+
+/* =========================================================
+SET COMPLETION
 ========================================================= */
 
 function completeSet(index,set){
 
-    const done=sessionDone(index);
+    const done=session.completed[index];
 
     if(set!==done.length+1)
         return;
 
-    done.push(set);
-
-    currentSession.completedSets[
-        sessionKey(index)
-    ]=done;
-
-
     const exercise=
         activeExercises[index];
 
-    const reps=exercise.target;
+    done.push(set);
 
+    session.reps+=exercise.target;
 
-    currentSession.completedReps+=reps;
+    session.volume+=
+        exercise.target*data.weight;
 
-    currentSession.completedWeight+=
-        reps*data.weight;
-
+    session.points+=5;
 
     data.points+=5;
 
+    checkPR(
+        exercise.name,
+        exercise.target
+    );
 
     save();
 
     renderWorkout();
-
 
     startRest(exercise.rest);
 
@@ -1524,43 +2007,45 @@ function completeSet(index,set){
 
 
 /* =========================================================
-   UNDO
+UNDO
 ========================================================= */
 
-function undoSet(index,set){
+function undoSet(index){
 
-    const done=sessionDone(index);
+    const done=session.completed[index];
 
-    if(done.length===0)
+    if(!done.length)
         return;
-
-    if(done[done.length-1]!==set)
-        return;
-
-
-    done.pop();
 
     const exercise=
         activeExercises[index];
 
-    currentSession.completedReps=
+    done.pop();
+
+    session.reps=
         Math.max(
             0,
-            currentSession.completedReps-
-            exercise.target
+            session.reps-exercise.target
         );
 
-    currentSession.completedWeight=
+    session.volume=
         Math.max(
             0,
-            currentSession.completedWeight-
+            session.volume-
             exercise.target*data.weight
         );
 
+    session.points=
+        Math.max(
+            0,
+            session.points-5
+        );
 
     data.points=
-        Math.max(0,data.points-5);
-
+        Math.max(
+            0,
+            data.points-5
+        );
 
     save();
 
@@ -1570,14 +2055,12 @@ function undoSet(index,set){
 
 
 /* =========================================================
-   DIFFICULTY
+DIFFICULTY
 ========================================================= */
 
 function setDifficulty(index,value){
 
-    currentSession.difficulties[index]=value;
-
-    save();
+    session.difficulties[index]=value;
 
     renderWorkout();
 
@@ -1585,7 +2068,7 @@ function setDifficulty(index,value){
 
 
 /* =========================================================
-   REPLACE EXERCISE
+REPLACEMENT
 ========================================================= */
 
 function replaceExercise(index){
@@ -1593,43 +2076,35 @@ function replaceExercise(index){
     const original=
         exercises[index].name;
 
-    const choices=
-        replacements[original]||[];
+    const options=
+        replacementOptions[original]||[];
 
-    if(choices.length===0)
+    if(!options.length)
         return;
 
-
     const current=
-        data.exerciseReplacements[original]||
-        original;
+        data.replacements[original];
 
+    let next=0;
 
-    let nextIndex=
-        choices.indexOf(current)+1;
+    if(current){
 
-    if(nextIndex>=choices.length)
-        nextIndex=0;
+        const found=options.indexOf(current);
 
+        next=found+1;
 
-    const replacement=
-        choices[nextIndex];
-
-
-    data.exerciseReplacements[original]=
-        replacement;
-
-
-    save();
-
-
-    if(activeExercises[index]){
-
-        activeExercises[index].displayName=
-            replacement;
+        if(next>=options.length)
+            next=0;
 
     }
 
+    data.replacements[original]=
+        options[next];
+
+    activeExercises[index].displayName=
+        options[next];
+
+    save();
 
     renderWorkout();
 
@@ -1637,62 +2112,111 @@ function replaceExercise(index){
 
 
 /* =========================================================
-   REST TIMER
+PR SYSTEM
+========================================================= */
+
+function checkPR(name,reps){
+
+    const previous=
+        data.personalBests[name]||0;
+
+    if(reps>previous){
+
+        data.personalBests[name]=reps;
+
+        showPR(
+            name,
+            reps,
+            previous
+        );
+
+    }
+
+}
+
+function showPR(name,reps,previous){
+
+    document.getElementById(
+        "prText"
+    ).textContent=
+        name+
+        " • "+
+        reps+
+        " reps"+
+        (
+            previous
+            ?" — previous best "+previous
+            :" — first record!"
+        );
+
+    document.getElementById(
+        "prNotification"
+    ).classList.remove("hidden");
+
+}
+
+function hidePR(){
+
+    document.getElementById(
+        "prNotification"
+    ).classList.add("hidden");
+
+}
+
+
+/* =========================================================
+REST TIMER
 ========================================================= */
 
 function startRest(seconds){
 
-    clearInterval(timerInterval);
+    clearInterval(timer);
 
-    restRemaining=seconds;
+    restSeconds=seconds;
 
     document.getElementById(
         "timerOverlay"
     ).style.display="flex";
 
-    document.getElementById(
-        "timerNumber"
-    ).textContent=restRemaining;
+    updateTimer();
 
+    timer=setInterval(()=>{
 
-    timerInterval=setInterval(()=>{
+        restSeconds--;
 
-        restRemaining--;
+        updateTimer();
 
-        document.getElementById(
-            "timerNumber"
-        ).textContent=restRemaining;
-
-
-        if(restRemaining<=0){
-
+        if(restSeconds<=0)
             skipRest();
-
-        }
 
     },1000);
 
 }
 
-
-function adjustRest(amount){
-
-    restRemaining=
-        Math.max(
-            0,
-            restRemaining+amount
-        );
+function updateTimer(){
 
     document.getElementById(
         "timerNumber"
-    ).textContent=restRemaining;
+    ).textContent=
+        Math.max(0,restSeconds);
 
 }
 
+function adjustRest(amount){
+
+    restSeconds=
+        Math.max(
+            0,
+            restSeconds+amount
+        );
+
+    updateTimer();
+
+}
 
 function skipRest(){
 
-    clearInterval(timerInterval);
+    clearInterval(timer);
 
     document.getElementById(
         "timerOverlay"
@@ -1702,19 +2226,18 @@ function skipRest(){
 
 
 /* =========================================================
-   PAUSE
+PAUSE
 ========================================================= */
 
 function pauseWorkout(){
 
-    clearInterval(timerInterval);
+    clearInterval(timer);
 
     document.getElementById(
         "pauseOverlay"
     ).style.display="flex";
 
 }
-
 
 function resumeWorkout(){
 
@@ -1724,8 +2247,9 @@ function resumeWorkout(){
 
 }
 
+function leaveWorkout(){
 
-function goHomeFromPause(){
+    clearInterval(timer);
 
     document.getElementById(
         "pauseOverlay"
@@ -1739,303 +2263,21 @@ function goHomeFromPause(){
 
 
 /* =========================================================
-   RENDER WORKOUT
-========================================================= */
-
-function renderWorkout(){
-
-    document.getElementById(
-        "workoutWeight"
-    ).textContent=weightText();
-
-
-    document.getElementById(
-        "todayDuration"
-    ).textContent=
-        selectedDuration;
-
-
-    const list=
-        document.getElementById(
-            "exerciseList"
-        );
-
-    list.innerHTML="";
-
-
-    let completedExercises=0;
-
-
-    activeExercises.forEach(
-        (exercise,index)=>{
-
-            const done=sessionDone(index);
-
-            if(done.length>=exercise.sets)
-                completedExercises++;
-
-
-            const div=
-                document.createElement("div");
-
-
-            div.className=
-                "exercise"+
-                (
-                    done.length>=exercise.sets
-                    ?" done"
-                    :""
-                );
-
-
-            let setsHTML="";
-
-
-            for(
-                let s=1;
-                s<=exercise.sets;
-                s++
-            ){
-
-                const isDone=
-                    done.includes(s);
-
-                const available=
-                    s===done.length+1;
-
-
-                let cls="set-button ";
-
-                if(isDone)
-                    cls+="done";
-
-                else if(available)
-                    cls+="available";
-
-
-                setsHTML+=`
-
-                    <button
-                        class="${cls}"
-                        ${(!available||isDone)?"disabled":""}
-                        onclick="completeSet(${index},${s})"
-                    >
-                        ${isDone?"✓ ":""}SET ${s}
-                    </button>
-
-                `;
-
-            }
-
-
-            let undo="";
-
-            if(done.length>0){
-
-                undo=`
-
-                    <button
-                        class="undo"
-                        onclick="undoSet(${index},${done[done.length-1]})"
-                    >
-                        ↩ UNDO SET ${done[done.length-1]}
-                    </button>
-
-                `;
-
-            }
-
-
-            const difficulty=
-                currentSession.difficulties[index]||"";
-
-
-            const diffButtons=[
-
-                ["Easy","😃 EASY"],
-                ["Good","🙂 GOOD"],
-                ["Hard","😐 HARD"],
-                ["Very Hard","😓 VERY HARD"]
-
-            ];
-
-
-            let diffHTML="";
-
-            diffButtons.forEach(d=>{
-
-                diffHTML+=`
-
-                    <button
-                        class="diff ${difficulty===d[0]?"selected":""}"
-                        onclick="setDifficulty(${index},'${d[0]}')"
-                    >
-                        ${d[1]}
-                    </button>
-
-                `;
-
-            });
-
-
-            div.innerHTML=`
-
-                <div class="exercise-name">
-                    ${index+1}. ${exercise.displayName}
-                </div>
-
-                <div class="exercise-muscle">
-                    ${exercise.muscle}
-                </div>
-
-                <div class="exercise-weight">
-                    ${weightText()}
-                </div>
-
-                <div class="description">
-                    ${exercise.description}
-                </div>
-
-                <div class="rep-area">
-
-                    <div class="rep-label">
-                        TARGET REPS
-                    </div>
-
-                    <button
-                        class="rep-arrow"
-                        onclick="changeSessionReps(${index},1)"
-                    >
-                        ▲
-                    </button>
-
-                    <div class="rep-number">
-                        ${exercise.target}
-                    </div>
-
-                    <button
-                        class="rep-arrow"
-                        onclick="changeSessionReps(${index},-1)"
-                    >
-                        ▼
-                    </button>
-
-                </div>
-
-                <div class="center muted">
-                    ${exercise.sets} SETS
-                </div>
-
-                <div class="set-row">
-                    ${setsHTML}
-                </div>
-
-                <div class="center muted"
-                     style="font-size:11px">
-                    ${done.length}/${exercise.sets} SETS COMPLETE
-                </div>
-
-                ${undo}
-
-                <div class="difficulty">
-
-                    <div class="difficulty-title">
-                        HOW DIFFICULT WAS THAT?
-                    </div>
-
-                    <div class="difficulty-row">
-                        ${diffHTML}
-                    </div>
-
-                </div>
-
-                <button
-                    class="replace"
-                    onclick="replaceExercise(${index})"
-                >
-                    🔄 DON'T LIKE THIS EXERCISE? REPLACE
-                </button>
-
-            `;
-
-
-            list.appendChild(div);
-
-        }
-    );
-
-
-    document.getElementById(
-        "todayPoints"
-    ).textContent=
-        currentSession.completedReps>0
-        ?data.points
-        :0;
-
-
-    document.getElementById(
-        "todayExercises"
-    ).textContent=
-        completedExercises+
-        "/"+
-        activeExercises.length;
-
-
-    document.getElementById(
-        "workoutProgress"
-    ).style.width=
-        (
-            completedExercises/
-            activeExercises.length*
-            100
-        )+"%";
-
-}
-
-
-/* =========================================================
-   CHANGE SESSION REPS
-========================================================= */
-
-function changeSessionReps(index,amount){
-
-    const exercise=
-        activeExercises[index];
-
-
-    exercise.target=
-        Math.max(
-            1,
-            Math.min(
-                30,
-                exercise.target+amount
-            )
-        );
-
-
-    renderWorkout();
-
-}
-
-
-/* =========================================================
-   FINISH
+FINISH
 ========================================================= */
 
 function finishWorkout(){
 
     const complete=
         activeExercises.every(
-            (exercise,index)=>
-                sessionDone(index).length>=
-                exercise.sets
+            (e,i)=>
+                session.completed[i].length>=e.sets
         );
-
 
     if(!complete){
 
         alert(
-            "Complete all sets before finishing the workout."
+            "Complete every set before finishing the workout."
         );
 
         return;
@@ -2046,9 +2288,7 @@ function finishWorkout(){
     const today=todayKey();
 
 
-    if(
-        !data.completedDays.includes(today)
-    ){
+    if(!data.completedDays.includes(today)){
 
         data.completedDays.push(today);
 
@@ -2059,39 +2299,41 @@ function finishWorkout(){
     }
 
 
-    /*
-       Save adaptive history.
-    */
+    activeExercises.forEach((exercise,index)=>{
 
-    activeExercises.forEach(
-        (exercise,index)=>{
+        const reps=[];
 
-            const difficulty=
-                currentSession.difficulties[index]||
-                "Good";
+        const count=
+            session.completed[index].length;
 
-
-            if(!data.repsHistory[exercise.name])
-                data.repsHistory[exercise.name]=[];
+        for(let i=0;i<count;i++)
+            reps.push(exercise.target);
 
 
-            data.repsHistory[exercise.name].push({
+        if(!data.exerciseHistory[exercise.name])
+            data.exerciseHistory[exercise.name]=[];
 
-                date:today,
 
-                target:exercise.target,
+        data.exerciseHistory[exercise.name].push({
 
-                completedAll:true,
+            date:today,
 
-                difficulty:difficulty,
+            reps:reps,
 
-                reps:exercise.target*
-                    exercise.sets
+            target:exercise.target,
 
-            });
+            difficulty:
+                session.difficulties[index]||
+                "Good",
 
-        }
-    );
+            completedAll:
+                count>=exercise.sets,
+
+            weight:data.weight
+
+        });
+
+    });
 
 
     const note=
@@ -2100,45 +2342,34 @@ function finishWorkout(){
         ).value.trim();
 
 
+    data.sessions.push({
+
+        date:today,
+
+        duration:session.duration,
+
+        reps:session.reps,
+
+        volume:session.volume,
+
+        points:session.points+50,
+
+        note:note
+
+    });
+
+
     if(note){
 
         data.notes.push({
-
             date:today,
-
             text:note
-
         });
 
     }
 
 
-    data.durations.push({
-
-        date:today,
-
-        minutes:selectedDuration
-
-    });
-
-
-    data.sessionHistory.push({
-
-        date:today,
-
-        reps:currentSession.completedReps,
-
-        weight:currentSession.completedWeight,
-
-        points:currentSession.completedReps+
-            50,
-
-        duration:selectedDuration
-
-    });
-
-
-    data.lastWorkoutDate=today;
+    data.lastWorkout=today;
 
 
     save();
@@ -2151,9 +2382,12 @@ function finishWorkout(){
 
     alert(
         "🎉 WORKOUT COMPLETE!\n\n"+
-        currentSession.completedReps+
-        " reps completed\n"+
-        "+50 bonus points"
+        session.reps+
+        " reps\n"+
+        Math.round(session.volume)+
+        " "+data.unit+
+        " lifted\n\n"+
+        "+50 completion points"
     );
 
 
@@ -2163,51 +2397,131 @@ function finishWorkout(){
 
 
 /* =========================================================
-   HOME
+HOME
 ========================================================= */
 
 function goHome(){
 
-    clearInterval(timerInterval);
+    clearInterval(timer);
 
-    document.querySelectorAll(".page")
-        .forEach(p=>p.classList.add("hidden"));
+    document.getElementById(
+        "timerOverlay"
+    ).style.display="none";
 
-    document.getElementById("home")
-        .classList.remove("hidden");
+    document.getElementById(
+        "pauseOverlay"
+    ).style.display="none";
+
+    hidePR();
+
+    showOnly("home");
 
     renderHome();
 
 }
 
+function renderHome(){
 
-function goHomeFromPage(id){
+    document.getElementById(
+        "homeWorkouts"
+    ).textContent=data.workouts;
 
-    document.getElementById(id)
-        .classList.add("hidden");
+    document.getElementById(
+        "homePoints"
+    ).textContent=data.points;
 
-    document.getElementById("home")
-        .classList.remove("hidden");
+    document.getElementById(
+        "homeStreak"
+    ).textContent=getStreak();
 
-    renderHome();
+
+    document.getElementById(
+        "weightInput"
+    ).value=data.weight;
+
+    document.getElementById(
+        "unitInput"
+    ).value=data.unit;
+
+
+    const week=getWeek();
+
+
+    document.getElementById(
+        "todayTitle"
+    ).textContent=
+        "Week "+
+        week+
+        " • Workout "+
+        (data.workouts+1);
+
+
+    document.getElementById(
+        "todayInfo"
+    ).textContent=
+        "7 exercises • 21 sets • ~30 minutes";
+
+
+    const count=
+        workoutsThisWeek();
+
+    const target=4;
+
+
+    document.getElementById(
+        "weeklyText"
+    ).textContent=
+        count+" / "+target+
+        " workouts";
+
+
+    document.getElementById(
+        "weeklyFill"
+    ).style.width=
+        Math.min(
+            100,
+            count/target*100
+        )+"%";
+
+
+    const remaining=
+        Math.max(
+            0,
+            target-count
+        );
+
+
+    document.getElementById(
+        "weeklyRemaining"
+    ).textContent=
+        remaining+
+        (
+            remaining===1
+            ?" workout remaining"
+            :" workouts remaining"
+        );
+
+
+    renderCalendar();
+
+    renderBadges();
 
 }
 
 
 /* =========================================================
-   STREAK
+STREAK
 ========================================================= */
 
 function getStreak(){
 
     let streak=0;
 
-    let d=new Date();
-
+    const d=new Date();
 
     while(
         data.completedDays.includes(
-            dateKey(d)
+            keyForDate(d)
         )
     ){
 
@@ -2219,46 +2533,41 @@ function getStreak(){
 
     }
 
-
     return streak;
 
 }
 
 
 /* =========================================================
-   WEEKLY TARGET
+WEEKLY TARGET
 ========================================================= */
 
 function workoutsThisWeek(){
 
     const now=new Date();
 
-    const day=now.getDay();
-
     const start=new Date(now);
 
     start.setDate(
-        now.getDate()-day
+        now.getDate()-now.getDay()
     );
 
     start.setHours(0,0,0,0);
 
 
-    return data.completedDays.filter(
-        key=>{
+    return data.completedDays.filter(key=>{
 
-            const d=new Date(key);
+        const d=new Date(key);
 
-            return d>=start&&d<=now;
+        return d>=start && d<=now;
 
-        }
-    ).length;
+    }).length;
 
 }
 
 
 /* =========================================================
-   CALENDAR
+CALENDAR
 ========================================================= */
 
 function changeMonth(amount){
@@ -2270,7 +2579,6 @@ function changeMonth(amount){
     renderCalendar();
 
 }
-
 
 function renderCalendar(){
 
@@ -2331,15 +2639,14 @@ function renderCalendar(){
 
     for(let day=1;day<=days;day++){
 
-        const date=
+        const d=
             new Date(
                 year,
                 month,
                 day
             );
 
-        const key=dateKey(date);
-
+        const key=keyForDate(d);
 
         const div=
             document.createElement("div");
@@ -2365,122 +2672,189 @@ function renderCalendar(){
 
 
 /* =========================================================
-   PROGRESS PAGE
+PREVIEW
+========================================================= */
+
+function showPreview(){
+
+    showOnly("previewPage");
+
+    document.getElementById(
+        "previewWeight"
+    ).textContent=weightText();
+
+
+    document.getElementById(
+        "previewList"
+    ).innerHTML=
+        exercises.map((e,index)=>{
+
+            const replacement=
+                data.replacements[e.name]||e.name;
+
+            const target=getTarget(e);
+
+            const last=getLastExercise(e.name);
+
+            return `
+                <div class="exercise-history">
+
+                    <strong>
+                        ${index+1}. ${replacement}
+                    </strong>
+
+                    <div class="muted small"
+                         style="margin-top:6px">
+
+                        ${e.sets} sets ×
+                        ${target} reps
+                        • ${weightText()}
+                        • ${e.rest}s rest
+
+                    </div>
+
+                    ${
+                        last
+                        ?`
+                        <div class="previous">
+                            Last:
+                            ${last.reps.join(" / ")}
+                            reps
+                        </div>
+                        `
+                        :""
+                    }
+
+                </div>
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================================================
+PROGRESS
 ========================================================= */
 
 function showProgress(){
 
-    document.querySelectorAll(".page")
-        .forEach(p=>p.classList.add("hidden"));
-
-    document.getElementById(
-        "progressPage"
-    ).classList.remove("hidden");
-
+    showOnly("progressPage");
 
     renderProgress();
 
 }
 
-
 function totalReps(){
 
-    return data.sessionHistory.reduce(
-        (sum,x)=>
-            sum+(x.reps||0),
+    return data.sessions.reduce(
+        (sum,s)=>sum+(s.reps||0),
         0
     );
 
 }
 
+function totalVolume(){
 
-function totalWeight(){
-
-    return data.sessionHistory.reduce(
-        (sum,x)=>
-            sum+(x.weight||0),
+    return data.sessions.reduce(
+        (sum,s)=>sum+(s.volume||0),
         0
     );
 
 }
 
+function strengthScore(){
+
+    return Math.round(
+        data.workouts*25+
+        totalReps()*.8+
+        totalVolume()*.05+
+        data.points*.15
+    );
+
+}
 
 function renderProgress(){
 
     document.getElementById(
-        "progressWorkouts"
+        "pWorkouts"
     ).textContent=data.workouts;
 
-
     document.getElementById(
-        "progressReps"
+        "pReps"
     ).textContent=totalReps();
 
-
     document.getElementById(
-        "progressPoints"
+        "pPoints"
     ).textContent=data.points;
 
+    document.getElementById(
+        "strengthScore"
+    ).textContent=strengthScore();
 
     document.getElementById(
-        "totalWeight"
+        "totalVolume"
     ).textContent=
-        Math.round(totalWeight())+
-        " "+
-        data.unit;
+        Math.round(totalVolume())+
+        " "+data.unit;
 
 
-    renderBestReps();
+    renderPersonalBests();
 
-    drawWeeklyChart();
+    renderPlateaus();
 
-    drawMonthlyChart();
+    drawWeekly();
+
+    drawMonthly();
 
 }
 
 
-function renderBestReps(){
+/* =========================================================
+PERSONAL BESTS
+========================================================= */
+
+function renderPersonalBests(){
 
     const box=
-        document.getElementById("bestReps");
+        document.getElementById(
+            "personalBests"
+        );
 
     box.innerHTML="";
 
 
-    exercises.forEach(exercise=>{
+    exercises.forEach(e=>{
 
-        const history=
-            data.repsHistory[
-                exercise.name
-            ]||[];
-
-
-        let best=0;
+        const best=
+            data.personalBests[e.name]||
+            e.reps;
 
 
-        history.forEach(h=>{
+        const div=
+            document.createElement("div");
 
-            if(h.target>best)
-                best=h.target;
+        div.className="exercise-history";
 
-        });
+        div.innerHTML=`
+            <strong>${e.name}</strong>
 
-
-        box.innerHTML+=`
-
-            <div class="history">
-
-                <b>${exercise.name}</b>
-
-                <br>
-
-                Best target:
-                ${best||exercise.reps}
-                reps
-
+            <div class="muted small">
+                Best set:
+                <span style="color:#80d7d7">
+                    ${best} reps
+                </span>
             </div>
 
+            <button
+                class="button secondary"
+                style="margin-top:8px"
+                onclick="showExerciseHistory('${e.name.replace(/'/g,"\\'")}')">
+                VIEW HISTORY
+            </button>
         `;
+
+        box.appendChild(div);
 
     });
 
@@ -2488,20 +2862,97 @@ function renderBestReps(){
 
 
 /* =========================================================
-   CHART
+PLATEAU DETECTION
 ========================================================= */
 
-function drawLineChart(canvasId,values,labels){
+function renderPlateaus(){
+
+    const box=
+        document.getElementById(
+            "plateaus"
+        );
+
+    box.innerHTML="";
+
+    let found=false;
+
+
+    exercises.forEach(e=>{
+
+        const h=
+            getExerciseHistory(e.name);
+
+
+        if(h.length<3)
+            return;
+
+
+        const recent=
+            h.slice(-3)
+            .map(x=>x.target);
+
+
+        if(
+            recent[0]===recent[1] &&
+            recent[1]===recent[2]
+        ){
+
+            found=true;
+
+            box.innerHTML+=`
+                <div class="previous">
+
+                    <strong>
+                        ${e.name}
+                    </strong>
+
+                    <br>
+
+                    You've been at
+                    ${recent[2]} reps
+                    for 3 workouts.
+
+                    <br><br>
+
+                    💡 Try a small increase,
+                    or use the replacement option.
+
+                </div>
+            `;
+
+        }
+
+    });
+
+
+    if(!found){
+
+        box.innerHTML=`
+            <div class="muted small">
+                No plateaus detected yet. Keep training.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+GRAPHS
+========================================================= */
+
+function drawChart(canvasId,values){
 
     const canvas=
         document.getElementById(canvasId);
 
-    if(!canvas)return;
+    if(!canvas)
+        return;
 
 
     const rect=
         canvas.getBoundingClientRect();
-
 
     const dpr=
         window.devicePixelRatio||1;
@@ -2517,19 +2968,17 @@ function drawLineChart(canvasId,values,labels){
     const ctx=
         canvas.getContext("2d");
 
-
     ctx.scale(dpr,dpr);
 
 
     const w=rect.width;
-
     const h=rect.height;
 
 
     ctx.clearRect(0,0,w,h);
 
 
-    if(values.length===0)
+    if(!values.length)
         return;
 
 
@@ -2537,32 +2986,30 @@ function drawLineChart(canvasId,values,labels){
         Math.max(...values,1);
 
 
-    ctx.strokeStyle="#555";
+    /* Grid */
 
+    ctx.strokeStyle="#203132";
     ctx.lineWidth=1;
 
 
     for(let i=0;i<5;i++){
 
         const y=
-            10+
+            15+
             i*
-            ((h-30)/4);
-
+            ((h-35)/4);
 
         ctx.beginPath();
-
         ctx.moveTo(25,y);
-
         ctx.lineTo(w-10,y);
-
         ctx.stroke();
 
     }
 
 
-    ctx.strokeStyle="#eeeeee";
+    /* Line */
 
+    ctx.strokeStyle="#18a7a8";
     ctx.lineWidth=3;
 
     ctx.beginPath();
@@ -2574,7 +3021,10 @@ function drawLineChart(canvasId,values,labels){
             25+
             (
                 i/
-                Math.max(values.length-1,1)
+                Math.max(
+                    values.length-1,
+                    1
+                )
             )*
             (w-40);
 
@@ -2598,7 +3048,9 @@ function drawLineChart(canvasId,values,labels){
     ctx.stroke();
 
 
-    ctx.fillStyle="#eeeeee";
+    /* Points */
+
+    ctx.fillStyle="#7de2df";
 
 
     values.forEach((value,i)=>{
@@ -2607,7 +3059,10 @@ function drawLineChart(canvasId,values,labels){
             25+
             (
                 i/
-                Math.max(values.length-1,1)
+                Math.max(
+                    values.length-1,
+                    1
+                )
             )*
             (w-40);
 
@@ -2622,7 +3077,13 @@ function drawLineChart(canvasId,values,labels){
 
         ctx.beginPath();
 
-        ctx.arc(x,y,4,0,Math.PI*2);
+        ctx.arc(
+            x,
+            y,
+            4,
+            0,
+            Math.PI*2
+        );
 
         ctx.fill();
 
@@ -2631,51 +3092,37 @@ function drawLineChart(canvasId,values,labels){
 }
 
 
-function drawWeeklyChart(){
+function drawWeekly(){
 
     const values=[];
-
-    const labels=[];
 
 
     for(let i=7;i>=0;i--){
 
-        const start=new Date();
+        const end=
+            new Date();
+
+        end.setDate(
+            end.getDate()-i*7
+        );
+
+
+        const start=
+            new Date(end);
 
         start.setDate(
-            start.getDate()-
-            i*7
-        );
-
-
-        const weekStart=
-            new Date(start);
-
-        weekStart.setDate(
-            weekStart.getDate()-
-            weekStart.getDay()
-        );
-
-
-        const weekEnd=
-            new Date(weekStart);
-
-        weekEnd.setDate(
-            weekEnd.getDate()+6
+            start.getDate()-6
         );
 
 
         let count=0;
 
 
-        data.completedDays.forEach(key=>{
+        data.sessions.forEach(s=>{
 
-            const d=new Date(key);
+            const d=new Date(s.date);
 
-            if(
-                d>=weekStart&&
-                d<=weekEnd
-            )
+            if(d>=start&&d<=end)
                 count++;
 
         });
@@ -2683,91 +3130,193 @@ function drawWeeklyChart(){
 
         values.push(count);
 
-        labels.push("W"+(8-i));
-
     }
 
 
-    drawLineChart(
+    drawChart(
         "weeklyChart",
-        values,
-        labels
+        values
     );
 
 }
 
 
-function drawMonthlyChart(){
+function drawMonthly(){
 
     const values=[];
-
-    const labels=[];
 
 
     for(let i=5;i>=0;i--){
 
-        const date=new Date();
+        const d=new Date();
 
-        date.setMonth(
-            date.getMonth()-i
+        d.setMonth(
+            d.getMonth()-i
         );
 
 
-        const year=date.getFullYear();
-
-        const month=date.getMonth();
-
-
-        let count=0;
+        const month=d.getMonth();
+        const year=d.getFullYear();
 
 
-        data.completedDays.forEach(key=>{
+        const count=
+            data.sessions.filter(s=>{
 
-            const d=new Date(key);
+                const x=new Date(s.date);
 
-            if(
-                d.getFullYear()===year&&
-                d.getMonth()===month
-            )
-                count++;
+                return(
+                    x.getMonth()===month &&
+                    x.getFullYear()===year
+                );
 
-        });
+            }).length;
 
 
         values.push(count);
 
-        labels.push(
-            date.toLocaleString(
-                "en-GB",
-                {month:"short"}
-            )
-        );
-
     }
 
 
-    drawLineChart(
+    drawChart(
         "monthlyChart",
-        values,
-        labels
+        values
     );
 
 }
 
 
 /* =========================================================
-   RECOVERY
+EXERCISE HISTORY
+========================================================= */
+
+function showExerciseHistory(name){
+
+    showOnly(
+        "exerciseHistoryPage"
+    );
+
+    document.getElementById(
+        "exerciseHistoryTitle"
+    ).textContent=name;
+
+
+    const history=
+        getExerciseHistory(name);
+
+
+    const list=
+        document.getElementById(
+            "exerciseHistoryList"
+        );
+
+
+    if(!history.length){
+
+        list.innerHTML=
+            `<div class="muted">
+                No history yet.
+            </div>`;
+
+        return;
+
+    }
+
+
+    list.innerHTML=
+        history.slice().reverse().map(h=>`
+
+            <div class="exercise-history">
+
+                <strong>${h.date}</strong>
+
+                <div class="muted small">
+                    ${h.reps.join(" / ")} reps
+                    <br>
+                    Target: ${h.target}
+                    <br>
+                    Difficulty: ${h.difficulty}
+                    <br>
+                    Weight: ${h.weight} ${data.unit}
+                </div>
+
+            </div>
+
+        `).join("");
+
+
+    drawChart(
+        "exerciseChart",
+        history.map(h=>h.target)
+    );
+
+}
+
+
+/* =========================================================
+WORKOUT HISTORY
+========================================================= */
+
+function showHistory(){
+
+    showOnly("historyPage");
+
+    const box=
+        document.getElementById(
+            "historyList"
+        );
+
+
+    if(!data.sessions.length){
+
+        box.innerHTML=
+            `<div class="muted">
+                No workouts recorded yet.
+            </div>`;
+
+        return;
+
+    }
+
+
+    box.innerHTML=
+        data.sessions.slice().reverse().map(s=>`
+
+            <div class="history-row">
+
+                <div class="history-date">
+                    ✓ ${s.date}
+                </div>
+
+                <div class="history-details">
+                    ${s.duration} minutes
+                    • ${s.reps} reps
+                    • ${Math.round(s.volume)} ${data.unit}
+                </div>
+
+                ${
+                    s.note
+                    ?`
+                    <div class="previous">
+                        "${escapeHTML(s.note)}"
+                    </div>
+                    `
+                    :""
+                }
+
+            </div>
+
+        `).join("");
+
+}
+
+
+/* =========================================================
+RECOVERY
 ========================================================= */
 
 function showRecovery(){
 
-    document.querySelectorAll(".page")
-        .forEach(p=>p.classList.add("hidden"));
-
-    document.getElementById(
-        "recoveryPage"
-    ).classList.remove("hidden");
-
+    showOnly("recoveryPage");
 
     renderRecovery();
 
@@ -2785,58 +3334,61 @@ function renderRecovery(){
     ];
 
 
-    const last=data.lastWorkoutDate;
+    const last=data.lastWorkout;
 
     let days=99;
 
 
-    if(last)
-        days=daysBetween(
-            last,
-            todayKey()
-        );
+    if(last){
+
+        const a=
+            new Date(last);
+
+        const b=
+            new Date(todayKey());
+
+        days=
+            Math.floor(
+                (b-a)/
+                (1000*60*60*24)
+            );
+
+    }
 
 
     document.getElementById(
         "recoveryGrid"
     ).innerHTML=
 
-        muscles.map(muscle=>{
+        muscles.map(m=>{
 
             let cls="ready";
-
             let status="🟢 READY";
 
 
             if(days===0){
 
                 cls="recent";
-
                 status="🔴 RECENTLY TRAINED";
 
-            }
-
-            else if(days<=2){
+            }else if(days<=2){
 
                 cls="recovering";
-
                 status="🟡 RECOVERING";
 
             }
 
 
-            return `
-
+            return`
                 <div class="recovery ${cls}">
 
-                    <b>${muscle}</b>
+                    <strong>${m}</strong>
 
                     <br><br>
 
-                    <span>${status}</span>
+                    ${status}
 
                 </div>
-
             `;
 
         }).join("");
@@ -2845,263 +3397,170 @@ function renderRecovery(){
 
 
 /* =========================================================
-   PREVIEW
-========================================================= */
-
-function showPreview(){
-
-    document.querySelectorAll(".page")
-        .forEach(p=>p.classList.add("hidden"));
-
-    document.getElementById(
-        "previewPage"
-    ).classList.remove("hidden");
-
-
-    document.getElementById(
-        "previewWeight"
-    ).textContent=weightText();
-
-
-    document.getElementById(
-        "previewList"
-    ).innerHTML=
-
-        exercises.map(
-            (exercise,index)=>{
-
-                const replacement=
-                    data.exerciseReplacements[
-                        exercise.name
-                    ];
-
-
-                const name=
-                    replacement||
-                    exercise.name;
-
-
-                const reps=
-                    targetReps(
-                        exercise,
-                        index
-                    );
-
-
-                return `
-
-                    <div class="preview-exercise">
-
-                        <b>
-                            ${index+1}. ${name}
-                        </b>
-
-                        <div class="muted"
-                             style="font-size:13px;margin-top:6px">
-
-                            ${exercise.sets}
-                            sets ×
-                            ${reps}
-                            reps
-
-                            <br>
-
-                            Weight:
-                            ${weightText()}
-
-                            <br>
-
-                            Rest:
-                            ${exercise.rest}
-                            seconds
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        ).join("");
-
-}
-
-
-function goHomeFromPreview(){
-
-    goHome();
-
-}
-
-
-/* =========================================================
-   BADGES
+BADGES
 ========================================================= */
 
 function renderBadges(){
 
     const badges=[
-
-        ["FIRST WORKOUT",
-         data.workouts>=1],
-
-        ["5 WORKOUTS",
-         data.workouts>=5],
-
-        ["10 WORKOUTS",
-         data.workouts>=10],
-
-        ["250 POINTS",
-         data.points>=250]
-
+        ["FIRST WORKOUT",data.workouts>=1],
+        ["5 WORKOUTS",data.workouts>=5],
+        ["10 WORKOUTS",data.workouts>=10],
+        ["25 WORKOUTS",data.workouts>=25],
+        ["250 POINTS",data.points>=250],
+        ["500 POINTS",data.points>=500],
+        ["1000 REPS",totalReps()>=1000],
+        ["10 PERSONAL BESTS",
+            Object.keys(data.personalBests).length>=10]
     ];
 
 
     document.getElementById(
         "badges"
     ).innerHTML=
+        badges.map(b=>`
 
-        badges.map(
-            b=>`
+            <div class="badge ${b[1]?"earned":""}">
+                ${b[1]?"✓ ":""}${b[0]}
+            </div>
 
-                <div class="recovery ${
-                    b[1]?"ready":""
-                }">
-
-                    <b>
-                        ${b[1]?"✓ ":""}${b[0]}
-                    </b>
-
-                </div>
-
-            `
-        ).join("");
+        `).join("");
 
 }
 
 
 /* =========================================================
-   HOME RENDER
+BACKUP / RESTORE
 ========================================================= */
 
-function renderHome(){
+function exportData(){
 
-    document.getElementById(
-        "homePoints"
-    ).textContent=data.points;
-
-
-    document.getElementById(
-        "homeWorkouts"
-    ).textContent=data.workouts;
-
-
-    document.getElementById(
-        "homeStreak"
-    ).textContent=getStreak();
-
-
-    document.getElementById(
-        "weightInput"
-    ).value=data.weight;
-
-
-    document.getElementById(
-        "unitSelect"
-    ).value=data.unit;
-
-
-    const week=getWeek();
-
-
-    document.getElementById(
-        "todayWorkoutTitle"
-    ).textContent=
-        "Week "+
-        week+
-        " • Workout "+
-        (data.workouts+1);
-
-
-    const mins=30;
-
-
-    document.getElementById(
-        "todayWorkoutInfo"
-    ).textContent=
-        "7 exercises • 21 sets • ~"+
-        mins+
-        " minutes";
-
-
-    const weekCount=
-        workoutsThisWeek();
-
-
-    const target=4;
-
-
-    document.getElementById(
-        "weeklyTargetText"
-    ).textContent=
-        weekCount+
-        " / "+
-        target+
-        " workouts";
-
-
-    document.getElementById(
-        "weeklyProgress"
-    ).style.width=
-        Math.min(
-            100,
-            weekCount/target*100
-        )+"%";
-
-
-    const remaining=
-        Math.max(
-            0,
-            target-weekCount
+    const json=
+        JSON.stringify(
+            data,
+            null,
+            2
         );
 
 
-    document.getElementById(
-        "weeklyRemaining"
-    ).textContent=
-        remaining+
-        (
-            remaining===1
-            ?" workout remaining"
-            :" workouts remaining"
+    const blob=
+        new Blob(
+            [json],
+            {type:"application/json"}
         );
 
 
-    renderCalendar();
+    const url=
+        URL.createObjectURL(blob);
 
-    renderBadges();
+
+    const a=
+        document.createElement("a");
+
+    a.href=url;
+
+    a.download=
+        "kettlebell-workout-backup.json";
+
+    a.click();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+function importData(event){
+
+    const file=
+        event.target.files[0];
+
+    if(!file)
+        return;
+
+
+    const reader=
+        new FileReader();
+
+
+    reader.onload=function(){
+
+        try{
+
+            const imported=
+                JSON.parse(
+                    reader.result
+                );
+
+
+            if(
+                !imported ||
+                typeof imported!=="object"
+            )
+                throw new Error();
+
+
+            const confirmed=
+                confirm(
+                    "Import this backup?\n\n"+
+                    "This will replace the current saved progress on this device."
+                );
+
+
+            if(!confirmed)
+                return;
+
+
+            data=imported;
+
+            save();
+
+            alert(
+                "Backup imported successfully."
+            );
+
+            renderHome();
+
+        }catch(e){
+
+            alert(
+                "That backup file could not be read."
+            );
+
+        }
+
+    };
+
+
+    reader.readAsText(file);
 
 }
 
 
 /* =========================================================
-   INITIALISE
+ESCAPE NOTES
 ========================================================= */
 
-renderHome();
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
 
 
-/*
-   Save the upgraded data structure.
-   Existing progress is retained.
-*/
+/* =========================================================
+INITIALISE
+========================================================= */
 
 save();
 
+renderHome();
 
-/*
-   Redraw charts when screen size changes.
-*/
 
 window.addEventListener(
     "resize",
@@ -3112,8 +3571,8 @@ window.addEventListener(
                 .classList.contains("hidden")
         ){
 
-            drawWeeklyChart();
-            drawMonthlyChart();
+            drawWeekly();
+            drawMonthly();
 
         }
     }
