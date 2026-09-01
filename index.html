@@ -2,865 +2,910 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07090b">
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
 <title>Kettlebell Workout</title>
 
 <style>
-:root{
-  --bg:#06090b;
-  --panel:#101416;
-  --panel2:#151a1d;
-  --line:#263034;
-  --cyan:#00aebc;
-  --cyan2:#19d0d8;
-  --text:#f1f5f5;
-  --muted:#899396;
-  --green:#36c39c;
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
-
-*{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  background:#000;
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:#080d0f;
+    color:#f4f7f8;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
-body{min-height:100vh}
-
-button,input,select,textarea{
-  font:inherit;
-  color:inherit
+body{
+    overflow-x:hidden;
 }
 
-button{cursor:pointer}
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
 
 .app{
-  width:100%;
-  max-width:480px;
-  margin:auto;
-  background:linear-gradient(180deg,#071013 0,#080c0e 100%);
-  min-height:100vh;
-  padding-bottom:28px
+    width:100%;
+    max-width:600px;
+    min-height:100vh;
+    margin:0 auto;
+    background:
+        radial-gradient(circle at 50% -10%,rgba(0,210,220,.10),transparent 35%),
+        #080d0f;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
-  padding:22px 18px 12px;
-  text-align:center
+    position:sticky;
+    top:0;
+    z-index:20;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    background:rgba(8,13,15,.94);
+    border-bottom:1px solid #1b2b2e;
+    backdrop-filter:blur(12px);
 }
 
-.brand{
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:900;
-  color:var(--cyan2)
+.header-title{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:.4px;
 }
 
-.logo{
-  width:40px;
-  height:40px;
-  border:3px solid var(--cyan2);
-  border-radius:12px;
-  margin:0 auto 8px;
-  position:relative
+.header-title span{
+    color:#19d7df;
 }
 
-.logo:before{
-  content:"";
-  position:absolute;
-  width:13px;
-  height:7px;
-  border:3px solid var(--cyan2);
-  border-bottom:0;
-  border-radius:8px 8px 0 0;
-  left:11px;
-  top:-9px
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:1px solid #284145;
+    border-radius:12px;
+    background:#10191c;
+    color:#dce9ea;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
 }
 
-h1{
-  font-size:27px;
-  margin:5px 0 4px;
-  font-weight:900
+.icon-btn:active{
+    transform:scale(.96);
 }
 
-.subtitle{
-  font-size:12px;
-  color:var(--muted)
-}
+/* =========================
+   SCREENS
+========================= */
 
 .screen{
-  display:none;
-  padding:10px 13px 25px
+    display:none;
+    padding:20px 16px 40px;
 }
 
 .screen.active{
-  display:block
+    display:block;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.hero{
+    padding:24px 4px 18px;
+}
+
+.hero h1{
+    margin:0;
+    font-size:38px;
+    line-height:1.02;
+    font-weight:900;
+    letter-spacing:-1.5px;
+    background:linear-gradient(135deg,#ffffff 10%,#7ff8ff 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    margin:10px 0 0;
+    color:#aebfc2;
+    font-size:15px;
 }
 
 .card{
-  background:linear-gradient(145deg,#121719,#0d1113);
-  border:1px solid var(--line);
-  border-radius:19px;
-  padding:15px;
-  margin-bottom:11px;
-  box-shadow:0 8px 25px #0005
+    background:
+        linear-gradient(145deg,rgba(19,32,35,.98),rgba(10,18,20,.98));
+    border:1px solid #21373b;
+    border-radius:20px;
+    padding:18px;
+    margin-bottom:14px;
+    box-shadow:0 12px 35px rgba(0,0,0,.22);
 }
 
-.eyebrow{
-  font-size:10px;
-  letter-spacing:1.2px;
-  color:var(--cyan2);
-  font-weight:900
+.card-title{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    color:#91a8ab;
+    font-weight:800;
+    margin-bottom:8px;
 }
 
-.sectionTitle{
-  font-size:17px;
-  font-weight:900;
-  margin:4px 0 12px
+.workout-name{
+    font-size:24px;
+    font-weight:900;
+    margin-bottom:4px;
 }
 
-.hero{
-  padding:18px
+.workout-meta{
+    color:#aebfc2;
+    font-size:14px;
 }
 
-.heroTitle{
-  font-size:27px;
-  font-weight:900;
-  margin:7px 0
+.primary{
+    width:100%;
+    min-height:54px;
+    border:0;
+    border-radius:15px;
+    background:linear-gradient(135deg,#18d9e1,#0ca8b1);
+    color:#031012;
+    font-weight:900;
+    letter-spacing:.5px;
+    box-shadow:0 8px 22px rgba(0,210,220,.18);
 }
 
-.meta{
-  font-size:12px;
-  color:#aab4b6;
-  margin-bottom:13px
+.primary:active{
+    transform:scale(.985);
 }
 
-.btn{
-  border-radius:13px;
-  padding:13px 15px;
-  border:1px solid #3a4649;
-  background:#1a2022;
-  font-weight:900;
-  width:100%
+.secondary{
+    width:100%;
+    min-height:52px;
+    border-radius:15px;
+    border:1px solid #31565b;
+    background:#101b1e;
+    color:#e9f4f5;
+    font-weight:800;
 }
 
-.btn.primary{
-  background:linear-gradient(90deg,#0ba7b3,#087f89);
-  border-color:#19c5cf
+.secondary:active{
+    transform:scale(.985);
 }
 
-.btn.small{
-  padding:10px;
-  font-size:11px
+.button-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px
+/* =========================
+   STATS
+========================= */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
 .stat{
-  text-align:center;
-  background:#0e1315;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:12px 4px
+    padding:16px;
+    border-radius:16px;
+    background:#0e181b;
+    border:1px solid #1e3539;
 }
 
-.stat b{
-  display:block;
-  font-size:22px
+.stat-value{
+    font-size:26px;
+    font-weight:900;
+    color:#f4f7f8;
 }
 
-.stat span{
-  font-size:9px;
-  color:var(--muted);
-  letter-spacing:1px
+.stat-label{
+    margin-top:4px;
+    color:#91a8ab;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+/* =========================
+   LEVEL
+========================= */
+
+.level-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.level-number{
+    font-size:28px;
+    font-weight:900;
+}
+
+.level-title{
+    color:#19d7df;
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+}
+
+.xp-text{
+    color:#aebfc2;
+    font-size:13px;
 }
 
 .progress{
-  height:8px;
-  background:#273134;
-  border-radius:99px;
-  overflow:hidden
+    height:10px;
+    background:#172629;
+    border-radius:99px;
+    overflow:hidden;
 }
 
-.progress i{
-  display:block;
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,var(--cyan),var(--cyan2))
+.progress-fill{
+    height:100%;
+    width:0%;
+    border-radius:99px;
+    background:linear-gradient(90deg,#0ca8b1,#39e5eb);
+    transition:width .4s ease;
 }
 
-.weekLine{
-  display:flex;
-  justify-content:space-between;
-  margin:8px 0;
-  color:#adb6b8;
-  font-size:11px
+/* =========================
+   SETTINGS
+========================= */
+
+.setting-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid #1b3034;
 }
 
-.calendarHead{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px
+.setting-row:last-child{
+    border-bottom:0;
 }
 
-.calendarHead button{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:#12191b;
-  border:1px solid #314044;
-  color:#9edce0;
-  font-size:23px
+.setting-label{
+    font-weight:800;
 }
 
-.month{
-  font-size:16px;
-  font-weight:900
+.setting-description{
+    margin-top:3px;
+    color:#8fa5a8;
+    font-size:12px;
 }
 
-.weekdays,.days{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px
+.weight-control{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-.weekdays div{
-  text-align:center;
-  font-size:9px;
-  color:#687579
+.weight-control input{
+    width:76px;
+    height:42px;
+    padding:0 10px;
+    border:1px solid #31565b;
+    border-radius:10px;
+    background:#0b1416;
+    color:white;
+    text-align:center;
+    outline:none;
 }
 
-.day{
-  height:36px;
-  border:1px solid #263235;
-  border-radius:9px;
-  background:#0b1012;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:11px
+.weight-control select{
+    height:42px;
+    border:1px solid #31565b;
+    border-radius:10px;
+    background:#0b1416;
+    color:white;
+    padding:0 8px;
 }
 
-.day.today{
-  border-color:var(--cyan2);
-  color:var(--cyan2)
+/* =========================
+   OVERVIEW
+========================= */
+
+.page-heading{
+    margin-bottom:18px;
 }
 
-.day.done{
-  background:#08363a;
-  border-color:var(--cyan);
-  font-weight:900
+.page-heading h2{
+    margin:0;
+    font-size:29px;
+    font-weight:900;
 }
 
-.recovery{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px
+.page-heading p{
+    margin:7px 0 0;
+    color:#9eb1b4;
+    font-size:14px;
 }
 
-.recover{
-  padding:11px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:#101618
+.exercise-list{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
 }
 
-.recover b{
-  font-size:12px
+.exercise-card{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    padding:12px;
+    background:#0e181b;
+    border:1px solid #20383c;
+    border-radius:17px;
+    color:white;
+    text-align:left;
 }
 
-.recover span{
-  float:right;
-  font-size:9px
+.exercise-card:active{
+    transform:scale(.99);
 }
 
-.ready{
-  color:#40c9a0
+.exercise-thumb{
+    width:78px;
+    height:66px;
+    flex:0 0 78px;
+    border-radius:12px;
+    background:#142326;
+    overflow:hidden;
+    border:1px solid #28464b;
 }
 
-.recovering{
-  color:#c5aa4d
+.exercise-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.trained{
-  color:#c86a72
+.exercise-info{
+    min-width:0;
+    flex:1;
 }
 
-.field{
-  margin-bottom:9px
+.exercise-number{
+    color:#19d7df;
+    font-size:11px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.7px;
 }
 
-.field label{
-  display:block;
-  font-size:9px;
-  color:var(--muted);
-  margin-bottom:5px;
-  letter-spacing:.6px
+.exercise-name{
+    margin-top:3px;
+    font-size:17px;
+    font-weight:850;
 }
 
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  background:#0a0e10;
-  border:1px solid #303b3f;
-  border-radius:10px;
-  padding:10px;
-  outline:none
+.exercise-detail{
+    margin-top:4px;
+    color:#8fa5a8;
+    font-size:12px;
 }
 
-.field textarea{
-  min-height:75px
+.chevron{
+    color:#6f898d;
+    font-size:22px;
 }
 
-.detailTop{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:11px
+/* =========================
+   EXERCISE DETAIL
+========================= */
+
+.detail-image{
+    width:100%;
+    aspect-ratio:16/8;
+    object-fit:cover;
+    display:block;
+    border-radius:18px;
+    border:1px solid #28464b;
+    background:#101b1e;
 }
 
-.back{
-  background:none;
-  border:0;
-  color:#c7d0d2;
-  padding:7px 0;
-  font-size:13px
+.detail-title{
+    margin:18px 0 4px;
+    font-size:30px;
+    font-weight:900;
 }
 
-.detailTitle{
-  text-align:center;
-  font-size:15px;
-  font-weight:900
+.detail-subtitle{
+    color:#19d7df;
+    font-weight:800;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
 }
 
-.dots{
-  background:none;
-  border:0;
-  color:#aeb8ba;
-  font-size:20px
-}
-
-.exerciseGrid{
-  display:grid;
-  gap:11px
-}
-
-.exerciseName{
-  font-size:21px;
-  font-weight:900;
-  margin:10px 0 4px
+.tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:14px;
 }
 
 .tag{
-  display:inline-block;
-  padding:5px 9px;
-  border:1px solid #31575b;
-  background:#09282c;
-  border-radius:99px;
-  color:#a7edf0;
-  font-size:9px;
-  font-weight:900
+    padding:7px 10px;
+    border-radius:999px;
+    background:#102124;
+    border:1px solid #29494e;
+    color:#bfecef;
+    font-size:12px;
+    font-weight:750;
 }
 
-.infoRows{
-  margin-top:8px
+.muscle-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
-.infoRow{
-  display:flex;
-  gap:11px;
-  padding:11px 0;
-  border-bottom:1px solid #273033
+.muscle-box{
+    background:#0d171a;
+    border:1px solid #1f373b;
+    border-radius:15px;
+    padding:13px;
 }
 
-.infoRow:last-child{
-  border-bottom:0
+.muscle-box-title{
+    color:#7e999d;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    font-size:10px;
+    font-weight:900;
+    margin-bottom:7px;
 }
 
-.icon{
-  width:26px;
-  color:var(--cyan2);
-  font-size:18px;
-  text-align:center
+.muscle-box-value{
+    font-weight:850;
+    font-size:14px;
 }
 
-.infoRow small{
-  display:block;
-  color:var(--muted);
-  font-size:9px
+.about-text,
+.tips-list{
+    color:#b6c6c8;
+    font-size:14px;
+    line-height:1.55;
 }
 
-.infoRow b{
-  font-size:11px
+.tips-list{
+    margin:0;
+    padding-left:20px;
 }
 
-.muscleCard{
-  padding:0;
-  overflow:hidden
+.detail-actions{
+    display:grid;
+    gap:10px;
+    margin-top:18px;
 }
 
-.tabs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  background:#191e21;
-  border:1px solid #293437;
-  border-radius:12px;
-  padding:2px;
-  margin:10px 0
+.detail-nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
-.tabs button{
-  border:0;
-  background:none;
-  padding:8px;
-  border-radius:10px;
-  color:#818b8e;
-  font-size:10px
+/* =========================
+   WORKOUT SCREEN
+========================= */
+
+.workout-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
 }
 
-.tabs button.active{
-  background:#087d87;
-  color:#dffcff
-}
-
-.legend{
-  display:grid;
-  gap:6px;
-  padding:10px 13px 15px
-}
-
-.legend div{
-  font-size:10px;
-  color:#aab4b6
-}
-
-.legend i{
-  display:inline-block;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--cyan2);
-  margin-right:7px
-}
-
-.legend i.sec{
-  background:#55a9ae
-}
-
-.legend i.other{
-  background:#50585b
-}
-
-.aboutText{
-  font-size:11px;
-  line-height:1.55;
-  color:#aab3b5
-}
-
-.aboutGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-  margin-top:11px
-}
-
-.aboutMini{
-  border:1px solid var(--line);
-  background:#151a1d;
-  border-radius:11px;
-  padding:11px
-}
-
-.aboutMini b{
-  font-size:11px
-}
-
-.aboutMini span{
-  display:block;
-  color:#8c9698;
-  font-size:9px;
-  margin-top:6px;
-  line-height:1.5
-}
-
-.tips{
-  display:flex;
-  gap:10px;
-  align-items:center
-}
-
-.bulb{
-  font-size:22px;
-  color:#cfd55e
-}
-
-.tips b{
-  font-size:10px;
-  color:var(--cyan2)
-}
-
-.tips p{
-  font-size:10px;
-  color:#aab4b6;
-  margin:3px 0 0
-}
-
-.navExercises{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px
-}
-
-.navExercises button{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:#171d1f;
-  border:1px solid #303a3d;
-  font-size:20px
-}
-
-.navText{
-  text-align:center
-}
-
-.navText small{
-  display:block;
-  color:#7d888b;
-  font-size:9px
-}
-
-.navText b{
-  font-size:10px
-}
-
-.sets{
-  display:grid;
-  gap:7px
-}
-
-.setRow{
-  display:grid;
-  grid-template-columns:43px 1fr 70px;
-  gap:6px;
-  align-items:center
-}
-
-.setNo{
-  font-size:10px;
-  color:#899396
-}
-
-.repBox{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  background:#0a0e10;
-  border:1px solid #303a3d;
-  border-radius:10px;
-  overflow:hidden
-}
-
-.repBox button{
-  width:100%;
-  height:20px;
-  border:0;
-  background:#141b1d;
-  color:#83cdd1;
-  font-size:13px;
-  line-height:15px
-}
-
-.repBox strong{
-  width:100%;
-  text-align:center;
-  border-top:1px solid #283235;
-  border-bottom:1px solid #283235;
-  background:#0a0e10;
-  padding:5px;
-  font-weight:900;
-  font-size:13px
-}
-
-.doneBtn{
-  height:52px;
-  border-radius:10px;
-  border:1px solid #344043;
-  background:#171d1f;
-  font-size:10px;
-  font-weight:900
-}
-
-.doneBtn.done{
-  background:#0b4a4e;
-  border-color:var(--cyan2)
-}
-
-.difficulty{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:5px;
-  margin-top:9px
-}
-
-.difficulty button{
-  padding:8px 2px;
-  border-radius:9px;
-  border:1px solid #303a3d;
-  background:#141a1c;
-  font-size:8px
-}
-
-.difficulty button.active{
-  border-color:var(--cyan2);
-  background:#07383d;
-  color:#cfffff
+.workout-top h2{
+    margin:0;
+    font-size:24px;
+    font-weight:900;
 }
 
 .timer{
-  position:fixed;
-  left:50%;
-  bottom:12px;
-  transform:translateX(-50%);
-  width:min(454px,calc(100% - 26px));
-  background:#101719;
-  border:1px solid var(--cyan);
-  border-radius:16px;
-  padding:12px;
-  text-align:center;
-  z-index:50;
-  box-shadow:0 15px 45px #000d
+    font-variant-numeric:tabular-nums;
+    color:#19d7df;
+    font-size:20px;
+    font-weight:900;
 }
 
-.timer strong{
-  display:block;
-  font-size:30px;
-  color:var(--cyan2)
+.current-exercise{
+    text-align:center;
+    margin-bottom:15px;
 }
 
-.timer button{
-  width:auto;
-  margin:4px 3px;
-  padding:8px 12px
+.current-exercise-name{
+    font-size:28px;
+    font-weight:900;
 }
 
-.hidden{
-  display:none!important
+.current-exercise-meta{
+    margin-top:5px;
+    color:#91a8ab;
+    font-size:13px;
 }
 
-.graph{
-  height:140px;
-  display:flex;
-  align-items:flex-end;
-  gap:7px;
-  border-bottom:1px solid #344044;
-  padding:8px 3px 0
+.rep-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:16px 0;
+    padding:18px;
+    border-radius:20px;
+    background:#0d1719;
+    border:1px solid #223b3f;
 }
 
-.graph i{
-  flex:1;
-  background:linear-gradient(to top,#07373b,#11bfc8);
-  border-radius:5px 5px 0 0;
-  min-height:4px
+.rep-button{
+    width:72px;
+    height:50px;
+    border-radius:14px;
+    border:1px solid #2d555a;
+    background:#132427;
+    color:#dffeff;
+    font-size:28px;
+    font-weight:900;
 }
 
-.labels{
-  display:flex;
-  gap:7px
+.rep-button:active{
+    background:#19383c;
+    transform:scale(.95);
 }
 
-.labels span{
-  flex:1;
-  text-align:center;
-  font-size:8px;
-  color:#748084
+.rep-number{
+    min-width:120px;
+    text-align:center;
+    font-size:60px;
+    line-height:1;
+    font-weight:950;
+    padding:13px 0;
+    font-variant-numeric:tabular-nums;
 }
 
-.overviewHero{
-  padding:18px
+.rep-label{
+    margin-top:4px;
+    color:#829a9e;
+    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:1px;
+    font-weight:800;
 }
 
-.overviewTitle{
-  font-size:25px;
-  font-weight:900;
-  margin:6px 0
+.set-list{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    margin-bottom:15px;
 }
 
-.overviewList{
-  display:grid;
-  gap:8px
+.set-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:13px 14px;
+    border-radius:14px;
+    background:#0d1719;
+    border:1px solid #20383c;
 }
 
-.overviewItem{
-  width:100%;
-  display:grid;
-  grid-template-columns:34px 88px 1fr 20px;
-  gap:8px;
-  align-items:center;
-  text-align:left;
-  padding:8px;
-  background:#0b1012;
-  border:1px solid #293437;
-  border-radius:14px;
-  color:var(--text)
+.set-row.locked{
+    opacity:.45;
 }
 
-.overviewItem:active{
-  border-color:var(--cyan2)
+.set-row.completed{
+    border-color:#19d7df;
+    background:#0e2022;
 }
 
-.exerciseNum{
-  width:26px;
-  height:26px;
-  border:1px solid var(--cyan2);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--cyan2);
-  font-size:11px;
-  font-weight:900
+.set-name{
+    font-weight:850;
 }
 
-.overviewThumb{
-  width:88px;
-  height:64px;
-  object-fit:cover;
-  border-radius:10px;
-  background:#070c0e
+.set-status{
+    font-size:12px;
+    color:#829a9e;
 }
 
-.overviewInfo b{
-  font-size:11px;
-  display:block
+.set-row.completed .set-status{
+    color:#35e4eb;
+    font-weight:800;
 }
 
-.overviewInfo small{
-  display:block;
-  color:#8d989b;
-  font-size:8px;
-  margin-top:4px;
-  line-height:1.35
+.complete-set{
+    width:100%;
+    min-height:52px;
+    border-radius:15px;
+    border:1px solid #31565b;
+    background:#112124;
+    color:#eafcfd;
+    font-weight:900;
 }
 
-.overviewArrow{
-  font-size:21px;
-  color:#aeb8ba
+.complete-set:disabled{
+    opacity:.35;
 }
 
-.realExerciseImage{
-  height:235px;
-  border-radius:16px;
-  background:#070c0e;
-  border:1px solid #273235;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center
+.complete-set:active:not(:disabled){
+    transform:scale(.985);
 }
 
-.realExerciseImage img{
-  width:100%;
-  height:100%;
-  object-fit:contain
+/* =========================
+   DIFFICULTY
+========================= */
+
+.difficulty-box{
+    margin-top:15px;
+    padding:15px;
+    border-radius:17px;
+    background:#0e181b;
+    border:1px solid #20383c;
 }
 
-.anatomyPanel{
-  height:390px;
-  border-radius:16px;
-  background:radial-gradient(
-    circle at 50% 42%,
-    #1d2528 0,
-    #0b1012 62%,
-    #070a0c 100%
-  );
-  border:1px solid #273235;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden
+.difficulty-title{
+    font-weight:900;
+    margin-bottom:10px;
 }
 
-.anatomyPanel img{
-  width:100%;
-  height:100%;
-  object-fit:contain
+.difficulty-buttons{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
 }
 
-.anatomyCaption{
-  text-align:center;
-  color:#7f8a8d;
-  font-size:9px;
-  margin-top:5px
+.difficulty-btn{
+    min-height:45px;
+    border-radius:12px;
+    border:1px solid #29494e;
+    background:#111f22;
+    color:#d7e8ea;
+    font-weight:800;
 }
 
-.detailMuscleRows{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-  margin-top:10px
+.difficulty-btn.selected{
+    border-color:#19d7df;
+    background:#12383b;
+    color:#69f3f7;
 }
 
-.detailMuscle{
-  padding:10px;
-  border:1px solid #273235;
-  border-radius:11px;
-  background:#101618
+/* =========================
+   REST TIMER
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(8px);
 }
 
-.detailMuscle b{
-  display:block;
-  font-size:10px
+.modal.active{
+    display:flex;
 }
 
-.detailMuscle span{
-  font-size:8px;
-  color:#7f898c
+.rest-card{
+    width:100%;
+    max-width:400px;
+    padding:25px;
+    border-radius:24px;
+    background:#0d1719;
+    border:1px solid #2b4c51;
+    text-align:center;
+    box-shadow:0 25px 70px rgba(0,0,0,.5);
 }
 
-.primaryDot,
-.secondaryDot{
-  display:inline-block;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  margin-right:5px;
-  background:var(--cyan2)
+.rest-label{
+    color:#19d7df;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-size:12px;
+    font-weight:900;
 }
 
-.secondaryDot{
-  background:#58a9ae
+.rest-time{
+    margin:10px 0 20px;
+    font-size:70px;
+    line-height:1;
+    font-weight:950;
+    font-variant-numeric:tabular-nums;
 }
 
-@media(max-width:360px){
-  .app{
-    font-size:95%
-  }
+.rest-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
 
-  .overviewItem{
-    grid-template-columns:30px 78px 1fr 18px
-  }
+.pause-btn{
+    width:100%;
+    min-height:50px;
+    border-radius:14px;
+    border:1px solid #31565b;
+    background:#122023;
+    color:#effbfc;
+    font-weight:850;
+}
 
-  .overviewThumb{
-    width:78px
-  }
+.skip-btn{
+    width:100%;
+    min-height:50px;
+    border-radius:14px;
+    border:0;
+    background:#19d7df;
+    color:#041113;
+    font-weight:950;
+}
 
-  .realExerciseImage{
-    height:215px
-  }
+/* =========================
+   RECOVERY
+========================= */
 
-  .anatomyPanel{
-    height:350px
-  }
+.recovery-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid #1b3034;
+}
+
+.recovery-row:last-child{
+    border-bottom:0;
+}
+
+.recovery-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.recovery-dot{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+}
+
+.ready{
+    background:#36e18b;
+    box-shadow:0 0 10px rgba(54,225,139,.35);
+}
+
+.recovering{
+    background:#e5c34a;
+    box-shadow:0 0 10px rgba(229,195,74,.25);
+}
+
+.trained{
+    background:#ed4d61;
+    box-shadow:0 0 10px rgba(237,77,97,.25);
+}
+
+.recovery-status{
+    font-size:12px;
+    font-weight:850;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.big-number{
+    font-size:38px;
+    font-weight:950;
+}
+
+.chart{
+    height:170px;
+    display:flex;
+    align-items:flex-end;
+    gap:7px;
+    padding-top:15px;
+}
+
+.bar{
+    flex:1;
+    min-width:8px;
+    border-radius:7px 7px 2px 2px;
+    background:linear-gradient(to top,#0ca8b1,#39e5eb);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:600px;
+    z-index:30;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+    background:rgba(8,13,15,.96);
+    border-top:1px solid #1b3034;
+    backdrop-filter:blur(14px);
+}
+
+.nav-btn{
+    border:0;
+    background:transparent;
+    color:#71888b;
+    min-height:48px;
+    font-size:11px;
+    font-weight:800;
+}
+
+.nav-btn.active{
+    color:#19d7df;
+}
+
+.nav-icon{
+    display:block;
+    font-size:18px;
+    margin-bottom:3px;
+}
+
+/* =========================
+   SMALL DEVICES
+========================= */
+
+@media(max-width:370px){
+    .hero h1{
+        font-size:33px;
+    }
+
+    .current-exercise-name{
+        font-size:24px;
+    }
+
+    .rep-number{
+        font-size:52px;
+    }
+}
+
+/* =========================
+   SAFE AREA
+========================= */
+
+.screen{
+    padding-bottom:105px;
 }
 </style>
 </head>
@@ -869,2629 +914,3015 @@ h1{
 
 <div class="app">
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header">
+    <button class="icon-btn" onclick="goBack()" aria-label="Back">
+        ‹
+    </button>
 
-  <div class="logo"></div>
+    <div class="header-title">
+        <span>KETTLEBELL</span> WORKOUT
+    </div>
 
-  <div class="brand">
-    MY WORKOUT
-  </div>
-
-  <h1>
-    Kettlebell Workout
-  </h1>
-
-  <div class="subtitle">
-    Your personal adaptive training programme
-  </div>
-
+    <button class="icon-btn" onclick="show('settings')" aria-label="Settings">
+        ⚙
+    </button>
 </header>
 
 
-<!-- HOME -->
+<!-- =========================
+     HOME SCREEN
+========================= -->
 
 <section id="home" class="screen active">
 
-  <div class="card hero">
-
-    <div class="eyebrow">
-      TODAY'S WORKOUT
+    <div class="hero">
+        <h1>Kettlebell<br>Workout</h1>
+        <p>Build strength. Track progress. Get stronger.</p>
     </div>
 
-    <div class="heroTitle">
-      Week 1 • Workout 2
-    </div>
+    <div class="card">
 
-    <div class="meta">
-      7 exercises • 21 sets • ~30 minutes
-    </div>
+        <div class="card-title">
+            Today's Workout
+        </div>
 
-    <button
-      class="btn primary"
-      onclick="startWorkout()"
-    >
-      ▶ START WORKOUT
-    </button>
+        <div class="workout-name">
+            Full Body Strength
+        </div>
 
-    <button
-      class="btn"
-      style="margin-top:8px"
-      onclick="showPreview()"
-    >
-      SEE WORKOUT
-    </button>
+        <div class="workout-meta">
+            7 exercises · 20–45 min
+        </div>
 
-  </div>
+        <div style="height:15px"></div>
 
+        <div class="button-row">
 
-  <div class="stats card">
+            <button class="secondary"
+                    onclick="show('overview')">
+                SEE WORKOUT
+            </button>
 
-    <div class="stat">
-      <b id="workoutsStat">0</b>
-      <span>WORKOUTS</span>
-    </div>
+            <button class="primary"
+                    onclick="startWorkout()">
+                START WORKOUT
+            </button>
 
-    <div class="stat">
-      <b id="pointsStat">0</b>
-      <span>POINTS</span>
-    </div>
-
-    <div class="stat">
-      <b id="streakStat">0</b>
-      <span>STREAK</span>
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="sectionTitle">
-      🎯 THIS WEEK
-    </div>
-
-    <div class="weekLine">
-      <span id="weekCount">
-        0 / 4 workouts
-      </span>
-
-      <span id="weekRemain">
-        4 remaining
-      </span>
-    </div>
-
-    <div class="progress">
-      <i id="weekProgress"></i>
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="sectionTitle">
-      WORKOUT CALENDAR
-    </div>
-
-    <div class="calendarHead">
-
-      <button onclick="changeMonth(-1)">
-        ‹
-      </button>
-
-      <div
-        class="month"
-        id="monthTitle"
-      ></div>
-
-      <button onclick="changeMonth(1)">
-        ›
-      </button>
+        </div>
 
     </div>
 
-    <div class="weekdays">
-      <div>SUN</div>
-      <div>MON</div>
-      <div>TUE</div>
-      <div>WED</div>
-      <div>THU</div>
-      <div>FRI</div>
-      <div>SAT</div>
-    </div>
 
-    <div
-      class="days"
-      id="days"
-    ></div>
+    <!-- LEVEL -->
 
-  </div>
+    <div class="card">
 
+        <div class="level-header">
 
-  <div class="card">
+            <div>
+                <div class="level-number">
+                    LEVEL <span id="homeLevel">1</span>
+                </div>
 
-    <div class="sectionTitle">
-      LEVEL & XP
-    </div>
+                <div class="level-title" id="homeLevelTitle">
+                    Beginner
+                </div>
+            </div>
 
-    <div class="weekLine">
+            <div class="xp-text">
+                <span id="homeXP">0</span> XP
+            </div>
 
-      <span id="levelTitle">
-        Level 1 • Beginner
-      </span>
+        </div>
 
-      <span id="xpLabel">
-        0 XP
-      </span>
+        <div class="progress">
+            <div id="homeXPBar"
+                 class="progress-fill"></div>
+        </div>
 
     </div>
 
-    <div class="progress">
-      <i id="xpProgress"></i>
-    </div>
 
-    <div class="weekLine">
+    <!-- WEEKLY TARGET -->
 
-      <span id="xpFrom">
-        0 XP
-      </span>
+    <div class="card">
 
-      <span id="xpTo">
-        250 XP to Level 2
-      </span>
+        <div class="card-title">
+            Weekly Target
+        </div>
 
-    </div>
+        <div class="level-header">
 
-  </div>
+            <div>
+                <div class="big-number">
+                    <span id="weekDone">0</span>/4
+                </div>
 
+                <div class="workout-meta">
+                    workouts completed
+                </div>
+            </div>
 
-  <div class="card">
+            <div style="text-align:right">
+                <div class="level-title">
+                    <span id="weekRemaining">4</span>
+                    remaining
+                </div>
+            </div>
 
-    <div class="sectionTitle">
-      MUSCLE RECOVERY
-    </div>
+        </div>
 
-    <div
-      class="recovery"
-      id="recovery"
-    ></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="sectionTitle">
-      PROGRESS
-    </div>
-
-    <div
-      class="graph"
-      id="graph"
-    ></div>
-
-    <div
-      class="labels"
-      id="labels"
-    ></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="sectionTitle">
-      EQUIPMENT
-    </div>
-
-    <div class="field">
-
-      <label>
-        KETTLEBELL WEIGHT
-      </label>
-
-      <input
-        id="weight"
-        type="number"
-        min="1"
-        step=".5"
-        onchange="saveSettings()"
-      >
+        <div class="progress">
+            <div id="weekBar"
+                 class="progress-fill"></div>
+        </div>
 
     </div>
 
-    <div class="field">
 
-      <label>
-        UNIT
-      </label>
+    <!-- QUICK STATS -->
 
-      <select
-        id="unit"
-        onchange="saveSettings()"
-      >
+    <div class="card">
 
-        <option value="lb">
-          lb
-        </option>
+        <div class="card-title">
+            Your Progress
+        </div>
 
-        <option value="kg">
-          kg
-        </option>
+        <div class="stats-grid">
 
-      </select>
+            <div class="stat">
+                <div class="stat-value"
+                     id="statWorkouts">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Workouts
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="statReps">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Total Reps
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="statVolume">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Weight Lifted
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="statPoints">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Points
+                </div>
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- WORKOUT OVERVIEW -->
+<!-- =========================
+     WORKOUT OVERVIEW
+========================= -->
 
-<section
-  id="preview"
-  class="screen"
->
+<section id="overview" class="screen">
 
-  <div class="detailTop">
+    <div class="page-heading">
 
-    <button
-      class="back"
-      onclick="goHome()"
-    >
-      ‹ Back
+        <h2>Workout Overview</h2>
+
+        <p>
+            Tap an exercise to see instructions,
+            muscles and previous performance.
+        </p>
+
+    </div>
+
+    <div id="exerciseList"
+         class="exercise-list">
+    </div>
+
+    <div style="height:15px"></div>
+
+    <button class="primary"
+            onclick="startWorkout()">
+        START WORKOUT
     </button>
-
-    <div class="detailTitle">
-      Workout Overview
-    </div>
-
-    <button class="dots">
-      ⋮
-    </button>
-
-  </div>
-
-
-  <div class="card overviewHero">
-
-    <div class="eyebrow">
-      TODAY'S WORKOUT
-    </div>
-
-    <div class="overviewTitle">
-      Upper Body + Abs
-    </div>
-
-    <div class="meta">
-      7 exercises • 21 sets • ~30 minutes
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div
-      id="previewList"
-      class="overviewList"
-    ></div>
-
-  </div>
-
-
-  <button
-    class="btn primary"
-    onclick="startWorkout()"
-  >
-    ▶ START WORKOUT
-  </button>
 
 </section>
 
 
-<!-- EXERCISE DETAIL -->
+<!-- =========================
+     EXERCISE DETAIL
+========================= -->
 
-<section
-  id="exerciseDetail"
-  class="screen"
->
+<section id="exerciseDetail" class="screen">
 
-  <div class="detailTop">
-
-    <button
-      class="back"
-      onclick="showPreview()"
-    >
-      ‹ Workout
-    </button>
-
-    <div
-      class="detailTitle"
-      id="exerciseHeader"
-    >
-      Exercise
-    </div>
-
-    <button class="dots">
-      ⋮
-    </button>
-
-  </div>
-
-
-  <div id="exerciseDetailContent"></div>
+    <div id="detailCard"></div>
 
 </section>
 
 
-<!-- WORKOUT -->
+<!-- =========================
+     ACTIVE WORKOUT
+========================= -->
 
-<section
-  id="workout"
-  class="screen"
->
+<section id="workout" class="screen">
 
-  <div class="detailTop">
+    <div class="workout-top">
 
-    <button
-      class="back"
-      onclick="goHome()"
-    >
-      ‹ Back
+        <h2>Workout</h2>
+
+        <div class="timer"
+             id="workoutTimer">
+            00:00
+        </div>
+
+    </div>
+
+
+    <div class="progress"
+         style="margin-bottom:18px">
+
+        <div id="workoutProgress"
+             class="progress-fill">
+        </div>
+
+    </div>
+
+
+    <div class="current-exercise">
+
+        <div class="current-exercise-name"
+             id="currentExerciseName">
+            Push-Ups
+        </div>
+
+        <div class="current-exercise-meta"
+             id="currentExerciseMeta">
+            3 sets · 10 reps
+        </div>
+
+    </div>
+
+
+    <!-- REP CONTROLS -->
+
+    <div class="rep-box">
+
+        <button class="rep-button"
+                onclick="changeReps(1)">
+            ↑
+        </button>
+
+        <div class="rep-number"
+             id="repNumber">
+            10
+        </div>
+
+        <button class="rep-button"
+                onclick="changeReps(-1)">
+            ↓
+        </button>
+
+        <div class="rep-label">
+            Reps
+        </div>
+
+    </div>
+
+
+    <!-- SET LIST -->
+
+    <div id="setList"
+         class="set-list">
+    </div>
+
+
+    <button id="completeSetButton"
+            class="complete-set"
+            onclick="completeCurrentSet()">
+        COMPLETE SET 1
     </button>
 
-    <div class="detailTitle">
-      Workout
+
+    <!-- DIFFICULTY -->
+
+    <div class="difficulty-box">
+
+        <div class="difficulty-title">
+            How did that feel?
+        </div>
+
+        <div class="difficulty-buttons">
+
+            <button class="difficulty-btn"
+                    onclick="setDifficulty('Easy',this)">
+                Easy
+            </button>
+
+            <button class="difficulty-btn"
+                    onclick="setDifficulty('Good',this)">
+                Good
+            </button>
+
+            <button class="difficulty-btn"
+                    onclick="setDifficulty('Hard',this)">
+                Hard
+            </button>
+
+            <button class="difficulty-btn"
+                    onclick="setDifficulty('Very Hard',this)">
+                Very Hard
+            </button>
+
+        </div>
+
     </div>
 
-    <button class="dots">
-      ⋮
+
+    <div style="height:12px"></div>
+
+    <button class="secondary"
+            onclick="pauseWorkout()">
+        PAUSE WORKOUT
     </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="stats">
-
-      <div class="stat">
-        <b id="doneExercises">
-          0/7
-        </b>
-
-        <span>
-          EXERCISES
-        </span>
-      </div>
-
-      <div class="stat">
-        <b id="sessionPoints">
-          0
-        </b>
-
-        <span>
-          POINTS
-        </span>
-      </div>
-
-      <div class="stat">
-
-        <b id="weightDisplay">
-          20
-        </b>
-
-        <span id="unitDisplay">
-          LB
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div
-      style="margin-top:12px"
-      class="progress"
-    >
-
-      <i id="workoutProgress"></i>
-
-    </div>
-
-  </div>
-
-
-  <div id="workoutList"></div>
-
-
-  <div class="card">
-
-    <div class="sectionTitle">
-      WORKOUT NOTES
-    </div>
-
-    <div class="field">
-
-      <textarea
-        id="notes"
-        placeholder="How did today's workout feel?"
-      ></textarea>
-
-    </div>
-
-  </div>
-
-
-  <button
-    class="btn primary"
-    onclick="finishWorkout()"
-  >
-    ✓ FINISH & SAVE WORKOUT
-  </button>
 
 </section>
 
 
-<!-- REST TIMER -->
+<!-- =========================
+     PROGRESS SCREEN
+========================= -->
 
-<div
-  id="timer"
-  class="timer hidden"
->
+<section id="progressScreen" class="screen">
 
-  <div class="eyebrow">
-    REST
-  </div>
+    <div class="page-heading">
 
-  <strong id="timerValue">
-    30
-  </strong>
+        <h2>Progress</h2>
 
-  <button
-    class="btn primary"
-    onclick="toggleTimer()"
-    id="timerPause"
-  >
-    PAUSE
-  </button>
+        <p>
+            Track your training history and improvements.
+        </p>
 
-  <button
-    class="btn"
-    onclick="skipRest()"
-  >
-    SKIP REST
-  </button>
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Level
+        </div>
+
+        <div class="level-header">
+
+            <div>
+                <div class="level-number">
+                    LEVEL <span id="progressLevel">1</span>
+                </div>
+
+                <div class="level-title"
+                     id="progressLevelTitle">
+                    Beginner
+                </div>
+            </div>
+
+            <div class="xp-text">
+                <span id="progressXP">0</span> XP
+            </div>
+
+        </div>
+
+        <div class="progress">
+            <div id="progressXPBar"
+                 class="progress-fill">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Training Stats
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="progressWorkouts">
+                    0
+                </div>
+                <div class="stat-label">
+                    Workouts
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="progressReps">
+                    0
+                </div>
+                <div class="stat-label">
+                    Reps
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="progressVolume">
+                    0
+                </div>
+                <div class="stat-label">
+                    Weight Lifted
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value"
+                     id="progressPoints">
+                    0
+                </div>
+                <div class="stat-label">
+                    Points
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Weekly Activity
+        </div>
+
+        <div id="weeklyChart"
+             class="chart">
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Muscle Recovery
+        </div>
+
+        <div class="recovery-row">
+
+            <div class="recovery-left">
+                <div class="recovery-dot ready"></div>
+                <strong>Chest</strong>
+            </div>
+
+            <div class="recovery-status">
+                Ready
+            </div>
+
+        </div>
+
+        <div class="recovery-row">
+
+            <div class="recovery-left">
+                <div class="recovery-dot ready"></div>
+                <strong>Shoulders</strong>
+            </div>
+
+            <div class="recovery-status">
+                Ready
+            </div>
+
+        </div>
+
+        <div class="recovery-row">
+
+            <div class="recovery-left">
+                <div class="recovery-dot recovering"></div>
+                <strong>Arms</strong>
+            </div>
+
+            <div class="recovery-status">
+                Recovering
+            </div>
+
+        </div>
+
+        <div class="recovery-row">
+
+            <div class="recovery-left">
+                <div class="recovery-dot trained"></div>
+                <strong>Abs</strong>
+            </div>
+
+            <div class="recovery-status">
+                Trained recently
+            </div>
+
+        </div>
+
+        <div class="recovery-row">
+
+            <div class="recovery-left">
+                <div class="recovery-dot ready"></div>
+                <strong>Legs</strong>
+            </div>
+
+            <div class="recovery-status">
+                Ready
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<section id="settings" class="screen">
+
+    <div class="page-heading">
+
+        <h2>Settings</h2>
+
+        <p>
+            Personalise your workout.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="setting-row">
+
+            <div>
+                <div class="setting-label">
+                    Kettlebell Weight
+                </div>
+
+                <div class="setting-description">
+                    Used for workout volume.
+                </div>
+            </div>
+
+            <div class="weight-control">
+
+                <input
+                    id="weightInput"
+                    type="number"
+                    min="1"
+                    step="0.5"
+                    value="20"
+                >
+
+                <select id="weightUnit">
+                    <option value="lb">lb</option>
+                    <option value="kg">kg</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div>
+                <div class="setting-label">
+                    Workout Duration
+                </div>
+
+                <div class="setting-description">
+                    Choose your session length.
+                </div>
+            </div>
+
+            <select id="durationSelect"
+                    style="
+                    height:42px;
+                    border:1px solid #31565b;
+                    border-radius:10px;
+                    background:#0b1416;
+                    color:white;
+                    padding:0 8px;
+                    ">
+
+                <option value="20">20 min</option>
+                <option value="30">30 min</option>
+                <option value="45">45 min</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            App
+        </div>
+
+        <button class="secondary"
+                onclick="resetProgress()">
+            RESET PROGRESS
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     REST MODAL
+========================= -->
+
+<div id="restModal"
+     class="modal">
+
+    <div class="rest-card">
+
+        <div class="rest-label">
+            Rest
+        </div>
+
+        <div class="rest-time"
+             id="restTime">
+            30
+        </div>
+
+        <div class="workout-meta"
+             style="margin-bottom:20px">
+            Get ready for your next set
+        </div>
+
+        <div class="rest-buttons">
+
+            <button id="pauseRestButton"
+                    class="pause-btn"
+                    onclick="toggleRestPause()">
+                PAUSE
+            </button>
+
+            <button class="skip-btn"
+                    onclick="skipRest()">
+                SKIP REST
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
 
-</div>
+<!-- =========================
+     BOTTOM NAVIGATION
+========================= -->
 
+<nav class="bottom-nav">
+
+    <button class="nav-btn active"
+            data-nav="home"
+            onclick="show('home')">
+
+        <span class="nav-icon">⌂</span>
+        Home
+
+    </button>
+
+
+    <button class="nav-btn"
+            data-nav="overview"
+            onclick="show('overview')">
+
+        <span class="nav-icon">◉</span>
+        Workout
+
+    </button>
+
+
+    <button class="nav-btn"
+            data-nav="progressScreen"
+            onclick="show('progressScreen')">
+
+        <span class="nav-icon">↗</span>
+        Progress
+
+    </button>
+
+
+    <button class="nav-btn"
+            data-nav="settings"
+            onclick="show('settings')">
+
+        <span class="nav-icon">⚙</span>
+        Settings
+
+    </button>
+
+</nav>
 
 <script>
 
+/* =====================================================
+   WORKOUT DATA
+===================================================== */
 
-/*
-====================================================
-EMBEDDED IMAGE SYSTEM
-====================================================
+const exercises = [
 
-The images are embedded directly into this HTML.
+    {
+        name:"Push-Ups",
+        slug:"push-ups",
+        equipment:"Bodyweight",
+        type:"Strength",
+        difficulty:"Beginner",
+        target:"Chest, triceps and shoulders",
+        primary:"Chest",
+        secondary:"Triceps, Shoulders, Core",
+        sets:3,
+        reps:10,
+        rest:30,
+        about:"A simple upper-body pressing movement that trains the chest while also working the triceps, shoulders and core.",
+        tips:[
+            "Keep your body in a straight line.",
+            "Brace your core throughout the movement.",
+            "Lower your chest under control.",
+            "Push through your hands to return to the start."
+        ]
+    },
 
-You therefore do NOT need an images folder.
+    {
+        name:"Kettlebell Swing",
+        slug:"kettlebell-swing",
+        equipment:"Kettlebell",
+        type:"Strength / Conditioning",
+        difficulty:"Beginner",
+        target:"Glutes and posterior chain",
+        primary:"Glutes",
+        secondary:"Hamstrings, Core, Shoulders",
+        sets:3,
+        reps:12,
+        rest:40,
+        about:"A powerful hip-hinge movement that develops the glutes and hamstrings while challenging the core and shoulders.",
+        tips:[
+            "Drive the movement from your hips.",
+            "Keep the kettlebell close to your body.",
+            "Do not squat the swing.",
+            "Finish tall with your glutes squeezed."
+        ]
+    },
 
-====================================================
-*/
+    {
+        name:"Kettlebell Floor Press",
+        slug:"kettlebell-floor-press",
+        equipment:"Kettlebell",
+        type:"Strength",
+        difficulty:"Beginner",
+        target:"Chest and triceps",
+        primary:"Chest",
+        secondary:"Triceps, Shoulders",
+        sets:3,
+        reps:10,
+        rest:40,
+        about:"A controlled pressing movement performed from the floor to develop chest and triceps strength.",
+        tips:[
+            "Keep your shoulder controlled against the floor.",
+            "Press the kettlebell vertically.",
+            "Lower slowly and under control.",
+            "Avoid letting the elbow flare excessively."
+        ]
+    },
 
-const EMBEDDED_IMAGES = {
+    {
+        name:"Kettlebell Row",
+        slug:"kettlebell-row",
+        equipment:"Kettlebell",
+        type:"Strength",
+        difficulty:"Beginner",
+        target:"Upper back and arms",
+        primary:"Back",
+        secondary:"Biceps, Rear Shoulders, Core",
+        sets:3,
+        reps:10,
+        rest:40,
+        about:"A pulling movement designed to build the upper back while also training the biceps and core.",
+        tips:[
+            "Keep your back neutral.",
+            "Pull the elbow toward your hip.",
+            "Do not twist your torso.",
+            "Lower the kettlebell slowly."
+        ]
+    },
 
-  "anatomy-front":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+    {
+        name:"Kettlebell Overhead Press",
+        slug:"kettlebell-overhead-press",
+        equipment:"Kettlebell",
+        type:"Strength",
+        difficulty:"Beginner",
+        target:"Shoulders and triceps",
+        primary:"Shoulders",
+        secondary:"Triceps, Core",
+        sets:3,
+        reps:8,
+        rest:40,
+        about:"A vertical pressing exercise that builds shoulder strength and requires the core to stabilise the body.",
+        tips:[
+            "Brace your core before pressing.",
+            "Keep the kettlebell controlled.",
+            "Press directly overhead.",
+            "Do not excessively arch your lower back."
+        ]
+    },
 
-  "anatomy-back":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+    {
+        name:"Kettlebell Russian Twist",
+        slug:"kettlebell-russian-twist",
+        equipment:"Kettlebell",
+        type:"Core",
+        difficulty:"Beginner",
+        target:"Abs and obliques",
+        primary:"Abs",
+        secondary:"Obliques, Hip Flexors",
+        sets:3,
+        reps:12,
+        rest:30,
+        about:"A rotational core exercise that trains the abdominals and obliques.",
+        tips:[
+            "Keep your chest lifted.",
+            "Rotate through your torso.",
+            "Move under control.",
+            "Avoid swinging the kettlebell."
+        ]
+    },
 
-  "push-ups":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+    {
+        name:"Kettlebell Goblet Squat",
+        slug:"kettlebell-goblet-squat",
+        equipment:"Kettlebell",
+        type:"Strength",
+        difficulty:"Beginner",
+        target:"Legs and glutes",
+        primary:"Quadriceps",
+        secondary:"Glutes, Hamstrings, Core",
+        sets:3,
+        reps:10,
+        rest:40,
+        about:"A beginner-friendly squat variation that develops the legs and glutes while challenging the core.",
+        tips:[
+            "Keep the kettlebell close to your chest.",
+            "Keep your chest tall.",
+            "Sit down between your hips.",
+            "Drive through your feet to stand."
+        ]
+    }
 
-  "kettlebell-swing":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+];
 
-  "kettlebell-floor-press":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
 
-  "kettlebell-row":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+/* =====================================================
+   LEVEL SYSTEM
+===================================================== */
 
-  "kettlebell-overhead-press":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+const levels = [
 
-  "kettlebell-russian-twist":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+    {
+        level:1,
+        xp:0,
+        title:"Beginner"
+    },
 
-  "kettlebell-goblet-squat":
-  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA=="
+    {
+        level:2,
+        xp:250,
+        title:"Getting Started"
+    },
+
+    {
+        level:3,
+        xp:600,
+        title:"Building Strength"
+    },
+
+    {
+        level:4,
+        xp:1000,
+        title:"Strong"
+    },
+
+    {
+        level:5,
+        xp:1500,
+        title:"Advanced"
+    },
+
+    {
+        level:6,
+        xp:2100,
+        title:"Dedicated"
+    },
+
+    {
+        level:7,
+        xp:2800,
+        title:"Elite"
+    },
+
+    {
+        level:8,
+        xp:3600,
+        title:"Beast"
+    },
+
+    {
+        level:9,
+        xp:4500,
+        title:"Pro"
+    },
+
+    {
+        level:10,
+        xp:5500,
+        title:"Master"
+    }
+
+];
+
+
+/* =====================================================
+   APP STATE
+===================================================== */
+
+let state = JSON.parse(
+    localStorage.getItem("kettlebellWorkoutState") || "null"
+) || {
+
+    xp:125,
+
+    totalWorkouts:0,
+
+    totalReps:0,
+
+    totalVolume:0,
+
+    totalPoints:125,
+
+    weeklyWorkouts:0,
+
+    history:[],
+
+    weight:20,
+
+    unit:"lb",
+
+    duration:20
 
 };
 
 
-/*
-====================================================
-EXERCISES
-====================================================
-*/
+let currentScreen = "home";
 
-const exercises=[
+let detailIndex = 0;
 
- {
-  name:"Push-Ups",
-  type:"Bodyweight",
-  target:"Chest",
-  difficulty:"Beginner",
-  equipment:"None",
-  kind:"Strength",
-  sets:3,
-  targetReps:10,
-  rest:45,
-  primary:["Chest","Triceps"],
-  secondary:["Shoulders","Biceps","Abs"],
-  about:"Push-ups primarily target your chest and triceps while also engaging your shoulders and core for stability.",
-  tip:"Keep your body straight, engage your core and control your movement.",
-  slug:"push-ups"
- },
+let workoutIndex = 0;
 
- {
-  name:"Kettlebell Swing",
-  type:"Kettlebell",
-  target:"Glutes",
-  difficulty:"Beginner",
-  equipment:"Kettlebell",
-  kind:"Strength",
-  sets:3,
-  targetReps:12,
-  rest:45,
-  primary:["Legs"],
-  secondary:["Abs","Shoulders"],
-  about:"A powerful hip-hinge movement that develops lower-body strength and conditioning.",
-  tip:"Drive through your hips and keep the kettlebell close to your body.",
-  slug:"kettlebell-swing"
- },
+let currentSet = 0;
 
- {
-  name:"Kettlebell Floor Press",
-  type:"Kettlebell",
-  target:"Chest",
-  difficulty:"Beginner",
-  equipment:"Kettlebell",
-  kind:"Strength",
-  sets:3,
-  targetReps:10,
-  rest:45,
-  primary:["Chest"],
-  secondary:["Triceps","Shoulders"],
-  about:"A controlled pressing movement for building chest and upper-body strength.",
-  tip:"Keep your elbow controlled and press smoothly.",
-  slug:"kettlebell-floor-press"
- },
+let currentReps = 10;
 
- {
-  name:"Kettlebell Row",
-  type:"Kettlebell",
-  target:"Back",
-  difficulty:"Beginner",
-  equipment:"Kettlebell",
-  kind:"Strength",
-  sets:3,
-  targetReps:10,
-  rest:45,
-  primary:["Back"],
-  secondary:["Biceps","Shoulders"],
-  about:"Builds pulling strength through the back and arms.",
-  tip:"Keep your back flat and pull the elbow towards your hip.",
-  slug:"kettlebell-row"
- },
+let difficulty = null;
 
- {
-  name:"Kettlebell Overhead Press",
-  type:"Kettlebell",
-  target:"Shoulders",
-  difficulty:"Beginner",
-  equipment:"Kettlebell",
-  kind:"Strength",
-  sets:3,
-  targetReps:10,
-  rest:45,
-  primary:["Shoulders"],
-  secondary:["Triceps","Abs"],
-  about:"An overhead press designed to build shoulder and upper-body strength.",
-  tip:"Brace your core and avoid leaning backwards.",
-  slug:"kettlebell-overhead-press"
- },
+let workoutSeconds = 0;
 
- {
-  name:"Kettlebell Russian Twist",
-  type:"Kettlebell",
-  target:"Abs",
-  difficulty:"Beginner",
-  equipment:"Kettlebell",
-  kind:"Strength",
-  sets:3,
-  targetReps:12,
-  rest:30,
-  primary:["Abs"],
-  secondary:["Shoulders"],
-  about:"A rotational core exercise that challenges abdominal control.",
-  tip:"Rotate through your torso rather than simply moving your arms.",
-  slug:"kettlebell-russian-twist"
- },
+let workoutInterval = null;
 
- {
-  name:"Kettlebell Goblet Squat",
-  type:"Kettlebell",
-  target:"Legs",
-  difficulty:"Beginner",
-  equipment:"Kettlebell",
-  kind:"Strength",
-  sets:3,
-  targetReps:10,
-  rest:45,
-  primary:["Legs"],
-  secondary:["Abs"],
-  about:"A beginner-friendly squat for lower-body strength and stability.",
-  tip:"Keep your chest tall and drive through your feet.",
-  slug:"kettlebell-goblet-squat"
- }
+let restSeconds = 30;
 
-];
+let restInterval = null;
+
+let restPaused = false;
+
+let session = null;
+
+let screenHistory = [];
 
 
-/*
-====================================================
-STORAGE
-====================================================
-*/
-
-let state=JSON.parse(
- localStorage.getItem("workoutState") ||
- '{"xp":125,"history":[],"weight":20,"unit":"lb","weekTarget":4}'
-);
-
-let session=JSON.parse(
- localStorage.getItem("workoutSession") ||
- "null"
-);
-
-let monthView=new Date();
-
-let timerInterval=null;
-let timerSeconds=0;
-let timerPaused=false;
-
-let detailIndex=0;
-
-
-/*
-====================================================
-SAVE
-====================================================
-*/
+/* =====================================================
+   SAVE
+===================================================== */
 
 function save(){
 
- localStorage.setItem(
-  "workoutState",
-  JSON.stringify(state)
- );
+    localStorage.setItem(
+        "kettlebellWorkoutState",
+        JSON.stringify(state)
+    );
 
 }
+
+
+/* =====================================================
+   SESSION SAVE
+===================================================== */
 
 function saveSession(){
 
- localStorage.setItem(
-  "workoutSession",
-  JSON.stringify(session)
- );
+    localStorage.setItem(
+        "kettlebellActiveSession",
+        JSON.stringify(session)
+    );/* =====================================================
+   EMBEDDED IMAGES
+   ===================================================== */
 
-}
+const EMBEDDED_IMAGES = {
+    "anatomy-front": "",
+    "anatomy-back": "",
 
-
-/*
-====================================================
-NAVIGATION
-====================================================
-*/
-
-function show(id){
-
- document
-  .querySelectorAll(".screen")
-  .forEach(x=>
-   x.classList.remove("active")
-  );
-
- document
-  .getElementById(id)
-  .classList.add("active");
-
- window.scrollTo(0,0);
-
-}
-
-function goHome(){
-
- show("home");
-
- renderHome();
-
-}
+    "push-ups": "",
+    "kettlebell-swing": "",
+    "kettlebell-floor-press": "",
+    "kettlebell-row": "",
+    "kettlebell-overhead-press": "",
+    "kettlebell-russian-twist": "",
+    "kettlebell-goblet-squat": ""
+};
 
 
-/*
-====================================================
-EQUIPMENT
-====================================================
-*/
+/* =====================================================
+   IMAGE HELPERS
+   ===================================================== */
 
-function saveSettings(){
+function assetFor(exercise){
 
- state.weight=Math.max(
-  1,
-  Number(
-   document.getElementById("weight").value
-  )||20
- );
-
- state.unit=
-  document.getElementById("unit").value;
-
- save();
-
- renderHome();
-
-}
-
-
-/*
-====================================================
-LEVEL SYSTEM
-====================================================
-*/
-
-const levels=[
-
- [0,"BEGINNER"],
- [250,"GETTING STARTED"],
- [600,"BUILDING STRENGTH"],
- [1000,"STRONG"],
- [1500,"ADVANCED"],
- [2100,"DEDICATED"],
- [2800,"ELITE"],
- [3600,"BEAST"],
- [4500,"PRO"],
- [5500,"MASTER"]
-
-];
-
-
-function levelInfo(){
-
- let idx=0;
-
- levels.forEach(
-  (l,i)=>{
-   if(state.xp>=l[0])
-    idx=i;
-  }
- );
-
- return {
-  idx,
-  current:levels[idx],
-  next:levels[idx+1]
- };
-
-}
-
-
-/*
-====================================================
-IMAGE FUNCTIONS
-====================================================
-*/
-
-function assetFor(e){
-
- return EMBEDDED_IMAGES[e.slug];
+    return EMBEDDED_IMAGES[exercise.slug] || "";
 
 }
 
 function anatomyAsset(side){
 
- return EMBEDDED_IMAGES[
-  "anatomy-"+side
- ];
+    return EMBEDDED_IMAGES["anatomy-" + side] || "";
 
 }
 
 
-/*
-====================================================
-EXERCISE INFORMATION
-====================================================
-*/
+/* =====================================================
+   SCREEN NAVIGATION
+   ===================================================== */
 
-function infoCard(e){
+function show(id){
 
- return `
+    document.querySelectorAll(".screen").forEach(screen=>{
+        screen.classList.remove("active");
+    });
 
- <div class="card">
+    const target = document.getElementById(id);
 
-   <div class="realExerciseImage">
+    if(target){
+        target.classList.add("active");
+    }
 
-     <img
-       src="${assetFor(e)}"
-       alt="${e.name}"
-     >
+    currentScreen = id;
 
-   </div>
+    document.querySelectorAll(".nav-btn").forEach(btn=>{
+        btn.classList.remove("active");
 
+        if(btn.dataset.nav === id){
+            btn.classList.add("active");
+        }
+    });
 
-   <div
-     class="eyebrow"
-     style="margin-top:10px"
-   >
-     EXERCISE
-   </div>
+    if(id === "home"){
+        renderHome();
+    }
 
+    if(id === "overview"){
+        renderOverview();
+    }
 
-   <div class="exerciseName">
-     ${e.name}
-   </div>
+    if(id === "exerciseDetail"){
+        renderExerciseDetail();
+    }
 
+    if(id === "progressScreen"){
+        renderProgress();
+    }
 
-   <span class="tag">
+    if(id === "settings"){
+        renderSettings();
+    }
 
-     ${
-       e.type==="Kettlebell"
-       ?state.weight+" "+state.unit
-       :"Bodyweight"
-     }
-
-   </span>
-
-
-   <div class="infoRows">
-
-
-     <div class="infoRow">
-
-       <div class="icon">
-         ◉
-       </div>
-
-       <div>
-
-         <small>
-           Target Muscle
-         </small>
-
-         <b>
-           ${e.target}
-         </b>
-
-       </div>
-
-     </div>
-
-
-     <div class="infoRow">
-
-       <div class="icon">
-         ▥
-       </div>
-
-       <div>
-
-         <small>
-           Difficulty
-         </small>
-
-         <b>
-           ${e.difficulty}
-         </b>
-
-       </div>
-
-     </div>
-
-
-     <div class="infoRow">
-
-       <div class="icon">
-         ♙
-       </div>
-
-       <div>
-
-         <small>
-           Equipment
-         </small>
-
-         <b>
-           ${e.equipment}
-         </b>
-
-       </div>
-
-     </div>
-
-
-     <div class="infoRow">
-
-       <div class="icon">
-         ϟ
-       </div>
-
-       <div>
-
-         <small>
-           Type
-         </small>
-
-         <b>
-           ${e.kind}
-         </b>
-
-       </div>
-
-     </div>
-
-
-   </div>
-
- </div>
-
- `;
-
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
 }
 
 
-/*
-====================================================
-MUSCLE / ANATOMY
-====================================================
-*/
+/* =====================================================
+   BACK BUTTON
+   ===================================================== */
 
-function muscleCard(e){
+function goBack(){
 
- return `
+    if(currentScreen === "exerciseDetail"){
+        show("overview");
+        return;
+    }
 
- <div class="card muscleCard">
+    if(currentScreen === "workout"){
+        if(confirm("Leave this workout? Your current session will be saved.")){
+            saveSession();
+            stopWorkoutTimer();
+            show("home");
+        }
+        return;
+    }
 
-   <div style="padding:15px 15px 0">
-
-     <div class="eyebrow">
-       MUSCLES WORKED
-     </div>
-
-   </div>
-
-
-   <div class="tabs">
-
-     <button
-       id="frontTab"
-       class="active"
-       onclick="setAnatomy('front')"
-     >
-       Front
-     </button>
-
-
-     <button
-       id="backTab"
-       onclick="setAnatomy('back')"
-     >
-       Back
-     </button>
-
-   </div>
-
-
-   <div
-     class="anatomyPanel"
-     id="anatomyPanel"
-   >
-
-     <img
-       src="${anatomyAsset("front")}"
-       alt="Front muscle anatomy"
-     >
-
-   </div>
-
-
-   <div class="anatomyCaption">
-     Realistic 3D anatomy view
-   </div>
-
-
-   <div class="legend">
-
-     <div>
-       <i></i>
-       Primary Muscles
-     </div>
-
-     <div>
-       <i class="sec"></i>
-       Secondary Muscles
-     </div>
-
-     <div>
-       <i class="other"></i>
-       Other Muscles
-     </div>
-
-   </div>
-
-
-   <div class="detailMuscleRows">
-
-
-     ${
-       e.primary.map(
-        x=>`
-
-        <div class="detailMuscle">
-
-          <b>
-            <span class="primaryDot"></span>
-            ${x}
-          </b>
-
-          <span>
-            Primary
-          </span>
-
-        </div>
-
-        `
-       ).join("")
-     }
-
-
-     ${
-       e.secondary.map(
-        x=>`
-
-        <div class="detailMuscle">
-
-          <b>
-            <span class="secondaryDot"></span>
-            ${x}
-          </b>
-
-          <span>
-            Secondary
-          </span>
-
-        </div>
-
-        `
-       ).join("")
-     }
-
-
-   </div>
-
- </div>
-
- `;
-
+    show("home");
 }
 
 
-/*
-====================================================
-WORKOUT SETS
-====================================================
-*/
+/* =====================================================
+   LEVEL INFORMATION
+   ===================================================== */
 
-function workoutSets(e,i){
+function levelInfo(){
 
- const d=session.exercises[i];
+    let current = levels[0];
+    let next = null;
 
- return `
+    for(let i=0;i<levels.length;i++){
 
- <div class="card">
-
-   <div class="sectionTitle">
-     ${e.name} • SETS
-   </div>
-
-
-   <div class="sets">
-
-
-     ${
-       d.sets.map(
-        (done,s)=>`
-
-        <div class="setRow">
-
-
-          <span class="setNo">
-            SET ${s+1}
-          </span>
-
-
-          <div class="repBox">
-
-
-            <button
-              onclick="repChange(${i},${s},1)"
-            >
-              ▲
-            </button>
-
-
-            <strong>
-              ${d.reps[s]}
-            </strong>
-
-
-            <button
-              onclick="repChange(${i},${s},-1)"
-            >
-              ▼
-            </button>
-
-
-          </div>
-
-
-          <button
-            class="doneBtn ${done?"done":""}"
-            onclick="completeSet(${i},${s})"
-          >
-
-            ${
-              done
-              ?"✓ DONE"
-              :"DONE"
-            }
-
-          </button>
-
-
-        </div>
-
-        `
-       ).join("")
-     }
-
-
-   </div>
-
-
-   <div
-     class="eyebrow"
-     style="margin-top:13px"
-   >
-     HOW DID THAT SET FEEL?
-   </div>
-
-
-   <div class="difficulty">
-
-
-     ${
-       [
-        "Easy",
-        "Good",
-        "Hard",
-        "Very Hard"
-       ]
-       .map(
-        x=>`
-
-        <button
-          class="${
-            d.difficulty===x
-            ?"active"
-            :""
-          }"
-          onclick="setDifficulty(${i},'${x}')"
-        >
-          ${x}
-        </button>
-
-        `
-       )
-       .join("")
-     }
-
-
-   </div>
-
-
-   <button
-     class="btn small"
-     style="margin-top:8px"
-     onclick="replaceExercise(${i})"
-   >
-     ↻ REPLACE EXERCISE
-   </button>
-
- </div>
-
- `;
-
-}
-
-
-/*
-====================================================
-DETAIL PAGE
-====================================================
-*/
-
-function detailCard(e,i,mode){
-
- return `
-
- <div class="exerciseGrid">
-
-   ${infoCard(e)}
-
-   ${muscleCard(e)}
-
-
-   <div class="card">
-
-     <div class="eyebrow">
-       ABOUT THIS EXERCISE
-     </div>
-
-     <p class="aboutText">
-       ${e.about}
-     </p>
-
-
-     <div class="aboutGrid">
-
-
-       <div class="aboutMini">
-
-         <b>
-           ◉ Great For
-         </b>
-
-         <span>
-           Upper-body strength<br>
-           Endurance<br>
-           Core stability
-         </span>
-
-       </div>
-
-
-       <div class="aboutMini">
-
-         <b>
-           ▥ Workout
-         </b>
-
-         <span>
-           ${e.sets} sets<br>
-           ${e.targetReps} reps<br>
-           ${e.rest}s rest
-         </span>
-
-       </div>
-
-
-     </div>
-
-   </div>
-
-
-   <div class="card tips">
-
-     <div class="bulb">
-       ♧
-     </div>
-
-     <div>
-
-       <b>
-         TIPS
-       </b>
-
-       <p>
-         ${e.tip}
-       </p>
-
-     </div>
-
-   </div>
-
-
-   ${
-     mode==="workout"
-     ?workoutSets(e,i)
-     :""
-   }
-
-
-   <div class="card navExercises">
-
-     <button
-       onclick="prevExercise()"
-     >
-       ‹
-     </button>
-
-
-     <div class="navText">
-
-       <small>
-         ${i+1} / ${exercises.length}
-       </small>
-
-       <b>
-
-         ${
-           i<exercises.length-1
-           ?"Next: "+exercises[i+1].name
-           :"Workout complete"
-         }
-
-       </b>
-
-     </div>
-
-
-     <button
-       onclick="nextExercise()"
-     >
-       ›
-     </button>
-
-   </div>
-
- </div>
-
- `;
-
-}
-
-
-function openExerciseDetail(i){
-
- detailIndex=i;
-
- show("exerciseDetail");
-
- document.getElementById(
-  "exerciseHeader"
- ).textContent=
-  exercises[i].name;
-
- document.getElementById(
-  "exerciseDetailContent"
- ).innerHTML=
-  detailCard(
-   exercises[i],
-   i,
-   "detail"
-  );
-
-}
-
-
-/*
-====================================================
-FRONT / BACK ANATOMY
-====================================================
-*/
-
-function setAnatomy(side){
-
- const panel=
-  document.getElementById(
-   "anatomyPanel"
-  );
-
- if(!panel)return;
-
- panel.innerHTML=`
-
-   <img
-     src="${anatomyAsset(side)}"
-     alt="${side} muscle anatomy"
-   >
-
- `;
-
-
- document
-  .getElementById("frontTab")
-  .classList
-  .toggle(
-   "active",
-   side==="front"
-  );
-
-
- document
-  .getElementById("backTab")
-  .classList
-  .toggle(
-   "active",
-   side==="back"
-  );
-
-}
-
-
-/*
-====================================================
-START WORKOUT
-====================================================
-*/
-
-function startWorkout(){
-
- if(!session){
-
-   session={
-
-     exercises:
-       exercises.map(
-        e=>({
-
-          sets:
-            Array(e.sets)
-            .fill(false),
-
-          reps:
-            Array(e.sets)
-            .fill(e.targetReps),
-
-          difficulty:""
-
-        })
-       ),
-
-     notes:"",
-
-     started:
-       Date.now()
-
-   };
-
- }
-
- saveSession();
-
- show("workout");
-
- detailIndex=0;
-
- renderWorkout();
-
-}
-
-
-/*
-====================================================
-RENDER WORKOUT
-====================================================
-*/
-
-function renderWorkout(){
-
- document.getElementById(
-  "workoutList"
- ).innerHTML=
-  detailCard(
-   exercises[detailIndex],
-   detailIndex,
-   "workout"
-  );
-
-
- document.getElementById(
-  "notes"
- ).value=
-  session.notes||"";
-
-
- const done=
-  session.exercises.filter(
-   x=>x.sets.every(Boolean)
-  ).length;
-
-
- const points=
-  session.exercises.reduce(
-   (a,x)=>
-    a+
-    x.sets.filter(Boolean).length*5,
-   0
-  );
-
-
- document.getElementById(
-  "doneExercises"
- ).textContent=
-  done+"/7";
-
-
- document.getElementById(
-  "sessionPoints"
- ).textContent=
-  points;
-
-
- document.getElementById(
-  "weightDisplay"
- ).textContent=
-  state.weight;
-
-
- document.getElementById(
-  "unitDisplay"
- ).textContent=
-  state.unit.toUpperCase();
-
-
- document.getElementById(
-  "workoutProgress"
- ).style.width=
-  (done/7*100)+"%";
-
-}
-
-
-/*
-====================================================
-WORKOUT OVERVIEW
-====================================================
-*/
-
-function showPreview(){
-
- show("preview");
-
-
- document.getElementById(
-  "previewList"
- ).innerHTML=
-
-
- exercises.map(
-  (e,i)=>`
-
-  <button
-    class="overviewItem"
-    onclick="openExerciseDetail(${i})"
-  >
-
-    <span class="exerciseNum">
-      ${i+1}
-    </span>
-
-
-    <img
-      class="overviewThumb"
-      src="${assetFor(e)}"
-      alt="${e.name}"
-    >
-
-
-    <span class="overviewInfo">
-
-      <b>
-        ${e.name}
-      </b>
-
-      <small>
-
-        ${e.sets} sets •
-
-        ${e.targetReps} reps •
-
-        ${
-          e.type==="Kettlebell"
-          ?state.weight+" "+state.unit
-          :"Bodyweight"
+        if(state.xp >= levels[i].xp){
+            current = levels[i];
         }
 
-      </small>
+        if(state.xp < levels[i].xp){
+            next = levels[i];
+            break;
+        }
 
-    </span>
+    }
 
+    if(!next){
+        next = {
+            level:current.level,
+            xp:current.xp + 1000,
+            title:"Master"
+        };
+    }
 
-    <span class="overviewArrow">
-      ›
-    </span>
+    const range = next.xp - current.xp;
 
-  </button>
+    const progress = Math.max(
+        0,
+        Math.min(
+            100,
+            ((state.xp-current.xp)/range)*100
+        )
+    );
 
-  `
- ).join("");
+    return {
+        current,
+        next,
+        progress
+    };
 
 }
 
 
-/*
-====================================================
-NEXT / PREVIOUS EXERCISE
-====================================================
-*/
+/* =====================================================
+   HOME
+   ===================================================== */
 
-function prevExercise(){
+function renderHome(){
 
- detailIndex=
-  (
-   detailIndex-1+
-   exercises.length
-  )%
-  exercises.length;
+    const info = levelInfo();
 
- renderWorkout();
+    document.getElementById("homeLevel").textContent =
+        info.current.level;
 
- window.scrollTo(0,0);
+    document.getElementById("homeLevelTitle").textContent =
+        info.current.title;
+
+    document.getElementById("homeXP").textContent =
+        state.xp;
+
+    document.getElementById("homeXPBar").style.width =
+        info.progress + "%";
+
+    document.getElementById("weekDone").textContent =
+        state.weeklyWorkouts;
+
+    document.getElementById("weekRemaining").textContent =
+        Math.max(0,4-state.weeklyWorkouts);
+
+    document.getElementById("weekBar").style.width =
+        Math.min(100,(state.weeklyWorkouts/4)*100) + "%";
+
+    document.getElementById("statWorkouts").textContent =
+        state.totalWorkouts;
+
+    document.getElementById("statReps").textContent =
+        state.totalReps;
+
+    document.getElementById("statVolume").textContent =
+        formatWeight(state.totalVolume);
+
+    document.getElementById("statPoints").textContent =
+        state.totalPoints;
+
+}
+
+
+/* =====================================================
+   OVERVIEW
+   ===================================================== */
+
+function renderOverview(){
+
+    const list =
+        document.getElementById("exerciseList");
+
+    list.innerHTML = "";
+
+    exercises.forEach((exercise,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "exercise-card";
+
+        button.onclick = ()=>{
+            openExerciseDetail(index);
+        };
+
+        const image =
+            assetFor(exercise);
+
+        button.innerHTML = `
+
+            <div class="exercise-thumb">
+
+                ${
+                    image
+                    ?
+                    `<img src="${image}"
+                          alt="${exercise.name}">`
+                    :
+                    `<div style="
+                        width:100%;
+                        height:100%;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        color:#19d7df;
+                        font-size:22px;
+                    ">KB</div>`
+                }
+
+            </div>
+
+            <div class="exercise-info">
+
+                <div class="exercise-number">
+                    Exercise ${index+1}
+                </div>
+
+                <div class="exercise-name">
+                    ${exercise.name}
+                </div>
+
+                <div class="exercise-detail">
+                    ${exercise.sets} sets ·
+                    ${exercise.reps} reps ·
+                    ${formatWeight(state.weight)} ${state.unit}
+                </div>
+
+            </div>
+
+            <div class="chevron">
+                ›
+            </div>
+
+        `;
+
+        list.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   EXERCISE DETAIL
+   ===================================================== */
+
+function openExerciseDetail(index){
+
+    detailIndex =
+        Math.max(
+            0,
+            Math.min(exercises.length-1,index)
+        );
+
+    show("exerciseDetail");
+
+}
+
+
+function renderExerciseDetail(){
+
+    const exercise =
+        exercises[detailIndex];
+
+    if(!exercise){
+        return;
+    }
+
+    const image =
+        assetFor(exercise);
+
+    const front =
+        anatomyAsset("front");
+
+    const back =
+        anatomyAsset("back");
+
+    const card =
+        document.getElementById("detailCard");
+
+    card.innerHTML = `
+
+        ${
+            image
+            ?
+            `<img class="detail-image"
+                  src="${image}"
+                  alt="${exercise.name}">`
+            :
+            ""
+        }
+
+        <div class="detail-subtitle">
+            Exercise ${detailIndex+1} of ${exercises.length}
+        </div>
+
+        <div class="detail-title">
+            ${exercise.name}
+        </div>
+
+        <div class="tag-row">
+
+            <div class="tag">
+                ${exercise.equipment}
+            </div>
+
+            <div class="tag">
+                ${exercise.type}
+            </div>
+
+            <div class="tag">
+                ${exercise.difficulty}
+            </div>
+
+        </div>
+
+
+        <div class="card"
+             style="margin-top:14px">
+
+            <div class="card-title">
+                Target
+            </div>
+
+            <div style="
+                font-size:17px;
+                font-weight:850;
+            ">
+                ${exercise.target}
+            </div>
+
+        </div>
+
+
+        <div class="muscle-layout">
+
+            <div class="muscle-box">
+
+                <div class="muscle-box-title">
+                    Primary
+                </div>
+
+                <div class="muscle-box-value">
+                    ${exercise.primary}
+                </div>
+
+            </div>
+
+            <div class="muscle-box">
+
+                <div class="muscle-box-title">
+                    Secondary
+                </div>
+
+                <div class="muscle-box-value">
+                    ${exercise.secondary}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+             style="margin-top:14px">
+
+            <div class="card-title">
+                About
+            </div>
+
+            <div class="about-text">
+                ${exercise.about}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                Technique Tips
+            </div>
+
+            <ul class="tips-list">
+
+                ${exercise.tips.map(tip =>
+                    `<li>${tip}</li>`
+                ).join("")}
+
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                Workout
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat">
+
+                    <div class="stat-value">
+                        ${exercise.sets}
+                    </div>
+
+                    <div class="stat-label">
+                        Sets
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-value">
+                        ${exercise.reps}
+                    </div>
+
+                    <div class="stat-label">
+                        Reps
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-value">
+                        ${formatWeight(state.weight)}
+                    </div>
+
+                    <div class="stat-label">
+                        ${state.unit}
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-value">
+                        ${exercise.rest}s
+                    </div>
+
+                    <div class="stat-label">
+                        Rest
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        ${
+            front && back
+            ?
+            `
+            <div class="card">
+
+                <div class="card-title">
+                    Muscles Worked
+                </div>
+
+                <div class="muscle-layout">
+
+                    <div>
+
+                        <div style="
+                            color:#7e999d;
+                            font-size:10px;
+                            text-transform:uppercase;
+                            font-weight:900;
+                            margin-bottom:7px;
+                        ">
+                            Front
+                        </div>
+
+                        <img
+                            src="${front}"
+                            style="
+                                width:100%;
+                                border-radius:14px;
+                                border:1px solid #20383c;
+                            "
+                            alt="Front muscle diagram"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <div style="
+                            color:#7e999d;
+                            font-size:10px;
+                            text-transform:uppercase;
+                            font-weight:900;
+                            margin-bottom:7px;
+                        ">
+                            Back
+                        </div>
+
+                        <img
+                            src="${back}"
+                            style="
+                                width:100%;
+                                border-radius:14px;
+                                border:1px solid #20383c;
+                            "
+                            alt="Back muscle diagram"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+            `
+            :
+            ""
+        }
+
+
+        <div class="detail-actions">
+
+            <button class="primary"
+                    onclick="startExerciseFromDetail()">
+                START EXERCISE
+            </button>
+
+            <button class="secondary"
+                    onclick="replaceExercise()">
+                DON'T LIKE THIS EXERCISE? REPLACE
+            </button>
+
+        </div>
+
+
+        <div style="height:12px"></div>
+
+        <div class="detail-nav">
+
+            <button
+                class="secondary"
+                onclick="previousExercise()"
+                ${detailIndex===0 ? "disabled" : ""}>
+                ← PREVIOUS
+            </button>
+
+            <button
+                class="secondary"
+                onclick="nextExercise()"
+                ${detailIndex===exercises.length-1 ? "disabled" : ""}>
+                NEXT →
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   DETAIL NAVIGATION
+   ===================================================== */
+
+function previousExercise(){
+
+    if(detailIndex > 0){
+
+        detailIndex--;
+
+        renderExerciseDetail();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
 
 }
 
 
 function nextExercise(){
 
- detailIndex=
-  (
-   detailIndex+1
-  )%
-  exercises.length;
+    if(detailIndex < exercises.length-1){
 
- renderWorkout();
+        detailIndex++;
 
- window.scrollTo(0,0);
+        renderExerciseDetail();
 
-}
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
-
-/*
-====================================================
-COMPLETE SET
-====================================================
-*/
-
-function completeSet(i,s){
-
- if(
-  s>0 &&
-  !session
-   .exercises[i]
-   .sets[s-1]
- ){
-
-   alert(
-    "Complete the previous set first."
-   );
-
-   return;
-
- }
-
-
- if(
-  i>0 &&
-  !session
-   .exercises[i-1]
-   .sets.every(Boolean)
- ){
-
-   alert(
-    "Complete the previous exercise first."
-   );
-
-   return;
-
- }
-
-
- session
-  .exercises[i]
-  .sets[s]=
-   !session
-    .exercises[i]
-    .sets[s];
-
-
- saveSession();
-
- renderWorkout();
-
-
- if(
-  session
-   .exercises[i]
-   .sets[s]
- ){
-
-   startRest(
-    exercises[i].rest
-   );
-
- }
+    }
 
 }
 
 
-/*
-====================================================
-REPS
-====================================================
-*/
+/* =====================================================
+   START EXERCISE FROM DETAIL
+   ===================================================== */
 
-function repChange(i,s,d){
+function startExerciseFromDetail(){
 
- session
-  .exercises[i]
-  .reps[s]=
-   Math.max(
-    1,
-    Number(
-     session
-      .exercises[i]
-      .reps[s]
-    )+d
-   );
-
- saveSession();
-
- renderWorkout();
+    startWorkout(detailIndex);
 
 }
 
 
-/*
-====================================================
-DIFFICULTY
-====================================================
-*/
+/* =====================================================
+   START WORKOUT
+   ===================================================== */
 
-function setDifficulty(i,x){
+function startWorkout(startIndex=0){
 
- session
-  .exercises[i]
-  .difficulty=x;
+    workoutIndex =
+        Math.max(
+            0,
+            Math.min(exercises.length-1,startIndex)
+        );
 
- saveSession();
+    currentSet = 0;
 
- renderWorkout();
+    difficulty = null;
 
-}
+    currentReps =
+        exercises[workoutIndex].reps;
 
+    session = {
 
-/*
-====================================================
-REPLACE EXERCISE
-====================================================
-*/
+        startedAt:Date.now(),
 
-function replaceExercise(i){
+        exercises:exercises.map(exercise=>({
 
- const choices=[
+            name:exercise.name,
 
-   "Incline Push-Ups",
+            sets:[],
 
-   "Kettlebell Floor Press",
+            difficulty:[],
 
-   "Kettlebell Row",
+            targetReps:exercise.reps
 
-   "Kettlebell Deadlift",
+        })),
 
-   "Dead Bug",
+        totalReps:0,
 
-   "Goblet Squat"
+        totalVolume:0
 
- ];
+    };
 
+    saveSession();
 
- let old=
-  exercises[i].name;
+    startWorkoutTimer();
 
+    show("workout");
 
- exercises[i].name=
-  choices[
-   (
-    choices.indexOf(old)
-    +1+
-    choices.length
-   )%
-   choices.length
-  ];
-
-
- alert(
-  old+
-  " replaced with "+
-  exercises[i].name
- );
-
-
- renderWorkout();
+    renderWorkout();
 
 }
 
 
-/*
-====================================================
-REST TIMER
-====================================================
-*/
+/* =====================================================
+   RESUME ACTIVE SESSION
+   ===================================================== */
 
-function startRest(sec){
+function loadActiveSession(){
 
- timerSeconds=sec;
+    const saved =
+        localStorage.getItem(
+            "kettlebellActiveSession"
+        );
 
- timerPaused=false;
+    if(!saved){
+        return false;
+    }
 
- document
-  .getElementById("timer")
-  .classList
-  .remove("hidden");
+    try{
 
+        session = JSON.parse(saved);
 
- document.getElementById(
-  "timerPause"
- ).textContent=
-  "PAUSE";
+        if(
+            !session ||
+            !session.exercises
+        ){
+            return false;
+        }
 
+        return true;
 
- document.getElementById(
-  "timerValue"
- ).textContent=
-  sec;
+    }catch(error){
 
+        return false;
 
- clearInterval(
-  timerInterval
- );
-
-
- timerInterval=
-  setInterval(
-   ()=>{
-
-     if(!timerPaused){
-
-       timerSeconds--;
-
-       document.getElementById(
-        "timerValue"
-       ).textContent=
-        timerSeconds;
-
-
-       if(
-        timerSeconds<=0
-       ){
-
-         skipRest();
-
-       }
-
-     }
-
-   },
-   1000
-  );
+    }
 
 }
 
 
-function toggleTimer(){
+/* =====================================================
+   WORKOUT RENDER
+   ===================================================== */
 
- timerPaused=
-  !timerPaused;
+function renderWorkout(){
+
+    const exercise =
+        exercises[workoutIndex];
+
+    if(!exercise){
+        return;
+    }
+
+    document.getElementById(
+        "currentExerciseName"
+    ).textContent =
+        exercise.name;
+
+    document.getElementById(
+        "currentExerciseMeta"
+    ).textContent =
+        `${exercise.sets} sets · ${exercise.reps} target reps · ${formatWeight(state.weight)} ${state.unit}`;
+
+    document.getElementById(
+        "repNumber"
+    ).textContent =
+        currentReps;
 
 
- document.getElementById(
-  "timerPause"
- ).textContent=
-  timerPaused
-  ?"RESUME"
-  :"PAUSE";
+    const total =
+        exercises.length;
+
+    document.getElementById(
+        "workoutProgress"
+    ).style.width =
+        ((workoutIndex/total)*100) + "%";
+
+
+    const list =
+        document.getElementById("setList");
+
+    list.innerHTML = "";
+
+
+    for(
+        let i=0;
+        i<exercise.sets;
+        i++
+    ){
+
+        const row =
+            document.createElement("div");
+
+        const completed =
+            session &&
+            session.exercises[workoutIndex] &&
+            session.exercises[workoutIndex].sets[i] != null;
+
+        const unlocked =
+            i <= currentSet;
+
+        row.className =
+            "set-row" +
+            (completed ? " completed" : "") +
+            (!unlocked && !completed ? " locked" : "");
+
+
+        row.innerHTML = `
+
+            <div>
+
+                <div class="set-name">
+                    Set ${i+1}
+                </div>
+
+                <div class="set-status">
+
+                    ${
+                        completed
+                        ?
+                        `Completed · ${
+                            session.exercises[workoutIndex].sets[i]
+                        } reps`
+                        :
+                        unlocked
+                        ?
+                        `Target · ${exercise.reps} reps`
+                        :
+                        `Locked`
+                    }
+
+                </div>
+
+            </div>
+
+            ${
+                completed
+                ?
+                `<button
+                    class="secondary"
+                    style="width:auto;
+                           min-height:38px;
+                           padding:0 12px;"
+                    onclick="undoSet(${i})">
+                    UNDO
+                </button>`
+                :
+                ""
+            }
+
+        `;
+
+        list.appendChild(row);
+
+    }
+
+
+    const completeButton =
+        document.getElementById(
+            "completeSetButton"
+        );
+
+    const completedCount =
+        session.exercises[workoutIndex].sets.length;
+
+
+    if(completedCount >= exercise.sets){
+
+        completeButton.disabled = true;
+
+        completeButton.textContent =
+            "EXERCISE COMPLETE";
+
+    }else{
+
+        completeButton.disabled = false;
+
+        completeButton.textContent =
+            `COMPLETE SET ${completedCount+1}`;
+
+    }
+
+
+    document
+        .querySelectorAll(".difficulty-btn")
+        .forEach(btn=>{
+            btn.classList.remove("selected");
+        });
+
+}
+
+
+/* =====================================================
+   REP CONTROL
+   ===================================================== */
+
+function changeReps(amount){
+
+    currentReps += amount;
+
+    if(currentReps < 1){
+        currentReps = 1;
+    }
+
+    if(currentReps > 100){
+        currentReps = 100;
+    }
+
+    document.getElementById(
+        "repNumber"
+    ).textContent =
+        currentReps;
+
+}
+
+
+/* =====================================================
+   DIFFICULTY
+   ===================================================== */
+
+function setDifficulty(value,button){
+
+    difficulty = value;
+
+    document
+        .querySelectorAll(".difficulty-btn")
+        .forEach(btn=>{
+            btn.classList.remove("selected");
+        });
+
+    button.classList.add("selected");
+
+}
+
+
+/* =====================================================
+   COMPLETE SET
+   ===================================================== */
+
+function completeCurrentSet(){
+
+    if(!session){
+        return;
+    }
+
+    const exercise =
+        exercises[workoutIndex];
+
+    const data =
+        session.exercises[workoutIndex];
+
+
+    if(data.sets.length >= exercise.sets){
+        return;
+    }
+
+
+    data.sets.push(currentReps);
+
+    data.difficulty.push(
+        difficulty || "Good"
+    );
+
+
+    session.totalReps += currentReps;
+
+    session.totalVolume +=
+        currentReps * getWeightInKg();
+
+
+    saveSession();
+
+
+    currentSet =
+        data.sets.length;
+
+
+    if(currentSet >= exercise.sets){
+
+        renderWorkout();
+
+        setTimeout(()=>{
+
+            showDifficultySummary();
+
+        },200);
+
+        return;
+
+    }
+
+
+    currentReps =
+        exercise.reps;
+
+    difficulty = null;
+
+    renderWorkout();
+
+    startRest(exercise.rest);
+
+}
+
+
+/* =====================================================
+   UNDO SET
+   ===================================================== */
+
+function undoSet(index){
+
+    if(!session){
+        return;
+    }
+
+    const data =
+        session.exercises[workoutIndex];
+
+    if(
+        index < 0 ||
+        index >= data.sets.length
+    ){
+        return;
+    }
+
+
+    const removedReps =
+        data.sets[index];
+
+
+    session.totalReps =
+        Math.max(
+            0,
+            session.totalReps-removedReps
+        );
+
+
+    session.totalVolume =
+        Math.max(
+            0,
+            session.totalVolume -
+            removedReps*getWeightInKg()
+        );
+
+
+    data.sets.splice(index,1);
+
+    data.difficulty.splice(index,1);
+
+
+    currentSet =
+        data.sets.length;
+
+    difficulty = null;
+
+    saveSession();
+
+    renderWorkout();
+
+}
+
+
+/* =====================================================
+   REST TIMER
+   ===================================================== */
+
+function startRest(seconds){
+
+    restSeconds = seconds;
+
+    restPaused = false;
+
+    document.getElementById(
+        "restModal"
+    ).classList.add("active");
+
+    updateRestDisplay();
+
+    clearInterval(restInterval);
+
+    restInterval =
+        setInterval(()=>{
+
+            if(restPaused){
+                return;
+            }
+
+            restSeconds--;
+
+            updateRestDisplay();
+
+            if(restSeconds <= 0){
+
+                skipRest();
+
+            }
+
+        },1000);
+
+}
+
+
+function updateRestDisplay(){
+
+    document.getElementById(
+        "restTime"
+    ).textContent =
+        Math.max(0,restSeconds);
+
+}
+
+
+function toggleRestPause(){
+
+    restPaused =
+        !restPaused;
+
+    document.getElementById(
+        "pauseRestButton"
+    ).textContent =
+        restPaused
+        ?
+        "RESUME"
+        :
+        "PAUSE";
 
 }
 
 
 function skipRest(){
 
- clearInterval(
-  timerInterval
- );
+    clearInterval(restInterval);
 
- document
-  .getElementById("timer")
-  .classList
-  .add("hidden");
+    restInterval = null;
+
+    restPaused = false;
+
+    document.getElementById(
+        "restModal"
+    ).classList.remove("active");
+
+    document.getElementById(
+        "pauseRestButton"
+    ).textContent =
+        "PAUSE";
+
+    renderWorkout();
 
 }
 
 
-/*
-====================================================
-FINISH WORKOUT
-====================================================
-*/
+/* =====================================================
+   DIFFICULTY SUMMARY
+   ===================================================== */
+
+function showDifficultySummary(){
+
+    const data =
+        session.exercises[workoutIndex];
+
+    const difficulties =
+        data.difficulty;
+
+    let hardCount = 0;
+    let easyCount = 0;
+
+    difficulties.forEach(value=>{
+
+        if(
+            value === "Hard" ||
+            value === "Very Hard"
+        ){
+            hardCount++;
+        }
+
+        if(value === "Easy"){
+            easyCount++;
+        }
+
+    });
+
+
+    let message =
+        "Good work.";
+
+    if(hardCount >= 2){
+        message =
+            "That was challenging. The next workout will take your performance into account.";
+    }
+
+    if(easyCount >= 2){
+        message =
+            "That looked comfortable. Your next progression can increase gradually.";
+    }
+
+
+    setTimeout(()=>{
+
+        alert(
+            `${exercises[workoutIndex].name}\n\n${message}`
+        );
+
+        moveToNextExercise();
+
+    },100);
+
+}
+
+
+/* =====================================================
+   NEXT EXERCISE
+   ===================================================== */
+
+function moveToNextExercise(){
+
+    if(
+        workoutIndex <
+        exercises.length-1
+    ){
+
+        workoutIndex++;
+
+        currentSet = 0;
+
+        currentReps =
+            exercises[workoutIndex].reps;
+
+        difficulty = null;
+
+        renderWorkout();
+
+    }else{
+
+        finishWorkout();
+
+    }
+
+}
+
+
+/* =====================================================
+   WORKOUT TIMER
+   ===================================================== */
+
+function startWorkoutTimer(){
+
+    clearInterval(workoutInterval);
+
+    workoutSeconds = 0;
+
+    updateWorkoutTimer();
+
+    workoutInterval =
+        setInterval(()=>{
+
+            workoutSeconds++;
+
+            updateWorkoutTimer();
+
+        },1000);
+
+}
+
+
+function updateWorkoutTimer(){
+
+    const minutes =
+        Math.floor(workoutSeconds/60);
+
+    const seconds =
+        workoutSeconds%60;
+
+    document.getElementById(
+        "workoutTimer"
+    ).textContent =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+}
+
+
+function stopWorkoutTimer(){
+
+    clearInterval(workoutInterval);
+
+    workoutInterval = null;
+
+}
+
+
+/* =====================================================
+   PAUSE WORKOUT
+   ===================================================== */
+
+function pauseWorkout(){
+
+    saveSession();
+
+    stopWorkoutTimer();
+
+    const resume =
+        confirm(
+            "Workout paused.\n\nPress OK to resume now or Cancel to return home."
+        );
+
+    if(resume){
+
+        startWorkoutTimer();
+
+    }else{
+
+        show("home");
+
+    }
+
+}
+
+
+/* =====================================================
+   FINISH WORKOUT
+   ===================================================== */
 
 function finishWorkout(){
 
- session.notes=
-  document.getElementById(
-   "notes"
-  ).value;
-
-
- const sets=
-  session.exercises.reduce(
-   (a,x)=>
-    a+
-    x.sets.filter(Boolean).length,
-   0
-  );
-
-
- if(!sets){
-
-   alert(
-    "Complete at least one set first."
-   );
-
-   return;
-
- }
-
-
- const full=
-  session.exercises.every(
-   x=>x.sets.every(Boolean)
-  );
-
-
- const xp=
-  sets*5+
-  (
-   full
-   ?90
-   :0
-  );
-
-
- const reps=
-  session.exercises.reduce(
-   (a,x)=>
-    a+
-    x.reps.reduce(
-     (q,r)=>
-      q+r,
-     0
-    ),
-   0
-  );
-
-
- state.xp+=xp;
-
-
- state.history.push({
-
-   date:
-    new Date().toISOString(),
-
-   xp,
-
-   sets,
-
-   reps,
-
-   notes:
-    session.notes
-
- });
-
-
- save();
-
-
- session=null;
-
-
- localStorage.removeItem(
-  "workoutSession"
- );
-
-
- alert(
-  "Workout saved — "+
-  xp+
-  " points earned!"
- );
-
-
- goHome();
-
-}
-
-
-/*
-====================================================
-HOME
-====================================================
-*/
-
-function renderHome(){
-
- document.getElementById(
-  "weight"
- ).value=
-  state.weight;
-
-
- document.getElementById(
-  "unit"
- ).value=
-  state.unit;
-
-
- document.getElementById(
-  "workoutsStat"
- ).textContent=
-  state.history.length;
-
-
- document.getElementById(
-  "pointsStat"
- ).textContent=
-  state.xp;
-
-
- document.getElementById(
-  "streakStat"
- ).textContent=
-  calculateStreak();
-
-
- let now=
-  new Date();
-
-
- let start=
-  new Date(now);
-
-
- start.setDate(
-  now.getDate()-
-  (
-   (now.getDay()+6)%7
-  )
- );
-
-
- start.setHours(
-  0,0,0,0
- );
-
-
- let week=
-  state.history.filter(
-   x=>
-    new Date(x.date)>=start
-  ).length;
-
-
- let target=
-  state.weekTarget||4;
-
-
- document.getElementById(
-  "weekCount"
- ).textContent=
-  week+
-  " / "+
-  target+
-  " workouts";
-
-
- document.getElementById(
-  "weekRemain"
- ).textContent=
-  Math.max(
-   0,
-   target-week
-  )+
-  " remaining";
-
-
- document.getElementById(
-  "weekProgress"
- ).style.width=
-  Math.min(
-   100,
-   week/target*100
-  )+
-  "%";
-
-
- let l=
-  levelInfo();
-
-
- document.getElementById(
-  "levelTitle"
- ).textContent=
-  "Level "+
-  (l.idx+1)+
-  " • "+
-  l.current[1];
-
-
- document.getElementById(
-  "xpLabel"
- ).textContent=
-  state.xp+
-  " XP";
-
-
- document.getElementById(
-  "xpFrom"
- ).textContent=
-  state.xp+
-  " XP";
-
-
- if(l.next){
-
-   document.getElementById(
-    "xpTo"
-   ).textContent=
-    (
-     l.next[0]-
-     state.xp
-    )+
-    " XP to Level "+
-    (l.idx+2);
-
-
-   document.getElementById(
-    "xpProgress"
-   ).style.width=
-    Math.min(
-     100,
-     (
-      state.xp-
-      l.current[0]
-     )/
-     (
-      l.next[0]-
-      l.current[0]
-     )*
-     100
-    )+
-    "%";
-
- }else{
-
-   document.getElementById(
-    "xpTo"
-   ).textContent=
-    "MAX LEVEL";
-
-
-   document.getElementById(
-    "xpProgress"
-   ).style.width=
-    "100%";
-
- }
-
-
- renderCalendar();
-
- renderRecovery();
-
- renderGraph();
-
-}
-
-
-/*
-====================================================
-STREAK
-====================================================
-*/
-
-function calculateStreak(){
-
- if(
-  !state.history.length
- )
-  return 0;
-
-
- let dates=[
-
-   ...new Set(
-
-     state.history.map(
-       x=>
-        new Date(x.date)
-        .toDateString()
-     )
-
-   )
-
- ]
- .map(
-  x=>
-   new Date(x)
-   .setHours(
-    0,0,0,0
-   )
- )
- .sort(
-  (a,b)=>b-a
- );
-
-
- let streak=0;
-
-
- let d=
-  new Date();
-
-
- d.setHours(
-  0,0,0,0
- );
-
-
- if(
-  dates[0]!==d.getTime()
- ){
-
-   d.setDate(
-    d.getDate()-1
-   );
-
-
-   if(
-    dates[0]!==d.getTime()
-   )
-    return 0;
-
- }
-
-
- for(
-  let t of dates
- ){
-
-   if(
-    t===d.getTime()
-   ){
-
-     streak++;
-
-     d.setDate(
-      d.getDate()-1
-     );
-
-   }else{
-
-     break;
-
-   }
-
- }
-
-
- return streak;
-
-}
-
-
-/*
-====================================================
-CALENDAR
-====================================================
-*/
-
-function changeMonth(d){
-
- monthView.setMonth(
-  monthView.getMonth()+d
- );
-
- renderCalendar();
-
-}
-
-
-function renderCalendar(){
-
- const y=
-  monthView.getFullYear();
-
-
- const m=
-  monthView.getMonth();
-
-
- const first=
-  new Date(
-   y,m,1
-  );
-
-
- const last=
-  new Date(
-   y,m+1,0
-  );
-
-
- document.getElementById(
-  "monthTitle"
- ).textContent=
-  first.toLocaleDateString(
-   undefined,
-   {
-    month:"long",
-    year:"numeric"
-   }
-  );
-
-
- const el=
-  document.getElementById(
-   "days"
-  );
-
-
- el.innerHTML="";
-
-
- for(
-  let i=0;
-  i<first.getDay();
-  i++
- ){
-
-   el.innerHTML+=
-    "<div></div>";
-
- }
-
-
- const done=
-  new Set(
-   state.history.map(
-    x=>
-     new Date(x.date)
-     .toDateString()
-   )
-  );
-
-
- const today=
-  new Date().toDateString();
-
-
- for(
-  let d=1;
-  d<=last.getDate();
-  d++
- ){
-
-   let dt=
-    new Date(
-     y,m,d
-    );
-
-
-   let c=
-    "day"+
-    (
-     dt.toDateString()===today
-     ?" today"
-     :""
-    )+
-    (
-     done.has(
-      dt.toDateString()
-     )
-     ?" done"
-     :""
-    );
-
-
-   el.innerHTML+=
-    `
-     <div class="${c}">
-       ${d}
-     </div>
-    `;
-
- }
-
-}
-
-
-/*
-====================================================
-RECOVERY
-====================================================
-*/
-
-function renderRecovery(){
-
- const arr=[
-
-   ["Chest","ready"],
-
-   ["Shoulders","ready"],
-
-   ["Arms","recovering"],
-
-   ["Abs","trained"],
-
-   ["Legs","ready"]
-
- ];
-
-
- document.getElementById(
-  "recovery"
- ).innerHTML=
-
-
- arr.map(
-  x=>`
-
-   <div class="recover">
-
-     <b>
-       ${x[0]}
-     </b>
-
-     <span
-       class="${x[1]}"
-     >
-
-       ${
-        x[1]==="ready"
-        ?"READY"
-        :
-        x[1]==="recovering"
-        ?"RECOVERING"
-        :"TRAINED"
-       }
-
-     </span>
-
-   </div>
-
-  `
- ).join("");
-
-}
-
-
-/*
-====================================================
-PROGRESS GRAPH
-====================================================
-*/
-
-function renderGraph(){
-
- const h=
-  state.history.slice(-7);
-
-
- const vals=
-  h.length
-  ?h.map(
-    x=>x.xp
-   )
-  :[0];
-
-
- const max=
-  Math.max(
-   1,
-   ...vals
-  );
-
-
- document.getElementById(
-  "graph"
- ).innerHTML=
-
-
- vals.map(
-  v=>
-   `
-    <i
-      style="
-        height:${
-          Math.max(
-           4,
-           v/max*100
-          )
-        }%
-      "
-    ></i>
-   `
- ).join("");
-
-
- document.getElementById(
-  "labels"
- ).innerHTML=
-
-
- (
-  h.length
-  ?h
-  :[
-    {
-      date:new Date()
+    stopWorkoutTimer();
+
+    if(!session){
+        show("home");
+        return;
     }
-   ]
- )
- .map(
-  x=>
-   `
-    <span>
-      ${
-       new Date(x.date)
-       .toLocaleDateString(
-        undefined,
-        {
-         weekday:"short"
-        }
-       )
-       .slice(0,3)
-      }
-    </span>
-   `
- )
- .join("");
+
+
+    const duration =
+        Math.round(workoutSeconds);
+
+
+    let points =
+        25;
+
+
+    points +=
+        Math.min(
+            100,
+            Math.floor(
+                session.totalReps/10
+            )
+        );
+
+
+    state.xp += points;
+
+    state.totalPoints += points;
+
+    state.totalWorkouts++;
+
+    state.weeklyWorkouts =
+        Math.min(
+            4,
+            state.weeklyWorkouts+1
+        );
+
+    state.totalReps +=
+        session.totalReps;
+
+    state.totalVolume +=
+        session.totalVolume;
+
+
+    state.history.push({
+
+        date:new Date().toISOString(),
+
+        duration,
+
+        reps:session.totalReps,
+
+        volume:session.totalVolume,
+
+        points,
+
+        exercises:
+            session.exercises.map(item=>({
+
+                name:item.name,
+
+                sets:[...item.sets],
+
+                difficulty:[
+                    ...item.difficulty
+                ]
+
+            }))
+
+    });
+
+
+    save();
+
+
+    localStorage.removeItem(
+        "kettlebellActiveSession"
+    );
+
+
+    const info =
+        levelInfo();
+
+
+    alert(
+        `WORKOUT COMPLETE!\n\n` +
+        `+${points} XP\n` +
+        `${session.totalReps} reps\n` +
+        `${formatWeight(session.totalVolume)} weight lifted\n\n` +
+        `Level ${info.current.level} · ${info.current.title}`
+    );
+
+
+    session = null;
+
+    show("home");
 
 }
 
 
-/*
-====================================================
-INITIAL LOAD
-====================================================
-*/
+/* =====================================================
+   WEIGHT
+   ===================================================== */
 
-renderHome();
+function getWeightInKg(){
+
+    const weight =
+        Number(state.weight) || 0;
+
+    if(state.unit === "lb"){
+        return weight * 0.453592;
+    }
+
+    return weight;
+
+}
+
+
+function formatWeight(value){
+
+    const kg =
+        Number(value) || 0;
+
+    if(state.unit === "lb"){
+
+        const lb =
+            kg / 0.453592;
+
+        return Math.round(lb*10)/10;
+
+    }
+
+    return Math.round(kg*10)/10;
+
+}
+
+
+/* =====================================================
+   SETTINGS
+   ===================================================== */
+
+function renderSettings(){
+
+    document.getElementById(
+        "weightInput"
+    ).value =
+        state.weight;
+
+    document.getElementById(
+        "weightUnit"
+    ).value =
+        state.unit;
+
+    document.getElementById(
+        "durationSelect"
+    ).value =
+        state.duration;
+
+}
+
+
+function saveSettings(){
+
+    const weight =
+        Number(
+            document.getElementById(
+                "weightInput"
+            ).value
+        );
+
+
+    const unit =
+        document.getElementById(
+            "weightUnit"
+        ).value;
+
+
+    const duration =
+        Number(
+            document.getElementById(
+                "durationSelect"
+            ).value
+        );
+
+
+    if(weight > 0){
+        state.weight = weight;
+    }
+
+    state.unit = unit;
+
+    state.duration = duration;
+
+    save();
+
+    renderHome();
+
+}
+
+
+/* =====================================================
+   REPLACE EXERCISE
+   ===================================================== */
+
+function replaceExercise(){
+
+    const current =
+        exercises[detailIndex];
+
+
+    const replacements = {
+
+        "Push-Ups":{
+            name:"Kettlebell Chest Press",
+            slug:"kettlebell-floor-press",
+            target:"Chest and triceps"
+        },
+
+        "Kettlebell Swing":{
+            name:"Kettlebell Romanian Deadlift",
+            slug:"kettlebell-goblet-squat",
+            target:"Glutes and hamstrings"
+        },
+
+        "Kettlebell Floor Press":{
+            name:"Push-Ups",
+            slug:"push-ups",
+            target:"Chest and triceps"
+        },
+
+        "Kettlebell Row":{
+            name:"Kettlebell High Pull",
+            slug:"kettlebell-swing",
+            target:"Upper back and shoulders"
+        },
+
+        "Kettlebell Overhead Press":{
+            name:"Kettlebell Front Raise",
+            slug:"kettlebell-overhead-press",
+            target:"Shoulders"
+        },
+
+        "Kettlebell Russian Twist":{
+            name:"Dead Bug",
+            slug:"push-ups",
+            target:"Core"
+        },
+
+        "Kettlebell Goblet Squat":{
+            name:"Reverse Lunge",
+            slug:"kettlebell-goblet-squat",
+            target:"Legs and glutes"
+        }
+
+    };
+
+
+    const replacement =
+        replacements[current.name];
+
+
+    if(!replacement){
+        return;
+    }
+
+
+    const oldName =
+        current.name;
+
+
+    current.name =
+        replacement.name;
+
+    current.slug =
+        replacement.slug;
+
+    current.target =
+        replacement.target;
+
+
+    alert(
+        `${oldName} has been replaced with ${current.name}.`
+    );
+
+
+    renderOverview();
+
+    renderExerciseDetail();
+
+}
+
+
+/* =====================================================
+   PROGRESS
+   ===================================================== */
+
+function renderProgress(){
+
+    const info =
+        levelInfo();
+
+
+    document.getElementById(
+        "progressLevel"
+    ).textContent =
+        info.current.level;
+
+
+    document.getElementById(
+        "progressLevelTitle"
+    ).textContent =
+        info.current.title;
+
+
+    document.getElementById(
+        "progressXP"
+    ).textContent =
+        state.xp;
+
+
+    document.getElementById(
+        "progressXPBar"
+    ).style.width =
+        info.progress + "%";
+
+
+    document.getElementById(
+        "progressWorkouts"
+    ).textContent =
+        state.totalWorkouts;
+
+
+    document.getElementById(
+        "progressReps"
+    ).textContent =
+        state.totalReps;
+
+
+    document.getElementById(
+        "progressVolume"
+    ).textContent =
+        formatWeight(state.totalVolume);
+
+
+    document.getElementById(
+        "progressPoints"
+    ).textContent =
+        state.totalPoints;
+
+
+    renderChart();
+
+}
+
+
+/* =====================================================
+   WEEKLY CHART
+   ===================================================== */
+
+function renderChart(){
+
+    const chart =
+        document.getElementById(
+            "weeklyChart"
+        );
+
+    chart.innerHTML = "";
+
+
+    const days = [];
+
+    for(let i=6;i>=0;i--){
+
+        const date =
+            new Date();
+
+        date.setDate(
+            date.getDate()-i
+        );
+
+        const key =
+            date.toISOString()
+                .slice(0,10);
+
+
+        let count = 0;
+
+        state.history.forEach(item=>{
+
+            if(
+                item.date &&
+                item.date.slice(0,10) === key
+            ){
+                count++;
+            }
+
+        });
+
+
+        days.push(count);
+
+    }
+
+
+    const max =
+        Math.max(
+            1,
+            ...days
+        );
+
+
+    days.forEach(value=>{
+
+        const bar =
+            document.createElement("div");
+
+        bar.className = "bar";
+
+        bar.style.height =
+            Math.max(
+                8,
+                (value/max)*100
+            ) + "%";
+
+
+        bar.title =
+            `${value} workout${value===1?"":"s"}`;
+
+
+        chart.appendChild(bar);
+
+    });
+
+}
+
+
+/* =====================================================
+   RESET PROGRESS
+   ===================================================== */
+
+function resetProgress(){
+
+    const confirmed =
+        confirm(
+            "Reset all workout progress, XP and history?"
+        );
+
+    if(!confirmed){
+        return;
+    }
+
+
+    state = {
+
+        xp:0,
+
+        totalWorkouts:0,
+
+        totalReps:0,
+
+        totalVolume:0,
+
+        totalPoints:0,
+
+        weeklyWorkouts:0,
+
+        history:[],
+
+        weight:20,
+
+        unit:"lb",
+
+        duration:20
+
+    };
+
+
+    session = null;
+
+
+    localStorage.removeItem(
+        "kettlebellActiveSession"
+    );
+
+
+    save();
+
+    renderHome();
+
+    alert("Progress has been reset.");
+
+}
+
+
+/* =====================================================
+   INITIALISE
+   ===================================================== */
+
+function initialise(){
+
+    renderHome();
+
+    renderOverview();
+
+    renderProgress();
+
+    renderSettings();
+
+
+    const active =
+        loadActiveSession();
+
+
+    if(active){
+
+        const resume =
+            confirm(
+                "You have an unfinished workout.\n\nResume it?"
+            );
+
+
+        if(resume){
+
+            workoutIndex = 0;
+
+            currentSet = 0;
+
+            if(
+                session.exercises &&
+                session.exercises.length
+            ){
+
+                for(
+                    let i=0;
+                    i<session.exercises.length;
+                    i++
+                ){
+
+                    const completed =
+                        session.exercises[i].sets.length;
+
+                    const target =
+                        exercises[i].sets;
+
+                    if(completed < target){
+
+                        workoutIndex = i;
+
+                        currentSet =
+                            completed;
+
+                        currentReps =
+                            exercises[i].reps;
+
+                        break;
+
+                    }
+
+                }
+
+            }
+
+
+            startWorkoutTimer();
+
+            show("workout");
+
+            renderWorkout();
+
+        }else{
+
+            localStorage.removeItem(
+                "kettlebellActiveSession"
+            );
+
+            session = null;
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   AUTO SAVE
+   ===================================================== */
+
+setInterval(()=>{
+
+    if(session){
+        saveSession();
+    }
+
+},5000);
+
+
+/* =====================================================
+   SETTINGS AUTO SAVE
+   ===================================================== */
+
+document.addEventListener(
+    "change",
+    event=>{
+
+        if(
+            event.target.id === "weightInput" ||
+            event.target.id === "weightUnit" ||
+            event.target.id === "durationSelect"
+        ){
+
+            saveSettings();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   START APP
+===================================================== */
+
+initialise();
 
 </script>
 
 </body>
 </html>
+  
