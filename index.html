@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07090b">
 <title>Kettlebell Workout</title>
+
 <style>
 :root{
   --bg:#06090b;
@@ -13,25 +14,29 @@
   --line:#263034;
   --cyan:#00aebc;
   --cyan2:#19d0d8;
-  --cyanDark:#073b40;
   --text:#f1f5f5;
   --muted:#899396;
-  --soft:#c5cdcf;
   --green:#36c39c;
 }
+
 *{box-sizing:border-box}
+
 html,body{
   margin:0;
   background:#000;
   color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
 }
+
 body{min-height:100vh}
+
 button,input,select,textarea{
   font:inherit;
   color:inherit
 }
+
 button{cursor:pointer}
+
 .app{
   width:100%;
   max-width:480px;
@@ -40,16 +45,19 @@ button{cursor:pointer}
   min-height:100vh;
   padding-bottom:28px
 }
+
 .header{
   padding:22px 18px 12px;
   text-align:center
 }
+
 .brand{
   font-size:12px;
   letter-spacing:2px;
   font-weight:900;
   color:var(--cyan2)
 }
+
 .logo{
   width:40px;
   height:40px;
@@ -58,6 +66,7 @@ button{cursor:pointer}
   margin:0 auto 8px;
   position:relative
 }
+
 .logo:before{
   content:"";
   position:absolute;
@@ -69,20 +78,27 @@ button{cursor:pointer}
   left:11px;
   top:-9px
 }
+
 h1{
   font-size:27px;
   margin:5px 0 4px;
   font-weight:900
 }
+
 .subtitle{
   font-size:12px;
   color:var(--muted)
 }
+
 .screen{
   display:none;
   padding:10px 13px 25px
 }
-.screen.active{display:block}
+
+.screen.active{
+  display:block
+}
+
 .card{
   background:linear-gradient(145deg,#121719,#0d1113);
   border:1px solid var(--line);
@@ -91,28 +107,36 @@ h1{
   margin-bottom:11px;
   box-shadow:0 8px 25px #0005
 }
+
 .eyebrow{
   font-size:10px;
   letter-spacing:1.2px;
   color:var(--cyan2);
   font-weight:900
 }
+
 .sectionTitle{
   font-size:17px;
   font-weight:900;
   margin:4px 0 12px
 }
-.hero{padding:18px}
+
+.hero{
+  padding:18px
+}
+
 .heroTitle{
   font-size:27px;
   font-weight:900;
   margin:7px 0
 }
+
 .meta{
   font-size:12px;
   color:#aab4b6;
   margin-bottom:13px
 }
+
 .btn{
   border-radius:13px;
   padding:13px 15px;
@@ -121,19 +145,23 @@ h1{
   font-weight:900;
   width:100%
 }
+
 .btn.primary{
   background:linear-gradient(90deg,#0ba7b3,#087f89);
   border-color:#19c5cf
 }
+
 .btn.small{
   padding:10px;
   font-size:11px
 }
+
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:7px
 }
+
 .stat{
   text-align:center;
   background:#0e1315;
@@ -141,27 +169,32 @@ h1{
   border-radius:14px;
   padding:12px 4px
 }
+
 .stat b{
   display:block;
   font-size:22px
 }
+
 .stat span{
   font-size:9px;
   color:var(--muted);
   letter-spacing:1px
 }
+
 .progress{
   height:8px;
   background:#273134;
   border-radius:99px;
   overflow:hidden
 }
+
 .progress i{
   display:block;
   height:100%;
   width:0;
   background:linear-gradient(90deg,var(--cyan),var(--cyan2))
 }
+
 .weekLine{
   display:flex;
   justify-content:space-between;
@@ -169,12 +202,14 @@ h1{
   color:#adb6b8;
   font-size:11px
 }
+
 .calendarHead{
   display:flex;
   justify-content:space-between;
   align-items:center;
   margin-bottom:10px
 }
+
 .calendarHead button{
   width:38px;
   height:38px;
@@ -184,20 +219,24 @@ h1{
   color:#9edce0;
   font-size:23px
 }
+
 .month{
   font-size:16px;
   font-weight:900
 }
+
 .weekdays,.days{
   display:grid;
   grid-template-columns:repeat(7,1fr);
   gap:5px
 }
+
 .weekdays div{
   text-align:center;
   font-size:9px;
   color:#687579
 }
+
 .day{
   height:36px;
   border:1px solid #263235;
@@ -208,35 +247,56 @@ h1{
   justify-content:center;
   font-size:11px
 }
+
 .day.today{
   border-color:var(--cyan2);
   color:var(--cyan2)
 }
+
 .day.done{
   background:#08363a;
   border-color:var(--cyan);
   font-weight:900
 }
+
 .recovery{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:7px
 }
+
 .recover{
   padding:11px;
   border-radius:12px;
   border:1px solid var(--line);
   background:#101618
 }
-.recover b{font-size:12px}
+
+.recover b{
+  font-size:12px
+}
+
 .recover span{
   float:right;
   font-size:9px
 }
-.ready{color:#40c9a0}
-.recovering{color:#c5aa4d}
-.trained{color:#c86a72}
-.field{margin-bottom:9px}
+
+.ready{
+  color:#40c9a0
+}
+
+.recovering{
+  color:#c5aa4d
+}
+
+.trained{
+  color:#c86a72
+}
+
+.field{
+  margin-bottom:9px
+}
+
 .field label{
   display:block;
   font-size:9px;
@@ -244,6 +304,7 @@ h1{
   margin-bottom:5px;
   letter-spacing:.6px
 }
+
 .field input,
 .field select,
 .field textarea{
@@ -254,13 +315,18 @@ h1{
   padding:10px;
   outline:none
 }
-.field textarea{min-height:75px}
+
+.field textarea{
+  min-height:75px
+}
+
 .detailTop{
   display:flex;
   align-items:center;
   justify-content:space-between;
   margin-bottom:11px
 }
+
 .back{
   background:none;
   border:0;
@@ -268,45 +334,31 @@ h1{
   padding:7px 0;
   font-size:13px
 }
+
 .detailTitle{
   text-align:center;
   font-size:15px;
   font-weight:900
 }
+
 .dots{
   background:none;
   border:0;
   color:#aeb8ba;
   font-size:20px
 }
+
 .exerciseGrid{
   display:grid;
   gap:11px
 }
-.exerciseImage{
-  height:190px;
-  border-radius:15px;
-  background:radial-gradient(
-    circle at 50% 45%,
-    #343b3e 0,
-    #151a1d 42%,
-    #0d1113 75%
-  );
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border:1px solid #252e31
-}
-.exerciseImage svg{
-  height:175px;
-  width:100%
-}
+
 .exerciseName{
   font-size:21px;
   font-weight:900;
   margin:10px 0 4px
 }
+
 .tag{
   display:inline-block;
   padding:5px 9px;
@@ -317,30 +369,44 @@ h1{
   font-size:9px;
   font-weight:900
 }
-.infoRows{margin-top:8px}
+
+.infoRows{
+  margin-top:8px
+}
+
 .infoRow{
   display:flex;
   gap:11px;
   padding:11px 0;
   border-bottom:1px solid #273033
 }
-.infoRow:last-child{border-bottom:0}
+
+.infoRow:last-child{
+  border-bottom:0
+}
+
 .icon{
   width:26px;
   color:var(--cyan2);
   font-size:18px;
   text-align:center
 }
+
 .infoRow small{
   display:block;
   color:var(--muted);
   font-size:9px
 }
-.infoRow b{font-size:11px}
+
+.infoRow b{
+  font-size:11px
+}
+
 .muscleCard{
   padding:0;
   overflow:hidden
 }
+
 .tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -350,6 +416,7 @@ h1{
   padding:2px;
   margin:10px 0
 }
+
 .tabs button{
   border:0;
   background:none;
@@ -358,30 +425,23 @@ h1{
   color:#818b8e;
   font-size:10px
 }
+
 .tabs button.active{
   background:#087d87;
   color:#dffcff
 }
-.bodyWrap{
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative
-}
-.bodyWrap svg{
-  width:220px;
-  height:315px
-}
+
 .legend{
   display:grid;
   gap:6px;
   padding:10px 13px 15px
 }
+
 .legend div{
   font-size:10px;
   color:#aab4b6
 }
+
 .legend i{
   display:inline-block;
   width:9px;
@@ -390,26 +450,39 @@ h1{
   background:var(--cyan2);
   margin-right:7px
 }
-.legend i.sec{background:#55a9ae}
-.legend i.other{background:#50585b}
+
+.legend i.sec{
+  background:#55a9ae
+}
+
+.legend i.other{
+  background:#50585b
+}
+
 .aboutText{
   font-size:11px;
   line-height:1.55;
   color:#aab3b5
 }
+
 .aboutGrid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:7px;
   margin-top:11px
 }
+
 .aboutMini{
   border:1px solid var(--line);
   background:#151a1d;
   border-radius:11px;
   padding:11px
 }
-.aboutMini b{font-size:11px}
+
+.aboutMini b{
+  font-size:11px
+}
+
 .aboutMini span{
   display:block;
   color:#8c9698;
@@ -417,30 +490,36 @@ h1{
   margin-top:6px;
   line-height:1.5
 }
+
 .tips{
   display:flex;
   gap:10px;
   align-items:center
 }
+
 .bulb{
   font-size:22px;
   color:#cfd55e
 }
+
 .tips b{
   font-size:10px;
   color:var(--cyan2)
 }
+
 .tips p{
   font-size:10px;
   color:#aab4b6;
   margin:3px 0 0
 }
+
 .navExercises{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:8px
 }
+
 .navExercises button{
   width:42px;
   height:42px;
@@ -449,27 +528,38 @@ h1{
   border:1px solid #303a3d;
   font-size:20px
 }
-.navText{text-align:center}
+
+.navText{
+  text-align:center
+}
+
 .navText small{
   display:block;
   color:#7d888b;
   font-size:9px
 }
-.navText b{font-size:10px}
+
+.navText b{
+  font-size:10px
+}
+
 .sets{
   display:grid;
   gap:7px
 }
+
 .setRow{
   display:grid;
   grid-template-columns:43px 1fr 70px;
   gap:6px;
   align-items:center
 }
+
 .setNo{
   font-size:10px;
   color:#899396
 }
+
 .repBox{
   display:flex;
   flex-direction:column;
@@ -479,6 +569,7 @@ h1{
   border-radius:10px;
   overflow:hidden
 }
+
 .repBox button{
   width:100%;
   height:20px;
@@ -488,6 +579,7 @@ h1{
   font-size:13px;
   line-height:15px
 }
+
 .repBox strong{
   width:100%;
   text-align:center;
@@ -498,6 +590,7 @@ h1{
   font-weight:900;
   font-size:13px
 }
+
 .doneBtn{
   height:52px;
   border-radius:10px;
@@ -506,16 +599,19 @@ h1{
   font-size:10px;
   font-weight:900
 }
+
 .doneBtn.done{
   background:#0b4a4e;
   border-color:var(--cyan2)
 }
+
 .difficulty{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:5px;
   margin-top:9px
 }
+
 .difficulty button{
   padding:8px 2px;
   border-radius:9px;
@@ -523,11 +619,13 @@ h1{
   background:#141a1c;
   font-size:8px
 }
+
 .difficulty button.active{
   border-color:var(--cyan2);
   background:#07383d;
   color:#cfffff
 }
+
 .timer{
   position:fixed;
   left:50%;
@@ -542,17 +640,23 @@ h1{
   z-index:50;
   box-shadow:0 15px 45px #000d
 }
+
 .timer strong{
   display:block;
   font-size:30px;
   color:var(--cyan2)
 }
+
 .timer button{
   width:auto;
   margin:4px 3px;
   padding:8px 12px
 }
-.hidden{display:none!important}
+
+.hidden{
+  display:none!important
+}
+
 .graph{
   height:140px;
   display:flex;
@@ -561,37 +665,41 @@ h1{
   border-bottom:1px solid #344044;
   padding:8px 3px 0
 }
+
 .graph i{
   flex:1;
   background:linear-gradient(to top,#07373b,#11bfc8);
   border-radius:5px 5px 0 0;
   min-height:4px
 }
+
 .labels{
   display:flex;
   gap:7px
 }
+
 .labels span{
   flex:1;
   text-align:center;
   font-size:8px;
   color:#748084
 }
-@media(max-width:360px){
-  .app{font-size:95%}
-  .exerciseImage{height:175px}
-  .bodyWrap{min-height:300px}
+
+.overviewHero{
+  padding:18px
 }
-.overviewHero{padding:18px}
+
 .overviewTitle{
   font-size:25px;
   font-weight:900;
   margin:6px 0
 }
+
 .overviewList{
   display:grid;
   gap:8px
 }
+
 .overviewItem{
   width:100%;
   display:grid;
@@ -605,7 +713,11 @@ h1{
   border-radius:14px;
   color:var(--text)
 }
-.overviewItem:active{border-color:var(--cyan2)}
+
+.overviewItem:active{
+  border-color:var(--cyan2)
+}
+
 .exerciseNum{
   width:26px;
   height:26px;
@@ -618,6 +730,7 @@ h1{
   font-size:11px;
   font-weight:900
 }
+
 .overviewThumb{
   width:88px;
   height:64px;
@@ -625,10 +738,12 @@ h1{
   border-radius:10px;
   background:#070c0e
 }
+
 .overviewInfo b{
   font-size:11px;
   display:block
 }
+
 .overviewInfo small{
   display:block;
   color:#8d989b;
@@ -636,10 +751,12 @@ h1{
   margin-top:4px;
   line-height:1.35
 }
+
 .overviewArrow{
   font-size:21px;
   color:#aeb8ba
 }
+
 .realExerciseImage{
   height:235px;
   border-radius:16px;
@@ -650,11 +767,13 @@ h1{
   align-items:center;
   justify-content:center
 }
+
 .realExerciseImage img{
   width:100%;
   height:100%;
   object-fit:contain
 }
+
 .anatomyPanel{
   height:390px;
   border-radius:16px;
@@ -670,37 +789,44 @@ h1{
   justify-content:center;
   overflow:hidden
 }
+
 .anatomyPanel img{
   width:100%;
   height:100%;
   object-fit:contain
 }
+
 .anatomyCaption{
   text-align:center;
   color:#7f8a8d;
   font-size:9px;
   margin-top:5px
 }
+
 .detailMuscleRows{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:7px;
   margin-top:10px
 }
+
 .detailMuscle{
   padding:10px;
   border:1px solid #273235;
   border-radius:11px;
   background:#101618
 }
+
 .detailMuscle b{
   display:block;
   font-size:10px
 }
+
 .detailMuscle span{
   font-size:8px;
   color:#7f898c
 }
+
 .primaryDot,
 .secondaryDot{
   display:inline-block;
@@ -710,45 +836,96 @@ h1{
   margin-right:5px;
   background:var(--cyan2)
 }
-.secondaryDot{background:#58a9ae}
+
+.secondaryDot{
+  background:#58a9ae
+}
+
 @media(max-width:360px){
+  .app{
+    font-size:95%
+  }
+
   .overviewItem{
     grid-template-columns:30px 78px 1fr 18px
   }
-  .overviewThumb{width:78px}
-  .realExerciseImage{height:215px}
-  .anatomyPanel{height:350px}
+
+  .overviewThumb{
+    width:78px
+  }
+
+  .realExerciseImage{
+    height:215px
+  }
+
+  .anatomyPanel{
+    height:350px
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="app">
 
 <header class="header">
+
   <div class="logo"></div>
-  <div class="brand">MY WORKOUT</div>
-  <h1>Kettlebell Workout</h1>
-  <div class="subtitle">Your personal adaptive training programme</div>
+
+  <div class="brand">
+    MY WORKOUT
+  </div>
+
+  <h1>
+    Kettlebell Workout
+  </h1>
+
+  <div class="subtitle">
+    Your personal adaptive training programme
+  </div>
+
 </header>
+
+
+<!-- HOME -->
 
 <section id="home" class="screen active">
 
   <div class="card hero">
-    <div class="eyebrow">TODAY'S WORKOUT</div>
-    <div class="heroTitle" id="todayTitle">Week 1 • Workout 2</div>
-    <div class="meta">7 exercises • 21 sets • ~30 minutes</div>
 
-    <button class="btn primary" onclick="startWorkout()">
+    <div class="eyebrow">
+      TODAY'S WORKOUT
+    </div>
+
+    <div class="heroTitle">
+      Week 1 • Workout 2
+    </div>
+
+    <div class="meta">
+      7 exercises • 21 sets • ~30 minutes
+    </div>
+
+    <button
+      class="btn primary"
+      onclick="startWorkout()"
+    >
       ▶ START WORKOUT
     </button>
 
-    <button class="btn" style="margin-top:8px" onclick="showPreview()">
+    <button
+      class="btn"
+      style="margin-top:8px"
+      onclick="showPreview()"
+    >
       SEE WORKOUT
     </button>
+
   </div>
 
+
   <div class="stats card">
+
     <div class="stat">
       <b id="workoutsStat">0</b>
       <span>WORKOUTS</span>
@@ -763,28 +940,54 @@ h1{
       <b id="streakStat">0</b>
       <span>STREAK</span>
     </div>
+
   </div>
 
+
   <div class="card">
-    <div class="sectionTitle">🎯 THIS WEEK</div>
+
+    <div class="sectionTitle">
+      🎯 THIS WEEK
+    </div>
 
     <div class="weekLine">
-      <span id="weekCount">0 / 4 workouts</span>
-      <span id="weekRemain">4 remaining</span>
+      <span id="weekCount">
+        0 / 4 workouts
+      </span>
+
+      <span id="weekRemain">
+        4 remaining
+      </span>
     </div>
 
     <div class="progress">
       <i id="weekProgress"></i>
     </div>
+
   </div>
 
+
   <div class="card">
-    <div class="sectionTitle">WORKOUT CALENDAR</div>
+
+    <div class="sectionTitle">
+      WORKOUT CALENDAR
+    </div>
 
     <div class="calendarHead">
-      <button onclick="changeMonth(-1)">‹</button>
-      <div class="month" id="monthTitle"></div>
-      <button onclick="changeMonth(1)">›</button>
+
+      <button onclick="changeMonth(-1)">
+        ‹
+      </button>
+
+      <div
+        class="month"
+        id="monthTitle"
+      ></div>
+
+      <button onclick="changeMonth(1)">
+        ›
+      </button>
+
     </div>
 
     <div class="weekdays">
@@ -797,15 +1000,30 @@ h1{
       <div>SAT</div>
     </div>
 
-    <div class="days" id="days"></div>
+    <div
+      class="days"
+      id="days"
+    ></div>
+
   </div>
 
+
   <div class="card">
-    <div class="sectionTitle">LEVEL & XP</div>
+
+    <div class="sectionTitle">
+      LEVEL & XP
+    </div>
 
     <div class="weekLine">
-      <span id="levelTitle">Level 1 • Beginner</span>
-      <span id="xpLabel">0 XP</span>
+
+      <span id="levelTitle">
+        Level 1 • Beginner
+      </span>
+
+      <span id="xpLabel">
+        0 XP
+      </span>
+
     </div>
 
     <div class="progress">
@@ -813,27 +1031,65 @@ h1{
     </div>
 
     <div class="weekLine">
-      <span id="xpFrom">0 XP</span>
-      <span id="xpTo">250 XP to Level 2</span>
+
+      <span id="xpFrom">
+        0 XP
+      </span>
+
+      <span id="xpTo">
+        250 XP to Level 2
+      </span>
+
     </div>
+
   </div>
 
-  <div class="card">
-    <div class="sectionTitle">MUSCLE RECOVERY</div>
-    <div class="recovery" id="recovery"></div>
-  </div>
 
   <div class="card">
-    <div class="sectionTitle">PROGRESS</div>
-    <div class="graph" id="graph"></div>
-    <div class="labels" id="labels"></div>
+
+    <div class="sectionTitle">
+      MUSCLE RECOVERY
+    </div>
+
+    <div
+      class="recovery"
+      id="recovery"
+    ></div>
+
   </div>
 
+
   <div class="card">
-    <div class="sectionTitle">EQUIPMENT</div>
+
+    <div class="sectionTitle">
+      PROGRESS
+    </div>
+
+    <div
+      class="graph"
+      id="graph"
+    ></div>
+
+    <div
+      class="labels"
+      id="labels"
+    ></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="sectionTitle">
+      EQUIPMENT
+    </div>
 
     <div class="field">
-      <label>KETTLEBELL WEIGHT</label>
+
+      <label>
+        KETTLEBELL WEIGHT
+      </label>
+
       <input
         id="weight"
         type="number"
@@ -841,114 +1097,259 @@ h1{
         step=".5"
         onchange="saveSettings()"
       >
+
     </div>
 
     <div class="field">
-      <label>UNIT</label>
-      <select id="unit" onchange="saveSettings()">
-        <option value="lb">lb</option>
-        <option value="kg">kg</option>
+
+      <label>
+        UNIT
+      </label>
+
+      <select
+        id="unit"
+        onchange="saveSettings()"
+      >
+
+        <option value="lb">
+          lb
+        </option>
+
+        <option value="kg">
+          kg
+        </option>
+
       </select>
+
     </div>
+
   </div>
 
 </section>
 
-<section id="preview" class="screen">
+
+<!-- WORKOUT OVERVIEW -->
+
+<section
+  id="preview"
+  class="screen"
+>
 
   <div class="detailTop">
-    <button class="back" onclick="goHome()">‹ Back</button>
-    <div class="detailTitle">Workout Overview</div>
-    <button class="dots">⋮</button>
+
+    <button
+      class="back"
+      onclick="goHome()"
+    >
+      ‹ Back
+    </button>
+
+    <div class="detailTitle">
+      Workout Overview
+    </div>
+
+    <button class="dots">
+      ⋮
+    </button>
+
   </div>
+
 
   <div class="card overviewHero">
-    <div class="eyebrow">TODAY'S WORKOUT</div>
-    <div class="overviewTitle">Upper Body + Abs</div>
-    <div class="meta">7 exercises • 21 sets • ~30 minutes</div>
+
+    <div class="eyebrow">
+      TODAY'S WORKOUT
+    </div>
+
+    <div class="overviewTitle">
+      Upper Body + Abs
+    </div>
+
+    <div class="meta">
+      7 exercises • 21 sets • ~30 minutes
+    </div>
+
   </div>
+
 
   <div class="card">
-    <div id="previewList" class="overviewList"></div>
+
+    <div
+      id="previewList"
+      class="overviewList"
+    ></div>
+
   </div>
 
-  <button class="btn primary" onclick="startWorkout()">
+
+  <button
+    class="btn primary"
+    onclick="startWorkout()"
+  >
     ▶ START WORKOUT
   </button>
 
 </section>
 
-<section id="exerciseDetail" class="screen">
+
+<!-- EXERCISE DETAIL -->
+
+<section
+  id="exerciseDetail"
+  class="screen"
+>
 
   <div class="detailTop">
-    <button class="back" onclick="showPreview()">‹ Workout</button>
-    <div class="detailTitle" id="exerciseHeader">Exercise</div>
-    <button class="dots">⋮</button>
+
+    <button
+      class="back"
+      onclick="showPreview()"
+    >
+      ‹ Workout
+    </button>
+
+    <div
+      class="detailTitle"
+      id="exerciseHeader"
+    >
+      Exercise
+    </div>
+
+    <button class="dots">
+      ⋮
+    </button>
+
   </div>
+
 
   <div id="exerciseDetailContent"></div>
 
 </section>
 
-<section id="workout" class="screen">
+
+<!-- WORKOUT -->
+
+<section
+  id="workout"
+  class="screen"
+>
 
   <div class="detailTop">
-    <button class="back" onclick="goHome()">‹ Back</button>
-    <div class="detailTitle">Workout</div>
-    <button class="dots">⋮</button>
+
+    <button
+      class="back"
+      onclick="goHome()"
+    >
+      ‹ Back
+    </button>
+
+    <div class="detailTitle">
+      Workout
+    </div>
+
+    <button class="dots">
+      ⋮
+    </button>
+
   </div>
+
 
   <div class="card">
 
     <div class="stats">
 
       <div class="stat">
-        <b id="doneExercises">0/7</b>
-        <span>EXERCISES</span>
+        <b id="doneExercises">
+          0/7
+        </b>
+
+        <span>
+          EXERCISES
+        </span>
       </div>
 
       <div class="stat">
-        <b id="sessionPoints">0</b>
-        <span>POINTS</span>
+        <b id="sessionPoints">
+          0
+        </b>
+
+        <span>
+          POINTS
+        </span>
       </div>
 
       <div class="stat">
-        <b id="weightDisplay">20</b>
-        <span id="unitDisplay">LB</span>
+
+        <b id="weightDisplay">
+          20
+        </b>
+
+        <span id="unitDisplay">
+          LB
+        </span>
+
       </div>
 
     </div>
 
-    <div style="margin-top:12px" class="progress">
+
+    <div
+      style="margin-top:12px"
+      class="progress"
+    >
+
       <i id="workoutProgress"></i>
+
     </div>
 
   </div>
 
+
   <div id="workoutList"></div>
 
+
   <div class="card">
-    <div class="sectionTitle">WORKOUT NOTES</div>
+
+    <div class="sectionTitle">
+      WORKOUT NOTES
+    </div>
 
     <div class="field">
+
       <textarea
         id="notes"
         placeholder="How did today's workout feel?"
       ></textarea>
+
     </div>
+
   </div>
 
-  <button class="btn primary" onclick="finishWorkout()">
+
+  <button
+    class="btn primary"
+    onclick="finishWorkout()"
+  >
     ✓ FINISH & SAVE WORKOUT
   </button>
 
 </section>
 
-<div id="timer" class="timer hidden">
 
-  <div class="eyebrow">REST</div>
+<!-- REST TIMER -->
 
-  <strong id="timerValue">30</strong>
+<div
+  id="timer"
+  class="timer hidden"
+>
+
+  <div class="eyebrow">
+    REST
+  </div>
+
+  <strong id="timerValue">
+    30
+  </strong>
 
   <button
     class="btn primary"
@@ -958,15 +1359,71 @@ h1{
     PAUSE
   </button>
 
-  <button class="btn" onclick="skipRest()">
+  <button
+    class="btn"
+    onclick="skipRest()"
+  >
     SKIP REST
   </button>
 
 </div>
 
+
 </div>
 
+
 <script>
+
+
+/*
+====================================================
+EMBEDDED IMAGE SYSTEM
+====================================================
+
+The images are embedded directly into this HTML.
+
+You therefore do NOT need an images folder.
+
+====================================================
+*/
+
+const EMBEDDED_IMAGES = {
+
+  "anatomy-front":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "anatomy-back":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "push-ups":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "kettlebell-swing":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "kettlebell-floor-press":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "kettlebell-row":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "kettlebell-overhead-press":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "kettlebell-russian-twist":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA==",
+
+  "kettlebell-goblet-squat":
+  "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoQABAAPpFIoGMCmA2XwA=="
+
+};
+
+
+/*
+====================================================
+EXERCISES
+====================================================
+*/
 
 const exercises=[
 
@@ -1091,18 +1548,12 @@ const exercises=[
 
 ];
 
-const levels=[
- [0,"BEGINNER"],
- [250,"GETTING STARTED"],
- [600,"BUILDING STRENGTH"],
- [1000,"STRONG"],
- [1500,"ADVANCED"],
- [2100,"DEDICATED"],
- [2800,"ELITE"],
- [3600,"BEAST"],
- [4500,"PRO"],
- [5500,"MASTER"]
-];
+
+/*
+====================================================
+STORAGE
+====================================================
+*/
 
 let state=JSON.parse(
  localStorage.getItem("workoutState") ||
@@ -1122,311 +1573,704 @@ let timerPaused=false;
 
 let detailIndex=0;
 
+
+/*
+====================================================
+SAVE
+====================================================
+*/
+
 function save(){
+
  localStorage.setItem(
   "workoutState",
   JSON.stringify(state)
  );
+
 }
 
 function saveSession(){
+
  localStorage.setItem(
   "workoutSession",
   JSON.stringify(session)
  );
+
 }
+
+
+/*
+====================================================
+NAVIGATION
+====================================================
+*/
 
 function show(id){
 
  document
   .querySelectorAll(".screen")
-  .forEach(x=>x.classList.remove("active"));
+  .forEach(x=>
+   x.classList.remove("active")
+  );
 
  document
   .getElementById(id)
   .classList.add("active");
 
  window.scrollTo(0,0);
+
 }
 
 function goHome(){
+
  show("home");
+
  renderHome();
+
 }
+
+
+/*
+====================================================
+EQUIPMENT
+====================================================
+*/
 
 function saveSettings(){
 
  state.weight=Math.max(
   1,
-  Number(document.getElementById("weight").value)||20
+  Number(
+   document.getElementById("weight").value
+  )||20
  );
 
- state.unit=document.getElementById("unit").value;
+ state.unit=
+  document.getElementById("unit").value;
 
  save();
 
  renderHome();
+
 }
+
+
+/*
+====================================================
+LEVEL SYSTEM
+====================================================
+*/
+
+const levels=[
+
+ [0,"BEGINNER"],
+ [250,"GETTING STARTED"],
+ [600,"BUILDING STRENGTH"],
+ [1000,"STRONG"],
+ [1500,"ADVANCED"],
+ [2100,"DEDICATED"],
+ [2800,"ELITE"],
+ [3600,"BEAST"],
+ [4500,"PRO"],
+ [5500,"MASTER"]
+
+];
+
 
 function levelInfo(){
 
  let idx=0;
 
- levels.forEach((l,i)=>{
-  if(state.xp>=l[0])idx=i;
- });
+ levels.forEach(
+  (l,i)=>{
+   if(state.xp>=l[0])
+    idx=i;
+  }
+ );
 
  return {
   idx,
   current:levels[idx],
   next:levels[idx+1]
  };
+
 }
 
+
+/*
+====================================================
+IMAGE FUNCTIONS
+====================================================
+*/
+
 function assetFor(e){
- return "images/"+e.slug+".jpg";
+
+ return EMBEDDED_IMAGES[e.slug];
+
 }
 
 function anatomyAsset(side){
- return "images/anatomy-"+side+".jpg";
+
+ return EMBEDDED_IMAGES[
+  "anatomy-"+side
+ ];
+
 }
+
+
+/*
+====================================================
+EXERCISE INFORMATION
+====================================================
+*/
 
 function infoCard(e){
 
  return `
+
  <div class="card">
 
-  <div class="realExerciseImage">
-   <img
-    src="${assetFor(e)}"
-    alt="${e.name}"
+   <div class="realExerciseImage">
+
+     <img
+       src="${assetFor(e)}"
+       alt="${e.name}"
+     >
+
+   </div>
+
+
+   <div
+     class="eyebrow"
+     style="margin-top:10px"
    >
-  </div>
-
-  <div class="eyebrow" style="margin-top:10px">
-   EXERCISE
-  </div>
-
-  <div class="exerciseName">
-   ${e.name}
-  </div>
-
-  <span class="tag">
-   ${e.type==="Kettlebell"
-     ?state.weight+" "+state.unit
-     :"Bodyweight"}
-  </span>
-
-  <div class="infoRows">
-
-   <div class="infoRow">
-    <div class="icon">◉</div>
-    <div>
-     <small>Target Muscle</small>
-     <b>${e.target}</b>
-    </div>
+     EXERCISE
    </div>
 
-   <div class="infoRow">
-    <div class="icon">▥</div>
-    <div>
-     <small>Difficulty</small>
-     <b>${e.difficulty}</b>
-    </div>
+
+   <div class="exerciseName">
+     ${e.name}
    </div>
 
-   <div class="infoRow">
-    <div class="icon">♙</div>
-    <div>
-     <small>Equipment</small>
-     <b>${e.equipment}</b>
-    </div>
-   </div>
 
-   <div class="infoRow">
-    <div class="icon">ϟ</div>
-    <div>
-     <small>Type</small>
-     <b>${e.kind}</b>
-    </div>
-   </div>
+   <span class="tag">
 
-  </div>
+     ${
+       e.type==="Kettlebell"
+       ?state.weight+" "+state.unit
+       :"Bodyweight"
+     }
+
+   </span>
+
+
+   <div class="infoRows">
+
+
+     <div class="infoRow">
+
+       <div class="icon">
+         ◉
+       </div>
+
+       <div>
+
+         <small>
+           Target Muscle
+         </small>
+
+         <b>
+           ${e.target}
+         </b>
+
+       </div>
+
+     </div>
+
+
+     <div class="infoRow">
+
+       <div class="icon">
+         ▥
+       </div>
+
+       <div>
+
+         <small>
+           Difficulty
+         </small>
+
+         <b>
+           ${e.difficulty}
+         </b>
+
+       </div>
+
+     </div>
+
+
+     <div class="infoRow">
+
+       <div class="icon">
+         ♙
+       </div>
+
+       <div>
+
+         <small>
+           Equipment
+         </small>
+
+         <b>
+           ${e.equipment}
+         </b>
+
+       </div>
+
+     </div>
+
+
+     <div class="infoRow">
+
+       <div class="icon">
+         ϟ
+       </div>
+
+       <div>
+
+         <small>
+           Type
+         </small>
+
+         <b>
+           ${e.kind}
+         </b>
+
+       </div>
+
+     </div>
+
+
+   </div>
 
  </div>
+
  `;
+
 }
+
+
+/*
+====================================================
+MUSCLE / ANATOMY
+====================================================
+*/
 
 function muscleCard(e){
 
  return `
+
  <div class="card muscleCard">
 
-  <div style="padding:15px 15px 0">
-   <div class="eyebrow">
-    MUSCLES WORKED
+   <div style="padding:15px 15px 0">
+
+     <div class="eyebrow">
+       MUSCLES WORKED
+     </div>
+
    </div>
-  </div>
 
-  <div class="tabs">
 
-   <button
-    id="frontTab"
-    class="active"
-    onclick="setAnatomy('front')"
+   <div class="tabs">
+
+     <button
+       id="frontTab"
+       class="active"
+       onclick="setAnatomy('front')"
+     >
+       Front
+     </button>
+
+
+     <button
+       id="backTab"
+       onclick="setAnatomy('back')"
+     >
+       Back
+     </button>
+
+   </div>
+
+
+   <div
+     class="anatomyPanel"
+     id="anatomyPanel"
    >
-    Front
-   </button>
 
-   <button
-    id="backTab"
-    onclick="setAnatomy('back')"
-   >
-    Back
-   </button>
+     <img
+       src="${anatomyAsset("front")}"
+       alt="Front muscle anatomy"
+     >
 
-  </div>
-
-  <div
-   class="anatomyPanel"
-   id="anatomyPanel"
-  >
-   <img
-    src="${anatomyAsset('front')}"
-    alt="Front muscle anatomy"
-   >
-  </div>
-
-  <div class="anatomyCaption">
-   Realistic 3D anatomy view
-  </div>
-
-  <div class="legend">
-   <div>
-    <i></i>
-    Primary Muscles
    </div>
 
-   <div>
-    <i class="sec"></i>
-    Secondary Muscles
+
+   <div class="anatomyCaption">
+     Realistic 3D anatomy view
    </div>
 
-   <div>
-    <i class="other"></i>
-    Other Muscles
+
+   <div class="legend">
+
+     <div>
+       <i></i>
+       Primary Muscles
+     </div>
+
+     <div>
+       <i class="sec"></i>
+       Secondary Muscles
+     </div>
+
+     <div>
+       <i class="other"></i>
+       Other Muscles
+     </div>
+
    </div>
-  </div>
 
-  <div class="detailMuscleRows">
 
-   ${e.primary.map(x=>`
-    <div class="detailMuscle">
-     <b>
-      <span class="primaryDot"></span>
-      ${x}
-     </b>
-     <span>Primary</span>
-    </div>
-   `).join("")}
+   <div class="detailMuscleRows">
 
-   ${e.secondary.map(x=>`
-    <div class="detailMuscle">
-     <b>
-      <span class="secondaryDot"></span>
-      ${x}
-     </b>
-     <span>Secondary</span>
-    </div>
-   `).join("")}
 
-  </div>
+     ${
+       e.primary.map(
+        x=>`
+
+        <div class="detailMuscle">
+
+          <b>
+            <span class="primaryDot"></span>
+            ${x}
+          </b>
+
+          <span>
+            Primary
+          </span>
+
+        </div>
+
+        `
+       ).join("")
+     }
+
+
+     ${
+       e.secondary.map(
+        x=>`
+
+        <div class="detailMuscle">
+
+          <b>
+            <span class="secondaryDot"></span>
+            ${x}
+          </b>
+
+          <span>
+            Secondary
+          </span>
+
+        </div>
+
+        `
+       ).join("")
+     }
+
+
+   </div>
 
  </div>
+
  `;
+
 }
+
+
+/*
+====================================================
+WORKOUT SETS
+====================================================
+*/
+
+function workoutSets(e,i){
+
+ const d=session.exercises[i];
+
+ return `
+
+ <div class="card">
+
+   <div class="sectionTitle">
+     ${e.name} • SETS
+   </div>
+
+
+   <div class="sets">
+
+
+     ${
+       d.sets.map(
+        (done,s)=>`
+
+        <div class="setRow">
+
+
+          <span class="setNo">
+            SET ${s+1}
+          </span>
+
+
+          <div class="repBox">
+
+
+            <button
+              onclick="repChange(${i},${s},1)"
+            >
+              ▲
+            </button>
+
+
+            <strong>
+              ${d.reps[s]}
+            </strong>
+
+
+            <button
+              onclick="repChange(${i},${s},-1)"
+            >
+              ▼
+            </button>
+
+
+          </div>
+
+
+          <button
+            class="doneBtn ${done?"done":""}"
+            onclick="completeSet(${i},${s})"
+          >
+
+            ${
+              done
+              ?"✓ DONE"
+              :"DONE"
+            }
+
+          </button>
+
+
+        </div>
+
+        `
+       ).join("")
+     }
+
+
+   </div>
+
+
+   <div
+     class="eyebrow"
+     style="margin-top:13px"
+   >
+     HOW DID THAT SET FEEL?
+   </div>
+
+
+   <div class="difficulty">
+
+
+     ${
+       [
+        "Easy",
+        "Good",
+        "Hard",
+        "Very Hard"
+       ]
+       .map(
+        x=>`
+
+        <button
+          class="${
+            d.difficulty===x
+            ?"active"
+            :""
+          }"
+          onclick="setDifficulty(${i},'${x}')"
+        >
+          ${x}
+        </button>
+
+        `
+       )
+       .join("")
+     }
+
+
+   </div>
+
+
+   <button
+     class="btn small"
+     style="margin-top:8px"
+     onclick="replaceExercise(${i})"
+   >
+     ↻ REPLACE EXERCISE
+   </button>
+
+ </div>
+
+ `;
+
+}
+
+
+/*
+====================================================
+DETAIL PAGE
+====================================================
+*/
 
 function detailCard(e,i,mode){
 
  return `
+
  <div class="exerciseGrid">
 
-  ${infoCard(e)}
+   ${infoCard(e)}
 
-  ${muscleCard(e)}
+   ${muscleCard(e)}
 
-  <div class="card">
 
-   <div class="eyebrow">
-    ABOUT THIS EXERCISE
+   <div class="card">
+
+     <div class="eyebrow">
+       ABOUT THIS EXERCISE
+     </div>
+
+     <p class="aboutText">
+       ${e.about}
+     </p>
+
+
+     <div class="aboutGrid">
+
+
+       <div class="aboutMini">
+
+         <b>
+           ◉ Great For
+         </b>
+
+         <span>
+           Upper-body strength<br>
+           Endurance<br>
+           Core stability
+         </span>
+
+       </div>
+
+
+       <div class="aboutMini">
+
+         <b>
+           ▥ Workout
+         </b>
+
+         <span>
+           ${e.sets} sets<br>
+           ${e.targetReps} reps<br>
+           ${e.rest}s rest
+         </span>
+
+       </div>
+
+
+     </div>
+
    </div>
 
-   <p class="aboutText">
-    ${e.about}
-   </p>
 
-   <div class="aboutGrid">
+   <div class="card tips">
 
-    <div class="aboutMini">
-     <b>◉ Great For</b>
-     <span>
-      Upper-body strength<br>
-      Endurance<br>
-      Core stability
-     </span>
-    </div>
+     <div class="bulb">
+       ♧
+     </div>
 
-    <div class="aboutMini">
-     <b>▥ Workout</b>
-     <span>
-      ${e.sets} sets<br>
-      ${e.targetReps} reps<br>
-      ${e.rest}s rest
-     </span>
-    </div>
+     <div>
+
+       <b>
+         TIPS
+       </b>
+
+       <p>
+         ${e.tip}
+       </p>
+
+     </div>
 
    </div>
 
-  </div>
 
-  <div class="card tips">
+   ${
+     mode==="workout"
+     ?workoutSets(e,i)
+     :""
+   }
 
-   <div class="bulb">♧</div>
 
-   <div>
-    <b>TIPS</b>
-    <p>${e.tip}</p>
+   <div class="card navExercises">
+
+     <button
+       onclick="prevExercise()"
+     >
+       ‹
+     </button>
+
+
+     <div class="navText">
+
+       <small>
+         ${i+1} / ${exercises.length}
+       </small>
+
+       <b>
+
+         ${
+           i<exercises.length-1
+           ?"Next: "+exercises[i+1].name
+           :"Workout complete"
+         }
+
+       </b>
+
+     </div>
+
+
+     <button
+       onclick="nextExercise()"
+     >
+       ›
+     </button>
+
    </div>
-
-  </div>
-
-  ${mode==="workout"?workoutSets(e,i):""}
-
-  <div class="card navExercises">
-
-   <button onclick="prevExercise()">‹</button>
-
-   <div class="navText">
-    <small>
-     ${i+1} / ${exercises.length}
-    </small>
-
-    <b>
-     ${
-       i<exercises.length-1
-       ?"Next: "+exercises[i+1].name
-       :"Workout complete"
-     }
-    </b>
-   </div>
-
-   <button onclick="nextExercise()">›</button>
-
-  </div>
 
  </div>
+
  `;
+
 }
+
 
 function openExerciseDetail(i){
 
@@ -1436,7 +2280,8 @@ function openExerciseDetail(i){
 
  document.getElementById(
   "exerciseHeader"
- ).textContent=exercises[i].name;
+ ).textContent=
+  exercises[i].name;
 
  document.getElementById(
   "exerciseDetailContent"
@@ -1446,21 +2291,34 @@ function openExerciseDetail(i){
    i,
    "detail"
   );
+
 }
+
+
+/*
+====================================================
+FRONT / BACK ANATOMY
+====================================================
+*/
 
 function setAnatomy(side){
 
  const panel=
-  document.getElementById("anatomyPanel");
+  document.getElementById(
+   "anatomyPanel"
+  );
 
  if(!panel)return;
 
  panel.innerHTML=`
-  <img
-   src="${anatomyAsset(side)}"
-   alt="${side} muscle anatomy"
-  >
+
+   <img
+     src="${anatomyAsset(side)}"
+     alt="${side} muscle anatomy"
+   >
+
  `;
+
 
  document
   .getElementById("frontTab")
@@ -1470,6 +2328,7 @@ function setAnatomy(side){
    side==="front"
   );
 
+
  document
   .getElementById("backTab")
   .classList
@@ -1477,111 +2336,45 @@ function setAnatomy(side){
    "active",
    side==="back"
   );
+
 }
 
-function workoutSets(e,i){
 
- const d=session.exercises[i];
-
- return `
- <div class="card">
-
-  <div class="sectionTitle">
-   ${e.name} • SETS
-  </div>
-
-  <div class="sets">
-
-   ${d.sets.map((done,s)=>`
-
-    <div class="setRow">
-
-     <span class="setNo">
-      SET ${s+1}
-     </span>
-
-     <div class="repBox">
-
-      <button
-       onclick="repChange(${i},${s},1)"
-      >
-       ▲
-      </button>
-
-      <strong>
-       ${d.reps[s]}
-      </strong>
-
-      <button
-       onclick="repChange(${i},${s},-1)"
-      >
-       ▼
-      </button>
-
-     </div>
-
-     <button
-      class="doneBtn ${done?"done":""}"
-      onclick="completeSet(${i},${s})"
-     >
-      ${done?"✓ DONE":"DONE"}
-     </button>
-
-    </div>
-
-   `).join("")}
-
-  </div>
-
-  <div
-   class="eyebrow"
-   style="margin-top:13px"
-  >
-   HOW DID THAT SET FEEL?
-  </div>
-
-  <div class="difficulty">
-
-   ${
-    ["Easy","Good","Hard","Very Hard"]
-    .map(x=>`
-      <button
-       class="${d.difficulty===x?"active":""}"
-       onclick="setDifficulty(${i},'${x}')"
-      >
-       ${x}
-      </button>
-    `)
-    .join("")
-   }
-
-  </div>
-
-  <button
-   class="btn small"
-   style="margin-top:8px"
-   onclick="replaceExercise(${i})"
-  >
-   ↻ REPLACE EXERCISE
-  </button>
-
- </div>
- `;
-}
+/*
+====================================================
+START WORKOUT
+====================================================
+*/
 
 function startWorkout(){
 
  if(!session){
 
-  session={
-   exercises:exercises.map(e=>({
-    sets:Array(e.sets).fill(false),
-    reps:Array(e.sets).fill(e.targetReps),
-    difficulty:""
-   })),
-   notes:"",
-   started:Date.now()
-  };
+   session={
+
+     exercises:
+       exercises.map(
+        e=>({
+
+          sets:
+            Array(e.sets)
+            .fill(false),
+
+          reps:
+            Array(e.sets)
+            .fill(e.targetReps),
+
+          difficulty:""
+
+        })
+       ),
+
+     notes:"",
+
+     started:
+       Date.now()
+
+   };
 
  }
 
@@ -1592,7 +2385,15 @@ function startWorkout(){
  detailIndex=0;
 
  renderWorkout();
+
 }
+
+
+/*
+====================================================
+RENDER WORKOUT
+====================================================
+*/
 
 function renderWorkout(){
 
@@ -1605,203 +2406,321 @@ function renderWorkout(){
    "workout"
   );
 
+
  document.getElementById(
   "notes"
- ).value=session.notes||"";
+ ).value=
+  session.notes||"";
+
 
  const done=
-  session.exercises
-  .filter(x=>x.sets.every(Boolean))
-  .length;
+  session.exercises.filter(
+   x=>x.sets.every(Boolean)
+  ).length;
+
 
  const points=
-  session.exercises
-  .reduce(
+  session.exercises.reduce(
    (a,x)=>
-    a+x.sets.filter(Boolean).length*5,
+    a+
+    x.sets.filter(Boolean).length*5,
    0
   );
 
+
  document.getElementById(
   "doneExercises"
- ).textContent=done+"/7";
+ ).textContent=
+  done+"/7";
+
 
  document.getElementById(
   "sessionPoints"
- ).textContent=points;
+ ).textContent=
+  points;
+
 
  document.getElementById(
   "weightDisplay"
- ).textContent=state.weight;
+ ).textContent=
+  state.weight;
+
 
  document.getElementById(
   "unitDisplay"
  ).textContent=
   state.unit.toUpperCase();
 
+
  document.getElementById(
   "workoutProgress"
  ).style.width=
   (done/7*100)+"%";
+
 }
+
+
+/*
+====================================================
+WORKOUT OVERVIEW
+====================================================
+*/
 
 function showPreview(){
 
  show("preview");
 
+
  document.getElementById(
   "previewList"
  ).innerHTML=
-  exercises.map((e,i)=>`
 
-   <button
+
+ exercises.map(
+  (e,i)=>`
+
+  <button
     class="overviewItem"
     onclick="openExerciseDetail(${i})"
-   >
+  >
 
     <span class="exerciseNum">
-     ${i+1}
+      ${i+1}
     </span>
 
+
     <img
-     class="overviewThumb"
-     src="${assetFor(e)}"
-     alt="${e.name}"
+      class="overviewThumb"
+      src="${assetFor(e)}"
+      alt="${e.name}"
     >
+
 
     <span class="overviewInfo">
 
-     <b>${e.name}</b>
+      <b>
+        ${e.name}
+      </b>
 
-     <small>
-      ${e.sets} sets •
-      ${e.targetReps} reps •
-      ${
-       e.type==="Kettlebell"
-       ?state.weight+" "+state.unit
-       :"Bodyweight"
-      }
-     </small>
+      <small>
+
+        ${e.sets} sets •
+
+        ${e.targetReps} reps •
+
+        ${
+          e.type==="Kettlebell"
+          ?state.weight+" "+state.unit
+          :"Bodyweight"
+        }
+
+      </small>
 
     </span>
+
 
     <span class="overviewArrow">
-     ›
+      ›
     </span>
 
-   </button>
+  </button>
 
-  `).join("");
+  `
+ ).join("");
+
 }
+
+
+/*
+====================================================
+NEXT / PREVIOUS EXERCISE
+====================================================
+*/
 
 function prevExercise(){
 
  detailIndex=
-  (detailIndex-1+exercises.length)
-  %exercises.length;
+  (
+   detailIndex-1+
+   exercises.length
+  )%
+  exercises.length;
 
  renderWorkout();
 
  window.scrollTo(0,0);
+
 }
+
 
 function nextExercise(){
 
  detailIndex=
-  (detailIndex+1)
-  %exercises.length;
+  (
+   detailIndex+1
+  )%
+  exercises.length;
 
  renderWorkout();
 
  window.scrollTo(0,0);
+
 }
+
+
+/*
+====================================================
+COMPLETE SET
+====================================================
+*/
 
 function completeSet(i,s){
 
  if(
   s>0 &&
-  !session.exercises[i].sets[s-1]
+  !session
+   .exercises[i]
+   .sets[s-1]
  ){
-  alert(
-   "Complete the previous set first."
-  );
-  return;
+
+   alert(
+    "Complete the previous set first."
+   );
+
+   return;
+
  }
+
 
  if(
   i>0 &&
-  !session.exercises[i-1]
+  !session
+   .exercises[i-1]
    .sets.every(Boolean)
  ){
-  alert(
-   "Complete the previous exercise first."
-  );
-  return;
+
+   alert(
+    "Complete the previous exercise first."
+   );
+
+   return;
+
  }
 
- session.exercises[i].sets[s]=
-  !session.exercises[i].sets[s];
+
+ session
+  .exercises[i]
+  .sets[s]=
+   !session
+    .exercises[i]
+    .sets[s];
+
 
  saveSession();
 
  renderWorkout();
 
- if(session.exercises[i].sets[s]){
-  startRest(exercises[i].rest);
+
+ if(
+  session
+   .exercises[i]
+   .sets[s]
+ ){
+
+   startRest(
+    exercises[i].rest
+   );
+
  }
+
 }
+
+
+/*
+====================================================
+REPS
+====================================================
+*/
 
 function repChange(i,s,d){
 
- session.exercises[i].reps[s]=
-  Math.max(
-   1,
-   Number(session.exercises[i].reps[s])+d
-  );
+ session
+  .exercises[i]
+  .reps[s]=
+   Math.max(
+    1,
+    Number(
+     session
+      .exercises[i]
+      .reps[s]
+    )+d
+   );
 
  saveSession();
 
  renderWorkout();
+
 }
 
-function setRep(i,s,v){
 
- session.exercises[i].reps[s]=
-  Math.max(
-   1,
-   Number(v)||1
-  );
-
- saveSession();
-}
+/*
+====================================================
+DIFFICULTY
+====================================================
+*/
 
 function setDifficulty(i,x){
 
- session.exercises[i].difficulty=x;
+ session
+  .exercises[i]
+  .difficulty=x;
 
  saveSession();
 
  renderWorkout();
+
 }
+
+
+/*
+====================================================
+REPLACE EXERCISE
+====================================================
+*/
 
 function replaceExercise(i){
 
- let choices=[
-  "Incline Push-Ups",
-  "Kettlebell Floor Press",
-  "Kettlebell Row",
-  "Kettlebell Deadlift",
-  "Dead Bug",
-  "Goblet Squat"
+ const choices=[
+
+   "Incline Push-Ups",
+
+   "Kettlebell Floor Press",
+
+   "Kettlebell Row",
+
+   "Kettlebell Deadlift",
+
+   "Dead Bug",
+
+   "Goblet Squat"
+
  ];
 
- let old=exercises[i].name;
+
+ let old=
+  exercises[i].name;
+
 
  exercises[i].name=
   choices[
-   (choices.indexOf(old)+1+choices.length)
-   %choices.length
+   (
+    choices.indexOf(old)
+    +1+
+    choices.length
+   )%
+   choices.length
   ];
+
 
  alert(
   old+
@@ -1809,12 +2728,22 @@ function replaceExercise(i){
   exercises[i].name
  );
 
+
  renderWorkout();
+
 }
+
+
+/*
+====================================================
+REST TIMER
+====================================================
+*/
 
 function startRest(sec){
 
  timerSeconds=sec;
+
  timerPaused=false;
 
  document
@@ -1822,38 +2751,60 @@ function startRest(sec){
   .classList
   .remove("hidden");
 
+
  document.getElementById(
   "timerPause"
- ).textContent="PAUSE";
+ ).textContent=
+  "PAUSE";
+
 
  document.getElementById(
   "timerValue"
- ).textContent=sec;
+ ).textContent=
+  sec;
 
- clearInterval(timerInterval);
 
- timerInterval=setInterval(()=>{
+ clearInterval(
+  timerInterval
+ );
 
-  if(!timerPaused){
 
-   timerSeconds--;
+ timerInterval=
+  setInterval(
+   ()=>{
 
-   document.getElementById(
-    "timerValue"
-   ).textContent=timerSeconds;
+     if(!timerPaused){
 
-   if(timerSeconds<=0){
-    skipRest();
-   }
+       timerSeconds--;
 
-  }
+       document.getElementById(
+        "timerValue"
+       ).textContent=
+        timerSeconds;
 
- },1000);
+
+       if(
+        timerSeconds<=0
+       ){
+
+         skipRest();
+
+       }
+
+     }
+
+   },
+   1000
+  );
+
 }
+
 
 function toggleTimer(){
 
- timerPaused=!timerPaused;
+ timerPaused=
+  !timerPaused;
+
 
  document.getElementById(
   "timerPause"
@@ -1861,75 +2812,116 @@ function toggleTimer(){
   timerPaused
   ?"RESUME"
   :"PAUSE";
+
 }
+
 
 function skipRest(){
 
- clearInterval(timerInterval);
+ clearInterval(
+  timerInterval
+ );
 
  document
   .getElementById("timer")
   .classList
   .add("hidden");
+
 }
+
+
+/*
+====================================================
+FINISH WORKOUT
+====================================================
+*/
 
 function finishWorkout(){
 
  session.notes=
-  document.getElementById("notes").value;
+  document.getElementById(
+   "notes"
+  ).value;
+
 
  const sets=
   session.exercises.reduce(
    (a,x)=>
-    a+x.sets.filter(Boolean).length,
+    a+
+    x.sets.filter(Boolean).length,
    0
   );
 
+
  if(!sets){
 
-  alert(
-   "Complete at least one set first."
-  );
+   alert(
+    "Complete at least one set first."
+   );
 
-  return;
+   return;
+
  }
+
 
  const full=
   session.exercises.every(
    x=>x.sets.every(Boolean)
   );
 
+
  const xp=
   sets*5+
-  (full?90:0);
+  (
+   full
+   ?90
+   :0
+  );
+
 
  const reps=
   session.exercises.reduce(
    (a,x)=>
-    a+x.reps.reduce(
-     (q,r)=>q+r,
+    a+
+    x.reps.reduce(
+     (q,r)=>
+      q+r,
      0
     ),
    0
   );
 
+
  state.xp+=xp;
 
+
  state.history.push({
-  date:new Date().toISOString(),
-  xp,
-  sets,
-  reps,
-  notes:session.notes
+
+   date:
+    new Date().toISOString(),
+
+   xp,
+
+   sets,
+
+   reps,
+
+   notes:
+    session.notes
+
  });
+
 
  save();
 
+
  session=null;
+
 
  localStorage.removeItem(
   "workoutSession"
  );
+
 
  alert(
   "Workout saved — "+
@@ -1937,52 +2929,81 @@ function finishWorkout(){
   " points earned!"
  );
 
+
  goHome();
+
 }
+
+
+/*
+====================================================
+HOME
+====================================================
+*/
 
 function renderHome(){
 
  document.getElementById(
   "weight"
- ).value=state.weight;
+ ).value=
+  state.weight;
+
 
  document.getElementById(
   "unit"
- ).value=state.unit;
+ ).value=
+  state.unit;
+
 
  document.getElementById(
   "workoutsStat"
  ).textContent=
   state.history.length;
 
+
  document.getElementById(
   "pointsStat"
  ).textContent=
   state.xp;
+
 
  document.getElementById(
   "streakStat"
  ).textContent=
   calculateStreak();
 
- let now=new Date();
 
- let start=new Date(now);
+ let now=
+  new Date();
+
+
+ let start=
+  new Date(now);
+
 
  start.setDate(
   now.getDate()-
-  ((now.getDay()+6)%7)
+  (
+   (now.getDay()+6)%7
+  )
  );
 
- start.setHours(0,0,0,0);
+
+ start.setHours(
+  0,0,0,0
+ );
+
 
  let week=
   state.history.filter(
-   x=>new Date(x.date)>=start
+   x=>
+    new Date(x.date)>=start
   ).length;
+
 
  let target=
   state.weekTarget||4;
+
 
  document.getElementById(
   "weekCount"
@@ -1991,6 +3012,7 @@ function renderHome(){
   " / "+
   target+
   " workouts";
+
 
  document.getElementById(
   "weekRemain"
@@ -2001,15 +3023,20 @@ function renderHome(){
   )+
   " remaining";
 
+
  document.getElementById(
   "weekProgress"
  ).style.width=
   Math.min(
    100,
    week/target*100
-  )+"%";
+  )+
+  "%";
 
- let l=levelInfo();
+
+ let l=
+  levelInfo();
+
 
  document.getElementById(
   "levelTitle"
@@ -2019,11 +3046,13 @@ function renderHome(){
   " • "+
   l.current[1];
 
+
  document.getElementById(
   "xpLabel"
  ).textContent=
   state.xp+
   " XP";
+
 
  document.getElementById(
   "xpFrom"
@@ -2031,100 +3060,163 @@ function renderHome(){
   state.xp+
   " XP";
 
+
  if(l.next){
 
-  document.getElementById(
-   "xpTo"
-  ).textContent=
-   (l.next[0]-state.xp)+
-   " XP to Level "+
-   (l.idx+2);
+   document.getElementById(
+    "xpTo"
+   ).textContent=
+    (
+     l.next[0]-
+     state.xp
+    )+
+    " XP to Level "+
+    (l.idx+2);
 
-  document.getElementById(
-   "xpProgress"
-  ).style.width=
-   Math.min(
-    100,
-    (state.xp-l.current[0])/
-    (l.next[0]-l.current[0])*100
-   )+"%";
+
+   document.getElementById(
+    "xpProgress"
+   ).style.width=
+    Math.min(
+     100,
+     (
+      state.xp-
+      l.current[0]
+     )/
+     (
+      l.next[0]-
+      l.current[0]
+     )*
+     100
+    )+
+    "%";
 
  }else{
 
-  document.getElementById(
-   "xpTo"
-  ).textContent=
-   "MAX LEVEL";
+   document.getElementById(
+    "xpTo"
+   ).textContent=
+    "MAX LEVEL";
 
-  document.getElementById(
-   "xpProgress"
-  ).style.width=
-   "100%";
+
+   document.getElementById(
+    "xpProgress"
+   ).style.width=
+    "100%";
+
  }
 
+
  renderCalendar();
+
  renderRecovery();
+
  renderGraph();
+
 }
+
+
+/*
+====================================================
+STREAK
+====================================================
+*/
 
 function calculateStreak(){
 
- if(!state.history.length)
+ if(
+  !state.history.length
+ )
   return 0;
 
+
  let dates=[
-  ...new Set(
-   state.history.map(
-    x=>new Date(x.date).toDateString()
+
+   ...new Set(
+
+     state.history.map(
+       x=>
+        new Date(x.date)
+        .toDateString()
+     )
+
    )
-  )
+
  ]
  .map(
-  x=>new Date(x)
-   .setHours(0,0,0,0)
+  x=>
+   new Date(x)
+   .setHours(
+    0,0,0,0
+   )
  )
- .sort((a,b)=>b-a);
+ .sort(
+  (a,b)=>b-a
+ );
+
 
  let streak=0;
 
- let d=new Date();
 
- d.setHours(0,0,0,0);
+ let d=
+  new Date();
+
+
+ d.setHours(
+  0,0,0,0
+ );
+
 
  if(
   dates[0]!==d.getTime()
  ){
 
-  d.setDate(
-   d.getDate()-1
-  );
-
-  if(
-   dates[0]!==d.getTime()
-  )
-   return 0;
- }
-
- for(let t of dates){
-
-  if(
-   t===d.getTime()
-  ){
-
-   streak++;
-
    d.setDate(
     d.getDate()-1
    );
 
-  }else{
-   break;
-  }
+
+   if(
+    dates[0]!==d.getTime()
+   )
+    return 0;
 
  }
 
+
+ for(
+  let t of dates
+ ){
+
+   if(
+    t===d.getTime()
+   ){
+
+     streak++;
+
+     d.setDate(
+      d.getDate()-1
+     );
+
+   }else{
+
+     break;
+
+   }
+
+ }
+
+
  return streak;
+
 }
+
+
+/*
+====================================================
+CALENDAR
+====================================================
+*/
 
 function changeMonth(d){
 
@@ -2133,21 +3225,31 @@ function changeMonth(d){
  );
 
  renderCalendar();
+
 }
+
 
 function renderCalendar(){
 
  const y=
   monthView.getFullYear();
 
+
  const m=
   monthView.getMonth();
 
+
  const first=
-  new Date(y,m,1);
+  new Date(
+   y,m,1
+  );
+
 
  const last=
-  new Date(y,m+1,0);
+  new Date(
+   y,m+1,0
+  );
+
 
  document.getElementById(
   "monthTitle"
@@ -2160,30 +3262,41 @@ function renderCalendar(){
    }
   );
 
+
  const el=
-  document.getElementById("days");
+  document.getElementById(
+   "days"
+  );
+
 
  el.innerHTML="";
+
 
  for(
   let i=0;
   i<first.getDay();
   i++
  ){
-  el.innerHTML+=
-   "<div></div>";
+
+   el.innerHTML+=
+    "<div></div>";
+
  }
+
 
  const done=
   new Set(
    state.history.map(
-    x=>new Date(x.date)
+    x=>
+     new Date(x.date)
      .toDateString()
    )
   );
 
+
  const today=
   new Date().toDateString();
+
 
  for(
   let d=1;
@@ -2191,73 +3304,119 @@ function renderCalendar(){
   d++
  ){
 
-  let dt=
-   new Date(y,m,d);
+   let dt=
+    new Date(
+     y,m,d
+    );
 
-  let c=
-   "day"+
-   (
-    dt.toDateString()===today
-    ?" today"
-    :""
-   )+
-   (
-    done.has(dt.toDateString())
-    ?" done"
-    :""
-   );
 
-  el.innerHTML+=
-   `<div class="${c}">${d}</div>`;
+   let c=
+    "day"+
+    (
+     dt.toDateString()===today
+     ?" today"
+     :""
+    )+
+    (
+     done.has(
+      dt.toDateString()
+     )
+     ?" done"
+     :""
+    );
+
+
+   el.innerHTML+=
+    `
+     <div class="${c}">
+       ${d}
+     </div>
+    `;
+
  }
+
 }
+
+
+/*
+====================================================
+RECOVERY
+====================================================
+*/
 
 function renderRecovery(){
 
  const arr=[
-  ["Chest","ready"],
-  ["Shoulders","ready"],
-  ["Arms","recovering"],
-  ["Abs","trained"],
-  ["Legs","ready"]
+
+   ["Chest","ready"],
+
+   ["Shoulders","ready"],
+
+   ["Arms","recovering"],
+
+   ["Abs","trained"],
+
+   ["Legs","ready"]
+
  ];
+
 
  document.getElementById(
   "recovery"
  ).innerHTML=
-  arr.map(x=>`
+
+
+ arr.map(
+  x=>`
 
    <div class="recover">
 
-    <b>${x[0]}</b>
+     <b>
+       ${x[0]}
+     </b>
 
-    <span class="${x[1]}">
+     <span
+       class="${x[1]}"
+     >
 
-     ${
-      x[1]==="ready"
-      ?"READY"
-      :
-      x[1]==="recovering"
-      ?"RECOVERING"
-      :"TRAINED"
-     }
+       ${
+        x[1]==="ready"
+        ?"READY"
+        :
+        x[1]==="recovering"
+        ?"RECOVERING"
+        :"TRAINED"
+       }
 
-    </span>
+     </span>
 
    </div>
 
-  `).join("");
+  `
+ ).join("");
+
 }
+
+
+/*
+====================================================
+PROGRESS GRAPH
+====================================================
+*/
 
 function renderGraph(){
 
  const h=
   state.history.slice(-7);
 
+
  const vals=
   h.length
-  ?h.map(x=>x.xp)
+  ?h.map(
+    x=>x.xp
+   )
   :[0];
+
 
  const max=
   Math.max(
@@ -2265,43 +3424,74 @@ function renderGraph(){
    ...vals
   );
 
+
  document.getElementById(
   "graph"
  ).innerHTML=
-  vals.map(
-   v=>
-    `<i style="height:${
-     Math.max(
-      4,
-      v/max*100
-     )
-    }%"></i>`
-  ).join("");
+
+
+ vals.map(
+  v=>
+   `
+    <i
+      style="
+        height:${
+          Math.max(
+           4,
+           v/max*100
+          )
+        }%
+      "
+    ></i>
+   `
+ ).join("");
+
 
  document.getElementById(
   "labels"
  ).innerHTML=
-  (
-   h.length
-   ?h
-   :[{date:new Date()}]
-  )
-  .map(
-   x=>
-    `<span>${
-     new Date(x.date)
-      .toLocaleDateString(
-       undefined,
-       {weekday:"short"}
-      )
-      .slice(0,3)
-    }</span>`
-  )
-  .join("");
+
+
+ (
+  h.length
+  ?h
+  :[
+    {
+      date:new Date()
+    }
+   ]
+ )
+ .map(
+  x=>
+   `
+    <span>
+      ${
+       new Date(x.date)
+       .toLocaleDateString(
+        undefined,
+        {
+         weekday:"short"
+        }
+       )
+       .slice(0,3)
+      }
+    </span>
+   `
+ )
+ .join("");
+
 }
+
+
+/*
+====================================================
+INITIAL LOAD
+====================================================
+*/
 
 renderHome();
 
 </script>
+
 </body>
 </html>
