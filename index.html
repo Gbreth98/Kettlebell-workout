@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#05080a">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-<title>Kettlebell Workout</title>
+<meta name="theme-color" content="#050709">
+
+<title>My Workout</title>
 
 <style>
 
 :root{
-  --black:#050709;
-  --bg:#080c0e;
-  --card:#101517;
-  --card2:#141a1d;
-  --line:#263337;
+  --bg:#050709;
+  --panel:#101517;
+  --panel2:#151b1e;
+  --line:#273438;
   --cyan:#08b8c5;
-  --cyan2:#19d8df;
-  --cyanDark:#063a3f;
+  --cyan2:#1bd8df;
+  --cyanDark:#07383d;
   --white:#f4f7f7;
-  --grey:#899497;
-  --grey2:#b9c1c3;
-  --green:#39c79f;
-  --yellow:#c6a84c;
+  --grey:#8b9699;
+  --grey2:#b9c2c4;
+  --green:#35c49c;
+  --yellow:#c8aa4d;
   --red:#c96770;
 }
 
@@ -48,9 +49,15 @@ body{
   min-height:100vh;
 }
 
-button{
+button,
+input,
+select,
+textarea{
   font:inherit;
   color:inherit;
+}
+
+button{
   cursor:pointer;
 }
 
@@ -59,23 +66,26 @@ button{
   max-width:480px;
   min-height:100vh;
   margin:auto;
+
   background:
     radial-gradient(
       circle at 50% 0%,
-      #0c2023 0,
-      #080d0f 28%,
+      #0c2023 0%,
+      #080d0f 25%,
       #050709 65%
     );
-  padding-bottom:30px;
+
+  padding-bottom:35px;
 }
 
-/* =========================
-   GLOBAL
-========================= */
+
+/* =====================================================
+   SCREENS
+===================================================== */
 
 .screen{
   display:none;
-  padding:14px 14px 35px;
+  padding:14px;
 }
 
 .screen.active{
@@ -86,13 +96,16 @@ button{
   background:
     linear-gradient(
       145deg,
-      rgba(19,25,28,.98),
-      rgba(11,15,17,.98)
+      rgba(18,24,27,.98),
+      rgba(10,14,16,.98)
     );
+
   border:1px solid var(--line);
   border-radius:20px;
+
   padding:16px;
   margin-bottom:12px;
+
   box-shadow:
     0 10px 35px rgba(0,0,0,.35);
 }
@@ -101,57 +114,66 @@ button{
   color:var(--cyan2);
   font-size:10px;
   font-weight:900;
-  letter-spacing:1.4px;
+  letter-spacing:1.5px;
 }
 
-.muted{
-  color:var(--grey);
+.sectionTitle{
+  font-size:17px;
+  font-weight:900;
+  margin-bottom:12px;
 }
 
-.small{
-  font-size:11px;
-}
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .header{
   text-align:center;
-  padding:28px 18px 14px;
+  padding:28px 18px 15px;
 }
 
 .logo{
-  width:39px;
-  height:39px;
+  width:40px;
+  height:40px;
+
   border:3px solid var(--cyan2);
   border-radius:12px;
-  margin:0 auto 8px;
+
+  margin:auto auto 8px;
+
   position:relative;
-  box-shadow:0 0 20px rgba(0,210,220,.15);
 }
 
 .logo:before{
   content:"";
+
   position:absolute;
+
   left:10px;
   top:-10px;
-  width:13px;
+
+  width:14px;
   height:8px;
+
   border:3px solid var(--cyan2);
   border-bottom:0;
+
   border-radius:9px 9px 0 0;
 }
 
 .brand{
   color:var(--cyan2);
+
   font-size:11px;
   font-weight:900;
+
   letter-spacing:2px;
 }
 
 .header h1{
   margin:6px 0 3px;
+
   font-size:29px;
   font-weight:900;
 }
@@ -161,31 +183,21 @@ button{
   font-size:12px;
 }
 
-/* =========================
-   HOME
-========================= */
 
-.hero{
-  padding:19px;
-}
-
-.hero h2{
-  margin:7px 0 5px;
-  font-size:27px;
-}
-
-.meta{
-  color:#aab4b6;
-  font-size:12px;
-  margin-bottom:14px;
-}
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .btn{
   width:100%;
+
   border:1px solid #354347;
-  background:#151b1e;
   border-radius:14px;
+
+  background:#151b1e;
+
   padding:14px;
+
   font-weight:900;
 }
 
@@ -196,7 +208,9 @@ button{
       #08aab7,
       #087f89
     );
+
   border-color:#19d1da;
+
   color:#fff;
 }
 
@@ -204,57 +218,89 @@ button{
   transform:scale(.985);
 }
 
+
+/* =====================================================
+   HOME
+===================================================== */
+
+.hero{
+  padding:19px;
+}
+
+.hero h2{
+  margin:7px 0 5px;
+
+  font-size:27px;
+}
+
+.meta{
+  color:#aab4b6;
+  font-size:12px;
+
+  margin-bottom:14px;
+}
+
 .stats{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:7px;
 }
 
 .stat{
   text-align:center;
+
   padding:13px 4px;
+
   background:#0c1113;
+
   border:1px solid var(--line);
   border-radius:15px;
 }
 
 .stat b{
   display:block;
+
   font-size:23px;
 }
 
 .stat span{
   color:var(--grey);
+
   font-size:8px;
   letter-spacing:1px;
-}
-
-.sectionTitle{
-  font-size:17px;
-  font-weight:900;
-  margin-bottom:12px;
 }
 
 .weekLine{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   color:#b8c0c2;
+
   font-size:11px;
+
   margin:8px 0;
 }
 
 .progress{
   height:8px;
+
   background:#273134;
+
   border-radius:99px;
+
   overflow:hidden;
 }
 
 .progress i{
   display:block;
+
   height:100%;
   width:0;
+
   background:
     linear-gradient(
       90deg,
@@ -265,29 +311,47 @@ button{
 
 .badge{
   display:inline-block;
+
   color:var(--cyan2);
+
   border:1px solid #275a5f;
+
   background:#082b30;
+
   border-radius:99px;
+
   padding:7px 10px;
+
   font-size:9px;
   font-weight:900;
 }
 
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
 .calendarHead{
   display:flex;
-  align-items:center;
+
   justify-content:space-between;
+  align-items:center;
+
   margin-bottom:11px;
 }
 
 .calendarHead button{
   width:39px;
   height:39px;
+
   border-radius:12px;
+
   background:#11191b;
+
   border:1px solid #314144;
+
   color:#9edce0;
+
   font-size:24px;
 }
 
@@ -299,24 +363,35 @@ button{
 .weekdays,
 .days{
   display:grid;
-  grid-template-columns:repeat(7,1fr);
+
+  grid-template-columns:
+    repeat(7,1fr);
+
   gap:5px;
 }
 
 .weekdays div{
   text-align:center;
+
   color:#697579;
+
   font-size:8px;
 }
 
 .day{
   height:38px;
+
   border-radius:10px;
+
   border:1px solid #263235;
+
   background:#0b1012;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   font-size:11px;
 }
 
@@ -332,16 +407,27 @@ button{
   font-weight:900;
 }
 
+
+/* =====================================================
+   RECOVERY
+===================================================== */
+
 .recovery{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:7px;
 }
 
 .recoveryItem{
   background:#101719;
+
   border:1px solid var(--line);
+
   border-radius:12px;
+
   padding:11px;
 }
 
@@ -351,7 +437,9 @@ button{
 
 .recoveryItem span{
   float:right;
+
   font-size:8px;
+
   font-weight:900;
 }
 
@@ -367,77 +455,129 @@ button{
   color:var(--red);
 }
 
-/* =========================
+
+/* =====================================================
+   GRAPH
+===================================================== */
+
+.graph{
+  height:140px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:7px;
+
+  border-bottom:1px solid #334044;
+
+  padding:8px 3px 0;
+}
+
+.graph i{
+  flex:1;
+
+  min-height:4px;
+
+  border-radius:5px 5px 0 0;
+
+  background:
+    linear-gradient(
+      to top,
+      #07383d,
+      #12c5ce
+    );
+}
+
+.graphLabels{
+  display:flex;
+
+  gap:7px;
+}
+
+.graphLabels span{
+  flex:1;
+
+  text-align:center;
+
+  color:#778286;
+
+  font-size:8px;
+}
+
+
+/* =====================================================
    DETAIL HEADER
-========================= */
+===================================================== */
 
 .detailHeader{
   display:grid;
-  grid-template-columns:70px 1fr 30px;
+
+  grid-template-columns:
+    70px 1fr 30px;
+
   align-items:center;
+
   margin-bottom:12px;
 }
 
 .back{
   border:0;
+
   background:none;
+
   padding:5px 0;
+
   text-align:left;
+
   color:#cdd5d7;
+
   font-size:13px;
 }
 
 .detailHeaderTitle{
   text-align:center;
-  font-weight:900;
+
   font-size:15px;
+  font-weight:900;
 }
 
 .dots{
   border:0;
+
   background:none;
-  font-size:21px;
+
   color:#aeb8ba;
+
+  font-size:21px;
 }
 
-/* =========================
-   EXERCISE DETAIL
-========================= */
 
-.exerciseTop{
-  display:grid;
-  grid-template-columns:1fr;
-}
+/* =====================================================
+   EXERCISE IMAGE
+===================================================== */
 
 .exerciseVisual{
   height:190px;
+
   border-radius:16px;
+
   border:1px solid #283336;
+
   background:
     radial-gradient(
       circle at 50% 45%,
-      #3a4245 0,
-      #1c2225 35%,
-      #0b1012 78%
+      #41494c 0,
+      #1c2225 38%,
+      #080d0f 80%
     );
+
   overflow:hidden;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
-  position:relative;
-}
-
-.exerciseVisual:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(0,0,0,.3)
-    );
-  pointer-events:none;
 }
 
 .exerciseVisual svg{
@@ -448,19 +588,31 @@ button{
 .exerciseName{
   font-size:22px;
   font-weight:900;
+
   margin:10px 0 5px;
 }
 
 .tag{
   display:inline-block;
+
   color:#b9f4f6;
+
   background:#082c30;
+
   border:1px solid #286066;
+
   border-radius:99px;
+
   padding:5px 9px;
+
   font-size:9px;
   font-weight:900;
 }
+
+
+/* =====================================================
+   INFO
+===================================================== */
 
 .infoRows{
   margin-top:7px;
@@ -468,9 +620,13 @@ button{
 
 .infoRow{
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
   padding:11px 0;
+
   border-bottom:1px solid #273033;
 }
 
@@ -480,29 +636,38 @@ button{
 
 .infoIcon{
   width:27px;
+
   color:var(--cyan2);
+
   text-align:center;
+
   font-size:17px;
 }
 
 .infoRow small{
   display:block;
+
   color:var(--grey);
+
   font-size:9px;
 }
 
 .infoRow b{
   display:block;
+
   font-size:11px;
+
   margin-top:2px;
 }
 
-/* =========================
-   BODY / MUSCLE DISPLAY
-========================= */
+
+/* =====================================================
+   MUSCLE CARD
+===================================================== */
 
 .muscleCard{
   padding:0;
+
   overflow:hidden;
 }
 
@@ -512,21 +677,34 @@ button{
 
 .tabs{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:3px;
+
   background:#1a2022;
+
   border:1px solid #2b373a;
+
   padding:2px;
+
   border-radius:12px;
+
   margin:10px 0;
 }
 
 .tabs button{
   border:0;
+
   border-radius:10px;
+
   padding:9px;
+
   background:transparent;
+
   color:#7e888b;
+
   font-size:10px;
 }
 
@@ -536,35 +714,47 @@ button{
 }
 
 .bodyArea{
-  height:330px;
+  height:345px;
+
   display:flex;
+
   justify-content:center;
   align-items:center;
+
   overflow:hidden;
+
+  position:relative;
 }
 
 .bodyArea svg{
-  width:230px;
-  height:320px;
+  width:260px;
+  height:340px;
 }
 
 .legend{
   padding:0 15px 15px;
+
   display:grid;
+
   gap:6px;
 }
 
 .legend div{
   color:#aab4b6;
+
   font-size:10px;
 }
 
 .legend i{
   display:inline-block;
+
   width:9px;
   height:9px;
+
   border-radius:50%;
+
   background:var(--cyan2);
+
   margin-right:7px;
 }
 
@@ -576,27 +766,37 @@ button{
   background:#50585b;
 }
 
-/* =========================
-   ABOUT / TIPS
-========================= */
+
+/* =====================================================
+   ABOUT
+===================================================== */
 
 .aboutText{
   color:#aeb7b9;
+
   font-size:11px;
+
   line-height:1.55;
 }
 
 .aboutGrid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:7px;
+
   margin-top:11px;
 }
 
 .aboutMini{
   background:#141a1d;
+
   border:1px solid var(--line);
+
   border-radius:12px;
+
   padding:11px;
 }
 
@@ -606,37 +806,53 @@ button{
 
 .aboutMini span{
   display:block;
+
   color:#8d989b;
+
   font-size:9px;
+
   line-height:1.5;
+
   margin-top:6px;
 }
 
+
+/* =====================================================
+   TIPS
+===================================================== */
+
 .tips{
   display:flex;
+
   gap:10px;
+
   align-items:center;
 }
 
 .tipIcon{
   font-size:24px;
+
   color:#d0d764;
 }
 
 .tips b{
   color:var(--cyan2);
+
   font-size:10px;
 }
 
 .tips p{
   color:#aeb7b9;
+
   font-size:10px;
+
   margin:4px 0 0;
 }
 
-/* =========================
-   WORKOUT CONTROLS
-========================= */
+
+/* =====================================================
+   WORKOUT REP CONTROLS
+===================================================== */
 
 .workoutCard{
   margin-top:12px;
@@ -644,39 +860,58 @@ button{
 
 .sets{
   display:grid;
+
   gap:8px;
 }
 
 .setRow{
   display:grid;
-  grid-template-columns:42px 65px 1fr;
+
+  grid-template-columns:
+    42px 65px 1fr;
+
   gap:8px;
+
   align-items:center;
 }
 
 .setNumber{
   color:#8c979a;
+
   font-size:10px;
+
   font-weight:900;
 }
 
 .repControl{
   height:78px;
+
   display:flex;
+
   flex-direction:column;
+
   background:#0a0e10;
+
   border:1px solid #303b3e;
+
   border-radius:12px;
+
   overflow:hidden;
 }
 
 .repControl button{
   flex:1;
+
   border:0;
+
   background:#151c1e;
+
   color:var(--cyan2);
+
   font-size:15px;
+
   font-weight:900;
+
   line-height:1;
 }
 
@@ -686,28 +921,42 @@ button{
 
 .repNumber{
   height:29px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   border-top:1px solid #283235;
+
   border-bottom:1px solid #283235;
+
   font-size:15px;
+
   font-weight:900;
+
   color:#fff;
 }
 
 .doneButton{
   height:78px;
+
   border-radius:12px;
+
   border:1px solid #354144;
+
   background:#171d20;
+
   font-size:10px;
+
   font-weight:900;
 }
 
 .doneButton.done{
   background:#08494d;
+
   border-color:var(--cyan2);
+
   color:#e8ffff;
 }
 
@@ -717,60 +966,89 @@ button{
 
 .workoutControlsTitle{
   margin-top:14px;
+
   color:var(--cyan2);
+
   font-size:9px;
+
   font-weight:900;
+
   letter-spacing:1px;
 }
 
 .difficulty{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:5px;
+
   margin-top:8px;
 }
 
 .difficulty button{
   border:1px solid #303b3e;
+
   border-radius:9px;
+
   background:#141a1c;
+
   padding:8px 2px;
+
   font-size:8px;
 }
 
 .difficulty button.active{
   background:#07383d;
+
   border-color:var(--cyan2);
+
   color:#dfffff;
 }
 
 .undoButton{
   margin-top:8px;
+
   border:1px solid #3a4548;
+
   background:#171d1f;
+
   border-radius:10px;
+
   width:100%;
+
   padding:10px;
+
   font-size:10px;
 }
 
-/* =========================
+
+/* =====================================================
    EXERCISE NAV
-========================= */
+===================================================== */
 
 .exerciseNav{
   display:grid;
-  grid-template-columns:43px 1fr 43px;
+
+  grid-template-columns:
+    43px 1fr 43px;
+
   gap:8px;
+
   align-items:center;
 }
 
 .exerciseNav button{
   width:43px;
   height:43px;
+
   border-radius:50%;
+
   border:1px solid #334044;
+
   background:#171d1f;
+
   font-size:22px;
 }
 
@@ -780,33 +1058,52 @@ button{
 
 .exerciseNavText small{
   display:block;
+
   color:#788386;
+
   font-size:9px;
 }
 
 .exerciseNavText b{
   display:block;
+
   margin-top:3px;
+
   font-size:10px;
 }
 
-/* =========================
+
+/* =====================================================
    TIMER
-========================= */
+===================================================== */
 
 .timer{
   position:fixed;
+
   z-index:100;
+
   left:50%;
   bottom:12px;
+
   transform:translateX(-50%);
-  width:min(450px,calc(100% - 24px));
+
+  width:min(
+    450px,
+    calc(100% - 24px)
+  );
+
   background:#11191b;
+
   border:1px solid var(--cyan);
+
   border-radius:18px;
+
   padding:13px;
+
   text-align:center;
-  box-shadow:0 18px 55px rgba(0,0,0,.8);
+
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.8);
 }
 
 .timer.hidden{
@@ -815,58 +1112,28 @@ button{
 
 .timer strong{
   display:block;
+
   font-size:34px;
+
   color:var(--cyan2);
+
   margin:2px 0 7px;
 }
 
 .timer button{
   width:auto;
+
   display:inline-block;
+
   padding:9px 13px;
+
   margin:3px;
 }
 
-/* =========================
-   GRAPH
-========================= */
 
-.graph{
-  height:140px;
-  display:flex;
-  align-items:flex-end;
-  gap:7px;
-  border-bottom:1px solid #334044;
-  padding:8px 3px 0;
-}
-
-.graph i{
-  flex:1;
-  min-height:4px;
-  border-radius:5px 5px 0 0;
-  background:
-    linear-gradient(
-      to top,
-      #07383d,
-      #12c5ce
-    );
-}
-
-.graphLabels{
-  display:flex;
-  gap:7px;
-}
-
-.graphLabels span{
-  flex:1;
-  text-align:center;
-  color:#778286;
-  font-size:8px;
-}
-
-/* =========================
+/* =====================================================
    SETTINGS
-========================= */
+===================================================== */
 
 .field{
   margin-bottom:10px;
@@ -874,9 +1141,13 @@ button{
 
 .field label{
   display:block;
+
   color:var(--grey);
+
   font-size:9px;
+
   letter-spacing:.6px;
+
   margin-bottom:5px;
 }
 
@@ -884,38 +1155,108 @@ button{
 .field select,
 .field textarea{
   width:100%;
+
   border:1px solid #303b3f;
+
   background:#0a0e10;
+
   border-radius:10px;
+
   padding:10px;
+
   outline:none;
 }
 
 .field textarea{
   min-height:75px;
+
   resize:vertical;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+
+/* =====================================================
+   ANATOMY
+===================================================== */
+
+.muscle-primary{
+  fill:#12d1da;
+  stroke:#5cf1f5;
+  stroke-width:1;
+}
+
+.muscle-secondary{
+  fill:#62b8be;
+  stroke:#8edce0;
+  stroke-width:.8;
+}
+
+.muscle-other{
+  fill:#4a5357;
+}
+
+.muscle-dark{
+  fill:#30383b;
+}
+
+.muscle-highlight{
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(20,220,230,.55)
+    );
+}
+
+.body-outline{
+  fill:url(#bodySkin);
+}
+
+.body-shine{
+  fill:none;
+  stroke:#d9dede;
+  opacity:.15;
+  stroke-width:2;
+}
+
+.anatomyLabel{
+  fill:#e7eeee;
+  font-size:11px;
+  font-weight:700;
+}
+
+.anatomySub{
+  fill:#899497;
+  font-size:9px;
+}
+
+.anatomyLine{
+  stroke:#08c8d2;
+  stroke-width:1;
+  fill:none;
+}
+
+.anatomyDot{
+  fill:#19d8df;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:360px){
 
-  .app{
-    font-size:95%;
-  }
-
   .bodyArea{
-    height:295px;
+    height:310px;
   }
 
   .bodyArea svg{
-    height:290px;
+    width:235px;
+    height:305px;
   }
 
   .setRow{
-    grid-template-columns:37px 61px 1fr;
+    grid-template-columns:
+      37px 61px 1fr;
   }
 
 }
@@ -956,10 +1297,7 @@ button{
      HOME
 ===================================================== -->
 
-<section
-  id="home"
-  class="screen active">
-
+<section id="home" class="screen active">
 
   <div class="card hero">
 
@@ -1009,6 +1347,7 @@ button{
 
     </div>
 
+
     <div class="stat">
 
       <b id="pointsStat">
@@ -1020,6 +1359,7 @@ button{
       </span>
 
     </div>
+
 
     <div class="stat">
 
@@ -1076,8 +1416,8 @@ button{
       </button>
 
       <div
-        id="monthTitle"
-        class="month">
+        class="month"
+        id="monthTitle">
       </div>
 
       <button onclick="changeMonth(1)">
@@ -1101,8 +1441,8 @@ button{
 
 
     <div
-      id="days"
-      class="days">
+      class="days"
+      id="days">
     </div>
 
   </div>
@@ -1117,13 +1457,15 @@ button{
     <div class="weekLine">
 
       <span id="levelTitle">
-        Level 1 • Beginner
+        Level 1 • BEGINNER
       </span>
 
       <span
-        id="xpLabel"
-        class="badge">
+        class="badge"
+        id="xpLabel">
+
         125 XP
+
       </span>
 
     </div>
@@ -1354,12 +1696,10 @@ button{
 
 
     <div
-      style="margin-top:12px"
-      class="progress">
+      class="progress"
+      style="margin-top:12px">
 
-      <i
-        id="workoutProgress">
-      </i>
+      <i id="workoutProgress"></i>
 
     </div>
 
@@ -1439,215 +1779,275 @@ button{
 
 <script>
 
-/* =========================================================
+/* =====================================================
    EXERCISES
-========================================================= */
+===================================================== */
 
-const exercises = [
+const exercises=[
 
-  {
-    name:"Push-Ups",
-    type:"Bodyweight",
-    target:"Chest",
-    difficulty:"Beginner",
-    equipment:"None",
-    kind:"Strength",
-    sets:3,
-    targetReps:10,
-    rest:45,
+{
+  name:"Push-Ups",
+  type:"Bodyweight",
+  target:"Chest",
+  difficulty:"Beginner",
+  equipment:"None",
+  kind:"Strength",
+  sets:3,
+  targetReps:10,
+  rest:45,
 
-    primary:[
-      "Chest",
-      "Triceps"
-    ],
+  primary:[
+    "Chest",
+    "Triceps"
+  ],
 
-    secondary:[
-      "Shoulders",
-      "Biceps",
-      "Abs"
-    ],
+  secondary:[
+    "Shoulders",
+    "Abs"
+  ],
 
-    about:
-      "Push-ups primarily target your chest, triceps and front shoulders while also engaging your core for stability.",
+  about:
+    "Push-ups primarily target the chest and triceps while the front shoulders and core help stabilise the movement.",
 
-    tip:
-      "Keep your body straight, engage your core and control your movement."
-  },
+  tip:
+    "Keep your body straight, lower under control and press strongly through the floor.",
 
+  calories:"~7–12 calories per minute",
 
-  {
-    name:"Kettlebell Swing",
-    type:"Kettlebell",
-    target:"Glutes",
-    difficulty:"Beginner",
-    equipment:"Kettlebell",
-    kind:"Strength",
-    sets:3,
-    targetReps:12,
-    rest:45,
-
-    primary:[
-      "Legs"
-    ],
-
-    secondary:[
-      "Abs",
-      "Shoulders"
-    ],
-
-    about:
-      "A powerful hip-hinge movement that develops lower-body strength and conditioning.",
-
-    tip:
-      "Drive through your hips rather than lifting the kettlebell with your arms."
-  },
+  greatFor:[
+    "Upper Body Strength",
+    "Endurance",
+    "Core Stability"
+  ]
+},
 
 
-  {
-    name:"Kettlebell Floor Press",
-    type:"Kettlebell",
-    target:"Chest",
-    difficulty:"Beginner",
-    equipment:"Kettlebell",
-    kind:"Strength",
-    sets:3,
-    targetReps:10,
-    rest:45,
+{
+  name:"Kettlebell Swing",
+  type:"Kettlebell",
+  target:"Glutes",
+  difficulty:"Beginner",
+  equipment:"Kettlebell",
+  kind:"Strength",
+  sets:3,
+  targetReps:12,
+  rest:45,
 
-    primary:[
-      "Chest"
-    ],
+  primary:[
+    "Glutes",
+    "Hamstrings"
+  ],
 
-    secondary:[
-      "Triceps",
-      "Shoulders"
-    ],
+  secondary:[
+    "Quads",
+    "Abs",
+    "Shoulders"
+  ],
 
-    about:
-      "A controlled pressing movement for building chest and upper-body strength.",
+  about:
+    "A powerful hip-hinge exercise that trains the glutes and hamstrings while challenging the whole body.",
 
-    tip:
-      "Keep the movement controlled and press smoothly."
-  },
+  tip:
+    "Drive the movement with your hips. Do not lift the kettlebell primarily with your arms.",
 
+  calories:"~10–15 calories per minute",
 
-  {
-    name:"Kettlebell Row",
-    type:"Kettlebell",
-    target:"Back",
-    difficulty:"Beginner",
-    equipment:"Kettlebell",
-    kind:"Strength",
-    sets:3,
-    targetReps:10,
-    rest:45,
-
-    primary:[
-      "Back"
-    ],
-
-    secondary:[
-      "Biceps",
-      "Shoulders"
-    ],
-
-    about:
-      "A pulling movement that develops back and arm strength.",
-
-    tip:
-      "Keep your back flat and pull your elbow towards your hip."
-  },
+  greatFor:[
+    "Power",
+    "Conditioning",
+    "Lower Body Strength"
+  ]
+},
 
 
-  {
-    name:"Kettlebell Overhead Press",
-    type:"Kettlebell",
-    target:"Shoulders",
-    difficulty:"Beginner",
-    equipment:"Kettlebell",
-    kind:"Strength",
-    sets:3,
-    targetReps:10,
-    rest:45,
+{
+  name:"Kettlebell Floor Press",
+  type:"Kettlebell",
+  target:"Chest",
+  difficulty:"Beginner",
+  equipment:"Kettlebell",
+  kind:"Strength",
+  sets:3,
+  targetReps:10,
+  rest:45,
 
-    primary:[
-      "Shoulders"
-    ],
+  primary:[
+    "Chest"
+  ],
 
-    secondary:[
-      "Triceps",
-      "Abs"
-    ],
+  secondary:[
+    "Triceps",
+    "Shoulders"
+  ],
 
-    about:
-      "An overhead pressing exercise for building shoulder strength.",
+  about:
+    "A controlled pressing movement for building chest and upper-body strength. The floor limits the range of motion and helps keep the movement controlled.",
 
-    tip:
-      "Brace your core and avoid leaning backwards."
-  },
+  tip:
+    "Keep your elbows controlled, lower slowly and press the kettlebell smoothly.",
 
+  calories:"~6–8 calories per minute",
 
-  {
-    name:"Kettlebell Russian Twist",
-    type:"Kettlebell",
-    target:"Abs",
-    difficulty:"Beginner",
-    equipment:"Kettlebell",
-    kind:"Strength",
-    sets:3,
-    targetReps:12,
-    rest:30,
-
-    primary:[
-      "Abs"
-    ],
-
-    secondary:[
-      "Shoulders"
-    ],
-
-    about:
-      "A rotational core movement that challenges abdominal control.",
-
-    tip:
-      "Rotate through your torso rather than just moving your arms."
-  },
+  greatFor:[
+    "Upper Body Strength",
+    "Chest Development",
+    "Controlled Pressing"
+  ]
+},
 
 
-  {
-    name:"Kettlebell Goblet Squat",
-    type:"Kettlebell",
-    target:"Legs",
-    difficulty:"Beginner",
-    equipment:"Kettlebell",
-    kind:"Strength",
-    sets:3,
-    targetReps:10,
-    rest:45,
+{
+  name:"Kettlebell Row",
+  type:"Kettlebell",
+  target:"Back",
+  difficulty:"Beginner",
+  equipment:"Kettlebell",
+  kind:"Strength",
+  sets:3,
+  targetReps:10,
+  rest:45,
 
-    primary:[
-      "Legs"
-    ],
+  primary:[
+    "Back"
+  ],
 
-    secondary:[
-      "Abs"
-    ],
+  secondary:[
+    "Biceps",
+    "Shoulders"
+  ],
 
-    about:
-      "A beginner-friendly squat for lower-body strength and stability.",
+  about:
+    "A pulling movement designed to build back strength while also training the biceps and rear shoulder.",
 
-    tip:
-      "Keep your chest tall and drive through your feet."
-  }
+  tip:
+    "Keep your back flat and pull your elbow towards your hip.",
+
+  calories:"~7–10 calories per minute",
+
+  greatFor:[
+    "Back Strength",
+    "Pulling Strength",
+    "Posture"
+  ]
+},
+
+
+{
+  name:"Kettlebell Overhead Press",
+  type:"Kettlebell",
+  target:"Shoulders",
+  difficulty:"Beginner",
+  equipment:"Kettlebell",
+  kind:"Strength",
+  sets:3,
+  targetReps:10,
+  rest:45,
+
+  primary:[
+    "Shoulders"
+  ],
+
+  secondary:[
+    "Triceps",
+    "Abs"
+  ],
+
+  about:
+    "An overhead pressing movement that develops shoulder strength while the triceps and core assist.",
+
+  tip:
+    "Brace your core and keep your ribs controlled. Avoid leaning backwards.",
+
+  calories:"~6–9 calories per minute",
+
+  greatFor:[
+    "Shoulder Strength",
+    "Upper Body Strength",
+    "Stability"
+  ]
+},
+
+
+{
+  name:"Kettlebell Russian Twist",
+  type:"Kettlebell",
+  target:"Abs",
+  difficulty:"Beginner",
+  equipment:"Kettlebell",
+  kind:"Strength",
+  sets:3,
+  targetReps:12,
+  rest:30,
+
+  primary:[
+    "Abs"
+  ],
+
+  secondary:[
+    "Obliques",
+    "Shoulders"
+  ],
+
+  about:
+    "A rotational core exercise that challenges the abdominal muscles and obliques.",
+
+  tip:
+    "Rotate through your torso and keep the movement controlled rather than swinging the weight.",
+
+  calories:"~6–9 calories per minute",
+
+  greatFor:[
+    "Core Strength",
+    "Rotation",
+    "Stability"
+  ]
+},
+
+
+{
+  name:"Kettlebell Goblet Squat",
+  type:"Kettlebell",
+  target:"Legs",
+  difficulty:"Beginner",
+  equipment:"Kettlebell",
+  kind:"Strength",
+  sets:3,
+  targetReps:10,
+  rest:45,
+
+  primary:[
+    "Quads",
+    "Glutes"
+  ],
+
+  secondary:[
+    "Hamstrings",
+    "Abs"
+  ],
+
+  about:
+    "A beginner-friendly squat that develops the quads and glutes while the core helps maintain an upright position.",
+
+  tip:
+    "Keep your chest tall, knees tracking with your feet and drive through the floor.",
+
+  calories:"~8–12 calories per minute",
+
+  greatFor:[
+    "Leg Strength",
+    "Glutes",
+    "Lower Body Strength"
+  ]
+}
 
 ];
 
 
-/* =========================================================
+/* =====================================================
    LEVELS
-========================================================= */
+===================================================== */
 
-const levels = [
+const levels=[
 
   [0,"BEGINNER"],
   [250,"GETTING STARTED"],
@@ -1663,11 +2063,11 @@ const levels = [
 ];
 
 
-/* =========================================================
+/* =====================================================
    STATE
-========================================================= */
+===================================================== */
 
-let state =
+let state=
   JSON.parse(
     localStorage.getItem("workoutState")
     ||
@@ -1675,7 +2075,7 @@ let state =
   );
 
 
-let session =
+let session=
   JSON.parse(
     localStorage.getItem("workoutSession")
     ||
@@ -1684,6 +2084,8 @@ let session =
 
 
 let detailIndex=0;
+
+let anatomyView="front";
 
 let monthView=new Date();
 
@@ -1694,9 +2096,9 @@ let timerSeconds=0;
 let timerPaused=false;
 
 
-/* =========================================================
-   STORAGE
-========================================================= */
+/* =====================================================
+   SAVE
+===================================================== */
 
 function save(){
 
@@ -1718,9 +2120,9 @@ function saveSession(){
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVIGATION
-========================================================= */
+===================================================== */
 
 function show(id){
 
@@ -1748,9 +2150,9 @@ function goHome(){
 }
 
 
-/* =========================================================
+/* =====================================================
    LEVEL
-========================================================= */
+===================================================== */
 
 function getLevel(){
 
@@ -1779,565 +2181,900 @@ function getLevel(){
 }
 
 
-/* =========================================================
-   BODY VISUAL
-========================================================= */
+/* =====================================================
+   MUSCLE HELPER
+===================================================== */
 
-function bodySVG(primary,secondary){
+function muscleClass(
+  muscle,
+  primary,
+  secondary
+){
 
-  const colour = name => {
+  if(primary.includes(muscle))
+    return "muscle-primary muscle-highlight";
 
-    if(primary.includes(name))
-      return "#16d0d8";
+  if(secondary.includes(muscle))
+    return "muscle-secondary muscle-highlight";
 
-    if(secondary.includes(name))
-      return "#5aaeb4";
+  return "muscle-other";
 
-    return "#4b5356";
+}
 
-  };
+
+/* =====================================================
+   REALISTIC FRONT ANATOMY
+===================================================== */
+
+function frontAnatomy(
+  primary,
+  secondary
+){
+
+  return `
+
+<svg
+  viewBox="0 0 300 430"
+  xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+  <radialGradient
+    id="bodySkin"
+    cx="40%"
+    cy="25%">
+
+    <stop
+      offset="0%"
+      stop-color="#c8cecf"/>
+
+    <stop
+      offset="35%"
+      stop-color="#858d90"/>
+
+    <stop
+      offset="70%"
+      stop-color="#4a5357"/>
+
+    <stop
+      offset="100%"
+      stop-color="#1e2528"/>
+
+  </radialGradient>
+
+
+  <linearGradient
+    id="muscleShade"
+    x1="0"
+    y1="0"
+    x2="1"
+    y2="1">
+
+    <stop
+      offset="0%"
+      stop-color="#8d9698"/>
+
+    <stop
+      offset="50%"
+      stop-color="#596164"/>
+
+    <stop
+      offset="100%"
+      stop-color="#252c2f"/>
+
+  </linearGradient>
+
+</defs>
+
+
+<!-- HEAD -->
+
+<ellipse
+  cx="150"
+  cy="35"
+  rx="24"
+  ry="29"
+  fill="url(#bodySkin)"/>
+
+
+<!-- NECK -->
+
+<path
+  d="
+    M130 57
+    L170 57
+    L174 84
+    L126 84
+    Z"
+  fill="url(#muscleShade)"/>
+
+
+<!-- SHOULDERS -->
+
+<path
+  class="${muscleClass(
+    "Shoulders",
+    primary,
+    secondary
+  )}"
+  d="
+    M128 68
+    Q104 65 82 78
+    Q68 88 63 105
+    L91 116
+    L119 91
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Shoulders",
+    primary,
+    secondary
+  )}"
+  d="
+    M172 68
+    Q196 65 218 78
+    Q232 88 237 105
+    L209 116
+    L181 91
+    Z"/>
+
+
+<!-- CHEST -->
+
+<path
+  class="${muscleClass(
+    "Chest",
+    primary,
+    secondary
+  )}"
+  d="
+    M119 79
+    Q99 70 82 87
+    L91 122
+    Q105 135 150 115
+    L150 91
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Chest",
+    primary,
+    secondary
+  )}"
+  d="
+    M181 79
+    Q201 70 218 87
+    L209 122
+    Q195 135 150 115
+    L150 91
+    Z"/>
+
+
+<!-- BICEPS -->
+
+<path
+  class="${muscleClass(
+    "Biceps",
+    primary,
+    secondary
+  )}"
+  d="
+    M80 91
+    Q66 102 63 128
+    L73 154
+    L91 126
+    L92 105
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Biceps",
+    primary,
+    secondary
+  )}"
+  d="
+    M220 91
+    Q234 102 237 128
+    L227 154
+    L209 126
+    L208 105
+    Z"/>
+
+
+<!-- TRICEPS -->
+
+<path
+  class="${muscleClass(
+    "Triceps",
+    primary,
+    secondary
+  )}"
+  d="
+    M67 101
+    L54 137
+    L64 159
+    L78 142
+    L82 113
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Triceps",
+    primary,
+    secondary
+  )}"
+  d="
+    M233 101
+    L246 137
+    L236 159
+    L222 142
+    L218 113
+    Z"/>
+
+
+<!-- ABS -->
+
+<path
+  class="${muscleClass(
+    "Abs",
+    primary,
+    secondary
+  )}"
+  d="
+    M116 113
+    Q150 126 184 113
+    L182 188
+    Q150 202 118 188
+    Z"/>
+
+
+<!-- OBLIQUES -->
+
+<path
+  class="${muscleClass(
+    "Obliques",
+    primary,
+    secondary
+  )}"
+  d="
+    M116 119
+    L101 139
+    L108 183
+    L121 191
+    L126 145
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Obliques",
+    primary,
+    secondary
+  )}"
+  d="
+    M184 119
+    L199 139
+    L192 183
+    L179 191
+    L174 145
+    Z"/>
+
+
+<!-- TORSO -->
+
+<path
+  d="
+    M119 190
+    Q150 203 181 190
+    L195 225
+    L150 249
+    L105 225
+    Z"
+  fill="url(#muscleShade)"/>
+
+
+<!-- GLUTES -->
+
+<path
+  class="${muscleClass(
+    "Glutes",
+    primary,
+    secondary
+  )}"
+  d="
+    M106 193
+    Q126 184 150 201
+    Q174 184 194 193
+    L189 232
+    L150 247
+    L111 232
+    Z"/>
+
+
+<!-- QUADS -->
+
+<path
+  class="${muscleClass(
+    "Quads",
+    primary,
+    secondary
+  )}"
+  d="
+    M109 226
+    L150 245
+    L142 320
+    L110 348
+    L91 315
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Quads",
+    primary,
+    secondary
+  )}"
+  d="
+    M191 226
+    L150 245
+    L158 320
+    L190 348
+    L209 315
+    Z"/>
+
+
+<!-- HAMSTRINGS -->
+
+<path
+  class="${muscleClass(
+    "Hamstrings",
+    primary,
+    secondary
+  )}"
+  d="
+    M111 300
+    L143 319
+    L135 365
+    L104 363
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Hamstrings",
+    primary,
+    secondary
+  )}"
+  d="
+    M189 300
+    L157 319
+    L165 365
+    L196 363
+    Z"/>
+
+
+<!-- CALVES -->
+
+<path
+  d="
+    M105 357
+    Q124 351 138 367
+    L132 414
+    L109 414
+    Z"
+  fill="${muscleClass(
+    "Calves",
+    primary,
+    secondary
+  ).includes("primary")
+    ? "#12d1da"
+    : muscleClass(
+        "Calves",
+        primary,
+        secondary
+      ).includes("secondary")
+      ? "#62b8be"
+      : "#4a5357"}"/>
+
+
+<path
+  d="
+    M195 357
+    Q176 351 162 367
+    L168 414
+    L191 414
+    Z"
+  fill="${muscleClass(
+    "Calves",
+    primary,
+    secondary
+  ).includes("primary")
+    ? "#12d1da"
+    : muscleClass(
+        "Calves",
+        primary,
+        secondary
+      ).includes("secondary")
+      ? "#62b8be"
+      : "#4a5357"}"/>
+
+
+<!-- FEET -->
+
+<ellipse
+  cx="119"
+  cy="420"
+  rx="22"
+  ry="7"
+  fill="#4b5356"/>
+
+<ellipse
+  cx="181"
+  cy="420"
+  rx="22"
+  ry="7"
+  fill="#4b5356"/>
+
+
+<!-- BODY DETAIL -->
+
+<path
+  class="body-shine"
+  d="M150 85 L150 190"/>
+
+<path
+  class="body-shine"
+  d="M122 143 L178 143"/>
+
+</svg>
+
+`;
+
+}
+
+
+/* =====================================================
+   REALISTIC BACK ANATOMY
+===================================================== */
+
+function backAnatomy(
+  primary,
+  secondary
+){
+
+  return `
+
+<svg
+  viewBox="0 0 300 430"
+  xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+  <radialGradient
+    id="backSkin"
+    cx="40%"
+    cy="25%">
+
+    <stop
+      offset="0%"
+      stop-color="#c8cecf"/>
+
+    <stop
+      offset="35%"
+      stop-color="#858d90"/>
+
+    <stop
+      offset="70%"
+      stop-color="#4a5357"/>
+
+    <stop
+      offset="100%"
+      stop-color="#1e2528"/>
+
+  </radialGradient>
+
+</defs>
+
+
+<!-- HEAD -->
+
+<ellipse
+  cx="150"
+  cy="35"
+  rx="24"
+  ry="29"
+  fill="url(#backSkin)"/>
+
+
+<!-- NECK -->
+
+<path
+  d="
+    M130 57
+    L170 57
+    L174 85
+    L126 85
+    Z"
+  fill="#4d5558"/>
+
+
+<!-- TRAPS -->
+
+<path
+  class="${muscleClass(
+    "Traps",
+    primary,
+    secondary
+  )}"
+  d="
+    M127 67
+    L150 83
+    L173 67
+    L191 93
+    L170 112
+    L150 101
+    L130 112
+    L109 93
+    Z"/>
+
+
+<!-- REAR SHOULDERS -->
+
+<path
+  class="${muscleClass(
+    "Shoulders",
+    primary,
+    secondary
+  )}"
+  d="
+    M109 74
+    Q87 72 67 91
+    L61 113
+    L90 121
+    L112 101
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Shoulders",
+    primary,
+    secondary
+  )}"
+  d="
+    M191 74
+    Q213 72 233 91
+    L239 113
+    L210 121
+    L188 101
+    Z"/>
+
+
+<!-- LATS -->
+
+<path
+  class="${muscleClass(
+    "Back",
+    primary,
+    secondary
+  )}"
+  d="
+    M111 96
+    L139 106
+    L130 178
+    L106 196
+    L91 155
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Back",
+    primary,
+    secondary
+  )}"
+  d="
+    M189 96
+    L161 106
+    L170 178
+    L194 196
+    L209 155
+    Z"/>
+
+
+<!-- TRICEPS -->
+
+<path
+  class="${muscleClass(
+    "Triceps",
+    primary,
+    secondary
+  )}"
+  d="
+    M70 103
+    L54 139
+    L65 161
+    L80 142
+    L84 115
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Triceps",
+    primary,
+    secondary
+  )}"
+  d="
+    M230 103
+    L246 139
+    L235 161
+    L220 142
+    L216 115
+    Z"/>
+
+
+<!-- LOWER BACK -->
+
+<path
+  class="${muscleClass(
+    "Lower Back",
+    primary,
+    secondary
+  )}"
+  d="
+    M125 170
+    L150 184
+    L175 170
+    L179 218
+    L150 236
+    L121 218
+    Z"/>
+
+
+<!-- GLUTES -->
+
+<path
+  class="${muscleClass(
+    "Glutes",
+    primary,
+    secondary
+  )}"
+  d="
+    M105 205
+    Q128 190 150 207
+    Q172 190 195 205
+    L190 249
+    L150 264
+    L110 249
+    Z"/>
+
+
+<!-- HAMSTRINGS -->
+
+<path
+  class="${muscleClass(
+    "Hamstrings",
+    primary,
+    secondary
+  )}"
+  d="
+    M109 249
+    L145 263
+    L137 337
+    L108 345
+    L91 302
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Hamstrings",
+    primary,
+    secondary
+  )}"
+  d="
+    M191 249
+    L155 263
+    L163 337
+    L192 345
+    L209 302
+    Z"/>
+
+
+<!-- CALVES -->
+
+<path
+  class="${muscleClass(
+    "Calves",
+    primary,
+    secondary
+  )}"
+  d="
+    M108 337
+    Q126 332 138 350
+    L132 414
+    L109 414
+    Z"/>
+
+
+<path
+  class="${muscleClass(
+    "Calves",
+    primary,
+    secondary
+  )}"
+  d="
+    M192 337
+    Q174 332 162 350
+    L168 414
+    L191 414
+    Z"/>
+
+
+<!-- FEET -->
+
+<ellipse
+  cx="119"
+  cy="420"
+  rx="22"
+  ry="7"
+  fill="#4b5356"/>
+
+<ellipse
+  cx="181"
+  cy="420"
+  rx="22"
+  ry="7"
+  fill="#4b5356"/>
+
+
+<!-- SPINE DETAIL -->
+
+<path
+  d="M150 82 L150 236"
+  stroke="#252c2f"
+  stroke-width="5"
+  opacity=".8"/>
+
+</svg>
+
+`;
+
+}
+
+
+/* =====================================================
+   ANATOMY CARD
+===================================================== */
+
+function anatomyCard(exercise){
+
+  const body=
+    anatomyView==="front"
+
+      ? frontAnatomy(
+          exercise.primary,
+          exercise.secondary
+        )
+
+      : backAnatomy(
+          exercise.primary,
+          exercise.secondary
+        );
 
 
   return `
 
-  <svg
-    viewBox="0 0 220 340"
-    xmlns="http://www.w3.org/2000/svg">
+  <div class="card muscleCard">
 
-    <defs>
+    <div class="muscleHeader">
 
-      <radialGradient
-        id="skinGrad"
-        cx="45%"
-        cy="35%">
+      <div class="eyebrow">
+        MUSCLES WORKED
+      </div>
 
-        <stop
-          offset="0%"
-          stop-color="#b6bdbe"/>
 
-        <stop
-          offset="45%"
-          stop-color="#687174"/>
+      <div class="tabs">
 
-        <stop
-          offset="100%"
-          stop-color="#252b2e"/>
+        <button
+          class="${
+            anatomyView==="front"
+              ? "active"
+              : ""
+          }"
+          onclick="
+            anatomyView='front';
+            renderWorkout();
+          ">
 
-      </radialGradient>
+          Front
 
-      <linearGradient
-        id="darkBody"
-        x1="0"
-        y1="0"
-        x2="1"
-        y2="1">
+        </button>
 
-        <stop
-          offset="0%"
-          stop-color="#858e90"/>
 
-        <stop
-          offset="50%"
-          stop-color="#464e51"/>
+        <button
+          class="${
+            anatomyView==="back"
+              ? "active"
+              : ""
+          }"
+          onclick="
+            anatomyView='back';
+            renderWorkout();
+          ">
 
-        <stop
-          offset="100%"
-          stop-color="#1d2326"/>
+          Back
 
-      </linearGradient>
+        </button>
 
-      <filter id="glow">
+      </div>
 
-        <feGaussianBlur
-          stdDeviation="2"
-          result="blur"/>
+    </div>
 
-        <feMerge>
 
-          <feMergeNode
-            in="blur"/>
+    <div class="bodyArea">
 
-          <feMergeNode
-            in="SourceGraphic"/>
+      ${body}
 
-        </feMerge>
-
-      </filter>
+    </div>
 
-    </defs>
 
+    <div class="legend">
 
-    <!-- head -->
+      <div>
 
-    <ellipse
-      cx="110"
-      cy="28"
-      rx="18"
-      ry="22"
-      fill="url(#skinGrad)"/>
+        <i></i>
 
+        Primary Muscles
 
-    <!-- neck -->
-
-    <path
-      d="M96 46 L124 46 L128 66 L92 66 Z"
-      fill="url(#darkBody)"/>
-
-
-    <!-- torso -->
-
-    <path
-      d="
-        M75 57
-        Q110 43 145 57
-        L153 105
-        Q145 136 133 157
-        L110 170
-        L87 157
-        Q75 136 67 105
-        Z"
-      fill="url(#darkBody)"/>
-
-
-    <!-- chest -->
+      </div>
 
-    <path
-      d="
-        M72 69
-        Q90 56 108 67
-        L108 94
-        Q91 102 75 91
-        Z"
-      fill="${colour("Chest")}"
-      filter="url(#glow)"/>
-
-    <path
-      d="
-        M112 67
-        Q130 56 148 69
-        L145 91
-        Q129 102 112 94
-        Z"
-      fill="${colour("Chest")}"
-      filter="url(#glow)"/>
-
-
-    <!-- shoulders -->
-
-    <path
-      d="
-        M73 58
-        Q57 58 48 73
-        L63 87
-        L79 70
-        Z"
-      fill="${colour("Shoulders")}"/>
-
-    <path
-      d="
-        M147 58
-        Q163 58 172 73
-        L157 87
-        L141 70
-        Z"
-      fill="${colour("Shoulders")}"/>
-
-
-    <!-- biceps -->
-
-    <path
-      d="
-        M49 73
-        Q35 82 37 106
-        L49 116
-        L63 87
-        Z"
-      fill="${colour("Biceps")}"/>
-
-    <path
-      d="
-        M171 73
-        Q185 82 183 106
-        L171 116
-        L157 87
-        Z"
-      fill="${colour("Biceps")}"/>
-
-
-    <!-- forearms -->
-
-    <path
-      d="
-        M39 104
-        L28 143
-        L39 148
-        L51 116
-        Z"
-      fill="${colour("Forearms")}"/>
-
-    <path
-      d="
-        M181 104
-        L192 143
-        L181 148
-        L169 116
-        Z"
-      fill="${colour("Forearms")}"/>
-
-
-    <!-- abs -->
-
-    <path
-      d="
-        M92 91
-        L128 91
-        L130 141
-        Q110 153 90 141
-        Z"
-      fill="${colour("Abs")}"/>
-
-
-    <!-- abdominal definition -->
-
-    <path
-      d="
-        M110 92
-        L110 143
-        M93 108
-        L127 108
-        M92 124
-        L128 124"
-      stroke="#263034"
-      stroke-width="2"
-      opacity=".7"/>
-
-
-    <!-- hips -->
-
-    <path
-      d="
-        M87 139
-        L110 151
-        L133 139
-        L140 167
-        L110 182
-        L80 167
-        Z"
-      fill="url(#darkBody)"/>
-
-
-    <!-- legs -->
-
-    <path
-      d="
-        M82 161
-        L108 177
-        L103 235
-        L87 294
-        L69 292
-        L78 232
-        Z"
-      fill="${colour("Legs")}"/>
-
-    <path
-      d="
-        M138 161
-        L112 177
-        L117 235
-        L133 294
-        L151 292
-        L142 232
-        Z"
-      fill="${colour("Legs")}"/>
-
-
-    <!-- feet -->
-
-    <path
-      d="
-        M69 288
-        Q54 294 50 303
-        Q61 310 82 304
-        L87 292
-        Z"
-      fill="url(#skinGrad)"/>
-
-    <path
-      d="
-        M151 288
-        Q166 294 170 303
-        Q159 310 138 304
-        L133 292
-        Z"
-      fill="url(#skinGrad)"/>
-
-
-    <!-- central highlights -->
-
-    <path
-      d="
-        M82 64
-        Q110 52 138 64"
-      fill="none"
-      stroke="#b7bec0"
-      opacity=".25"
-      stroke-width="3"/>
-
-  </svg>
+
+      <div>
+
+        <i class="secondary"></i>
+
+        Secondary Muscles
+
+      </div>
+
+
+      <div>
+
+        <i class="other"></i>
+
+        Other Muscles
+
+      </div>
+
+    </div>
+
+  </div>
 
   `;
 
 }
 
 
-/* =========================================================
-   EXERCISE IMAGE
-========================================================= */
+/* =====================================================
+   EXERCISE INFO
+===================================================== */
 
-function exerciseImage(exercise){
+function exerciseInfo(exercise){
 
-  if(exercise.name==="Push-Ups"){
-
-    return `
-
-    <svg
-      viewBox="0 0 300 170"
-      xmlns="http://www.w3.org/2000/svg">
-
-      <defs>
-
-        <linearGradient
-          id="pushBody"
-          x1="0"
-          y1="0"
-          x2="1"
-          y2="1">
-
-          <stop
-            offset="0"
-            stop-color="#c2c7c8"/>
-
-          <stop
-            offset=".45"
-            stop-color="#777f82"/>
-
-          <stop
-            offset="1"
-            stop-color="#252b2e"/>
-
-        </linearGradient>
-
-      </defs>
-
-
-      <ellipse
-        cx="150"
-        cy="142"
-        rx="105"
-        ry="8"
-        fill="#080b0d"/>
-
-
-      <circle
-        cx="224"
-        cy="45"
-        r="14"
-        fill="url(#pushBody)"/>
-
-
-      <path
-        d="
-          M216 58
-          L177 66
-          L135 82
-          L93 89
-          L65 104
-          L72 113
-          L105 104
-          L142 99
-          L181 84
-          L219 69
-          Z"
-        fill="url(#pushBody)"/>
-
-
-      <path
-        d="
-          M177 67
-          L207 74
-          L230 111
-          L218 116
-          L193 87
-          Z"
-        fill="#60686b"/>
-
-
-      <path
-        d="
-          M135 82
-          L106 122
-          L95 119
-          L116 78
-          Z"
-        fill="#535b5e"/>
-
-
-      <path
-        d="
-          M67 103
-          L42 120
-          L34 116
-          L57 98
-          Z"
-        fill="#555d60"/>
-
-
-      <path
-        d="
-          M219 111
-          L250 121
-          L248 128
-          L216 119
-          Z"
-        fill="#4c5457"/>
-
-
-      <ellipse
-        cx="43"
-        cy="121"
-        rx="8"
-        ry="4"
-        fill="#727a7d"/>
-
-      <ellipse
-        cx="249"
-        cy="128"
-        rx="8"
-        ry="4"
-        fill="#727a7d"/>
-
-    </svg>
-
-    `;
-
-  }
-
-
-  return `
-
-  <svg
-    viewBox="0 0 300 170"
-    xmlns="http://www.w3.org/2000/svg">
-
-    <defs>
-
-      <radialGradient
-        id="exercisePerson">
-
-        <stop
-          stop-color="#b3b9ba"/>
-
-        <stop
-          offset=".55"
-          stop-color="#60686b"/>
-
-        <stop
-          offset="1"
-          stop-color="#252b2e"/>
-
-      </radialGradient>
-
-    </defs>
-
-
-    <ellipse
-      cx="150"
-      cy="151"
-      rx="90"
-      ry="7"
-      fill="#070a0c"/>
-
-
-    <circle
-      cx="150"
-      cy="35"
-      r="16"
-      fill="url(#exercisePerson)"/>
-
-
-    <path
-      d="
-        M130 55
-        Q150 43 170 55
-        L183 100
-        L165 119
-        L135 119
-        L117 100
-        Z"
-      fill="url(#exercisePerson)"/>
-
-
-    <path
-      d="
-        M123 61
-        L74 97
-        L82 107
-        L134 79
-        Z"
-      fill="#60686b"/>
-
-
-    <path
-      d="
-        M177 61
-        L226 97
-        L218 107
-        L166 79
-        Z"
-      fill="#60686b"/>
-
-
-    <path
-      d="
-        M136 112
-        L126 150
-        L141 151
-        L150 121
-        L159 151
-        L174 150
-        L164 112
-        Z"
-      fill="#424a4d"/>
-
-
-    <circle
-      cx="76"
-      cy="102"
-      r="7"
-      fill="#727a7d"/>
-
-    <circle
-      cx="224"
-      cy="102"
-      r="7"
-      fill="#727a7d"/>
-
-  </svg>
-
-  `;
-
-}
-
-
-/* =========================================================
-   INFO CARD
-========================================================= */
-
-function infoCard(exercise){
-
-  const weight =
+  const weight=
     exercise.type==="Kettlebell"
-      ? state.weight+" "+state.unit
+
+      ? state.weight+
+        " "+
+        state.unit
+
       : "Bodyweight";
 
 
@@ -2347,13 +3084,14 @@ function infoCard(exercise){
 
     <div class="exerciseVisual">
 
-      ${exerciseImage(exercise)}
+      ${exercisePhoto(exercise)}
 
     </div>
 
 
-    <div class="eyebrow"
-         style="margin-top:10px">
+    <div
+      class="eyebrow"
+      style="margin-top:10px">
 
       EXERCISE
 
@@ -2460,7 +3198,6 @@ function infoCard(exercise){
 
       </div>
 
-
     </div>
 
   </div>
@@ -2470,117 +3207,328 @@ function infoCard(exercise){
 }
 
 
-/* =========================================================
-   MUSCLE CARD
-========================================================= */
+/* =====================================================
+   EXERCISE VISUAL
+===================================================== */
 
-function muscleCard(exercise){
+function exercisePhoto(exercise){
+
+  if(exercise.name==="Push-Ups"){
+
+    return `
+
+    <svg viewBox="0 0 320 180">
+
+      <defs>
+
+        <linearGradient
+          id="pushPerson"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1">
+
+          <stop
+            offset="0"
+            stop-color="#d0d4d4"/>
+
+          <stop
+            offset=".4"
+            stop-color="#777f82"/>
+
+          <stop
+            offset="1"
+            stop-color="#202628"/>
+
+        </linearGradient>
+
+      </defs>
+
+
+      <ellipse
+        cx="160"
+        cy="155"
+        rx="110"
+        ry="7"
+        fill="#050708"/>
+
+
+      <circle
+        cx="247"
+        cy="50"
+        r="14"
+        fill="url(#pushPerson)"/>
+
+
+      <path
+        d="
+          M235 63
+          L195 69
+          L151 85
+          L105 91
+          L72 105
+          L77 116
+          L110 106
+          L153 100
+          L199 85
+          L238 73
+          Z"
+        fill="url(#pushPerson)"/>
+
+
+      <path
+        d="
+          M195 70
+          L224 77
+          L247 116
+          L235 121
+          L211 90
+          Z"
+        fill="#60686b"/>
+
+
+      <path
+        d="
+          M151 85
+          L118 126
+          L106 122
+          L131 82
+          Z"
+        fill="#555d60"/>
+
+
+      <path
+        d="
+          M75 104
+          L46 122
+          L37 118
+          L65 99
+          Z"
+        fill="#555d60"/>
+
+
+      <ellipse
+        cx="44"
+        cy="123"
+        rx="9"
+        ry="4"
+        fill="#777f82"/>
+
+    </svg>
+
+    `;
+
+  }
+
+
+  if(exercise.name==="Kettlebell Floor Press"){
+
+    return `
+
+    <svg viewBox="0 0 320 180">
+
+      <defs>
+
+        <radialGradient
+          id="pressPerson">
+
+          <stop
+            stop-color="#c7cccd"/>
+
+          <stop
+            offset=".45"
+            stop-color="#737b7e"/>
+
+          <stop
+            offset="1"
+            stop-color="#202628"/>
+
+        </radialGradient>
+
+      </defs>
+
+
+      <ellipse
+        cx="160"
+        cy="155"
+        rx="105"
+        ry="8"
+        fill="#050708"/>
+
+
+      <circle
+        cx="93"
+        cy="86"
+        r="16"
+        fill="url(#pressPerson)"/>
+
+
+      <path
+        d="
+          M108 76
+          Q148 65 188 82
+          L221 117
+          L199 137
+          L137 128
+          L99 105
+          Z"
+        fill="url(#pressPerson)"/>
+
+
+      <path
+        d="
+          M132 82
+          L124 44
+          L136 39
+          L151 78
+          Z"
+        fill="#777f82"/>
+
+
+      <path
+        d="
+          M168 82
+          L174 42
+          L186 45
+          L183 88
+          Z"
+        fill="#777f82"/>
+
+
+      <circle
+        cx="130"
+        cy="34"
+        r="9"
+        fill="#23292b"/>
+
+
+      <circle
+        cx="180"
+        cy="35"
+        r="9"
+        fill="#23292b"/>
+
+
+      <path
+        d="
+          M139 126
+          L125 150
+          L140 153
+          L156 131
+          Z"
+        fill="#4c5457"/>
+
+
+      <path
+        d="
+          M184 128
+          L202 150
+          L216 146
+          L199 118
+          Z"
+        fill="#4c5457"/>
+
+    </svg>
+
+    `;
+
+  }
+
 
   return `
 
-  <div class="card muscleCard">
+  <svg viewBox="0 0 320 180">
 
-    <div class="muscleHeader">
+    <defs>
 
-      <div class="eyebrow">
-        MUSCLES WORKED
-      </div>
+      <radialGradient
+        id="genericPerson">
 
-    </div>
+        <stop
+          stop-color="#c5cbcc"/>
 
+        <stop
+          offset=".5"
+          stop-color="#70787b"/>
 
-    <div class="tabs">
+        <stop
+          offset="1"
+          stop-color="#202628"/>
 
-      <button
-        class="active"
-        onclick="frontTab(this)">
+      </radialGradient>
 
-        Front
-
-      </button>
-
-      <button
-        onclick="backTab(this)">
-
-        Back
-
-      </button>
-
-    </div>
+    </defs>
 
 
-    <div class="bodyArea">
-
-      ${bodySVG(
-        exercise.primary,
-        exercise.secondary
-      )}
-
-    </div>
+    <ellipse
+      cx="160"
+      cy="155"
+      rx="90"
+      ry="7"
+      fill="#050708"/>
 
 
-    <div class="legend">
-
-      <div>
-
-        <i></i>
-
-        Primary Muscles
-
-      </div>
+    <circle
+      cx="160"
+      cy="37"
+      r="16"
+      fill="url(#genericPerson)"/>
 
 
-      <div>
+    <path
+      d="
+        M140 56
+        Q160 44 180 56
+        L190 105
+        L170 124
+        L150 124
+        L130 105
+        Z"
+      fill="url(#genericPerson)"/>
 
-        <i class="secondary"></i>
 
-        Secondary Muscles
+    <path
+      d="
+        M136 62
+        L88 98
+        L95 108
+        L145 80
+        Z"
+      fill="#5e6669"/>
 
-      </div>
+
+    <path
+      d="
+        M184 62
+        L232 98
+        L225 108
+        L175 80
+        Z"
+      fill="#5e6669"/>
 
 
-      <div>
+    <path
+      d="
+        M142 116
+        L130 151
+        L145 153
+        L160 124
+        L175 153
+        L190 151
+        L178 116
+        Z"
+      fill="#444c4f"/>
 
-        <i class="other"></i>
-
-        Other Muscles
-
-      </div>
-
-    </div>
-
-  </div>
+  </svg>
 
   `;
 
 }
 
 
-function frontTab(button){
-
-  button.classList.add("active");
-
-  button.nextElementSibling
-    .classList
-    .remove("active");
-
-}
-
-
-function backTab(button){
-
-  button.classList.add("active");
-
-  button.previousElementSibling
-    .classList
-    .remove("active");
-
-}
-
-
-/* =========================================================
+/* =====================================================
    ABOUT
-========================================================= */
+===================================================== */
 
 function aboutCard(exercise){
 
@@ -2602,17 +3550,18 @@ function aboutCard(exercise){
 
     <div class="aboutGrid">
 
+
       <div class="aboutMini">
 
         <b>
-          ◎ &nbsp;Great For
+          ◎ &nbsp; GREAT FOR
         </b>
 
         <span>
 
-          ✓ Upper Body Strength<br>
-          ✓ Endurance<br>
-          ✓ Core Stability
+          ✓ ${exercise.greatFor[0]}<br>
+          ✓ ${exercise.greatFor[1]}<br>
+          ✓ ${exercise.greatFor[2]}
 
         </span>
 
@@ -2622,14 +3571,12 @@ function aboutCard(exercise){
       <div class="aboutMini">
 
         <b>
-          ▥ &nbsp;Workout
+          ▥ &nbsp; CALORIE BURN
         </b>
 
         <span>
 
-          ${exercise.sets} sets<br>
-          ${exercise.targetReps} reps<br>
-          ${exercise.rest}s rest
+          ${exercise.calories}
 
         </span>
 
@@ -2644,9 +3591,9 @@ function aboutCard(exercise){
 }
 
 
-/* =========================================================
+/* =====================================================
    TIPS
-========================================================= */
+===================================================== */
 
 function tipsCard(exercise){
 
@@ -2677,13 +3624,16 @@ function tipsCard(exercise){
 }
 
 
-/* =========================================================
-   WORKOUT SET CONTROLS
-========================================================= */
+/* =====================================================
+   SET CONTROLS
+===================================================== */
 
-function workoutSets(exercise,index){
+function workoutSets(
+  exercise,
+  index
+){
 
-  const data =
+  const data=
     session.exercises[index];
 
 
@@ -2700,10 +3650,13 @@ function workoutSets(exercise,index){
 
     <div class="sets">
 
+
       ${data.sets.map(
+
         (complete,setIndex)=>`
 
         <div class="setRow">
+
 
           <div class="setNumber">
 
@@ -2756,11 +3709,11 @@ function workoutSets(exercise,index){
           <button
             class="
               doneButton
-              ${complete ? "done":""}
+              ${complete?"done":""}
               ${
                 setIndex>0 &&
                 !data.sets[setIndex-1]
-                  ? "locked":""
+                  ?"locked":""
               }
             "
             onclick="
@@ -2772,8 +3725,8 @@ function workoutSets(exercise,index){
 
             ${
               complete
-                ? "✓ DONE"
-                : "DONE"
+                ?"✓ DONE"
+                :"DONE"
             }
 
           </button>
@@ -2782,6 +3735,7 @@ function workoutSets(exercise,index){
         </div>
 
       `).join("")}
+
 
     </div>
 
@@ -2795,18 +3749,22 @@ function workoutSets(exercise,index){
 
     <div class="difficulty">
 
+
       ${
-        ["Easy","Good","Hard","Very Hard"]
+        [
+          "Easy",
+          "Good",
+          "Hard",
+          "Very Hard"
+        ]
         .map(
           feeling=>`
 
           <button
-            class="
-              ${
-                data.difficulty===feeling
-                  ? "active":""
-              }
-            "
+            class="${
+              data.difficulty===feeling
+                ?"active":""
+            }"
             onclick="
               setDifficulty(
                 ${index},
@@ -2818,9 +3776,10 @@ function workoutSets(exercise,index){
 
           </button>
 
-        `
+          `
         ).join("")
       }
+
 
     </div>
 
@@ -2842,80 +3801,79 @@ function workoutSets(exercise,index){
 }
 
 
-/* =========================================================
-   DETAIL PAGE
-========================================================= */
+/* =====================================================
+   FULL EXERCISE PAGE
+===================================================== */
 
-function detailPage(
+function exercisePage(
   exercise,
-  index,
-  workoutMode
+  index
 ){
 
   return `
 
-  <div>
+  ${exerciseInfo(exercise)}
 
-    ${infoCard(exercise)}
+  ${anatomyCard(exercise)}
 
-    ${muscleCard(exercise)}
+  ${aboutCard(exercise)}
 
-    ${aboutCard(exercise)}
+  ${tipsCard(exercise)}
 
-    ${tipsCard(exercise)}
-
-    ${
-      workoutMode
-        ? workoutSets(exercise,index)
-        : ""
-    }
+  ${workoutSets(
+    exercise,
+    index
+  )}
 
 
-    <div class="card exerciseNav">
-
-      <button
-        onclick="
-          previousExercise()
-        ">
-
-        ‹
-
-      </button>
+  <div class="card exerciseNav">
 
 
-      <div class="exerciseNavText">
+    <button
+      onclick="
+        previousExercise()
+      ">
 
-        <small>
+      ‹
 
-          ${index+1} / ${exercises.length}
-
-        </small>
-
-        <b>
-
-          ${
-            index <
-            exercises.length-1
-              ? "Next: "+
-                exercises[index+1].name
-              : "Workout complete"
-          }
-
-        </b>
-
-      </div>
+    </button>
 
 
-      <button
-        onclick="
-          nextExercise()
-        ">
+    <div class="exerciseNavText">
 
-        ›
+      <small>
 
-      </button>
+        ${index+1} / ${exercises.length}
+
+      </small>
+
+
+      <b>
+
+        ${
+          index<
+          exercises.length-1
+
+            ? "Next: "+
+              exercises[index+1].name
+
+            : "Workout complete"
+        }
+
+      </b>
 
     </div>
+
+
+    <button
+      onclick="
+        nextExercise()
+      ">
+
+      ›
+
+    </button>
+
 
   </div>
 
@@ -2924,9 +3882,9 @@ function detailPage(
 }
 
 
-/* =========================================================
-   START WORKOUT
-========================================================= */
+/* =====================================================
+   START
+===================================================== */
 
 function startWorkout(){
 
@@ -2935,6 +3893,7 @@ function startWorkout(){
     session={
 
       exercises:
+
         exercises.map(
           exercise=>({
 
@@ -2967,6 +3926,8 @@ function startWorkout(){
 
   detailIndex=0;
 
+  anatomyView="front";
+
   show("workout");
 
   renderWorkout();
@@ -2974,19 +3935,22 @@ function startWorkout(){
 }
 
 
-/* =========================================================
+/* =====================================================
    PREVIEW
-========================================================= */
+===================================================== */
 
 function showPreview(){
 
   show("preview");
 
+
   document.getElementById(
     "previewList"
   ).innerHTML=
 
+
     exercises.map(
+
       (exercise,index)=>`
 
       <div class="card">
@@ -2996,6 +3960,7 @@ function showPreview(){
           EXERCISE ${index+1}
 
         </div>
+
 
         <div
           style="
@@ -3008,7 +3973,10 @@ function showPreview(){
 
         </div>
 
-        <div class="muted small">
+
+        <div
+          class="muted"
+          style="font-size:10px">
 
           ${exercise.sets}
           sets •
@@ -3016,7 +3984,11 @@ function showPreview(){
           reps •
           ${
             exercise.type==="Kettlebell"
-              ? state.weight+" "+state.unit
+
+              ? state.weight+
+                " "+
+                state.unit
+
               : "Bodyweight"
           }
 
@@ -3030,9 +4002,9 @@ function showPreview(){
 }
 
 
-/* =========================================================
+/* =====================================================
    WORKOUT RENDER
-========================================================= */
+===================================================== */
 
 function renderWorkout(){
 
@@ -3040,32 +4012,35 @@ function renderWorkout(){
     "workoutList"
   ).innerHTML=
 
-    detailPage(
+    exercisePage(
       exercises[detailIndex],
-      detailIndex,
-      true
+      detailIndex
     );
 
 
   document.getElementById(
     "notes"
-  ).value =
+  ).value=
     session.notes || "";
 
 
-  const completed =
+  const completed=
     session.exercises.filter(
-      x=>x.sets.every(Boolean)
+      x=>
+        x.sets.every(Boolean)
     ).length;
 
 
-  const points =
+  const points=
     session.exercises.reduce(
       (total,exercise)=>
+
         total+
+
         exercise.sets.filter(
           Boolean
         ).length*5,
+
       0
     );
 
@@ -3097,14 +4072,14 @@ function renderWorkout(){
   document.getElementById(
     "workoutProgress"
   ).style.width=
-    (completed/7*100)+"%";
+    completed/7*100+"%";
 
 }
 
 
-/* =========================================================
+/* =====================================================
    REP ARROWS
-========================================================= */
+===================================================== */
 
 function changeRep(
   exerciseIndex,
@@ -3112,16 +4087,20 @@ function changeRep(
   amount
 ){
 
-  let reps =
+  let reps=
     session
-      .exercises[exerciseIndex]
-      .reps[setIndex];
+      .exercises[
+        exerciseIndex
+      ]
+      .reps[
+        setIndex
+      ];
 
 
   reps += amount;
 
 
-  reps =
+  reps=
     Math.max(
       1,
       Math.min(
@@ -3132,9 +4111,12 @@ function changeRep(
 
 
   session
-    .exercises[exerciseIndex]
-    .reps[setIndex]
-    =
+    .exercises[
+      exerciseIndex
+    ]
+    .reps[
+      setIndex
+    ]=
     reps;
 
 
@@ -3145,26 +4127,26 @@ function changeRep(
 }
 
 
-/* =========================================================
+/* =====================================================
    COMPLETE SET
-========================================================= */
+===================================================== */
 
 function completeSet(
   exerciseIndex,
   setIndex
 ){
 
-  const data =
+  const data=
     session.exercises[
       exerciseIndex
     ];
 
 
-  /* Previous set must be complete */
-
   if(
     setIndex>0 &&
-    !data.sets[setIndex-1]
+    !data.sets[
+      setIndex-1
+    ]
   ){
 
     alert(
@@ -3176,10 +4158,9 @@ function completeSet(
   }
 
 
-  /* Previous exercise must be complete */
-
   if(
     exerciseIndex>0 &&
+
     !session
       .exercises[
         exerciseIndex-1
@@ -3197,8 +4178,12 @@ function completeSet(
   }
 
 
-  data.sets[setIndex]=
-    !data.sets[setIndex];
+  data.sets[
+    setIndex
+  ]=
+    !data.sets[
+      setIndex
+    ];
 
 
   saveSession();
@@ -3206,7 +4191,11 @@ function completeSet(
   renderWorkout();
 
 
-  if(data.sets[setIndex]){
+  if(
+    data.sets[
+      setIndex
+    ]
+  ){
 
     startRest(
       exercises[
@@ -3219,15 +4208,15 @@ function completeSet(
 }
 
 
-/* =========================================================
+/* =====================================================
    UNDO
-========================================================= */
+===================================================== */
 
 function undoExercise(index){
 
   session
     .exercises[index]
-    .sets =
+    .sets=
       Array(
         exercises[index].sets
       ).fill(false);
@@ -3240,9 +4229,9 @@ function undoExercise(index){
 }
 
 
-/* =========================================================
+/* =====================================================
    DIFFICULTY
-========================================================= */
+===================================================== */
 
 function setDifficulty(
   index,
@@ -3262,31 +4251,65 @@ function setDifficulty(
 }
 
 
-/* =========================================================
-   EXERCISE NAVIGATION
-========================================================= */
+/* =====================================================
+   NEXT / PREVIOUS
+===================================================== */
+
+function nextExercise(){
+
+  if(
+    !session
+      .exercises[
+        detailIndex
+      ]
+      .sets
+      .every(Boolean)
+  ){
+
+    alert(
+      "Complete all sets before moving to the next exercise."
+    );
+
+    return;
+
+  }
+
+
+  detailIndex++;
+
+
+  if(
+    detailIndex>=
+    exercises.length
+  ){
+
+    detailIndex=0;
+
+  }
+
+
+  anatomyView="front";
+
+  renderWorkout();
+
+  window.scrollTo(0,0);
+
+}
+
 
 function previousExercise(){
 
   detailIndex--;
 
-  if(detailIndex<0)
+  if(detailIndex<0){
+
     detailIndex=
       exercises.length-1;
 
-  renderWorkout();
-
-  window.scrollTo(0,0);
-
-}
+  }
 
 
-function nextExercise(){
-
-  detailIndex++;
-
-  if(detailIndex>=exercises.length)
-    detailIndex=0;
+  anatomyView="front";
 
   renderWorkout();
 
@@ -3295,9 +4318,9 @@ function nextExercise(){
 }
 
 
-/* =========================================================
+/* =====================================================
    REST TIMER
-========================================================= */
+===================================================== */
 
 function startRest(seconds){
 
@@ -3315,13 +4338,13 @@ function startRest(seconds){
   document
     .getElementById("timerValue")
     .textContent=
-      timerSeconds;
+    timerSeconds;
 
 
   document
     .getElementById("timerPause")
     .textContent=
-      "PAUSE";
+    "PAUSE";
 
 
   clearInterval(
@@ -3345,10 +4368,12 @@ function startRest(seconds){
             "timerValue"
           )
           .textContent=
-            timerSeconds;
+          timerSeconds;
 
 
-        if(timerSeconds<=0){
+        if(
+          timerSeconds<=0
+        ){
 
           skipRest();
 
@@ -3372,9 +4397,10 @@ function toggleTimer(){
       "timerPause"
     )
     .textContent=
+
       timerPaused
-        ? "RESUME"
-        : "PAUSE";
+        ?"RESUME"
+        :"PAUSE";
 
 }
 
@@ -3394,46 +4420,42 @@ function skipRest(){
 }
 
 
-/* =========================================================
-   PAUSE WORKOUT
-========================================================= */
+/* =====================================================
+   PAUSE
+===================================================== */
 
 function pauseWorkout(){
 
-  if(confirm(
-    "Pause this workout?"
-  )){
+  saveSession();
 
-    saveSession();
-
-    alert(
-      "Workout saved. You can return to it later."
-    );
-
-  }
+  alert(
+    "Workout saved. You can return to it later."
+  );
 
 }
 
 
-/* =========================================================
-   FINISH WORKOUT
-========================================================= */
+/* =====================================================
+   FINISH
+===================================================== */
 
 function finishWorkout(){
 
-  session.notes =
+  session.notes=
     document.getElementById(
       "notes"
     ).value;
 
 
-  const completedSets =
+  const completedSets=
     session.exercises.reduce(
       (total,exercise)=>
+
         total+
         exercise.sets.filter(
           Boolean
         ).length,
+
       0
     );
 
@@ -3449,7 +4471,7 @@ function finishWorkout(){
   }
 
 
-  const fullWorkout =
+  const fullWorkout=
     session.exercises.every(
       exercise=>
         exercise.sets.every(Boolean)
@@ -3457,29 +4479,31 @@ function finishWorkout(){
 
 
   /*
-     Existing points system:
-     completed sets × 5
-     + 90 bonus for full workout
+    Existing point behaviour retained.
 
-     This keeps the first workout
-     compatible with the existing
-     125 point total.
+    Full workout:
+    125 XP
+
+    Partial workout:
+    5 XP per completed set.
   */
 
   const xp=
     fullWorkout
-      ? 125
-      : completedSets*5;
+      ?125
+      :completedSets*5;
 
 
   const reps=
     session.exercises.reduce(
       (total,exercise)=>
+
         total+
         exercise.reps.reduce(
           (a,b)=>a+b,
           0
         ),
+
       0
     );
 
@@ -3519,7 +4543,7 @@ function finishWorkout(){
   alert(
     "Workout saved — "+
     xp+
-    " points earned!"
+    " XP earned!"
   );
 
 
@@ -3528,9 +4552,9 @@ function finishWorkout(){
 }
 
 
-/* =========================================================
+/* =====================================================
    SETTINGS
-========================================================= */
+===================================================== */
 
 function saveSettings(){
 
@@ -3558,9 +4582,9 @@ function saveSettings(){
 }
 
 
-/* =========================================================
+/* =====================================================
    HOME RENDER
-========================================================= */
+===================================================== */
 
 function renderHome(){
 
@@ -3594,19 +4618,23 @@ function renderHome(){
     calculateStreak();
 
 
-  /* Weekly target */
+  /* WEEK */
 
-  const now=new Date();
+  const now=
+    new Date();
+
 
   const weekStart=
     new Date(now);
 
+
   weekStart.setDate(
-    now.getDate() -
+    now.getDate()-
     (
       (now.getDay()+6)%7
     )
   );
+
 
   weekStart.setHours(
     0,0,0,0
@@ -3648,8 +4676,8 @@ function renderHome(){
     " workout"+
     (
       remaining===1
-        ? ""
-        : "s"
+        ?""
+        :"s"
     )+
     " remaining";
 
@@ -3663,7 +4691,7 @@ function renderHome(){
     )+"%";
 
 
-  /* Level */
+  /* LEVEL */
 
   const level=
     getLevel();
@@ -3697,6 +4725,7 @@ function renderHome(){
     document.getElementById(
       "xpTo"
     ).textContent=
+
       (
         level.next[0]-
         state.xp
@@ -3705,7 +4734,7 @@ function renderHome(){
       (level.index+2);
 
 
-    const amount=
+    const total=
       level.next[0]-
       level.current[0];
 
@@ -3718,27 +4747,14 @@ function renderHome(){
     document.getElementById(
       "xpProgress"
     ).style.width=
+
       Math.max(
         0,
         Math.min(
           100,
-          current/amount*100
+          current/total*100
         )
       )+"%";
-
-  }
-  else{
-
-    document.getElementById(
-      "xpTo"
-    ).textContent=
-      "MAX LEVEL";
-
-
-    document.getElementById(
-      "xpProgress"
-    ).style.width=
-      "100%";
 
   }
 
@@ -3752,33 +4768,39 @@ function renderHome(){
 }
 
 
-/* =========================================================
+/* =====================================================
    STREAK
-========================================================= */
+===================================================== */
 
 function calculateStreak(){
 
-  if(!state.history.length)
+  if(
+    !state.history.length
+  )
     return 0;
 
 
-  const unique=
-    [
-      ...new Set(
-        state.history.map(
-          item=>
-            new Date(
-              item.date
-            ).toDateString()
-        )
+  const unique=[
+
+    ...new Set(
+
+      state.history.map(
+        item=>
+          new Date(
+            item.date
+          ).toDateString()
       )
-    ];
+
+    )
+
+  ];
 
 
   const dates=
     unique
       .map(
         date=>{
+
           const d=
             new Date(date);
 
@@ -3787,6 +4809,7 @@ function calculateStreak(){
           );
 
           return d.getTime();
+
         }
       )
       .sort(
@@ -3796,6 +4819,7 @@ function calculateStreak(){
 
   const today=
     new Date();
+
 
   today.setHours(
     0,0,0,0
@@ -3814,11 +4838,14 @@ function calculateStreak(){
       today.getDate()-1
     );
 
+
     expected=
       today.getTime();
 
 
-    if(dates[0]!==expected)
+    if(
+      dates[0]!==expected
+    )
       return 0;
 
   }
@@ -3827,9 +4854,13 @@ function calculateStreak(){
   let streak=0;
 
 
-  for(const date of dates){
+  for(
+    const date of dates
+  ){
 
-    if(date===expected){
+    if(
+      date===expected
+    ){
 
       streak++;
 
@@ -3851,9 +4882,9 @@ function calculateStreak(){
 }
 
 
-/* =========================================================
+/* =====================================================
    CALENDAR
-========================================================= */
+===================================================== */
 
 function changeMonth(amount){
 
@@ -3861,6 +4892,7 @@ function changeMonth(amount){
     monthView.getMonth()+
     amount
   );
+
 
   renderCalendar();
 
@@ -3895,6 +4927,7 @@ function renderCalendar(){
   document.getElementById(
     "monthTitle"
   ).textContent=
+
     first.toLocaleDateString(
       undefined,
       {
@@ -3919,7 +4952,7 @@ function renderCalendar(){
     i++
   ){
 
-    container.innerHTML +=
+    container.innerHTML+=
       "<div></div>";
 
   }
@@ -3927,12 +4960,14 @@ function renderCalendar(){
 
   const completedDates=
     new Set(
+
       state.history.map(
         item=>
           new Date(
             item.date
           ).toDateString()
       )
+
     );
 
 
@@ -3954,8 +4989,7 @@ function renderCalendar(){
       );
 
 
-    let classes=
-      "day";
+    let classes="day";
 
 
     if(
@@ -3963,8 +4997,7 @@ function renderCalendar(){
       today
     ){
 
-      classes +=
-        " today";
+      classes+=" today";
 
     }
 
@@ -3975,13 +5008,12 @@ function renderCalendar(){
       )
     ){
 
-      classes +=
-        " done";
+      classes+=" done";
 
     }
 
 
-    container.innerHTML += `
+    container.innerHTML+=`
 
       <div class="${classes}">
 
@@ -3996,9 +5028,9 @@ function renderCalendar(){
 }
 
 
-/* =========================================================
+/* =====================================================
    RECOVERY
-========================================================= */
+===================================================== */
 
 function renderRecovery(){
 
@@ -4008,7 +5040,8 @@ function renderRecovery(){
     ["Shoulders","ready"],
     ["Arms","recovering"],
     ["Abs","trained"],
-    ["Legs","ready"]
+    ["Legs","ready"],
+    ["Back","ready"]
 
   ];
 
@@ -4031,10 +5064,10 @@ function renderRecovery(){
 
           ${
             item[1]==="ready"
-              ? "READY"
+              ?"READY"
               :
             item[1]==="recovering"
-              ? "RECOVERING"
+              ?"RECOVERING"
               :
               "TRAINED"
           }
@@ -4049,9 +5082,9 @@ function renderRecovery(){
 }
 
 
-/* =========================================================
+/* =====================================================
    GRAPH
-========================================================= */
+===================================================== */
 
 function renderGraph(){
 
@@ -4061,10 +5094,10 @@ function renderGraph(){
 
   const values=
     history.length
-      ? history.map(
-          item=>item.xp
-        )
-      : [0];
+      ?history.map(
+        item=>item.xp
+      )
+      :[0];
 
 
   const max=
@@ -4094,17 +5127,17 @@ function renderGraph(){
     ).join("");
 
 
-  const labelItems=
+  const labels=
     history.length
-      ? history
-      : [{date:new Date()}];
+      ?history
+      :[{date:new Date()}];
 
 
   document.getElementById(
     "graphLabels"
   ).innerHTML=
 
-    labelItems.map(
+    labels.map(
       item=>`
 
       <span>
@@ -4130,9 +5163,9 @@ function renderGraph(){
 }
 
 
-/* =========================================================
+/* =====================================================
    INITIALISE
-========================================================= */
+===================================================== */
 
 renderHome();
 
