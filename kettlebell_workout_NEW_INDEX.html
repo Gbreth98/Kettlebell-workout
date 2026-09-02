@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d0f">
+<title>Kettlebell Workout</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:#05090a;color:#f4f8f8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{max-width:600px;margin:auto;min-height:100vh;background:radial-gradient(circle at 50% -8%,#123438 0,transparent 32%),#080d0f;padding-bottom:92px}
+header{height:64px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#080d0fee;border-bottom:1px solid #203437;backdrop-filter:blur(12px)}
+.logoText{font-weight:900;letter-spacing:.5px}.logoText span{color:#19d7df}
+.icon{width:42px;height:42px;border:1px solid #315056;border-radius:13px;background:#101a1d;color:#e9f5f5;font-size:22px}
+.screen{display:none;padding:20px 16px 30px}.screen.active{display:block}
+h1{font-size:39px;line-height:.98;letter-spacing:-1.8px;margin:12px 0 8px;background:linear-gradient(135deg,#fff,#73f3f6);-webkit-background-clip:text;color:transparent}
+h2{font-size:29px;margin:0 0 7px}.muted{color:#9db0b3}.eyebrow{font-size:11px;color:#19d7df;font-weight:900;letter-spacing:1.3px;text-transform:uppercase}
+.card{background:linear-gradient(145deg,#132124,#0c1416);border:1px solid #244045;border-radius:20px;padding:17px;margin:0 0 14px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.btn{width:100%;min-height:52px;border-radius:15px;border:1px solid #31545a;background:#111d20;color:#edf7f7;font-weight:900}
+.btn.primary{border:0;background:linear-gradient(135deg,#19d7df,#079da8);color:#031113}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#0c1517;border:1px solid #20383c;border-radius:15px;padding:13px;text-align:center}.stat b{display:block;font-size:25px}.stat small{color:#879b9e;text-transform:uppercase;font-size:9px;letter-spacing:.7px}
+.progress{height:9px;border-radius:99px;background:#172629;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#0aaeb9,#49edf1);width:0}
+.exercise{display:flex;align-items:center;gap:12px;width:100%;padding:11px;border:1px solid #213a3e;border-radius:17px;background:#0d1719;color:#fff;text-align:left;margin-bottom:10px}
+.thumb{width:82px;height:68px;flex:0 0 82px;border-radius:12px;overflow:hidden;background:#101c1f}.thumb img{width:100%;height:100%;object-fit:cover}
+.exerciseName{font-size:17px;font-weight:900}.exerciseMeta{font-size:11px;color:#899ea1;margin-top:4px}
+.detailHero{width:100%;aspect-ratio:16/8;border-radius:19px;object-fit:cover;border:1px solid #29464a}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.tag{padding:7px 10px;border-radius:99px;border:1px solid #31565b;background:#0d2528;color:#bceff1;font-size:11px;font-weight:800}
+.anatomy{display:grid;grid-template-columns:1fr 1fr;gap:10px}.anatomy img{width:100%;border-radius:14px;border:1px solid #284247;background:#10191b}
+.repBox{display:flex;flex-direction:column;align-items:center;padding:18px;border:1px solid #223c40;border-radius:20px;background:#0d1719;margin:15px 0}
+.repBtn{width:76px;height:48px;border-radius:14px;border:1px solid #31575c;background:#122326;color:#dffcff;font-size:27px;font-weight:900}
+.rep{font-size:60px;font-weight:950;line-height:1;padding:12px}.sets{display:grid;gap:8px}.set{display:flex;justify-content:space-between;align-items:center;padding:13px;border:1px solid #20383c;border-radius:14px;background:#0d1719}.set.done{border-color:#19d7df;background:#102629}.set.lock{opacity:.45}
+.diff{margin-top:14px}.diff button{min-height:44px;border-radius:12px;border:1px solid #29494e;background:#111f22;color:#d9eaeb;font-weight:800}.diff button.sel{border-color:#19d7df;color:#70f4f7;background:#12383b}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:600px;display:grid;grid-template-columns:repeat(4,1fr);z-index:30;padding:7px 7px calc(7px + env(safe-area-inset-bottom));background:#080d0ff5;border-top:1px solid #203437;backdrop-filter:blur(12px)}
+.nav button{border:0;background:none;color:#72898d;min-height:48px;font-size:11px;font-weight:800}.nav button.active{color:#19d7df}.nav span{display:block;font-size:18px;margin-bottom:3px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:#000b;align-items:center;justify-content:center;padding:20px}.modal.on{display:flex}.modalCard{width:100%;max-width:400px;border:1px solid #31545a;background:#0c1618;border-radius:24px;padding:25px;text-align:center}.rest{font-size:72px;font-weight:950;margin:10px}
+.field{margin:12px 0}.field label{display:block;color:#91a7aa;font-size:11px;font-weight:800;margin-bottom:6px}.field input,.field select{width:100%;height:46px;border-radius:11px;border:1px solid #315057;background:#0b1416;color:#fff;padding:0 12px}
+@media(max-width:370px){h1{font-size:34px}.rep{font-size:52px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<header>
+<button class="icon" onclick="back()">‹</button>
+<div class="logoText"><span>KETTLEBELL</span> WORKOUT</div>
+<button class="icon" onclick="show('settings')">⚙</button>
+</header>
+
+<section id="home" class="screen active">
+<div style="padding:14px 4px 18px">
+<div class="eyebrow">PERSONAL TRAINING</div>
+<h1>Kettlebell<br>Workout</h1>
+<div class="muted">Build strength. Track progress. Get stronger.</div>
+</div>
+
+<div class="card">
+<div class="eyebrow">TODAY'S WORKOUT</div>
+<h2 style="margin-top:6px">Full Body Strength</h2>
+<div class="muted">7 exercises · 21 sets · 20–45 minutes</div>
+<div style="height:15px"></div>
+<div class="grid2">
+<button class="btn" onclick="show('overview')">SEE WORKOUT</button>
+<button class="btn primary" onclick="startWorkout()">START WORKOUT</button>
+</div>
+</div>
+
+<div class="card">
+<div class="row">
+<div><div class="eyebrow">LEVEL <span id="level">1</span></div><b id="levelTitle" style="font-size:21px">Beginner</b></div>
+<div class="muted"><span id="xp">125</span> XP</div>
+</div>
+<div style="height:10px"></div><div class="progress"><i id="xpBar"></i></div>
+</div>
+
+<div class="card">
+<div class="eyebrow">WEEKLY TARGET</div>
+<div class="row" style="margin:8px 0"><b style="font-size:30px"><span id="week">0</span>/4</b><span class="muted"><span id="remain">4</span> remaining</span></div>
+<div class="progress"><i id="weekBar"></i></div>
+</div>
+
+<div class="card">
+<div class="eyebrow">YOUR PROGRESS</div><div style="height:10px"></div>
+<div class="grid2">
+<div class="stat"><b id="workouts">0</b><small>Workouts</small></div>
+<div class="stat"><b id="reps">0</b><small>Total Reps</small></div>
+<div class="stat"><b id="volume">0</b><small>Weight Lifted</small></div>
+<div class="stat"><b id="points">125</b><small>Points</small></div>
+</div>
+</div>
+</section>
+
+<section id="overview" class="screen">
+<h2>Workout Overview</h2><div class="muted" style="margin-bottom:16px">Tap an exercise for instructions, muscles and workout details.</div>
+<div id="exerciseList"></div>
+<button class="btn primary" onclick="startWorkout()">START WORKOUT</button>
+</section>
+
+<section id="detail" class="screen"><div id="detailCard"></div></section>
+
+<section id="workout" class="screen">
+<div class="row"><h2>Workout</h2><b id="timer" style="color:#19d7df">00:00</b></div>
+<div class="progress"><i id="workBar"></i></div>
+<div style="text-align:center;margin:20px 0 8px"><div class="eyebrow">EXERCISE <span id="exerciseNo">1</span>/7</div><div id="currentName" style="font-size:28px;font-weight:950;margin-top:5px"></div><div id="currentMeta" class="muted"></div></div>
+<div class="repBox">
+<button class="repBtn" onclick="reps(1)">↑</button>
+<div id="rep" class="rep">10</div>
+<button class="repBtn" onclick="reps(-1)">↓</button>
+<div class="muted" style="font-size:10px;text-transform:uppercase;letter-spacing:1px">REPS</div>
+</div>
+<div id="setList" class="sets"></div>
+<div style="height:10px"></div>
+<button id="complete" class="btn primary" onclick="completeSet()">COMPLETE SET 1</button>
+<div class="diff">
+<div style="font-weight:900;margin-bottom:8px">How did that feel?</div>
+<div class="grid2">
+<button onclick="difficulty('Easy',this)">Easy</button><button onclick="difficulty('Good',this)">Good</button>
+<button onclick="difficulty('Hard',this)">Hard</button><button onclick="difficulty('Very Hard',this)">Very Hard</button>
+</div>
+</div>
+<div style="height:12px"></div><button class="btn" onclick="pause()">PAUSE WORKOUT</button>
+</section>
+
+<section id="progress" class="screen">
+<h2>Progress</h2><div class="muted" style="margin-bottom:16px">Your training history and performance.</div>
+<div class="card"><div class="eyebrow">LEVEL <span id="pLevel">1</span></div><b id="pTitle" style="font-size:23px">Beginner</b><div style="height:10px"></div><div class="progress"><i id="pBar"></i></div><div class="muted" style="margin-top:8px"><span id="pXP">125</span> XP</div></div>
+<div class="card"><div class="grid2">
+<div class="stat"><b id="pWorkouts">0</b><small>Workouts</small></div><div class="stat"><b id="pReps">0</b><small>Reps</small></div>
+<div class="stat"><b id="pVolume">0</b><small>Weight Lifted</small></div><div class="stat"><b id="pPoints">125</b><small>Points</small></div>
+</div></div>
+<div class="card"><div class="eyebrow">LAST 7 DAYS</div><div id="chart" style="height:150px;display:flex;align-items:flex-end;gap:7px;margin-top:12px"></div></div>
+<div class="card"><div class="eyebrow">MUSCLE RECOVERY</div>
+<div class="row" style="padding:13px 0;border-bottom:1px solid #203437"><b>Chest</b><span style="color:#36e18b">READY</span></div>
+<div class="row" style="padding:13px 0;border-bottom:1px solid #203437"><b>Shoulders</b><span style="color:#36e18b">READY</span></div>
+<div class="row" style="padding:13px 0;border-bottom:1px solid #203437"><b>Arms</b><span style="color:#e5c34a">RECOVERING</span></div>
+<div class="row" style="padding:13px 0;border-bottom:1px solid #203437"><b>Abs</b><span style="color:#ed4d61">TRAINED RECENTLY</span></div>
+<div class="row" style="padding:13px 0"><b>Legs</b><span style="color:#36e18b">READY</span></div>
+</div>
+</section>
+
+<section id="settings" class="screen">
+<h2>Settings</h2><div class="muted">Personalise your training.</div>
+<div class="card" style="margin-top:16px">
+<div class="field"><label>KETTLEBELL WEIGHT</label><input id="weight" type="number" min="1" step=".5"></div>
+<div class="field"><label>UNIT</label><select id="unit"><option value="lb">lb</option><option value="kg">kg</option></select></div>
+<div class="field"><label>WORKOUT DURATION</label><select id="duration"><option value="20">20 min</option><option value="30">30 min</option><option value="45">45 min</option></select></div>
+<button class="btn primary" onclick="saveSettings()">SAVE SETTINGS</button>
+</div>
+<div class="card"><button class="btn" onclick="resetAll()">RESET PROGRESS</button></div>
+</section>
+
+<div id="modal" class="modal">
+<div class="modalCard">
+<div class="eyebrow">REST</div><div id="rest" class="rest">30</div>
+<div class="muted" style="margin-bottom:18px">Get ready for your next set.</div>
+<div class="grid2"><button class="btn" id="restPause" onclick="toggleRest()">PAUSE</button><button class="btn primary" onclick="skipRest()">SKIP REST</button></div>
+</div>
+</div>
+
+<nav class="nav">
+<button data-nav="home" class="active" onclick="show('home')"><span>⌂</span>Home</button>
+<button data-nav="overview" onclick="show('overview')"><span>◉</span>Workout</button>
+<button data-nav="progress" onclick="show('progress')"><span>↗</span>Progress</button>
+<button data-nav="settings" onclick="show('settings')"><span>⚙</span>Settings</button>
+</nav>
+</div>
+
+<script>
+const EMBEDDED_IMAGES = {'kettlebell-russian-twist': 'data:image/webp;base64,UklGRtwDAABXRUJQVlA4INADAAAQKgCdASrgAfAAPsFgq1GnpaOjoLQISPAYCWlu4XVRBjovGF3seMIWM8MZadOnTp06dOnTp06dOnTp06dOnTp06dOq23Yr0kCBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgRNlWkgQHwxLLNygrPPvtlp06dOnTp05D1kKIHPfU0sAzIdKjhLRdfEwf5FSzDKVDwUozpfsKfNUGAB87rHyC5cuXLly5cuXn4ewyAG5luziUH3LPwsEhSFKqMfLX9Jf6KqeQFeZujTBMuliAgQIECJsq0kB8y7/f8czceWMgHErlbICHSB4AFQF/kDY+vW9cdE96SBAgP3eYbEK6IwXc/hxa+h7wxlp06dOnTp06+ndwcsOU5cuXLl2++5Tly7IFp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp1XBbTp06dOnTp06dOnIAA/v84PyNGDbgDmjAHNGAOaMAc0YA5owBzRgDmjAHNGAOaMsReYtzAAACNQDFNAgJEEABb+Oi4iSb0yrSlXuFG40IoPZXZml2lbz7OD1WwVa/6Awm5gLJ6VVoGPa1oPxH+cUIEU5+FTASl8lJylwbxgwvgaA5aHgVAsSSIKDnJ7PEMn2sWxVXzX4QWihXj+6vdr8JyYbpdBAYTuntYA+eBjgRq6mfigL6sCKQ9EvjSttWVf9G+j2Gn33V90ZQQQkPU+nn9wyB55E5nDguatVGYZ2IuGfGAfkkfYdEl2/qFAaBMxJjJFuuCPtArgkXL2cHwmvPinOicTRqOaLYdtWRA8dRY6oGZyxcYvZwkowfrFt2lxSosufa8GB0O0dbqp6mZMmr3gnQE4Z6DwR/Zi4wUKHInWKZpwKkJlCBBV6EFsoOS3JDIGLOl8E626xF703zW//pbURxHbNRu+P8R0VBkAUB1d8oNpPGIjKb6ot1Gii8hiyvewRnei8D15m5S2CLqTqiqj6iZkYfUvlQVemVCSUNTyGLZ4rn4MuNJ7vSP0VmY3sMjAZpiKoTE5VlQzSf4SQYPnqvK59ubvZBGleQIyq/AfcNroPj2QeDdMSJO9FAM8TdH32Zd/1DVNjbn7xdxlBuLzft6ciQAOiGjPfQ2rz4VNTsMQMW78l7H42pKV7TIRmHpD2fG0gL6G/sFDG2QF+6OdegpxpAnYjW994hDjAFcb7vSXwgmszuFakZ96h/thjN47FM4Ow5+84iXMMXmk+KHhDIWM328v8+W61+omuXo7EEoN+C43TI8i4UV1+8HJ+e0DTiIgoAAABR+cQC+iAAAAAAA', 'kettlebell-overhead-press': 'data:image/webp;base64,UklGRloDAABXRUJQVlA4IE4DAAAwKACdASrgAfAAPsFgrFGnpSQioJJIOPAYCWlu4XShBjkHI6xnPdBvHv5C2pyFixYsWLFixYsWLFixYsWLFixYsWLFixYsx3yEj4NGjRo0aNGjRo0aNGjRo0aNGjRo0aNGjRo0aNGjRo0aNGjRo9zCFixUcC+FniW1Koq0ZSm9RVsaxvwoWtnV2U548ePHjx48ePDMCDRWj5YU0gCAGXPZxNElqTFY86ZdDhgGdfY/OR8GjRo0aNGi9ImYwXT6lzqdifGqSAnLfdAFTE8mGyxzZs2bNxvsQvJmMwpE3NKosp5xVtx48ePHjx48eOblHE08MvutnuNLM0vYz/PmHjpAczp06dOnTp07DclI7pp/INpHwanlx506dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp+bCFixYsWLFixYsWLBgAA/v72OAvYdDnOxfOdi+c7F852L5zsXznYvnOxfOdi+c7F9fSRj6jgAACMQCk7YgE+CAAfye79ULT1VftoY8Bnayl1f9lUVtlI9mzm5lgv2znoKdyeqeS5CJkg6xSNF62PmFm/CLDQrC5PPo8BMHakNHOfsyGPXDxGdTNYqFKa/QYi5Ta1clAsTZWhgPHCWYTWqAZmjWp/1zOyJ+t/EtqF/9H+Q68P53MgJj0uDZ0pAmnQfcMIp/77BHHW4uBVzp0Kd+h32S1MFSGOq9e7TgnS6DB8tvj12DKqnJ1EBdYfJPCSWbyaaB/KMC0FsvQ1SenIw8mVD8J5ktB5us+mQZSjyXpbSrqeJfujiY/OQtTaaH6/DgmzybNpLLwPr8DedYWpqDXY81YjWOWLtsJQpgSdMU6gIeqQN93mPyYPySDfigctW+sQZPqXuILBpZUi1m9Wfu65mAmgc01hTGEqehpceA4SYuH6BjvWJIhEhNMX4rJRyKkxeb95TqMS8Ju+e9XVUWUBCkR8Njrxnv8vL6Jxj0Aiu4QSSWPYOMf0iXPt4FP3/HZTGGrsn3b7OXm7/m9zArvJWYxmMtKBQBUFodGQ+HFHzKXDKZRtrmZVvo7alJ3sJlYuNQhbvIZ8XjI6OzohdBlhABlZGMUKZ9yP4iMMmEy/C0iAAAAAIntiAT4IAAAAAAA=', 'anatomy-back': 'data:image/webp;base64,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', 'push-ups': 'data:image/webp;base64,UklGRlgDAABXRUJQVlA4IEwDAADQKACdASrgAfAAPsFgrFGnpaSnoTn4IPAYCWlu4XYBB7g7+tB98Iw4XILFixYsWLFixYsWLFixYsWLFixYsWLFixYxPV78KFChQoUKFChQoUKFChQoUKFChQoUKFChQoUKFChQoUKFChQoVuguHDg6TLIotDz65XQwIECBAgQIEB8VWPIF14e4x8h6wC4/+S4NVfrgcUVELzVQbpbl5YyGGKBAgQIECBAfFNAHOGfo7fg0U17d4D5yH/lZ543WeZ9X0kOCckUmL3KFVovOx5pOoUKFCiXisSJErZo0DYpVd+63uzgb2+Tk6eQ0cyxFRx5atWrVq1atWrSi806gUw02fzZ9zPcSggQIECBAgQIEFc+FEVh48ePHnvSHDhw4lxUg44cOHDhw4cOHDhw4cOHDhw4cOHDhw4cOHDhw4cOHDh6LVrjhw4cOHDhw4cODQAD+/2V3/i5QevXr169evXr169evXr169evXr169evXr/9E7exwAFawFfGiArogAAfqstxNSqswJSlWNjsS0Y49UQkqvFtL3G9DYUBUwZxf1Jr23cEu1nf9sLMvWNSMSN5KaJJkVyIPPCHqoC8t9XqIYAmE51lANzz8JmbLVPUneyxDvR335qbNkTfRd+rT6pquUOkGktB+idgtWfhDOb7r8a+eRu4nS0YZzcZWFGNdrQuz+Pg8w8U3leph9/fjt7BKAo3Fek32NLhOeLG+ny25ezZnLAwy+tgDb8yCbXEtexsr4d8NZn+8bQA8QnKrFaa84Kmj3yTR92WWXMn4JSkwje0iDCOTf8UsWWJT8CIfTIHXZr8fGgGsHQHmNX87zju8DePtcMVtSlqKcwkMNmYUzzQRGY3r/Gsg8WBoWbU3hKGMMBrEWg9tvfUkIhxT4O54mweeAAKN9VIkEAo8/UAUASxce+YsWbOvYE7SAYAeeJFMBj55bkdFse+V6A2w4DRJLbijbByc8yrwH/NmBtXUPx+IaSf0VKQasfBLb37w6SOBrnBhnTYh+ZFBUtr9h7FnXxCAj9ZvzVjgkVl5ves/hFUTNchCnsbmSdhXMjRUy19WXMeWZr8V7Bsu1wV82UKuDYrIZjgpaGETmAGTEhjcDgACvjRAV0QAAAAAA', 'kettlebell-swing': 'data:image/webp;base64,UklGRkwDAABXRUJQVlA4IEADAACwJgCdASrgAfAAPsFgq1GnpSOnoFVYSPAYCWlu4XVRCvVfF/Lv4AaZtpwDYlatWrVq1atWrVq1atWrVq1atWrVq1atWrVrlEIP169evXr169evXr169evXr169evXr169evXr169evXr169evXsFdHkyZGQl2TOQ1CUsRHZqpFO6jFewM6hmNFsgZ06dOnTp05Dc16CzoQsEYW8SQw7Mgqx5fSenif5tPFmsBZ7iDhw4cOHDhw4b8nAODCp9zqGVIfI18DOnTp1XAybNm31wPCEKRkj+WfeQ74lC8mTJkyZMmS9+rR56y+gjTH9tYy1MjKlAsbH2a1atWrVq1atWuBD4NGjRo0aNTy486dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp0/NhAzp06dOnTp06dOlQAA/v84P348Zm4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4vz6t9jgAAFBAQVVCBCQgAGCO+/RoL7jOZUrG8WeHPMHD5S8MQjxvBMNdS+2OwLrCa0BiQyT6bwkNUCSGmy/AHulSshSruC5fpb+Hd7brfgrMs3SQ2chYGR1QKheVmKzAnLiqshviOJl6Jwl+8BFh216+3eKx2xbNL7SZeXm8UvADXMRNLlLE8nJyTJ9xJK/GMmHclw8fGxboQ1ES4ZfX+YLXE7cbX9+7PYp59En0aqqrZELTnQg7bg8F3JLh8XdxLvtJq7ABEMgV0f7DIYRXxFCjtALeKzfzvJ/yL0mHU5Lgn8wL/WxWsnUmEa5eAQjt7oObRQFoqNpNbYYEX9E5LlSnXOE1cjdx3p7KPtX6zeT4svHopMS3A2T0patl7TnTq8YhO7nL3FfKA2v0wqQem4EVFjJdQsyamFYKSeeRVDXk9wBmImlGLGxgVlWO+twX1Zd2bRoJNCXmiH712xEvCEHRwoAJy3CFIUNz7g0uccYhlwGGPyULvH13tKmGNqv7U2xfTVu0s6nz4UE3IiInuJp+GiWqyjFBb/uL3eRU0aKfOJUcAI8dbNQM51Di3ZfBo+EBX/lc9zf9OcfgLNX/Z/AKWvkvxifv63MCJGdTZfAgAAAIuqhAhIQAAAAAA', 'anatomy-front': 'data:image/webp;base64,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', 'kettlebell-row': 'data:image/webp;base64,UklGRnYDAABXRUJQVlA4IGoDAADQJgCdASrgAfAAPsFgrVGnpakjoLcYQSAYCWlu4XVRCvg3HLLbiPQnE5MmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJk4NLRpEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSK75ps2aZpdCTIbcwwDAr/uMz4+XLly5cuXLly1rb/xAmW6JCOdf8bu5i21bgWduT8Eth7su8Mwr0IkSJEiRIkSI+zxVNjjkFy3UP3ehYHBwlN96H3J+YS6iETbnF99HOnTp07Ie0ePHpEotkInRkdoOgi2cBeb6kSJEiRIkSJD+gWnBSzntHlH0fMvehw4cOHDhw4cOP+W0Ur50SJEiUYuPXHRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJFrhY6JEiRIkSJEiRIj0AAP7/KVGd8JotB6enp6enp6enp6enp6enp6enp6enp6enp6eoiSVdmzAAAEYgPEvCBGQgAGfwDEJMW03na0MaXi8pLztjA+flAJ6QUIDTIQmg6Dx51ucOO4hfCCDr/OLMpdLiCuGRV0iePlRrYztDmVL0C8M1o7PlnWpGtZRcTdeUyQKcGoXnJiuQU50jOoKlHryLdqWXyezNSmjgCXjjtzr7g+Jo5MmbgGFYi9ucLR5yLjYX2bDt850OqTeqCTkEvVzRmVaptCAQtSOpGjAGvppftg5/WA98UmOinhrgkmc5Vyqbi1HwPPx9RKkFsSMwb1SKLZAAEYn4mn+4tazKcgGKXwOGyDYRYVmx5MtYxSqn6JEVoWw2VlMwmd8F+SkhmOlySUzNwcBqEKgjC2i8It1iOJ/VhrDX+w26EJir/cdzw2oG1eOW2dmFwDhEDykf9RQ1K9gwgFONJHaXWNEFAUdMDHLESwPdJ6lu/CrIF7pdXlLcNqQapob4B9MQ2OyExS92ulRBo82ANZiF7gEmyEVeDqGRUIgPjGSS9iww4bQQvCxStRPZ67V3CkE1WwLZJbmfdYEgp3lSq1v0/eGKzCPpQCqAOhSjcimqClCyhtuAq5eBxP8mfHGKUlPfZkHvXhQy/IDAMgPPWk9BjmCWEI5+ZHwgH3wd3mUv6r1Oa0w6QDoi/tdUREiTjrPNTT8Hr1/Il9DgI/2v2Be0QAAAA9i8IEZCAAAAAAAA', 'kettlebell-goblet-squat': 'data:image/webp;base64,UklGRjQDAABXRUJQVlA4ICgDAABwJwCdASrgAfAAPsFgq1GnpSOnoJbYMPAYCWlu4XYBDHijdrcWYgWsmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyeO4mZ06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTrgSDLJkst9yS9j1ATmbMwrK6EnxhXYBolXyDXR8GjRelB9AeOOr7UN6Ym9C0sOlpOtx0gmoHzpkUdD/dxbgvEl6UhVxvcQIECBAgQIEmdpP9jsCRzQTTVRHg6iBY/H6gmMIbOEGuj4PcwgZZM+Sx+CtfVQkFTlVpPsQIECBAgQIEB0pANrBbnx85QnoRfysFDyQIECBAgQIECBDnUv+sJCtfUOHEO8Ob5Bro+Is3yDXR8GjRo0aNGjRo0aNGjRo0aNGjRo0aNGjRo0aNGp5PIGWTJkyZMmTJkyWQAA/v9q1K12qSSXPxJc/Elz8SXPxJc/Elz8SXPxJc/Elz8by9YiCgAW7BiKIQScIAWGzUto6vUDdYBo6LDz5rhZ8N59CGOewPlXfz0Zmk27Y+3KD3PLFjcvQenP3Xo/0FmSrbw/Vlk2sO+8OcwvhydWOW3zencnbbswlnTKWP9LQ6/MhWxJ2zQpsvcF/TuEP79d0gd0eEYVVFXPuZ04KNRPq9e1hNJaOnk1Kxe4ArmgbhR6hWZU7nyb7a2QLaQMxhNioae0Oshg2SahWeMDN56tDtLnr4MOkVsp9f2yUwL5Qb9/Njk8SZH858aIqzQwysj9a431vt9fe5qErprHCOlSUT73BR5MrIaQcvgLFm+ljCkxNKz4+/9QQgJukCfwz9U4HUdjXWq3GG9OATVDDQErgwI0F80syfIXZR8LbFmxc8ycoGMZCTTOA5sAXxe/naKZVr1QPK2+RU882mTcVd2ROR5qXO+SABXCec3u1/zo9nt7Zv19aqdfH9ZeWWbxnIHe7EAwoGBW7+0/O0sa0j49SJ2SAFe3v83cf2ksp+0hF/nWp2glyM7yaTh5XH3Jc5RBULEx4QBWKIoTJfNij5GnV2BxqrrYdrbpq1kKPgQLsUzKG2CBhAcvsEAGSohBJwgAAAAA', 'kettlebell-floor-press': 'data:image/webp;base64,UklGRrgDAABXRUJQVlA4IKwDAABQKQCdASrgAfAAPsFgrlGnpiSnoNdIGPAYCWlu4XVRBjmL6eFM3LRoi1PwLCrU1FV9PqGNRKvNdAs6dOnTp06dOnTp06dOnT8u69exZ06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOuA6w85mAbEIByWn1DGolXmugT4bAKlEH4+NUaxX6gFEAMOnpTNEinlB4BWM5irzXQLOnTp04lIFbjR/vZr6sFfJto1Kp/f30+27AJc8wGAUrYG0v/mH1oBBUn1DGolYKwmdOnYuIrsK1huk4QV0R1FxaCD2TaGPvIfANFpg71QdzllnTp06dOnTpwQLp3c2R7vFqnmUkSQCX9XNdAs6dOnTp1Fprkpr3xG810Cz82EDKr6gIR6MGdOnTp06dOnTp06dOnTp06dOnTp06dOnTp06dOnTp1wHWHnNPqGNRKvNdAscAA/v8hQNiWgOM574Zz3wznvhnPfDOe+Gc98M574Zz3wznviMKFd4TAAACNQDBMggI8EAAl7O1bZnYKxpcMFyYLIvpgxiTiOMacRWxcq8Fw8XiI1X6oxarm5twzOX2lwDhsPvOVaLgeCbSO54wlD77n6LaSUyWhXwjuN8JURSJI/D/H2Shn1D0VIGPKp9wT1tjxLF8nG1liEbxdnKjF20I1YTp5PwPFHXeN2tv7U/0xmyMOReXddYdC48FT3NcLl4WrF9NmNshA/yZpkOPBrONZCqjX7w+S4RbqFzr0n83NrFszZuhK9za9+JiqFZsGeH+jgKo5oDvDfkHKHuaoj44+TRNrJcTl8RqarSOl6cbCW0BxUUO+mSy4M9F49VQG4iMXTNHIFlSUEtf0B5B76AdaFuk1sMGN30S3/q3mXUVBcoUNbUT+cGgkw6iHGiRjjzKIGg1qBQK+I6pJKfwBJr7FMfgArp2g/F/cQcmqUbAxDEEVbx8pZPEq31/8u4SZ3kJJ8QE0uBPh4+fOq07SvlmJKx1StcyrLBhXTPxA7lrwvlMF8UuU4aU58Mti+6vvh4/6SE7+dc6sSFb7eE7biXnRae8ae0Cm0i5oElIx/WEYyYPT1vva7yyQxVc2cP5k0WJHQwTwI+T68nfrOnx95GbqTecDoBswoxeceNYlkVxi3zRm7+JpuYV21q3/abevxaFejyzwSWm3D4QSCdVdDsJaIXKeNhOTIIBlvpwV6ba35hHQrsdhISivzTsWnX8lwdEsbgyvgmCjpCJ8oSPQAAxTIICPBAAAAAAA'};
+const exercises=[
+{name:"Push-Ups",slug:"push-ups",equipment:"Bodyweight",type:"Strength",difficulty:"Beginner",target:"Chest, triceps and shoulders",primary:"Chest",secondary:"Triceps, Shoulders, Core",sets:3,reps:10,rest:30,about:"Upper-body pressing movement for the chest, triceps and shoulders.",tips:["Keep your body straight.","Brace your core.","Lower under control.","Push through your hands."]},
+{name:"Kettlebell Swing",slug:"kettlebell-swing",equipment:"Kettlebell",type:"Strength / Conditioning",difficulty:"Beginner",target:"Glutes and posterior chain",primary:"Glutes",secondary:"Hamstrings, Core, Shoulders",sets:3,reps:12,rest:40,about:"Explosive hip-hinge movement for the glutes and posterior chain.",tips:["Drive from the hips.","Keep the bell close.","Do not turn it into a squat.","Finish tall."]},
+{name:"Kettlebell Floor Press",slug:"kettlebell-floor-press",equipment:"Kettlebell",type:"Strength",difficulty:"Beginner",target:"Chest and triceps",primary:"Chest",secondary:"Triceps, Shoulders",sets:3,reps:10,rest:40,about:"Controlled floor press for chest and triceps strength.",tips:["Keep the shoulder controlled.","Press vertically.","Lower slowly.","Keep the elbow controlled."]},
+{name:"Kettlebell Row",slug:"kettlebell-row",equipment:"Kettlebell",type:"Strength",difficulty:"Beginner",target:"Upper back and arms",primary:"Back",secondary:"Biceps, Rear Shoulders, Core",sets:3,reps:10,rest:40,about:"Pulling movement for the upper back, biceps and core.",tips:["Keep your back neutral.","Pull the elbow toward your hip.","Avoid twisting.","Lower slowly."]},
+{name:"Kettlebell Overhead Press",slug:"kettlebell-overhead-press",equipment:"Kettlebell",type:"Strength",difficulty:"Beginner",target:"Shoulders and triceps",primary:"Shoulders",secondary:"Triceps, Core",sets:3,reps:8,rest:40,about:"Vertical press that builds shoulder strength and core stability.",tips:["Brace your core.","Control the bell.","Press overhead.","Avoid excessive back arching."]},
+{name:"Kettlebell Russian Twist",slug:"kettlebell-russian-twist",equipment:"Kettlebell",type:"Core",difficulty:"Beginner",target:"Abs and obliques",primary:"Abs",secondary:"Obliques, Hip Flexors",sets:3,reps:12,rest:30,about:"Rotational core exercise for the abdominals and obliques.",tips:["Keep your chest lifted.","Rotate through the torso.","Move under control.","Do not swing the bell."]},
+{name:"Kettlebell Goblet Squat",slug:"kettlebell-goblet-squat",equipment:"Kettlebell",type:"Strength",difficulty:"Beginner",target:"Legs and glutes",primary:"Quadriceps",secondary:"Glutes, Hamstrings, Core",sets:3,reps:10,rest:40,about:"Beginner-friendly squat variation for legs, glutes and core.",tips:["Keep the bell close.","Keep your chest tall.","Sit between your hips.","Drive through your feet."]}
+];
+const levels=[[0,"Beginner"],[250,"Getting Started"],[600,"Building Strength"],[1000,"Strong"],[1500,"Advanced"],[2100,"Dedicated"],[2800,"Elite"],[3600,"Beast"],[4500,"Pro"],[5500,"Master"]];
+let state=JSON.parse(localStorage.getItem("kbState")||"null")||{xp:125,totalWorkouts:0,totalReps:0,totalVolume:0,points:125,week:0,history:[],weight:20,unit:"lb",duration:30};
+let screen="home",detailIndex=0,workoutIndex=0,currentSet=0,currentReps=10,diff=null,session=null,workTimer=null,seconds=0,restTimer=null,restSeconds=30,restPaused=false;
+
+function save(){localStorage.setItem("kbState",JSON.stringify(state))}
+function img(slug){return EMBEDDED_IMAGES[slug]||""}
+function levelInfo(){let n=0;for(let i=0;i<levels.length;i++)if(state.xp>=levels[i][0])n=i;let cur=levels[n],next=levels[Math.min(n+1,levels.length-1)];let pct=n===levels.length-1?100:((state.xp-cur[0])/(next[0]-cur[0])*100);return{n:n+1,title:cur[1],pct:Math.max(0,Math.min(100,pct))}}
+function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");screen=id;document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.nav===id));if(id==="home")home();if(id==="overview")overview();if(id==="detail")detail();if(id==="progress")progress();if(id==="settings")settings();scrollTo(0,0)}
+function back(){if(screen==="detail")show("overview");else if(screen==="workout"){if(confirm("Leave this workout? Your current session will be saved.")){localStorage.setItem("kbSession",JSON.stringify(session));stopTimer();show("home")}}else show("home")}
+
+function home(){let l=levelInfo();$("level").textContent=l.n;$("levelTitle").textContent=l.title;$("xp").textContent=state.xp;$("xpBar").style.width=l.pct+"%";$("week").textContent=state.week;$("remain").textContent=Math.max(0,4-state.week);$("weekBar").style.width=Math.min(100,state.week/4*100)+"%";$("workouts").textContent=state.totalWorkouts;$("reps").textContent=state.totalReps;$("volume").textContent=fmt(state.totalVolume);$("points").textContent=state.points}
+function overview(){let list=$("exerciseList");list.innerHTML="";exercises.forEach((e,i)=>{let b=document.createElement("button");b.className="exercise";b.onclick=()=>{detailIndex=i;show("detail")};b.innerHTML=`<div class="thumb">${img(e.slug)?`<img src="${img(e.slug)}">`:""}</div><div style="flex:1"><div style="color:#19d7df;font-size:10px;font-weight:900">EXERCISE ${i+1}</div><div class="exerciseName">${e.name}</div><div class="exerciseMeta">${e.sets} sets · ${e.reps} reps · ${state.weight} ${state.unit}</div></div><b style="font-size:22px;color:#6e888c">›</b>`;list.appendChild(b)})}
+function detail(){let e=exercises[detailIndex],f=img("anatomy-front"),b=img("anatomy-back");$("detailCard").innerHTML=`<img class="detailHero" src="${img(e.slug)}"><div class="eyebrow" style="margin-top:15px">EXERCISE ${detailIndex+1} OF 7</div><h2>${e.name}</h2><div class="tags"><span class="tag">${e.equipment}</span><span class="tag">${e.type}</span><span class="tag">${e.difficulty}</span></div><div class="card"><div class="eyebrow">TARGET</div><b style="font-size:17px">${e.target}</b></div><div class="grid2"><div class="card"><div class="eyebrow">PRIMARY</div><b>${e.primary}</b></div><div class="card"><div class="eyebrow">SECONDARY</div><b>${e.secondary}</b></div></div><div class="card"><div class="eyebrow">ABOUT</div><p class="muted" style="line-height:1.55">${e.about}</p></div><div class="card"><div class="eyebrow">TECHNIQUE TIPS</div><ul class="muted" style="line-height:1.7">${e.tips.map(t=>`<li>${t}</li>`).join("")}</ul></div><div class="card"><div class="eyebrow">MUSCLES WORKED</div><div class="anatomy"><img src="${f}"><img src="${b}"></div></div><div class="card"><div class="grid3"><div class="stat"><b>${e.sets}</b><small>Sets</small></div><div class="stat"><b>${e.reps}</b><small>Reps</small></div><div class="stat"><b>${state.weight}</b><small>${state.unit}</small></div></div></div><button class="btn primary" onclick="startWorkout(${detailIndex})">START EXERCISE</button><div style="height:9px"></div><div class="grid2"><button class="btn" onclick="prev()" ${detailIndex===0?"disabled":""}>← PREVIOUS</button><button class="btn" onclick="next()" ${detailIndex===6?"disabled":""}>NEXT →</button></div>`}
+function prev(){if(detailIndex){detailIndex--;detail()}}function next(){if(detailIndex<6){detailIndex++;detail()}}
+
+function startWorkout(start=0){workoutIndex=start;currentSet=0;currentReps=exercises[start].reps;diff=null;session={startedAt:Date.now(),exercises:exercises.map(e=>({name:e.name,sets:[],difficulty:[]})),totalReps:0,totalVolume:0};localStorage.setItem("kbSession",JSON.stringify(session));seconds=0;startTimer();show("workout");renderWorkout()}
+function renderWorkout(){let e=exercises[workoutIndex],d=session.exercises[workoutIndex];$("exerciseNo").textContent=workoutIndex+1;$("currentName").textContent=e.name;$("currentMeta").textContent=`${e.sets} sets · ${e.reps} target reps · ${state.weight} ${state.unit}`;$("rep").textContent=currentReps;$("workBar").style.width=(workoutIndex/7*100)+"%";let list=$("setList");list.innerHTML="";for(let i=0;i<e.sets;i++){let done=d.sets[i]!=null;let row=document.createElement("div");row.className="set "+(done?"done":"")+(i>d.sets.length?" lock":"");row.innerHTML=`<div><b>Set ${i+1}</b><div class="muted" style="font-size:11px">${done?`Completed · ${d.sets[i]} reps`:i===d.sets.length?`Target · ${e.reps} reps`:"Locked"}</div></div>${done?`<button class="btn" style="width:auto;min-height:38px;padding:0 12px" onclick="undo(${i})">UNDO</button>`:""}`;list.appendChild(row)}$("complete").disabled=d.sets.length>=e.sets;$("complete").textContent=d.sets.length>=e.sets?"EXERCISE COMPLETE":`COMPLETE SET ${d.sets.length+1}`;document.querySelectorAll(".diff button").forEach(x=>x.classList.remove("sel"))}
+function reps(n){currentReps=Math.max(1,Math.min(100,currentReps+n));$("rep").textContent=currentReps}
+function difficulty(v,b){diff=v;document.querySelectorAll(".diff button").forEach(x=>x.classList.remove("sel"));b.classList.add("sel")}
+function completeSet(){let e=exercises[workoutIndex],d=session.exercises[workoutIndex];if(d.sets.length>=e.sets)return;d.sets.push(currentReps);d.difficulty.push(diff||"Good");session.totalReps+=currentReps;session.totalVolume+=currentReps*kg();localStorage.setItem("kbSession",JSON.stringify(session));currentSet=d.sets.length;if(currentSet>=e.sets){renderWorkout();setTimeout(()=>{let hard=d.difficulty.filter(x=>x==="Hard"||x==="Very Hard").length;let easy=d.difficulty.filter(x=>x==="Easy").length;alert(hard>=2?"That was challenging. Your next progression will take this into account.":easy>=2?"That looked comfortable. Your next progression can increase gradually.":"Good work.");nextExercise()},100);return}currentReps=e.reps;diff=null;renderWorkout();startRest(e.rest)}
+function undo(i){let d=session.exercises[workoutIndex];if(i>=d.sets.length)return;let r=d.sets[i];session.totalReps-=r;session.totalVolume-=r*kg();d.sets.splice(i,1);d.difficulty.splice(i,1);currentSet=d.sets.length;localStorage.setItem("kbSession",JSON.stringify(session));renderWorkout()}
+function nextExercise(){if(workoutIndex<6){workoutIndex++;currentSet=0;currentReps=exercises[workoutIndex].reps;diff=null;renderWorkout()}else finish()}
+function startRest(n){restSeconds=n;restPaused=false;$("modal").classList.add("on");$("restPause").textContent="PAUSE";updateRest();clearInterval(restTimer);restTimer=setInterval(()=>{if(restPaused)return;restSeconds--;updateRest();if(restSeconds<=0)skipRest()},1000)}
+function updateRest(){$("rest").textContent=Math.max(0,restSeconds)}
+function toggleRest(){restPaused=!restPaused;$("restPause").textContent=restPaused?"RESUME":"PAUSE"}
+function skipRest(){clearInterval(restTimer);$("modal").classList.remove("on");restPaused=false;renderWorkout()}
+function startTimer(){stopTimer();workTimer=setInterval(()=>{seconds++;let m=Math.floor(seconds/60),s=seconds%60;$("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")},1000)}
+function stopTimer(){clearInterval(workTimer);workTimer=null}
+function pause(){localStorage.setItem("kbSession",JSON.stringify(session));stopTimer();if(confirm("Workout paused. Resume now?"))startTimer();else show("home")}
+function finish(){stopTimer();let pts=25+Math.min(100,Math.floor(session.totalReps/10));state.xp+=pts;state.points+=pts;state.totalWorkouts++;state.week=Math.min(4,state.week+1);state.totalReps+=session.totalReps;state.totalVolume+=session.totalVolume;state.history.push({date:new Date().toISOString(),reps:session.totalReps,volume:session.totalVolume,points:pts});save();localStorage.removeItem("kbSession");alert(`WORKOUT COMPLETE!\n\n+${pts} XP\n${session.totalReps} reps\n${fmt(session.totalVolume)} ${state.unit} lifted`);session=null;show("home")}
+function kg(){let w=Number(state.weight)||0;return state.unit==="lb"?w*.453592:w}
+function fmt(v){return Math.round((state.unit==="lb"?v/.453592:v)*10)/10}
+function settings(){$("weight").value=state.weight;$("unit").value=state.unit;$("duration").value=state.duration}
+function saveSettings(){state.weight=Number($("weight").value)||20;state.unit=$("unit").value;state.duration=Number($("duration").value);save();home();overview();alert("Settings saved.")}
+function progress(){let l=levelInfo();$("pLevel").textContent=l.n;$("pTitle").textContent=l.title;$("pXP").textContent=state.xp;$("pBar").style.width=l.pct+"%";$("pWorkouts").textContent=state.totalWorkouts;$("pReps").textContent=state.totalReps;$("pVolume").textContent=fmt(state.totalVolume);$("pPoints").textContent=state.points;let c=$("chart");c.innerHTML="";let a=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);let k=d.toISOString().slice(0,10);a.push(state.history.filter(x=>x.date.slice(0,10)===k).length)}let mx=Math.max(1,...a);a.forEach(v=>{let b=document.createElement("div");b.style.cssText=`flex:1;min-width:8px;height:${Math.max(8,v/mx*100)}%;background:linear-gradient(#49edf1,#0aaeb9);border-radius:7px 7px 2px 2px`;c.appendChild(b)})}
+function resetAll(){if(!confirm("Reset all progress?"))return;state={xp:0,totalWorkouts:0,totalReps:0,totalVolume:0,points:0,week:0,history:[],weight:20,unit:"lb",duration:30};save();home();progress();alert("Progress reset.")}
+function $(id){return document.getElementById(id)}
+home();overview();settings();progress();
+</script>
+</body>
+</html>
