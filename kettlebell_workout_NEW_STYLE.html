@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05090b">
+<title>Kettlebell Workout</title>
+<style>
+:root{
+ --bg:#05090b;--panel:#0b1316;--panel2:#0e191c;--line:#19363b;
+ --cyan:#12d3df;--cyan2:#00aebc;--white:#f4f8f8;--muted:#91a3a6;
+ --green:#26d07c;--yellow:#f2ad27;--red:#ff4d57;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{width:100%;max-width:480px;min-height:100vh;margin:auto;background:linear-gradient(#061013,#05090b);padding-bottom:86px}
+.top{height:82px;padding:18px 16px 12px;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;border-bottom:1px solid var(--line);position:sticky;top:0;background:#05090bee;backdrop-filter:blur(12px);z-index:20}
+.top h1{text-align:center;font-size:16px;letter-spacing:1px;margin:0;font-weight:900}
+.top h1 span{color:var(--cyan)}
+.iconBtn{width:48px;height:48px;border:1px solid #28545a;background:#091316;border-radius:14px;color:#dbe7e8;font-size:23px}
+.screen{display:none;padding:14px 14px 24px}
+.screen.active{display:block}
+.card{background:linear-gradient(145deg,#0d171a,#091114);border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:12px}
+.eyebrow{font-size:10px;letter-spacing:1.25px;color:var(--cyan);font-weight:900}
+.muted{color:var(--muted)}
+.btn{width:100%;border:1px solid #27494e;background:#0c1517;color:var(--white);padding:13px;border-radius:11px;font-weight:900;font-size:12px}
+.btn.primary{background:linear-gradient(90deg,#13cbd6,#09a9b4);border-color:#19dbe4;color:#031012}
+.btn:active{transform:scale(.99)}
+.hero{padding:14px}
+.recommend{display:grid;grid-template-columns:76px 1fr 18px;gap:11px;align-items:center}
+.bigIcon{width:76px;height:76px;border-radius:13px;background:#071014;border:1px solid #214249;display:grid;place-items:center;color:var(--cyan)}
+.bigIcon svg{width:55px;height:55px}
+.recTitle{font-size:21px;font-weight:900;margin:2px 0}
+.recSub{font-size:11px;color:var(--muted);line-height:1.45}
+.arrow{font-size:27px;color:#c5d0d2}
+.focusGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.focus{min-height:102px;background:#081114;border:1px solid var(--line);border-radius:13px;padding:9px 5px;text-align:center;color:var(--white)}
+.focus.active{border-color:var(--cyan);box-shadow:0 0 0 1px #0bb9c3 inset}
+.focus .ficon{height:48px;display:grid;place-items:center;color:#dbe7e8}
+.focus .ficon svg{width:40px;height:40px}
+.focus b{display:block;font-size:11px;margin-top:2px}
+.focus small{display:block;color:var(--muted);font-size:8px;margin-top:4px}
+.sectionHead{display:flex;justify-content:space-between;align-items:end;margin-bottom:10px}
+.sectionHead h2{font-size:13px;letter-spacing:1.1px;margin:0;color:var(--cyan)}
+.sectionHead span{font-size:9px;color:var(--muted)}
+.level{display:grid;grid-template-columns:1fr 70px;gap:10px;align-items:center}
+.level h2{font-size:20px;margin:3px 0}
+.shield{width:62px;height:70px;border:2px solid #d6a93d;clip-path:polygon(50% 0,92% 16%,86% 70%,50% 100%,14% 70%,8% 16%);display:grid;place-items:center;color:#fff;background:#0b1112;position:relative}
+.shield:after{content:"";position:absolute;inset:5px;border:1px solid #a98027;clip-path:inherit}
+.shield strong{font-size:22px;z-index:2}.shield small{font-size:7px;letter-spacing:1px;z-index:2}
+.progress{height:7px;background:#102428;border-radius:99px;overflow:hidden;margin-top:9px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#08afbd,#36e0e7);border-radius:99px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:8px}
+.week div{text-align:center;font-size:8px;color:var(--muted)}
+.check{width:25px;height:25px;border-radius:50%;border:1px solid #31545a;margin:5px auto 0;display:grid;place-items:center}
+.check.done{background:#09b8c3;border-color:#09b8c3;color:#031012;font-weight:900}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.stat{background:#081114;border:1px solid var(--line);border-radius:11px;padding:12px}
+.stat strong{display:block;font-size:20px}.stat small{font-size:8px;color:var(--muted);letter-spacing:.7px}
+.recentRow{display:grid;grid-template-columns:40px 1fr auto;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #183036}
+.recentRow:last-child{border-bottom:0}
+.miniIcon{width:40px;height:40px;border-radius:9px;background:#071014;border:1px solid #1d3d42;display:grid;place-items:center;color:var(--cyan)}
+.miniIcon svg{width:29px;height:29px}
+.recentRow b{font-size:10px}.recentRow small{display:block;color:var(--muted);font-size:8px;margin-top:3px}
+.pill{padding:5px 7px;border:1px solid #27494e;border-radius:99px;color:#bfeff2;font-size:8px}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);height:76px;background:#060b0dF2;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:30;backdrop-filter:blur(12px)}
+.navBtn{border:0;background:none;color:#7f9194;font-size:8px;font-weight:800}
+.navBtn.active{color:var(--cyan)}
+.navIcon{height:30px;display:grid;place-items:center}.navIcon svg{width:23px;height:23px}
+.list{display:grid;gap:8px}
+.exerciseCard{display:grid;grid-template-columns:31px 52px 1fr 18px;gap:8px;align-items:center;padding:8px;background:#081114;border:1px solid var(--line);border-radius:13px}
+.num{width:25px;height:25px;border:1px solid var(--cyan);border-radius:50%;display:grid;place-items:center;color:var(--cyan);font-size:10px;font-weight:900}
+.exIcon{width:52px;height:52px;border-radius:10px;background:#061013;border:1px solid #1d3e43;display:grid;place-items:center;color:#dbe7e8}.exIcon svg{width:43px;height:43px}
+.exName{font-size:10px;font-weight:900}.exMeta{font-size:8px;color:var(--muted);margin-top:4px}.exArrow{font-size:21px;color:#b7c5c7}
+.workoutHero{padding:15px}
+.workoutHero h2{font-size:24px;margin:4px 0}.workoutHero p{font-size:10px;color:var(--muted);margin:0}
+.detailIcon{height:180px;background:#071013;border:1px solid var(--line);border-radius:15px;display:grid;place-items:center;color:var(--cyan);margin-bottom:12px}
+.detailIcon svg{width:145px;height:145px}
+.infoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.infoBox{background:#081114;border:1px solid var(--line);border-radius:11px;padding:12px;text-align:center}.infoBox b{display:block;font-size:17px}.infoBox small{font-size:8px;color:var(--muted)}
+.infoRows{margin-top:10px}.infoRow{padding:9px 0;border-bottom:1px solid #183036;font-size:9px}.infoRow b{color:#dce7e8}.infoRow span{color:var(--muted)}
+.step{display:grid;grid-template-columns:22px 1fr;gap:7px;margin:7px 0;font-size:10px;line-height:1.4;color:#c1ced0}.step i{width:20px;height:20px;border-radius:50%;background:#0a2f34;color:var(--cyan);display:grid;place-items:center;font-style:normal;font-size:8px}
+.controls{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:7px}.control{background:#081114;border:1px solid var(--line);border-radius:11px;padding:10px;text-align:center}.control small{display:block;color:var(--muted);font-size:7px}.control strong{display:block;font-size:19px;margin:4px}.circle{width:30px;height:30px;border-radius:50%;border:1px solid var(--cyan);background:#071114;color:var(--cyan);font-size:17px}
+.repCtl{display:flex;align-items:center;justify-content:center;gap:9px}.weightCtl{display:flex;gap:5px;align-items:center;justify-content:center}.weightCtl input{width:54px;background:none;border:0;text-align:center;font-size:18px;color:#fff;outline:none}.weightCtl select{background:#081114;color:#fff;border:0;font-size:9px}
+.difficulty{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.difficulty button{padding:9px 2px;border-radius:8px;background:#0a1315;border:1px solid #304348;font-size:8px}.difficulty button.active{border-color:var(--cyan);color:var(--cyan);background:#07363b}
+.setProgress{font-size:9px;color:var(--cyan);text-align:center;margin:10px 0}
+.timerCircle{width:210px;height:210px;border-radius:50%;border:8px solid #18353a;border-top-color:var(--cyan);border-right-color:var(--cyan);margin:24px auto;display:grid;place-items:center;text-align:center}.timerCircle strong{font-size:43px;display:block}.timerCircle span{font-size:9px;color:var(--cyan);letter-spacing:1px}
+.complete{text-align:center;padding:25px 14px}.trophy{font-size:55px}.complete h2{font-size:24px;margin:7px}.completeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:18px 0}.completeGrid .stat{padding:10px}.completeGrid strong{font-size:17px}
+.chart{height:150px;display:flex;align-items:flex-end;gap:7px;border-bottom:1px solid #264047;padding:10px 2px 0}.bar{flex:1;background:linear-gradient(#13d2dc,#08757e);border-radius:5px 5px 0 0;min-height:5px}.barLabel{display:flex;gap:7px}.barLabel span{flex:1;text-align:center;font-size:7px;color:var(--muted)}
+.field{margin:9px 0}.field label{display:block;color:var(--muted);font-size:8px;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;background:#071013;border:1px solid #28454a;color:#fff;border-radius:9px;padding:10px;outline:none}.field textarea{min-height:75px}
+.recovery{display:grid;grid-template-columns:1fr 1fr;gap:7px}.recov{padding:10px;border:1px solid var(--line);border-radius:10px;background:#081114}.recov b{font-size:9px}.recov span{float:right;font-size:8px}.ready{color:var(--green)}.recovering{color:var(--yellow)}.trained{color:var(--red)}
+.toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:#0d1b1e;border:1px solid var(--cyan);color:#e9ffff;padding:10px 14px;border-radius:10px;font-size:9px;z-index:50}
+.hidden{display:none}
+@media(min-width:700px){body{padding:20px}.app{border:1px solid #19363b;border-radius:20px;overflow:hidden}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <button class="iconBtn" onclick="toggleMenu()">☰</button>
+ <h1><span>KETTLEBELL</span> WORKOUT</h1>
+ <button class="iconBtn" onclick="show('settings')">⚙</button>
+</header>
+
+<main>
+<section id="home" class="screen active">
+ <div class="card">
+  <div class="eyebrow">RECOMMENDED NEXT WORKOUT</div>
+  <div class="recommend" style="margin:8px 0 12px">
+   <div class="bigIcon" id="recIcon"></div>
+   <div><div class="recTitle" id="recName">Chest</div><div class="recSub" id="recSub">Pressing<br>Build a stronger chest and triceps.</div></div>
+   <div class="arrow">›</div>
+  </div>
+  <button class="btn primary" onclick="startRecommended()">START RECOMMENDED</button>
+ </div>
+
+ <div class="card">
+  <div class="sectionHead"><h2>CHOOSE YOUR FOCUS</h2><span>Build your session</span></div>
+  <div class="focusGrid" id="focusGrid"></div>
+ </div>
+
+ <div class="card level">
+  <div><div class="eyebrow" id="levelEyebrow">LEVEL 1</div><h2 id="levelName">Beginner</h2><div class="muted" style="font-size:9px" id="xpText">125 / 250 XP</div><div class="progress"><i id="xpBar" style="width:50%"></i></div></div>
+  <div class="shield"><div><strong id="shieldNum">1</strong><br><small>LEVEL</small></div></div>
+ </div>
+
+ <div class="card">
+  <div class="sectionHead"><h2>WEEKLY OVERVIEW</h2><span id="weekSummary">0 / 4</span></div>
+  <div class="week" id="week"></div>
+  <div class="stats" style="margin-top:10px">
+   <div class="stat"><strong id="homeWorkouts">0</strong><small>WORKOUTS</small></div>
+   <div class="stat"><strong id="homeReps">0</strong><small>TOTAL REPS</small></div>
+   <div class="stat"><strong id="homeWeight">0</strong><small>WEIGHT LIFTED</small></div>
+   <div class="stat"><strong id="homePoints">125</strong><small>POINTS EARNED</small></div>
+  </div>
+ </div>
+
+ <div class="card">
+  <div class="sectionHead"><h2>RECENT WORKOUTS</h2><span>VIEW ALL ›</span></div>
+  <div id="recent"></div>
+ </div>
+
+ <div class="card">
+  <div class="sectionHead"><h2>MUSCLE RECOVERY</h2><span>Based on training</span></div>
+  <div class="recovery" id="recovery"></div>
+ </div>
+</section>
+
+<section id="workout" class="screen">
+ <div class="card workoutHero"><div class="eyebrow" id="workoutEyebrow">CHEST WORKOUT</div><h2 id="workoutTitle">Chest</h2><p id="workoutDesc">Build a stronger chest and triceps.</p></div>
+ <div class="sectionHead"><h2>EXERCISES</h2><span id="workoutMeta">5 exercises</span></div>
+ <div class="list" id="workoutList"></div>
+ <button class="btn primary" style="margin-top:12px" onclick="beginSession()">START WORKOUT</button>
+</section>
+
+<section id="exercise" class="screen">
+ <div class="sectionHead"><h2 id="exerciseTitle">PUSH-UPS</h2><span id="exerciseIndex">1 / 5</span></div>
+ <div class="detailIcon" id="exerciseIcon"></div>
+ <div class="infoGrid">
+  <div class="infoBox"><b id="exSets">3</b><small>SETS</small></div>
+  <div class="infoBox"><b id="exReps">10–15</b><small>REPS</small></div>
+  <div class="infoBox"><b id="exWeight">BODY</b><small>WEIGHT</small></div>
+ </div>
+ <div class="card" style="margin-top:12px">
+  <div class="eyebrow">ABOUT</div><p id="exAbout" class="muted" style="font-size:10px;line-height:1.5"></p>
+  <div class="infoRows">
+   <div class="infoRow"><b>Primary: </b><span id="exPrimary"></span></div>
+   <div class="infoRow"><b>Secondary: </b><span id="exSecondary"></span></div>
+   <div class="infoRow"><b>Equipment: </b><span id="exEquipment"></span></div>
+   <div class="infoRow"><b>Rest: </b><span id="exRest"></span></div>
+  </div>
+ </div>
+ <div class="card"><div class="eyebrow">HOW TO</div><div id="steps"></div></div>
+ <button class="btn primary" onclick="startCurrentExercise()">START EXERCISE</button>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px"><button class="btn" onclick="prevExercise()">‹ PREVIOUS</button><button class="btn" onclick="nextExercise()">NEXT ›</button></div>
+</section>
+
+<section id="session" class="screen">
+ <div class="sectionHead"><h2 id="sessionExercise">PUSH-UPS</h2><span id="sessionSet">SET 1 OF 3</span></div>
+ <div class="progress"><i id="sessionBar" style="width:33%"></i></div>
+ <div class="card" style="margin-top:12px">
+  <div class="controls">
+   <div class="control"><small>REPS</small><div class="repCtl"><button class="circle" onclick="changeRep(-1)">−</button><strong id="repValue">10</strong><button class="circle" onclick="changeRep(1)">+</button></div></div>
+   <div class="control"><small>WEIGHT</small><div class="weightCtl"><input id="sessionWeight" type="number" min="0" step=".5"><select id="sessionUnit" onchange="saveUnit()"><option>kg</option><option>lb</option></select></div></div>
+   <div class="control"><small>SET</small><strong id="sessionSetNo">1</strong></div>
+  </div>
+ </div>
+ <div class="card">
+  <div class="eyebrow" style="text-align:center">HOW DID THAT SET FEEL?</div>
+  <div class="difficulty" style="margin-top:9px"><button onclick="feel('Easy',this)">Easy</button><button onclick="feel('Good',this)">Good</button><button onclick="feel('Hard',this)">Hard</button><button onclick="feel('Very Hard',this)">Very Hard</button></div>
+ </div>
+ <button class="btn primary" onclick="completeSet()">✓ COMPLETE SET</button>
+ <button class="btn" style="margin-top:7px" onclick="skipRest()">SKIP REST</button>
+</section>
+
+<section id="rest" class="screen">
+ <div style="text-align:center;margin-top:30px"><div class="eyebrow">REST TIME</div><div class="timerCircle"><div><span>REST</span><strong id="timerValue">45</strong></div></div><button class="btn" onclick="skipRest()">SKIP REST</button><button class="btn primary" style="margin-top:7px" onclick="toggleTimer()" id="timerBtn">PAUSE</button></div>
+ <div class="card" style="margin-top:18px"><div class="eyebrow">UP NEXT</div><div style="display:flex;gap:10px;align-items:center;margin-top:9px"><div class="miniIcon" id="nextIcon"></div><div><b id="nextName" style="font-size:10px"></b><small id="nextMeta" class="muted" style="display:block;font-size:8px;margin-top:4px"></small></div></div></div>
+</section>
+
+<section id="complete" class="screen">
+ <div class="card complete"><div class="trophy">🏆</div><div class="eyebrow">WORKOUT COMPLETE!</div><h2>Nice work.</h2><div class="completeGrid"><div class="stat"><strong id="cExercises">0</strong><small>EXERCISES</small></div><div class="stat"><strong id="cSets">0</strong><small>TOTAL SETS</small></div><div class="stat"><strong id="cReps">0</strong><small>TOTAL REPS</small></div><div class="stat"><strong id="cWeight">0</strong><small>WEIGHT</small></div><div class="stat"><strong id="cXp">0</strong><small>XP EARNED</small></div><div class="stat"><strong id="cDuration">0:00</strong><small>DURATION</small></div></div><button class="btn primary" onclick="show('progress')">VIEW PROGRESS</button><button class="btn" style="margin-top:7px" onclick="show('home')">DONE</button></div>
+</section>
+
+<section id="progress" class="screen">
+ <div class="sectionHead"><h2>PROGRESS</h2><span>All time</span></div>
+ <div class="card level"><div><div class="eyebrow">LEVEL <span id="pLevelNum">1</span></div><h2 id="pLevelName">Beginner</h2><div class="muted" style="font-size:9px" id="pXp">125 / 250 XP</div><div class="progress"><i id="pBar" style="width:50%"></i></div></div><div class="shield"><div><strong id="pShield">1</strong><br><small>LEVEL</small></div></div></div>
+ <div class="stats"><div class="stat"><strong id="pWorkouts">0</strong><small>TOTAL WORKOUTS</small></div><div class="stat"><strong id="pReps">0</strong><small>TOTAL REPS</small></div><div class="stat"><strong id="pWeight">0</strong><small>TOTAL WEIGHT</small></div><div class="stat"><strong id="pPoints">125</strong><small>POINTS EARNED</small></div></div>
+ <div class="card" style="margin-top:12px"><div class="sectionHead"><h2>WEEKLY WORKOUTS</h2><span>Last 7 days</span></div><div class="chart" id="chart"></div><div class="barLabel"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
+ <div class="card"><div class="sectionHead"><h2>BEST EXERCISES</h2><span>Personal bests</span></div><div id="bestList"></div></div>
+</section>
+
+<section id="settings" class="screen">
+ <div class="sectionHead"><h2>SETTINGS</h2><span>Preferences</span></div>
+ <div class="card">
+  <div class="eyebrow">KETTLEBELL</div>
+  <div class="field"><label>WEIGHT</label><input id="setWeight" type="number" min="1" step=".5" onchange="saveSettings()"></div>
+  <div class="field"><label>UNIT</label><select id="setUnit" onchange="saveSettings()"><option>kg</option><option>lb</option></select></div>
+ </div>
+ <div class="card">
+  <div class="eyebrow">WORKOUT DURATION</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px"><button class="btn" onclick="setDuration(20)">20 MIN</button><button class="btn primary" onclick="setDuration(30)">30 MIN</button><button class="btn" onclick="setDuration(45)">45 MIN</button></div>
+ </div>
+ <div class="card">
+  <div class="eyebrow">OTHER</div>
+  <div class="infoRow">🔔 <b> Reminders</b><span style="float:right;color:var(--green)">On</span></div>
+  <div class="infoRow">⏱️ <b> Rest Timer</b><span style="float:right;color:var(--cyan)">45 sec</span></div>
+  <div class="infoRow">🔊 <b> Sound</b><span style="float:right;color:var(--green)">On</span></div>
+  <div class="infoRow">🌙 <b> Dark Mode</b><span style="float:right;color:var(--green)">On</span></div>
+ </div>
+</section>
+</main>
+
+<nav class="bottom">
+ <button class="navBtn active" id="navHome" onclick="show('home')"><div class="navIcon">⌂</div>Home</button>
+ <button class="navBtn" id="navWorkout" onclick="show('workout')"><div class="navIcon">◉</div>Workout</button>
+ <button class="navBtn" id="navProgress" onclick="show('progress')"><div class="navIcon">▥</div>Progress</button>
+ <button class="navBtn" id="navSettings" onclick="show('settings')"><div class="navIcon">⚙</div>Settings</button>
+</nav>
+</div>
+<div id="toast" class="toast hidden"></div>
+
+<script>
+const iconPaths={
+ full:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="9" r="5"/><path d="M22 19l-5 14m25-14l5 14M25 19h14l4 20-11 8-11-8 4-20zM21 55l4-20m18 20l-4-20M15 34l-7 8m41-8l7 8M25 48l-5 10m19-10l5 10"/></svg>`,
+ chest:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 22c5-6 23-6 28 0l4 14c-6 5-12 7-18 7s-12-2-18-7l4-14z"/><path d="M24 23c2 7 5 11 8 11s6-4 8-11"/><path d="M18 27l-7 10m35-10l7 10"/></svg>`,
+ shoulders:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="32" cy="10" r="5"/><path d="M24 19l-11 5-6 10 9 5 7-8m17-12l11 5 6 10-9 5-7-8M24 20l8 12 8-12"/><path d="M25 32l-3 22m17-22l3 22"/></svg>`,
+ arms:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 17c-5 1-7 7-8 13l-5 10c-2 4 1 8 5 6l9-10 3 8-5 11c-1 4 5 6 7 2l5-11 2 8c1 4 7 4 7 0l-2-12 5 4c4 3 8-2 4-5l-9-7c-2-2-4-7-7-9z"/><path d="M27 25l9 8"/></svg>`,
+ abs:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M23 17c5-5 13-5 18 0l4 12-5 25H24l-5-25 4-12z"/><path d="M32 19v31M24 27h16M23 35h18M24 43h16"/><path d="M20 15l-7 8m31-8l7 8"/></svg>`,
+ back:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16l10 8 10-8 7 9-8 11 5 15H18l5-15-8-11 7-9z"/><path d="M32 24v27M24 30l8 7 8-7M20 41l12 8 12-8"/></svg>`,
+ legs:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="32" cy="9" r="5"/><path d="M25 18h14l2 16-6 5 4 17m-16-38l-2 16 6 5-4 17"/><path d="M25 25l7 9 7-9M23 39l9 3 9-3"/></svg>`,
+ push:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="48" cy="19" r="4"/><path d="M44 23l-13 8-11 2-10 8m18-10l-5 13m-5-13l-4 14m-6 2h12m-2-14l11-1 10-7 7 2"/></svg>`,
+ swing:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="9" r="4"/><path d="M27 15l8 10-5 10-10 9m10-9l11 6 7 10m-23-25l-10 4m21-5l7-7"/><path d="M18 49h11m9-3h12"/><path d="M41 33l8 6-5 10"/></svg>`,
+ press:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="45" r="4"/><path d="M28 42l-2-13m10 13l2-13m-10 1l-7-9m17 9l7-9M22 20h-7m34 0h-7"/><path d="M25 54h14"/></svg>`,
+ row:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="18" cy="17" r="4"/><path d="M21 21l13 8 13 4m-26-12l-8 10m21-2l-6 13m13-8l7 7M9 51h13m21 0h11"/></svg>`,
+ overhead:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="18" r="4"/><path d="M27 22l-5 12 3 10m12-22l5 12-3 10M22 34l-9-12m29 12l9-12M32 22v29"/><path d="M20 10h-8m40 0h-8"/></svg>`,
+ twist:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="16" r="4"/><path d="M29 20l-7 11 10 7 10-7-7-11M25 38l-9 9m23-9l9 9M16 47h10m12 0h10"/><circle cx="14" cy="32" r="3"/><circle cx="50" cy="32" r="3"/></svg>`,
+ goblet:`<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="10" r="4"/><path d="M27 16h10l3 12-4 8 6 17m-18-37l-3 12 4 8-6 17m4-27h18"/><path d="M23 29h18M21 52h11m11 0H32"/><path d="M25 20l-8 8m22-8l8 8"/></svg>`
+};
+const groups={
+ "Full Body":{icon:"full",sub:"Balanced"},
+ "Chest":{icon:"chest",sub:"Pressing"},
+ "Shoulders":{icon:"shoulders",sub:"Delts"},
+ "Arms":{icon:"arms",sub:"Biceps + triceps"},
+ "Abs":{icon:"abs",sub:"Core"},
+ "Back":{icon:"back",sub:"Pulling"},
+ "Legs":{icon:"legs",sub:"Quads + glutes"}
+};
+const library=[
+ {name:"Push-Ups",focus:"Chest",icon:"push",sets:3,reps:"10–15",target:12,weight:false,primary:"Chest + triceps",secondary:"Shoulders + core",equipment:"Bodyweight",rest:45,about:"A simple pressing movement for chest and triceps strength.",steps:["Set hands just outside shoulder width.","Keep your body in a straight line.","Lower your chest under control.","Press back up without letting your hips sag."]},
+ {name:"Kettlebell Swing",focus:"Full Body",icon:"swing",sets:3,reps:"12–20",target:15,weight:true,primary:"Glutes + hamstrings",secondary:"Core + shoulders",equipment:"Kettlebell",rest:45,about:"A hip-hinge power movement for the posterior chain and conditioning.",steps:["Hinge at the hips and keep the bell close.","Drive the hips forward to swing the bell.","Keep your arms relaxed.","Control the return into the hinge."]},
+ {name:"Kettlebell Floor Press",focus:"Chest",icon:"press",sets:3,reps:"10–12",target:10,weight:true,primary:"Chest",secondary:"Triceps + shoulders",equipment:"Kettlebell",rest:60,about:"A controlled floor press that builds chest and upper-body pressing strength.",steps:["Lie on your back with knees bent.","Hold the bell at chest level.","Keep the elbow slightly tucked.","Press up smoothly and lower until the upper arm touches the floor."]},
+ {name:"Single-Arm Kettlebell Floor Press",focus:"Chest",icon:"press",sets:3,reps:"10 each arm",target:10,weight:true,primary:"Chest",secondary:"Triceps + shoulders",equipment:"Kettlebell",rest:60,about:"A unilateral floor press that challenges the chest while making your core resist rotation.",steps:["Lie on your back with knees bent.","Hold the kettlebell in one hand at chest level.","Keep the elbow slightly tucked.","Press straight up and lower slowly until the upper arm touches the floor.","Complete both arms."]},
+ {name:"Kettlebell Row",focus:"Back",icon:"row",sets:3,reps:"10–12",target:10,weight:true,primary:"Upper back + lats",secondary:"Biceps + rear shoulders",equipment:"Kettlebell",rest:60,about:"A pulling movement for back thickness and arm strength.",steps:["Hinge forward with a flat back.","Brace your core.","Pull the elbow toward your hip.","Lower the bell slowly."]},
+ {name:"Single-Arm Kettlebell Shoulder Press",focus:"Shoulders",icon:"overhead",sets:3,reps:"8–10 each arm",target:8,weight:true,primary:"Shoulders",secondary:"Triceps + core",equipment:"Kettlebell",rest:75,about:"A unilateral overhead press for shoulder strength and stability.",steps:["Start with the kettlebell at your shoulder.","Brace your stomach.","Press overhead without leaning back.","Lower slowly to the shoulder.","Complete both arms."]},
+ {name:"Kettlebell Overhead Press",focus:"Shoulders",icon:"overhead",sets:3,reps:"8–10",target:8,weight:true,primary:"Shoulders",secondary:"Triceps + core",equipment:"Kettlebell",rest:75,about:"A controlled overhead press that develops shoulder strength.",steps:["Start with the bell at shoulder height.","Brace your core.","Press overhead.","Lower under control."]},
+ {name:"Single-Arm Kettlebell Biceps Curl",focus:"Arms",icon:"arms",sets:3,reps:"10–12 each arm",target:10,weight:true,primary:"Biceps",secondary:"Forearms",equipment:"Kettlebell",rest:45,about:"A strict single-arm curl. Use a slow lowering phase and avoid swinging.",steps:["Stand tall with the bell in one hand.","Keep the elbow beside your body.","Curl toward the shoulder.","Lower slowly without leaning or swinging.","Complete both arms."]},
+ {name:"Two-Handed Overhead Kettlebell Extension",focus:"Arms",icon:"overhead",sets:3,reps:"10–12",target:10,weight:true,primary:"Triceps",secondary:"Shoulders + core",equipment:"Kettlebell",rest:60,about:"An overhead triceps movement using both hands for control.",steps:["Hold the kettlebell securely with both hands.","Lift it above your head.","Keep your elbows pointing forward.","Lower behind your head.","Straighten your arms without moving the upper arms."]},
+ {name:"Kettlebell Russian Twist",focus:"Abs",icon:"twist",sets:3,reps:"12 each side",target:12,weight:true,primary:"Abs + obliques",secondary:"Hip flexors",equipment:"Kettlebell",rest:45,about:"A controlled rotational core exercise. Do not rush the movement.",steps:["Sit with knees bent and lean back slightly.","Hold the bell close to your chest.","Rotate your torso to the right.","Return through centre and rotate left.","Keep the core braced throughout."]},
+ {name:"Kettlebell Goblet Squat",focus:"Legs",icon:"goblet",sets:3,reps:"10–15",target:10,weight:true,primary:"Quads + glutes",secondary:"Core + hamstrings",equipment:"Kettlebell",rest:60,about:"A squat variation that builds lower-body strength while keeping the bell close to the chest.",steps:["Hold the kettlebell close to your chest.","Brace your core and sit down between your hips.","Keep your knees tracking over your feet.","Drive through the floor to stand tall."]},
+ {name:"Kettlebell Chest Fly",focus:"Chest",icon:"press",sets:3,reps:"10–12",target:10,weight:true,primary:"Chest",secondary:"Shoulders",equipment:"Kettlebell",rest:60,about:"A controlled chest isolation movement. Keep the load light enough to maintain control.",steps:["Lie on your back with knees bent.","Hold the bell securely above your chest.","Open the arm slightly while keeping control.","Bring the bell back over the chest."]},
+ {name:"Kettlebell Deadlift",focus:"Legs",icon:"swing",sets:3,reps:"10–15",target:10,weight:true,primary:"Glutes + hamstrings",secondary:"Back + core",equipment:"Kettlebell",rest:60,about:"A foundational hip-hinge exercise for the posterior chain.",steps:["Stand with the bell between your feet.","Push your hips back with a flat back.","Grip the bell and brace your core.","Drive the floor away and stand tall."]}
+];
+const focusMap={
+ "Full Body":["Push-Ups","Kettlebell Swing","Kettlebell Floor Press","Kettlebell Row","Kettlebell Goblet Squat"],
+ "Chest":["Push-Ups","Kettlebell Floor Press","Single-Arm Kettlebell Floor Press","Kettlebell Chest Fly","Kettlebell Overhead Press"],
+ "Shoulders":["Single-Arm Kettlebell Shoulder Press","Kettlebell Overhead Press","Kettlebell Row","Push-Ups"],
+ "Arms":["Single-Arm Kettlebell Biceps Curl","Two-Handed Overhead Kettlebell Extension","Single-Arm Kettlebell Shoulder Press","Push-Ups"],
+ "Abs":["Kettlebell Russian Twist","Kettlebell Swing","Push-Ups","Kettlebell Goblet Squat"],
+ "Back":["Kettlebell Row","Kettlebell Swing","Kettlebell Deadlift","Single-Arm Kettlebell Shoulder Press"],
+ "Legs":["Kettlebell Goblet Squat","Kettlebell Swing","Kettlebell Deadlift","Kettlebell Russian Twist"]
+};
+const levels=[
+ [0,"Beginner"],[250,"Getting Started"],[600,"Building Strength"],[1000,"Strong"],[1500,"Advanced"],
+ [2100,"Dedicated"],[2800,"Elite"],[3600,"Beast"],[4500,"Pro"],[5500,"Master"]
+];
+let state=JSON.parse(localStorage.getItem("kb_state")||"null")||{
+ xp:125,workouts:0,totalReps:0,totalWeight:0,points:125,streak:0,weight:20,unit:"lb",duration:30,
+ focus:"Chest",recent:[],week:[0,0,0,0,0,0,0],best:{}
+};
+let selectedFocus=state.focus||"Chest",currentPlan=[],currentIndex=0,currentSet=1,currentReps=0,currentFeel="",sessionStart=0,sessionReps=0,sessionWeight=0,sessionSets=0,timer=45,timerRunning=false,timerId=null;
+
+function save(){localStorage.setItem("kb_state",JSON.stringify(state))}
+function svg(name){return iconPaths[name]||iconPaths.full}
+function iconBox(name,cls=""){return `<div class="${cls}">${svg(name)}</div>`}
+function findEx(name){return library.find(x=>x.name===name)}
+function setPlan(focus){
+ selectedFocus=focus;state.focus=focus;currentPlan=(focusMap[focus]||focusMap.Chest).map(findEx).filter(Boolean);save();renderFocus();renderWorkout();
+}
+function renderFocus(){
+ document.getElementById("focusGrid").innerHTML=Object.entries(groups).map(([name,g])=>`
+ <button class="focus ${name===selectedFocus?"active":""}" onclick="setPlan('${name}')">
+  <div class="ficon">${svg(g.icon)}</div><b>${name}</b><small>${g.sub}</small>
+ </button>`).join("");
+ const rec=findRecommended();document.getElementById("recIcon").innerHTML=svg(groups[rec.focus]?.icon||"full");
+ document.getElementById("recName").textContent=rec.focus;
+ document.getElementById("recSub").innerHTML=`${groups[rec.focus]?.sub||""}<br>Recommended based on your training.`;
+}
+function findRecommended(){
+ const order=["Chest","Back","Legs","Shoulders","Arms","Abs","Full Body"];
+ const last=state.recent[0]?.focus;
+ const next=order.find(x=>x!==last)||"Chest";
+ return {focus:next};
+}
+function renderWorkout(){
+ document.getElementById("workoutEyebrow").textContent=(selectedFocus+" WORKOUT").toUpperCase();
+ document.getElementById("workoutTitle").textContent=selectedFocus;
+ document.getElementById("workoutDesc").textContent=groups[selectedFocus].sub+" • Built around your available equipment.";
+ document.getElementById("workoutMeta").textContent=currentPlan.length+" exercises";
+ document.getElementById("workoutList").innerHTML=currentPlan.map((e,i)=>`
+  <button class="exerciseCard" onclick="openExercise(${i})">
+   <div class="num">${i+1}</div>${iconBox(e.icon,"exIcon")}
+   <div><div class="exName">${e.name}</div><div class="exMeta">${e.sets} sets × ${e.reps}${e.weight?" • "+state.weight+" "+state.unit:" • Bodyweight"}</div></div><div class="exArrow">›</div>
+  </button>`).join("");
+}
+function openExercise(i){currentIndex=i;renderExercise();show("exercise")}
+function renderExercise(){
+ const e=currentPlan[currentIndex];if(!e)return;
+ document.getElementById("exerciseTitle").textContent=e.name.toUpperCase();
+ document.getElementById("exerciseIndex").textContent=(currentIndex+1)+" / "+currentPlan.length;
+ document.getElementById("exerciseIcon").innerHTML=svg(e.icon);
+ document.getElementById("exSets").textContent=e.sets;
+ document.getElementById("exReps").textContent=e.reps;
+ document.getElementById("exWeight").textContent=e.weight?state.weight+" "+state.unit.toUpperCase():"BODY";
+ document.getElementById("exAbout").textContent=e.about;
+ document.getElementById("exPrimary").textContent=e.primary;
+ document.getElementById("exSecondary").textContent=e.secondary;
+ document.getElementById("exEquipment").textContent=e.equipment;
+ document.getElementById("exRest").textContent=e.rest+" sec";
+ document.getElementById("steps").innerHTML=e.steps.map((s,i)=>`<div class="step"><i>${i+1}</i><div>${s}</div></div>`).join("");
+}
+function prevExercise(){if(currentIndex>0){currentIndex--;renderExercise()}else toast("First exercise")}
+function nextExercise(){if(currentIndex<currentPlan.length-1){currentIndex++;renderExercise()}else toast("Last exercise")}
+function startCurrentExercise(){currentSet=1;currentReps=currentPlan[currentIndex].target;currentFeel="";renderSession();show("session")}
+function beginSession(){currentIndex=0;startCurrentExercise()}
+function renderSession(){
+ const e=currentPlan[currentIndex];
+ document.getElementById("sessionExercise").textContent=e.name.toUpperCase();
+ document.getElementById("sessionSet").textContent=`SET ${currentSet} OF ${e.sets}`;
+ document.getElementById("sessionBar").style.width=((currentSet-1)/e.sets*100+33/e.sets)+"%";
+ document.getElementById("repValue").textContent=currentReps;
+ document.getElementById("sessionSetNo").textContent=currentSet;
+ document.getElementById("sessionWeight").value=e.weight?state.weight:0;
+ document.getElementById("sessionUnit").value=state.unit;
+ sessionWeight=e.weight?state.weight:0;sessionReps=0;
+}
+function changeRep(n){currentReps=Math.max(1,currentReps+n);document.getElementById("repValue").textContent=currentReps}
+function feel(v,el){currentFeel=v;document.querySelectorAll(".difficulty button").forEach(b=>b.classList.remove("active"));el.classList.add("active")}
+function completeSet(){
+ const e=currentPlan[currentIndex];if(!currentFeel){toast("Choose how the set felt");return}
+ const w=e.weight?Number(document.getElementById("sessionWeight").value||state.weight):0;
+ sessionReps+=currentReps;sessionWeight+=w;sessionSets++;
+ state.totalReps+=currentReps;state.totalWeight+=w;state.points+=10;state.xp+=10;
+ state.best[e.name]=Math.max(state.best[e.name]||0,currentReps);save();
+ if(currentSet<e.sets){currentSet++;startRest(e.rest)}
+ else if(currentIndex<currentPlan.length-1){currentIndex++;currentSet=1;startRest(e.rest)}
+ else finishSession();
+}
+function startRest(sec){
+ timer=sec;timerRunning=true;document.getElementById("timerValue").textContent=timer;document.getElementById("timerBtn").textContent="PAUSE";
+ const next=currentPlan[currentIndex];document.getElementById("nextIcon").innerHTML=svg(next.icon);document.getElementById("nextName").textContent=next.name;document.getElementById("nextMeta").textContent=`Set ${currentSet} of ${next.sets} • ${next.reps}`;
+ clearInterval(timerId);timerId=setInterval(()=>{if(timerRunning){timer--;document.getElementById("timerValue").textContent=timer;if(timer<=0){clearInterval(timerId);goNextAfterRest()}}},1000);show("rest")
+}
+function toggleTimer(){timerRunning=!timerRunning;document.getElementById("timerBtn").textContent=timerRunning?"PAUSE":"RESUME"}
+function skipRest(){clearInterval(timerId);goNextAfterRest()}
+function goNextAfterRest(){timerRunning=false;show("session");renderSession()}
+function finishSession(){
+ clearInterval(timerId);state.workouts++;state.streak++;state.week[(new Date()).getDay()]++;
+ state.recent.unshift({focus:selectedFocus,date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short"}),reps:sessionReps||state.totalReps,sets:sessionSets,points:10*sessionSets});
+ state.recent=state.recent.slice(0,5);save();
+ document.getElementById("cExercises").textContent=currentPlan.length;document.getElementById("cSets").textContent=sessionSets;document.getElementById("cReps").textContent=sessionReps;document.getElementById("cWeight").textContent=Math.round(sessionWeight)+" "+state.unit;document.getElementById("cXp").textContent=10*sessionSets;document.getElementById("cDuration").textContent="30:00";
+ renderHome();renderProgress();show("complete");
+}
+function startRecommended(){selectedFocus=findRecommended().focus;setPlan(selectedFocus);beginSession()}
+function saveSettings(){
+ state.weight=Number(document.getElementById("setWeight").value||state.weight);
+ state.unit=document.getElementById("setUnit").value;document.getElementById("sessionUnit").value=state.unit;save();renderWorkout();renderExercise();renderHome();toast("Settings saved")
+}
+function saveUnit(){state.unit=document.getElementById("sessionUnit").value;save()}
+function setDuration(v){state.duration=v;save();toast(v+" minute workout selected")}
+function renderHome(){
+ const info=getLevel(state.xp);document.getElementById("levelEyebrow").textContent="LEVEL "+info.level;document.getElementById("levelName").textContent=info.name;document.getElementById("shieldNum").textContent=info.level;document.getElementById("xpText").textContent=`${state.xp} / ${info.next} XP`;document.getElementById("xpBar").style.width=Math.min(100,(state.xp-info.start)/(info.next-info.start)*100)+"%";
+ document.getElementById("homeWorkouts").textContent=state.workouts;document.getElementById("homeReps").textContent=state.totalReps;document.getElementById("homeWeight").textContent=Math.round(state.totalWeight);document.getElementById("homePoints").textContent=state.points;document.getElementById("weekSummary").textContent=`${state.week.reduce((a,b)=>a+b,0)} / 4`;
+ document.getElementById("week").innerHTML=["M","T","W","T","F","S","S"].map((d,i)=>`<div>${d}<div class="check ${state.week[i]? "done":""}">${state.week[i]?"✓":""}</div></div>`).join("");
+ document.getElementById("recent").innerHTML=state.recent.length?state.recent.map(r=>`<div class="recentRow">${iconBox(groups[r.focus]?.icon||"full","miniIcon")}<div><b>${r.focus} Workout</b><small>${r.date} • ${r.reps} reps</small></div><span class="pill">${r.points} XP</span></div>`).join(""):`<div class="muted" style="font-size:9px">Your completed workouts will appear here.</div>`;
+ document.getElementById("recovery").innerHTML=Object.keys(groups).slice(1).map((g,i)=>`<div class="recov"><b>${g}</b><span class="${i<2?'recovering':'ready'}">${i<2?'Recovering':'Ready'}</span></div>`).join("");
+ document.getElementById("setWeight").value=state.weight;document.getElementById("setUnit").value=state.unit;
+}
+function getLevel(xp){let idx=0;for(let i=0;i<levels.length;i++)if(xp>=levels[i][0])idx=i;return {level:idx+1,name:levels[idx][1],start:levels[idx][0],next:levels[idx+1]?.[0]||levels[idx][0]+1000}}
+function renderProgress(){
+ const info=getLevel(state.xp);document.getElementById("pLevelNum").textContent=info.level;document.getElementById("pLevelName").textContent=info.name;document.getElementById("pShield").textContent=info.level;document.getElementById("pXp").textContent=`${state.xp} / ${info.next} XP`;document.getElementById("pBar").style.width=Math.min(100,(state.xp-info.start)/(info.next-info.start)*100)+"%";
+ document.getElementById("pWorkouts").textContent=state.workouts;document.getElementById("pReps").textContent=state.totalReps;document.getElementById("pWeight").textContent=Math.round(state.totalWeight);document.getElementById("pPoints").textContent=state.points;
+ const vals=state.week.map(x=>Math.max(1,x));document.getElementById("chart").innerHTML=vals.map(v=>`<i class="bar" style="height:${Math.min(100,v*28)}%"></i>`).join("");
+ document.getElementById("bestList").innerHTML=Object.keys(state.best).length?Object.entries(state.best).slice(0,6).map(([n,v])=>`<div class="recentRow">${iconBox(findEx(n)?.icon||"full","miniIcon")}<div><b>${n}</b><small>Best: ${v} reps</small></div><span class="pill">PR</span></div>`).join(""):`<div class="muted" style="font-size:9px">Complete a workout to start building your personal bests.</div>`;
+}
+function show(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".navBtn").forEach(b=>b.classList.remove("active"));
+ const m={home:"navHome",workout:"navWorkout",progress:"navProgress",settings:"navSettings"};if(m[id])document.getElementById(m[id]).classList.add("active");
+ if(id==="home")renderHome();if(id==="workout")renderWorkout();if(id==="progress")renderProgress();
+ window.scrollTo(0,0)
+}
+function toggleMenu(){toast("Menu coming soon")}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.remove("hidden");setTimeout(()=>x.classList.add("hidden"),1800)}
+setPlan("Chest");renderHome();renderProgress();
+</script>
+</body>
+</html>
